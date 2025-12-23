@@ -2,75 +2,80 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background: #f5f5f5;
+    background: #f4f6f8;
     color: #333;
 }
 
 /* HEADER */
-header {
-    background: #0a3d62;
+.header {
+    background: #003a8f;
     color: white;
-    padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 40px;
 }
 
-header h1 {
-    font-size: 24px;
-}
-
-nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
+.logo {
+    font-size: 22px;
     font-weight: bold;
 }
 
-nav a:hover {
+.menu a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu a:hover {
     text-decoration: underline;
 }
 
 /* BANNER */
 .banner {
-    background: linear-gradient(to right, #1e90ff, #00bcd4);
+    background: linear-gradient(to right, #005bea, #00c6fb);
     color: white;
-    padding: 80px 20px;
     text-align: center;
+    padding: 80px 20px;
 }
 
-.banner h2 {
-    font-size: 40px;
-    margin-bottom: 15px;
+.banner h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
 }
 
 /* CONTENT */
 .container {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 50px auto;
     padding: 0 20px;
+}
+
+.container h2 {
+    margin-bottom: 30px;
 }
 
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .product {
     background: white;
-    border-radius: 8px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .product img {
-    max-width: 100%;
+    width: 100%;
     height: 180px;
     object-fit: contain;
 }
@@ -79,8 +84,13 @@ nav a:hover {
     margin: 15px 0;
 }
 
+.price {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
 .product button {
-    background: #0a3d62;
+    background: #003a8f;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -89,11 +99,11 @@ nav a:hover {
 }
 
 .product button:hover {
-    background: #07406a;
+    background: #002766;
 }
 
 /* FOOTER */
-footer {
+.footer {
     background: #222;
     color: #aaa;
     text-align: center;
