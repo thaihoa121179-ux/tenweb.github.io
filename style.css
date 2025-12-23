@@ -1,3 +1,1 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Website TKC Plus đã sẵn sàng!");
-});
+console.log("TKC Plus website loaded");
