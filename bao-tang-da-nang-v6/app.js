@@ -1528,6 +1528,7 @@
     return { vi, en, ko: ko || en, zh: zh || en }[state.lang] || vi;
   }
   function imageBox(url, alt, small = false, caption = "") {
+    url = window.MuseumMediaMap?.[url] || url;
     const credit =
       caption ||
       human(

@@ -1,0 +1,34 @@
+name: Import original museum photos
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-museum-photos.yml'
+      - 'bao-tang-da-nang-v6/scripts/import_photos.py'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: import-museum-photos
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and validate all original photos
+        run: python3 bao-tang-da-nang-v6/scripts/import_photos.py
+      - name: Save original photos in the repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add bao-tang-da-nang-v6/assets/museum bao-tang-da-nang-v6/media-map.js bao-tang-da-nang-v6/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Store all original museum photos locally'
+            git push origin HEAD:main
+          fi
+      - name: Request Pages rebuild with local photos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST 'repos/${{ github.repository }}/pages/builds'
