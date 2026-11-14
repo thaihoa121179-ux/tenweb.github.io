@@ -20,6 +20,7 @@ def fetch(url):
  except Exception as error:return {'url':url,'error':str(error)}
 results=list(ThreadPoolExecutor(max_workers=2).map(fetch,urls))
 root=Path(__file__).resolve().parents[1]
+(root/'data').mkdir(parents=True,exist_ok=True)
 (root/'data/source-discovery.json').write_text(json.dumps(results,ensure_ascii=False,indent=2))
 for item in results:print(item['url'],item.get('status',item.get('error')),len(item.get('body','')))
 assert results[0].get('status')==200,'Official catalogue unavailable'
