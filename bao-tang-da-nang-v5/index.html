@@ -206,17 +206,24 @@ function locationText(){
   const floor=Number(String(z).replace('floor-',''));if([1,2,3].includes(floor)){guideContext.floor=floor;return answerLanguage('Mốc check-in gần nhất là tầng '+floor+' 📍. Bạn có thể quét mã của từng khu để xác định cụ thể hơn.','Your last check-in is on floor '+floor+' 📍. Scan a zone code for more detail.','최근 체크인: '+floor+'층 📍.','最近签到：'+floor+'楼 📍。')}
   return cu('help')
 }
+function artifactMeta(a){
+  const table={en:{era:{'Khoảng 2.500–2.000 năm trước':'About 2,500–2,000 years ago','Theo hồ sơ: thế kỷ XIX':'19th century (museum record)','Thế kỷ XX':'20th century','Mô hình thế kỷ XXI':'21st-century model'},material:{'Mã não':'Agate','Kim loại':'Metal','Giấy':'Paper','Vật dụng sinh hoạt':'Household object','Sắt':'Iron','Gỗ':'Wood'}},
+  ko:{era:{'Khoảng 2.500–2.000 năm trước':'약 2,500–2,000년 전','Theo hồ sơ: thế kỷ XIX':'19세기','Thế kỷ XX':'20세기','Mô hình thế kỷ XXI':'21세기 모형'},material:{'Mã não':'마노','Kim loại':'금속','Giấy':'종이','Vật dụng sinh hoạt':'생활용품','Sắt':'철','Gỗ':'목재'}},
+  zh:{era:{'Khoảng 2.500–2.000 năm trước':'约2500至2000年前','Theo hồ sơ: thế kỷ XIX':'19世纪','Thế kỷ XX':'20世纪','Mô hình thế kỷ XXI':'21世纪模型'},material:{'Mã não':'玛瑙','Kim loại':'金属','Giấy':'纸','Vật dụng sinh hoạt':'生活用品','Sắt':'铁','Gỗ':'木材'}}};
+  const dict=table[state.lang]||{era:{},material:{}};
+  return {era:dict.era[a.era]||a.era,material:dict.material[a.material]||a.material};
+}
 function answerForArtifact(a,intent){
   guideContext.artifact=a.id;guideContext.topic=a.topic;const d=D.find(x=>x.id===a.topic);guideContext.floor=d?.floor||null;
   const f=d?.floor||'?';const name=state.lang==='vi'?a.name:a.en;
-  const desc=state.lang==='vi'?a.summary:a.enSummary;
+  const desc=state.lang==='vi'?a.summary:a.enSummary;const translated=artifactMeta(a);
   let text='';
-  if(intent==='when')text=answerLanguage(`🕰️ ${a.name}: ${a.era}. ${a.summary}`,`🕰️ ${a.en}: ${a.era}. ${a.enSummary}`);
-  else if(intent==='material')text=answerLanguage(`🧱 ${a.name} được ghi nhận với chất liệu: ${a.material}. ${a.summary}`,`🧱 ${a.en}. Recorded material: ${a.material}. ${a.enSummary}`);
+  if(intent==='when')text=answerLanguage(`🕰️ ${a.name}: ${a.era}. ${a.summary}`,`🕰️ ${a.en}: ${translated.era}. ${a.enSummary}`);
+  else if(intent==='material')text=answerLanguage(`🧱 ${a.name} được ghi nhận với chất liệu: ${a.material}. ${a.summary}`,`🧱 ${a.en}. Recorded material: ${translated.material}. ${a.enSummary}`);
   else if(intent==='where')text=answerLanguage(`🧭 ${a.name} thuộc chủ đề “${d?.names[0]||'bảo tàng'}” (tham chiếu tầng ${f} trong web). Chưa có sơ đồ chính thức xác nhận vị trí trưng bày thực tế của hiện vật.`, `🧭 ${a.en} is linked to “${d?.names[1]||'museum'}” (reference floor ${f}). Its exact physical display position has not been verified.`);
   else if(intent==='photo')text=answerLanguage(`📸 Có ảnh tư liệu của “${a.name}” trong thư viện. Bấm “Xem hình” bên dưới để mở ảnh, mô tả và liên kết hồ sơ gốc.`,`📸 There is a reference photo for ${a.en}. Tap “View photo” below to open its catalog record.`);
-  else if(intent==='more')text=answerLanguage(`📖 ${a.name}\n${a.summary}\n\nNiên đại: ${a.era}\nChất liệu: ${a.material}.`,`📖 ${a.en}\n${a.enSummary}\n\nDate: ${a.era}\nMaterial: ${a.material}.`);
-  else text=answerLanguage(`🏺 ${a.name}: ${a.summary}\n\nNiên đại: ${a.era} · Chất liệu: ${a.material}.`,`🏺 ${a.en}: ${a.enSummary}\n\nDate: ${a.era} · Material: ${a.material}.`);
+  else if(intent==='more')text=answerLanguage(`📖 ${a.name}\n${a.summary}\n\nNiên đại: ${a.era}\nChất liệu: ${a.material}.`,`📖 ${a.en}\n${a.enSummary}\n\nDate: ${translated.era}\nMaterial: ${translated.material}.`);
+  else text=answerLanguage(`🏺 ${a.name}: ${a.summary}\n\nNiên đại: ${a.era} · Chất liệu: ${a.material}.`,`🏺 ${a.en}: ${a.enSummary}\n\nDate: ${translated.era} · Material: ${translated.material}.`);
   return {text,mood:intent==='where'?'🧭':intent==='photo'?'📸':'🤩',source:a.url,action:'artifact',artifact:a.id,floor:f,hints:['artifact:'+a.id,'map:'+f]};
 }
 function answerForTopic(d,intent){
