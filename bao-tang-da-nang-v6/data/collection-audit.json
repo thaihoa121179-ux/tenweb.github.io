@@ -1,0 +1,90 @@
+{
+  "officialCandidates": 77,
+  "legacyRetained": 9,
+  "newEligible": 48,
+  "added": 48,
+  "total": 57,
+  "skipped": [
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/yan-mang-xing",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/dao-gam",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/khuyan-tai-hai-yau-tho-1",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/mi-henh-nha-gl-ctu",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/hoa-van-trang-tre-henh-chip-thap",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/s-t-ngoi",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-ngi-ci-canh",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/hu-nh",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tu-si-balamin",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/ganara-trang-tre-tran-la-ya",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-nam-than",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/chan-con-vet",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/kendy",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/sanh-yong",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/li-cay-yong",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/yenh-yong",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/reu-yong",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/giao-yong",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/gng-yong",
+      "reason": "Incomplete title/image/material/date/origin"
+    },
+    {
+      "url": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/httpsbaotangdanangvnthu-vienban-mai",
+      "reason": "Incomplete title/image/material/date/origin"
+    }
+  ],
+  "eligibleNotSelected": []
+}
