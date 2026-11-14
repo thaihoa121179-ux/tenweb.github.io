@@ -45,7 +45,7 @@
       play: "▷ Tiếp tục",
       slide: "Nội dung",
       catalogNotice:
-        "Mô tả kế thừa từ nguồn bảo tàng. Ảnh chưa xác nhận quyền sử dụng; mở nguồn để xem ảnh. Chủ đề liên quan không xác định vị trí thực tế.",
+        "Ảnh và mô tả từ nguồn Bảo tàng Đà Nẵng. Chủ đề liên quan không xác định vị trí thực tế của hiện vật.",
       backendSettings: "Cấu hình backend · dành cho nhóm phát triển",
       cameraPrivacy:
         "Camera chỉ mở khi bạn bấm “Mở camera” và cho phép truy cập. Khung hình được xử lý trên thiết bị, không gửi lên máy chủ. Camera tắt khi rời màn hình quét.",
@@ -58,7 +58,7 @@
       saveEndpoint: "Lưu địa chỉ backend",
       catalogTitle: "Thư viện hiện vật",
       qrAlt: "Mã QR dẫn tới hồ sơ hiện vật",
-      placeholderTitle: "Ảnh đang chờ xác nhận quyền",
+      placeholderTitle: "Ảnh từ nguồn bảo tàng",
       backendConsent:
         "Khi kết nối backend, câu hỏi và tối đa 8 lượt hội thoại gần nhất được gửi đến máy chủ bạn cấu hình và nhà cung cấp AI của máy chủ. Không gửi thông tin cá nhân.",
       chatInput: "Nhập câu hỏi cho Mây",
@@ -66,7 +66,7 @@
       carousel: "Gợi ý cùng Mây",
       stop: "Dừng",
       source: "Nguồn bảo tàng",
-      picturePending: "Ảnh chưa được cấp phép sử dụng",
+      picturePending: "Ảnh từ nguồn bảo tàng",
     },
     en: {
       skip: "Skip to content",
@@ -109,7 +109,7 @@
       play: "▷ Resume",
       slide: "Slide",
       catalogNotice:
-        "Descriptions inherited from museum sources. Image reuse permission is pending; view photographs at the source. Related themes do not identify physical locations.",
+        "Photographs and descriptions from Da Nang Museum sources. Related themes do not identify physical object locations.",
       backendSettings: "Backend settings · for developers",
       cameraPrivacy:
         "The camera opens only after you tap “Open camera” and grant access. Frames are processed on your device, never uploaded. Leaving the scanner stops the camera.",
@@ -122,7 +122,7 @@
       saveEndpoint: "Save backend URL",
       catalogTitle: "Artifact library",
       qrAlt: "QR code linking to the artifact record",
-      placeholderTitle: "Image permission pending",
+      placeholderTitle: "Museum source image",
       backendConsent:
         "When a backend is connected, your question and up to 8 recent conversation turns are sent to your configured server and its AI provider. Do not submit personal information.",
       chatInput: "Type a question for Mây",
@@ -130,7 +130,7 @@
       carousel: "Discover with Mây",
       stop: "Stop",
       source: "Museum source",
-      picturePending: "Image reuse permission pending",
+      picturePending: "Museum source image",
     },
     ko: {
       skip: "본문으로 건너뛰기",
@@ -173,7 +173,7 @@
       play: "▷ 다시 시작",
       slide: "슬라이드",
       catalogNotice:
-        "박물관 출처의 설명을 계승했습니다. 사진 사용 허가는 확인 중이며 원문에서 볼 수 있습니다. 관련 주제는 실제 유물 위치를 나타내지 않습니다.",
+        "사진과 설명은 다낭 박물관 자료를 출처로 합니다. 관련 주제는 유물의 실제 위치를 나타내지 않습니다.",
       backendSettings: "백엔드 설정 · 개발자용",
       cameraPrivacy:
         "카메라 열기를 누르고 권한을 허용한 경우에만 카메라가 켜집니다. 영상은 기기에서 처리되며 업로드되지 않습니다. 스캔 화면을 떠나면 카메라가 꺼집니다.",
@@ -186,7 +186,7 @@
       saveEndpoint: "백엔드 주소 저장",
       catalogTitle: "유물 자료실",
       qrAlt: "유물 상세 정보를 여는 QR 코드",
-      placeholderTitle: "사진 사용 허가 확인 중",
+      placeholderTitle: "박물관 자료 사진",
       backendConsent:
         "백엔드 연결 시 질문과 최근 대화 최대 8개가 설정한 서버 및 AI 제공업체로 전송됩니다. 개인정보를 입력하지 마세요.",
       chatInput: "마이에게 질문 입력",
@@ -194,7 +194,7 @@
       carousel: "마이와 함께 탐험",
       stop: "중지",
       source: "박물관 출처",
-      picturePending: "사진 사용 허가 확인 중",
+      picturePending: "박물관 자료 사진",
     },
     zh: {
       skip: "跳至正文",
@@ -236,7 +236,7 @@
       play: "▷ 继续",
       slide: "幻灯片",
       catalogNotice:
-        "说明沿用博物馆来源资料。照片使用许可尚待确认，请在来源网页查看。关联主题不代表文物实际位置。",
+        "图片与说明来自岘港博物馆资料。关联主题不代表文物实际位置。",
       backendSettings: "后端设置 · 开发者专用",
       cameraPrivacy:
         "只有点击开启摄像头并授权后才会打开摄像头。画面仅在设备内处理，不会上传。离开扫码页面后摄像头会关闭。",
@@ -249,7 +249,7 @@
       saveEndpoint: "保存后端地址",
       catalogTitle: "文物资料库",
       qrAlt: "打开文物档案的二维码",
-      placeholderTitle: "照片使用许可待确认",
+      placeholderTitle: "博物馆来源图片",
       backendConsent:
         "连接后端后，您的问题和最近最多8条对话将发送至您配置的服务器及其AI服务商。请勿提交个人信息。",
       chatInput: "向小云输入问题",
@@ -257,7 +257,7 @@
       carousel: "与小云一起探索",
       stop: "停止",
       source: "博物馆来源",
-      picturePending: "照片使用许可待确认",
+      picturePending: "博物馆来源图片",
     },
   };
   const slides = {
@@ -417,7 +417,7 @@
       .setAttribute("aria-label", tr("carousel"));
     document.querySelector("#page-catalog h1").textContent = tr("catalogTitle");
     $("artifact-qr").alt = tr("qrAlt");
-    // Fix inherited catalogue copy: photo permissions are pending, no claim of licensed images.
+    // Use the localized catalogue title consistently.
     document.querySelector("[data-t=catalogFloor]").textContent =
       M.t("chooseFloor");
     document

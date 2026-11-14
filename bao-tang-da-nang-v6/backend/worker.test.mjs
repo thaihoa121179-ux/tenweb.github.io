@@ -165,3 +165,25 @@ test('provider errors are redacted, and failed/malformed responses never count a
     assert.deepEqual(await res.json(), { error: 'provider_unavailable' });
   }
 });
+
+test('practical questions from the user retrieve grounded starting records instead of no-match',()=>{
+ for(const message of ['hiện vật nào đáng xem nhất','tôi tới mà k muốn xem thì làm gì']){
+  const hits=retrieve({...goodInput,message});assert(hits.length>=2);assert(hits.every(r=>r.type==='artifact'));
+ }
+ const low=retrieve({...goodInput,message:'tôi nhát đi bộ lắm có cách nào ko'});
+ assert(low.length>0);assert(low.every(r=>r.type==='topic'));assert.equal(new Set(low.map(r=>r.floor)).size,1);
+});
+test('a duration follow-up keeps the earlier single-floor preference in backend retrieval',()=>{
+ const history=[{role:'user',content:'tôi thích lịch sử và ngại đi bộ'}];
+ const hits=retrieve({...goodInput,message:'tôi có 10 phút',history});assert(hits.length>0);assert(hits.every(r=>r.type==='topic'&&r.floor===3));
+});
+test('backend resolves comparison and supported object-name typos',()=>{
+ assert.equal(retrieve({...goodInput,message:'sung than congx'})[0].id,'artifact:sung-than-cong');
+ const pair=retrieve({...goodInput,message:'So sánh súng thần công và sắc phong'});assert(pair.some(r=>r.id==='artifact:sung-than-cong'));assert(pair.some(r=>r.id==='artifact:sac-phong'));
+});
+test('the provider receives actual preferences and an explicit limit on facility claims',async()=>{
+ let payload;
+ const handler=createHandler(async(url,init)=>{payload=JSON.parse(init.body);return answerResponse(['topic:co-vat'])});
+ const response=await handler(request({...goodInput,message:'tôi nhát đi bộ lắm có cách nào ko'}),env());assert.equal(response.status,200);
+ const system=payload.messages[0].content;assert.match(system,/lowWalking/);assert.match(system,/do not invent elevators/);assert.match(system,/Never claim to have trained/);
+});

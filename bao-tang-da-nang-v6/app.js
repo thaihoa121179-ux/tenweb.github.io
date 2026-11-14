@@ -1528,7 +1528,15 @@
     return { vi, en, ko: ko || en, zh: zh || en }[state.lang] || vi;
   }
   function imageBox(url, alt, small = false, caption = "") {
-    return `<div class="photo-wrap rights-pending${small ? " photo-small" : ""}" role="img" aria-label="${esc(alt + " · " + human("Ảnh chờ xác nhận quyền sử dụng", "Image permission pending", "이미지 이용 허가 대기", "图片使用授权待确认"))}"><span class="rights-icon" aria-hidden="true">🏺</span>${small ? "" : `<p>${esc(human("Ảnh tư liệu chờ xác nhận quyền sử dụng", "Reference image awaiting permission", "자료 사진 이용 허가 확인 대기 중", "资料图片使用授权待确认"))}</p><small>${esc(alt)}</small>`}</div>`;
+    const credit =
+      caption ||
+      human(
+        "Ảnh: Bảo tàng Đà Nẵng",
+        "Photo: Da Nang Museum",
+        "사진: 다낭 박물관",
+        "图片：岘港博物馆",
+      );
+    return `<div class="photo-wrap${small ? " photo-small" : ""}"><img src="${esc(url)}" alt="${esc(alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"><div class="photo-retry" hidden><span>${esc(human("Ảnh nguồn tạm thời không tải được", "Source image temporarily unavailable", "원본 사진을 불러올 수 없습니다", "暂时无法加载原图"))}</span></div>${small ? "" : `<span class="photo-credit">${esc(credit)}</span>`}</div>`;
   }
 
   function renderCatalog() {
@@ -1561,10 +1569,10 @@
       `<div><b>${human("Niên đại", "Date", "연대", "年代")}</b><span>${esc(m.era)}</span></div><div><b>${human("Chất liệu", "Material", "재질", "材质")}</b><span>${esc(m.material)}</span></div><div><b>${human("Chủ đề liên quan", "Related theme", "관련 주제", "相关主题")}</b><span>${esc(nm(D.find((d) => d.id === a.topic)))}</span></div>`;
     $("artifact-source").href = a.url;
     $("artifact-location").textContent = human(
-      "Phân loại chủ đề theo dữ liệu kế thừa V5; chưa xác minh vị trí trưng bày hoặc giấy phép ảnh. Mở hồ sơ nguồn để đối chiếu.",
-      "Theme classification inherited from V5; physical location and image rights are unverified. Consult the source record.",
-      "V5에서 이어받은 주제 분류입니다. 실제 전시 위치와 이미지 사용 권한은 확인되지 않았습니다. 원문을 확인하세요.",
-      "主题分类继承自V5，实际展位与图片授权尚未核实。请查看原始资料。",
+      "Chủ đề liên quan không phải vị trí đặt hiện vật. Ảnh và dữ liệu có liên kết tới hồ sơ nguồn của bảo tàng.",
+      "Related themes are not physical object locations. Images and data link to the original museum record.",
+      "관련 주제는 실제 유물 위치가 아닙니다. 사진과 자료는 박물관 원문으로 연결됩니다.",
+      "关联主题不代表实际展位。图片与资料链接至博物馆原始档案。",
     );
     $("artifact-qr").src = qrSrc(
       CANONICAL_BASE + "?artifact=" + encodeURIComponent(a.id),
@@ -1856,6 +1864,27 @@
   }
 
   function renderPlan() {
+    $("plan-time")
+      .querySelectorAll("[data-custom-time]")
+      .forEach((b) => b.remove());
+    if (![15, 30, 60].includes(state.time)) {
+      const b = document.createElement("button");
+      b.className = "chip";
+      b.dataset.min = String(state.time);
+      b.dataset.customTime = "true";
+      b.textContent = state.time + "′";
+      $("plan-time").appendChild(b);
+    }
+    let walk = $("plan-walking");
+    if (!walk) {
+      walk = document.createElement("div");
+      walk.id = "plan-walking";
+      walk.className = "plan-walking";
+      $("plan-pace").after(walk);
+    }
+    const low = !!guideContext.preferences?.lowWalking;
+    walk.innerHTML = `<button type="button" class="chip${low ? " selected" : ""}" data-low-walking aria-pressed="${low}">${esc(human("Ít đổi tầng", "Stay on one floor", "한 층 위주", "尽量不换楼层"))}</button><p class="muted">${esc(human("Chỉ giảm số chủ đề và số tầng; chưa có dữ liệu đo đường đi.", "Reduces themes and floor changes, not a measured walking distance.", "주제와 층 이동 수를 줄이며 실제 도보 거리는 측정되지 않았습니다.", "仅减少主题和换楼层次数，不代表实测步行距离。"))}</p>`;
+
     $all("[data-min]").forEach((x) =>
       x.classList.toggle("selected", Number(x.dataset.min) === state.time),
     );
@@ -1884,19 +1913,46 @@
       toast(t("routeNo"));
       return;
     }
-    const base = state.time === 15 ? 2 : state.time === 30 ? 4 : 7;
+    const base = state.time <= 20 ? 2 : state.time <= 45 ? 4 : 7;
+    const preferences = guideContext.preferences || {};
+    const sameFloor = preferences.lowWalking
+      ? preferences.floor ||
+        state.currentZone?.floor ||
+        (state.interests.has("history")
+          ? 3
+          : state.interests.has("culture")
+            ? 2
+            : 1)
+      : null;
+
     const n = state.pace === "focused" ? Math.max(1, base - 1) : base;
     const interests = [...state.interests];
-    const scored = D.map((d, i) => ({
-      d,
-      score:
-        d.tags.reduce((s, k) => s + (interests.includes(k) ? 13 : 0), 0) +
-        (d.floor === 3 ? 1 : 0) -
-        i * 0.02,
-    }))
+    const scored = D.filter(
+      (d) =>
+        (!sameFloor || d.floor === sameFloor) &&
+        !d.tags.some((t) => preferences.excluded?.includes(t)),
+    )
+      .map((d, i) => ({
+        d,
+        score:
+          d.tags.reduce((s, k) => s + (interests.includes(k) ? 13 : 0), 0) +
+          (d.floor === 3 ? 1 : 0) -
+          i * 0.02,
+      }))
       .sort((a, b) => b.score - a.score)
-      .slice(0, n)
+      .slice(0, sameFloor ? Math.min(2, n) : n)
       .map((x) => x.d);
+    if (!scored.length) {
+      toast(
+        human(
+          "Chưa có chủ đề phù hợp với lựa chọn này. Hãy đổi sở thích hoặc tầng.",
+          "No theme matches these choices. Change the interest or floor.",
+          "조건에 맞는 주제가 없습니다. 관심사나 층을 바꿔 주세요.",
+          "没有符合条件的主题，请更换兴趣或楼层。",
+        ),
+      );
+      return;
+    }
     const stops = scored.sort(
       (a, b) => b.floor - a.floor || D.indexOf(a) - D.indexOf(b),
     );
@@ -1906,6 +1962,7 @@
       time: state.time,
       pace: state.pace,
       interests,
+      sameFloor,
     };
     saveRoute();
     renderRoute();
@@ -1941,6 +1998,7 @@
         time: r.time,
         pace: r.pace,
         interests: r.interests,
+        sameFloor: [1, 2, 3].includes(r.sameFloor) ? r.sameFloor : null,
       };
     } catch {}
   }
@@ -1954,7 +2012,7 @@
     el.classList.remove("hidden");
     const r = state.route;
     const pct = Math.round((100 * r.done.length) / Math.max(1, r.ids.length));
-    el.innerHTML = `<div class="sectionline"><b style="font-size:13px">${esc(t("planReady"))}</b><small>${r.time}' · ${esc(t("routeProgress"))} ${pct}%</small></div><div class="route-progress"><span style="width:${pct}%"></span></div>${r.ids
+    el.innerHTML = `<div class="sectionline"><b style="font-size:13px">${esc(t("planReady"))}</b><small>${r.time}' · ${esc(t("routeProgress"))} ${pct}%</small></div><div class="route-progress"><span style="width:${pct}%"></span></div>${r.sameFloor ? `<p class="note">${esc(human("Các chủ đề cùng một tầng; không phải đường đi ngắn nhất đã đo.", "Themes on a single floor; not a measured shortest path.", "한 층의 주제이며 실측 최단 경로가 아닙니다.", "同一楼层的主题，并非实测最短路线。"))}</p>` : ""}${r.ids
       .map((id, i) => {
         const d = D.find((x) => x.id === id);
         const done = r.done.includes(id);
@@ -1982,7 +2040,7 @@
       online: "✨ AI nâng cao đã kết nối máy chủ",
       source: "Nguồn",
       help: "Mình chưa tìm được thông tin đáng tin cậy cho câu đó 🤔. Bạn thử hỏi tên một hiện vật, tầng trưng bày, giá vé hoặc lộ trình nhé.",
-      like: "Cảm ơn bạn! Mình sẽ giữ cách trả lời này 😊",
+      like: "Cảm ơn bạn! Đã ghi nhận đánh giá cho phản hồi này 😊",
       dislike:
         "Mình ghi nhận góp ý. Bạn có thể thử câu hỏi khác hoặc mở nguồn chính thức nhé 🙏",
       prompt: [
@@ -2074,9 +2132,16 @@
   function cu(k) {
     return (CHAT_UI[state.lang] || CHAT_UI.vi)[k];
   }
-  function scrollChat() {
-    $("messages").scrollTop = $("messages").scrollHeight;
+  let chatFollowsTail = true;
+  function scrollChat(force = false) {
+    const list = $("messages");
+    if (force || chatFollowsTail) list.scrollTop = list.scrollHeight;
   }
+  $("messages").addEventListener("scroll", () => {
+    const list = $("messages");
+    chatFollowsTail =
+      list.scrollHeight - list.clientHeight - list.scrollTop < 70;
+  });
   const ROBOT_COPY = {
     vi: [
       "Mây AI · Robot hướng dẫn",
@@ -2118,14 +2183,22 @@
       .map((q) => `<button data-chat-question="${esc(q)}">${esc(q)}</button>`)
       .join("");
   }
-  function addBubble(text, you = false, extra = "", mood = "😊", src = "") {
+  function addBubble(
+    text,
+    you = false,
+    extra = "",
+    mood = "😊",
+    src = "",
+    options = {},
+  ) {
     const list = $("messages");
     let box = document.createElement("div");
     box.className = "bubble" + (you ? " you" : "");
     box.textContent = text;
     if (you) {
       list.appendChild(box);
-      scrollChat();
+      chatFollowsTail = true;
+      scrollChat(true);
       return box;
     }
     const row = document.createElement("div");
@@ -2141,15 +2214,19 @@
     stack.className = "assistant-stack";
     stack.appendChild(box);
     row.append(avatar, stack);
-    if (extra || src) {
-      const note = document.createElement("div");
+    let note = null;
+    if (extra || src || options.sources?.length) {
+      note = document.createElement("div");
       note.className = "assistant-source";
-      if (src) {
+      const sources = options.sources?.length
+        ? options.sources
+        : [{ url: src, label: cu("source") }];
+      for (const entry of sources.filter((e) => e.url)) {
         const link = document.createElement("a");
-        link.href = src;
+        link.href = entry.url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = cu("source") + " ↗";
+        link.textContent = (entry.label || cu("source")) + " ↗";
         note.appendChild(link);
       }
       if (extra) {
@@ -2209,11 +2286,40 @@
       };
       controls.appendChild(b);
     }
-    stack.appendChild(controls);
+    const skip = document.createElement("button");
+    skip.type = "button";
+    skip.className = "chat-reveal-all";
+    skip.textContent = human(
+      "Hiện ngay",
+      "Show full reply",
+      "전체 답변 보기",
+      "立即显示",
+    );
+    skip.hidden = !options.animate;
+    skip.onclick = () => box.reveal?.finish();
+    const accessible = document.createElement("span");
+    accessible.className = "sr-only";
+    box.setAttribute("aria-hidden", "true");
+    stack.append(skip, controls, accessible);
     list.appendChild(row);
+    if (options.animate) {
+      controls.hidden = true;
+      if (note) note.hidden = true;
+    }
+    box.reveal = window.MuseumChatText.reveal(box, text, {
+      animate: !!options.animate,
+      onProgress: () => scrollChat(),
+      onFinish: () => {
+        skip.hidden = true;
+        controls.hidden = false;
+        if (note) note.hidden = false;
+        accessible.textContent = text;
+      },
+    });
     scrollChat();
     return box;
   }
+
   function speakChat(txt) {
     if (!("speechSynthesis" in window)) {
       toast(t("voiceUnsupported"));
@@ -2234,6 +2340,9 @@
     guideContext.topic = null;
     guideContext.floor = null;
     guideContext.turns = [];
+    guideContext.preferences = {};
+    guideContext.recommended = [];
+    guideContext.activeIntent = null;
     $("messages").replaceChildren();
     addBubble(cu("welcome"), false, "", "🤖");
   }
@@ -2308,51 +2417,23 @@
         : 0;
   }
   function findMuseumEntity(q) {
-    const query = norm(q);
-    const exactPhrase = (phrase) => {
-      const n = norm(phrase);
-      return n && (query === n || query.includes(n));
-    };
-    const candidates = [];
-    for (const a of A) {
-      const names = adata(a)?.names || [a.name, a.en];
-      const aliases = names
-        .filter((n) => /[가-힣]/.test(n))
-        .map((n) => n.split(" ").at(-1))
-        .filter((n) => n.length >= 2);
-      const englishNoun = {
-        "sung-than-cong": "cannon",
-        "ma-nao": "agate",
-        "sac-phong": "royal edict",
-        "doi-bau": "carrying vessels",
-        "bom-cbu": "cbu 55",
-        "phu-dieu": "co tu",
-        "di-chuc": "testament",
-        "canh-cua": "prison doors",
-        "ghe-bau": "trading boat",
-      }[a.id];
-      if (englishNoun) aliases.push(englishNoun);
-      const hits = [...names, ...aliases].filter(exactPhrase);
-      if (hits.length)
-        candidates.push({
-          type: "artifact",
-          id: a.id,
-          item: a,
-          score: Math.max(...hits.map((n) => norm(n).length)) + 10,
-        });
-    }
-    for (const d of D) {
-      const hits = d.names.filter(exactPhrase);
-      if (hits.length)
-        candidates.push({
-          type: "topic",
-          id: d.id,
-          item: d,
-          score: Math.max(...hits.map((n) => norm(n).length)),
-        });
-    }
-    candidates.sort((a, b) => b.score - a.score);
-    return candidates[0] || null;
+    const records = [
+      ...A.map((a) => ({
+        id: a.id,
+        type: "artifact",
+        names: adata(a)?.names || [a.name, a.en],
+        item: a,
+      })),
+      ...D.map((d) => ({ ...d, type: "topic", item: d })),
+    ];
+    const match = window.MuseumGuideEngine.entities(q, records)[0];
+    return match
+      ? {
+          type: match.record.type,
+          item: match.record.item,
+          id: match.record.id,
+        }
+      : null;
   }
   function answerLanguage(vi, en, ko, zh) {
     return human(vi, en, ko, zh);
@@ -2462,10 +2543,10 @@
         name +
         "\n" +
         human(
-          "Hồ sơ nguồn có ảnh tư liệu. Quyền sử dụng ảnh chưa được xác nhận nên ứng dụng chưa hiển thị ảnh. Bạn có thể mở nguồn chính thức bên dưới.",
-          "The source record includes a reference photo. Image permission is unconfirmed, so the app does not display it. Open the official source below.",
-          "원문에는 자료 사진이 있습니다. 이용 허가가 확인되지 않아 앱에 표시하지 않습니다. 아래 공식 출처를 확인하세요.",
-          "原始档案含资料图片。使用授权尚未确认，应用暂不展示。可打开下方官方来源。",
+          "Mây gửi ảnh hiện vật bên dưới. Mở hồ sơ để xem ảnh lớn, niên đại và thông tin nguồn.",
+          "Here is the artifact photo. Open its record for a larger image, date and source information.",
+          "아래 유물 사진을 확인하세요. 기록을 열면 큰 사진, 연대와 출처를 볼 수 있습니다.",
+          "下方是文物照片。打开档案可查看大图、年代与来源资料。",
         );
     else
       text +=
@@ -2481,6 +2562,7 @@
       source: a.url,
       action: "artifact",
       artifact: a.id,
+      cards: ["summary", "photo", "more"].includes(intent) ? [a.id] : [],
       floor: d.floor,
       hints: ["artifact:" + a.id, "map:" + d.floor],
     };
@@ -2576,9 +2658,339 @@
     return { tag, mins, ids };
   }
   function visitorAnswer(answer) {
+    guideContext.activeIntent = "visitor";
+    guideContext.recommended = [];
     guideContext.artifact = null;
     guideContext.topic = null;
     return answer;
+  }
+  function visitorConversation(query) {
+    const engine = window.MuseumGuideEngine;
+    const records = [
+      ...A.map((a) => ({
+        id: a.id,
+        type: "artifact",
+        names: adata(a)?.names || [a.name, a.en],
+      })),
+      ...D.map((d) => ({ ...d, type: "topic" })),
+    ];
+    const decision = engine.understand(query, guideContext, {
+      lang: state.lang,
+      records,
+    });
+    guideContext.preferences = decision.preferences;
+    const p = decision.preferences;
+    if (p.interest) state.interests = new Set([p.interest]);
+    const source = S.overview;
+    const artifacts = A.map((a) => ({
+      ...a,
+      tags: D.find((d) => d.id === a.topic)?.tags || [],
+    }));
+    const chooseHighlights = () => engine.rank(artifacts, p);
+    const setScope = (intent) => {
+      guideContext.activeIntent = intent;
+      guideContext.artifact = null;
+      guideContext.topic = null;
+    };
+    const questions = {
+      vi: ["Tôi thích lịch sử hơn", "Tôi chỉ có 15 phút", "Tôi muốn ít đi bộ"],
+      en: [
+        "I prefer history",
+        "I only have 15 minutes",
+        "I prefer less walking",
+      ],
+      ko: ["역사를 더 좋아해요", "15분만 있어요", "적게 걷고 싶어요"],
+      zh: ["我更喜欢历史", "我只有15分钟", "我想少走路"],
+    }[state.lang];
+    if (["quiz", "journal", "help"].includes(decision.intent)) {
+      setScope(decision.intent);
+      const text =
+        decision.intent === "quiz"
+          ? human(
+              "Mình có quiz 5 câu dựa trên hồ sơ bảo tàng. Mỗi câu có đáp án và nguồn để bạn tìm hiểu tiếp. Bấm Chơi quiz để bắt đầu nhé.",
+              "Try the five-question quiz based on museum records. Each answer includes a source. Choose Play quiz to start.",
+              "박물관 기록 기반 다섯 문제 퀴즈가 있어요. 답마다 출처가 제공됩니다. 퀴즈 시작을 눌러 보세요.",
+              "可以玩五道题的博物馆资料测验，每题附答案与来源。点击玩测验开始。",
+            )
+          : decision.intent === "journal"
+            ? human(
+                "Bạn có thể ghi cảm nhận, lưu trên thiết bị, tải tệp hoặc chia sẻ trong mục Nhật ký. Bấm Mở nhật ký để viết; tin nhắn này chưa được tự lưu thành ghi chú.",
+                "Use the journal to write notes, save them on this device, download or share them. Choose Open journal to write; this chat message has not been saved as a note.",
+                "일지에서 메모를 작성해 기기에 저장하거나 다운로드·공유할 수 있어요. 일지 열기를 누르세요. 이 채팅은 메모로 자동 저장되지 않습니다.",
+                "在日记里可以写笔记、保存在本设备、下载或分享。点击打开日记书写；本条聊天尚未自动保存为笔记。",
+              )
+            : human(
+                "Mây có thể gợi ý hiện vật theo sở thích, nhớ thời gian và lựa chọn ít đi bộ trong phiên, so sánh hồ sơ, giải thích niên đại/chất liệu, mở sơ đồ và QR, cùng bạn chơi quiz hoặc ghi nhật ký. Bạn muốn bắt đầu với hiện vật nào đáng xem, hay một chuyến đi nhẹ nhàng?",
+                "I can recommend artifacts by interest, remember your time and less-walking preference in this session, compare records, explain dates and materials, open maps and QR, or help you try the quiz and journal. Would you like highlights or a lighter visit?",
+                "관심사별 유물 추천, 대화 중 시간·적게 걷기 선호 기억, 기록 비교, 연대·재질 설명, 지도·QR, 퀴즈와 일지를 도와드려요. 추천 유물이나 가벼운 관람 중 무엇으로 시작할까요?",
+                "我能按兴趣推荐文物，记住本次对话的时间和少走路偏好，对比档案、介绍年代材质、打开地图和二维码，也能带您玩测验或写日记。想先看推荐文物，还是轻松参观？",
+              );
+      return {
+        text,
+        mood: "😊",
+        applicationOnly: true,
+        hints:
+          decision.intent === "quiz"
+            ? ["quiz"]
+            : decision.intent === "journal"
+              ? ["profile"]
+              : ["catalog", "quiz", "profile"],
+        questions:
+          decision.intent === "help"
+            ? [
+                human(
+                  "Hiện vật nào đáng xem nhất?",
+                  "What are the highlights?",
+                  "추천 유물은 무엇인가요?",
+                  "有什么必看文物？",
+                ),
+              ]
+            : [],
+      };
+    }
+    if (decision.intent === "select") {
+      const a = A.find((a) => a.id === decision.selected);
+      if (a) {
+        guideContext.activeIntent = "entity";
+        return answerForArtifact(a, "summary");
+      }
+      return {
+        text: human(
+          "Bạn muốn chọn hiện vật nào? Mây có thể gợi ý ba hồ sơ để bạn bắt đầu.",
+          "Which artifact would you like? I can suggest three records to start with.",
+          "어떤 유물을 원하시나요? 시작할 기록 세 개를 추천해 드릴 수 있어요.",
+          "您想选择哪件文物？我可以先推荐三份档案。",
+        ),
+        mood: "🤔",
+        hints: ["catalog"],
+        questions: [
+          human(
+            "Hiện vật nào đáng xem nhất?",
+            "What are the highlights?",
+            "추천 유물은 무엇인가요?",
+            "有什么必看文物？",
+          ),
+        ],
+      };
+    }
+    if (decision.intent === "compare") {
+      const items = decision.entities
+        .filter((e) => e.type === "artifact")
+        .map((e) => A.find((a) => a.id === e.id))
+        .filter(Boolean)
+        .slice(0, 2);
+      if (items.length === 2) {
+        setScope("compare");
+        guideContext.recommended = items.map((a) => a.id);
+        return {
+          text:
+            human(
+              "Mây đối chiếu theo hồ sơ hiện có, không xếp hạng hiện vật:\n",
+              "Here is a record-based comparison, not an official ranking:\n",
+              "기존 기록을 비교합니다. 공식 순위는 아닙니다:\n",
+              "以下按现有档案对比，并非官方排名：\n",
+            ) +
+            items
+              .map(
+                (a) =>
+                  `${aname(a)}\n${asummary(a)}\n${ameta(a).era} · ${ameta(a).material}`,
+              )
+              .join("\n\n"),
+          mood: "📚",
+          source: items[0].url,
+          cards: items.map((a) => a.id),
+          hints: [],
+          sources: items.map((a) => ({ url: a.url, label: aname(a) })),
+        };
+      }
+      return null;
+    }
+    if (decision.intent === "highlights" || decision.intent === "reason") {
+      setScope("highlights");
+      const chosen = chooseHighlights();
+      guideContext.recommended = chosen.map((a) => a.id);
+      if (!chosen.length)
+        return {
+          text: human(
+            "Mình đã bỏ các nhóm bạn không muốn xem. Bạn thích cổ vật, văn hóa hay câu chuyện thành phố hơn?",
+            "I have excluded the themes you do not want. Would you prefer antiquities, culture or city stories?",
+            "원하지 않는 주제를 제외했어요. 유물, 문화, 도시 이야기 중 무엇이 좋으세요?",
+            "已排除您不想看的主题。您更喜欢古物、文化还是城市故事？",
+          ),
+          mood: "🤔",
+          hints: ["catalog"],
+          questions,
+        };
+      const introduction = p.excluded?.length
+        ? human(
+            "Mình sẽ tránh nhóm bạn vừa nói không thích. Đây là vài lựa chọn khác theo dữ liệu đang có:",
+            "I will avoid the themes you said you dislike. Here are some other record-based choices:",
+            "말씀하신 원하지 않는 주제를 제외했어요. 다른 유물을 추천합니다:",
+            "我会避开您不喜欢的主题，推荐其他有资料的选择：",
+          )
+        : human(
+            "Nếu lần đầu ghé bảo tàng, Mây gợi ý bắt đầu với những hiện vật này. Đây là gợi ý theo câu chuyện và sở thích, không phải bảng xếp hạng chính thức:",
+            "For a first visit, I suggest these artifacts as starting points. These are story-based recommendations, not an official ranking:",
+            "첫 방문이라면 다음 유물로 시작해 보세요. 이야기와 관심사에 따른 추천이며 공식 순위가 아닙니다:",
+            "第一次参观，可以从这些文物开始。这是按故事与兴趣给出的建议，并非官方排名：",
+          );
+      return {
+        text:
+          introduction +
+          "\n\n" +
+          chosen
+            .map((a, i) => `${i + 1}. ${aname(a)} — ${asummary(a)}`)
+            .join("\n\n") +
+          "\n\n" +
+          human(
+            "Bạn nghiêng về lịch sử, văn hóa hay chỉ muốn một điểm xem nhanh?",
+            "Would you prefer history, culture, or just one quick stop?",
+            "역사, 문화, 짧은 관람 중 어떤 것이 좋으세요?",
+            "您更喜欢历史、文化，还是只想快速看一个主题？",
+          ),
+        mood: "🤩",
+        source: chosen[0].url,
+        sources: chosen.map((a) => ({ url: a.url, label: aname(a) })),
+        cards: chosen.map((a) => a.id),
+        hints: [],
+        questions,
+      };
+    }
+    if (decision.intent === "alternatives") {
+      setScope("alternatives");
+      guideContext.recommended = [];
+      return {
+        text: human(
+          "Không nhất thiết phải xem thật nhiều hiện vật đâu 😊. Nếu bạn chưa có hứng xem, có thể thử ngay trên điện thoại:\n\n• Nghe Mây kể một câu chuyện ngắn thay vì đọc các bảng dài.\n• Chơi quiz 5 câu để khám phá theo kiểu trò chơi.\n• Viết một ghi chú vào nhật ký chuyến đi.\n\nNếu chỉ đang mệt hoặc ngại đi bộ, mình có thể gợi ý một chủ đề trên một tầng. Bạn muốn nghe chuyện, chơi quiz hay tham quan nhẹ nhàng?",
+          "You do not have to look at lots of objects 😊. If you are not in the mood, try something on your phone:\n\n• Listen to a short artifact story instead of reading long panels.\n• Try the five-question quiz as a game.\n• Write a note in your visit journal.\n\nIf you are tired or prefer less walking, I can suggest one theme on one floor. Would you like a story, a quiz, or a lighter visit?",
+          "많은 유물을 꼭 볼 필요는 없어요 😊. 지금 전시를 보고 싶지 않다면 휴대전화로 해 보세요:\n\n• 긴 설명을 읽는 대신 짧은 유물 이야기를 들어 보세요.\n• 다섯 문제 퀴즈를 게임처럼 즐겨 보세요.\n• 관람 일지에 메모를 남겨 보세요.\n\n피곤하거나 걷기 싫다면 한 층의 한 주제를 추천할 수 있어요. 이야기, 퀴즈, 가벼운 관람 중 무엇이 좋으세요?",
+          "不必一次看很多文物 😊。暂时不想看展，可以在手机上试试：\n\n• 听一段文物故事，代替阅读长篇展板。\n• 玩五道题的小测验，换一种探索方式。\n• 在参观日记里写下感受。\n\n如果只是累了或不想多走，我可以推荐一层中的一个主题。您想听故事、玩测验，还是轻松参观？",
+        ),
+        mood: "😊",
+        hints: ["quiz", "profile"],
+        questions: [
+          human(
+            "Kể cho tôi một chuyện về hiện vật",
+            "Tell me a short artifact story",
+            "짧은 유물 이야기를 들려줘",
+            "讲一个文物故事",
+          ),
+          questions[2],
+        ],
+      };
+    }
+    if (
+      decision.intent === "low-walking" ||
+      (decision.intent === "route" && p.lowWalking)
+    ) {
+      setScope("low-walking");
+      guideContext.recommended = [];
+      const floor =
+        p.floor ||
+        state.currentZone?.floor ||
+        (p.interest === "history" ? 3 : p.interest === "culture" ? 2 : 1);
+      const items = D.filter(
+        (d) =>
+          d.floor === floor &&
+          !(d.tags || []).some((t) => p.excluded?.includes(t)),
+      );
+      const topic =
+        items.find((d) => p.interest && d.tags.includes(p.interest)) ||
+        items[0];
+      if (!topic)
+        return {
+          text: human(
+            "Mình chưa tìm được chủ đề trên tầng này phù hợp với các lựa chọn đã loại trừ. Bạn muốn đổi tầng hoặc sở thích nào?",
+            "No theme on this floor matches your exclusions. Would you like a different floor or interest?",
+            "제외한 조건에 맞는 주제가 이 층에 없어요. 다른 층이나 관심사를 선택할까요?",
+            "本层没有符合排除条件的主题。要换一层或换个兴趣吗？",
+          ),
+          mood: "🤔",
+          hints: ["plan", "info"],
+        };
+      state.time = p.minutes || 15;
+      state.pace = "focused";
+      if (p.interest) state.interests = new Set([p.interest]);
+      guideContext.preferences.floor = floor;
+      return {
+        text:
+          human(
+            `Có nhé, mình sẽ ưu tiên ít điểm dừng và cùng một tầng, thay vì đi qua nhiều tầng. Bạn có thể chọn chủ đề “${nm(topic)}” (${label(floor)}), mở bài giới thiệu và bấm nghe thuyết minh ngay trên điện thoại.`,
+            `Yes. Let’s keep to fewer stops on a single floor rather than cover several floors. Try “${nm(topic)}” (${label(floor)}), open the introduction and listen on your phone.`,
+            `네. 여러 층을 돌기보다 한 층에서 적은 주제만 보도록 할게요. “${nm(topic)}” (${label(floor)}) 소개를 열고 휴대전화로 음성 안내를 들어 보세요.`,
+            `可以。我们少选站点、集中在一层，不必来回换楼层。试试“${nm(topic)}”（${label(floor)}），打开介绍，在手机上收听讲解。`,
+          ) +
+          "\n\n" +
+          human(
+            "Đây là gợi ý giảm số chủ đề, chưa phải tuyến đường ngắn nhất. Mình chưa có dữ liệu xác nhận khoảng cách, thang máy, lối xe lăn hoặc chỗ nghỉ. Nếu cần hỗ trợ di chuyển, hãy hỏi nhân viên bảo tàng trước.",
+            "This reduces the number of themes, not a measured shortest path. I have no verified distances, lift access, wheelchair routes or resting places. Ask museum staff for mobility assistance.",
+            "주제 수를 줄이는 제안이며 실제 최단 경로는 아닙니다. 거리, 엘리베이터, 휠체어 경로나 휴식 장소 정보는 확인되지 않았으니 이동 지원은 직원에게 문의하세요.",
+            "这只是减少主题数量的建议，并非经过测量的最短路线。距离、电梯、轮椅通道和休息点尚无核实资料；需要移动协助时请先询问工作人员。",
+          ) +
+          "\n\n" +
+          (p.minutes
+            ? human(
+                `Mình đã cập nhật thời gian ${p.minutes} phút và giữ lựa chọn ít đổi tầng. Bấm Tạo lộ trình để xem đề xuất.`,
+                `I have set ${p.minutes} minutes and kept your single-floor preference. Open Plan a route to see the suggestion.`,
+                `${p.minutes}분과 한 층 위주 선호를 반영했어요. 코스 만들기를 열어 확인하세요.`,
+                `已更新为${p.minutes}分钟，并保留尽量不换楼层的偏好。打开规划路线查看建议。`,
+              )
+            : human(
+                "Mình sẽ nhớ lựa chọn ít đi bộ trong cuộc trò chuyện này. Bạn có khoảng bao nhiêu phút?",
+                "I will remember less walking for this conversation. How many minutes do you have?",
+                "이 대화에서는 적게 걷는 선호를 기억할게요. 시간이 얼마나 있나요?",
+                "本次对话会记住少走路的偏好。您有多少分钟？",
+              )),
+        mood: "🧭",
+        source: topic.source,
+        hints: ["article:" + topic.id, "plan", "info"],
+        questions: [questions[1]],
+      };
+    }
+    if (decision.intent === "route") {
+      setScope("route");
+      guideContext.recommended = [];
+      guideContext.minutes = p.minutes || guideContext.minutes || 30;
+      guideContext.interest = p.interest || guideContext.interest;
+      state.time = guideContext.minutes;
+      if (p.interest) state.interests = new Set([p.interest]);
+      const r = interestRoute(engine.colloquial(query, state.lang));
+      const stops = r.ids.filter(
+        (d) => !(d.tags || []).some((t) => p.excluded?.includes(t)),
+      );
+      return {
+        text:
+          human(
+            `Với khoảng ${r.mins} phút, Mây gợi ý:\n`,
+            `For about ${r.mins} minutes, Mây suggests:\n`,
+            `${r.mins}분 관람 추천:\n`,
+            `${r.mins}分钟参观建议：\n`,
+          ) +
+          stops
+            .map((d, i) => `${i + 1}. ${nm(d)} · ${label(d.floor)}`)
+            .join("\n") +
+          "\n\n" +
+          t("planLimit"),
+        mood: "🧭",
+        source,
+        hints: ["plan", "map"],
+        questions: [questions[2]],
+      };
+    }
+    if (
+      !decision.entities.length &&
+      /(?:ke|nghe)( cho toi)?( mot)?( cau)? chuyen|short artifact story|유물 이야기|文物故事/.test(
+        decision.query,
+      )
+    ) {
+      const a = chooseHighlights()[0];
+      if (a) {
+        setScope("entity");
+        guideContext.recommended = [a.id];
+        return answerForArtifact(a, "summary");
+      }
+    }
+    return null;
   }
   function replyKnowledge(q) {
     const query = String(q).slice(0, 700),
@@ -2723,7 +3135,13 @@
         source: S.main,
         hints: ["info"],
       });
+    const practical = visitorConversation(query);
+    if (practical) return practical;
     const item = findMuseumEntity(query);
+    if (item) {
+      guideContext.activeIntent = "entity";
+      guideContext.recommended = [];
+    }
     if (item?.type === "artifact") return answerForArtifact(item.item, intent);
     if (item?.type === "topic") return answerForTopic(item.item, intent);
     // Follow-up intent only applies to short contextual questions, never arbitrary unknown factual questions.
@@ -2734,6 +3152,8 @@
       "nó ở đâu",
       "nó ở tầng nào",
       "nó có ảnh không",
+      "ảnh đâu",
+      "cho tôi xem ảnh",
       "nói thêm về nó",
       "kể thêm về hiện vật đó",
       "hiện vật đó làm bằng gì",
@@ -2813,6 +3233,18 @@
       if (a) return answerForArtifact(a, intent);
       const d = D.find((d) => d.id === guideContext.topic);
       if (d) return answerForTopic(d, intent);
+      if (guideContext.recommended?.length)
+        return {
+          text: human(
+            "Bạn muốn hỏi hiện vật nào trong các gợi ý này? Chọn một hồ sơ bên dưới, Mây sẽ trả lời đúng hiện vật.",
+            "Which recommended artifact do you mean? Choose a record below so I can answer about the right one.",
+            "어떤 추천 유물을 말씀하시나요? 아래 기록을 선택해 주세요.",
+            "您指的是哪件推荐文物？请在下方选择档案。",
+          ),
+          mood: "🤔",
+          cards: guideContext.recommended,
+          hints: [],
+        };
     }
     if (
       say("chao", "hello", "xin chao", "hey", "안녕", "你好") &&
@@ -3024,21 +3456,22 @@
     };
   }
   function smartButtons(ans) {
+    if (ans.cards?.length) {
+      const cards = document.createElement("div");
+      cards.className = "chat-record-cards";
+      cards.innerHTML = ans.cards
+        .map((id) => A.find((a) => a.id === id))
+        .filter(Boolean)
+        .slice(0, 3)
+        .map(
+          (a) =>
+            `<button type="button" class="chat-record-card" data-artifact="${esc(a.id)}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)}</small><span class="chat-card-open">${esc(human("Mở hồ sơ", "Open record", "기록 열기", "打开档案"))} ›</span></span></button>`,
+        )
+        .join("");
+      $("messages").appendChild(cards);
+    }
     const wrap = document.createElement("div");
     wrap.className = "chat-actions contextual-actions";
-    const actions =
-      ans.hints ||
-      (ans.action === "artifact"
-        ? ["artifact:" + ans.artifact, "map:" + (ans.floor || state.floor)]
-        : ans.action === "article"
-          ? ["article:" + ans.id]
-          : ans.action === "scan"
-            ? ["scan"]
-            : ans.action === "info"
-              ? ["info"]
-              : ans.action === "map"
-                ? ["map:" + (ans.floor || state.floor)]
-                : ["plan", "catalog"]);
     const names = {
       plan: cu("route"),
       catalog: t("collections"),
@@ -3046,22 +3479,31 @@
       scan: t("scan"),
       info: t("visit"),
       search: t("goSearch"),
+      quiz: human("Chơi quiz", "Play quiz", "퀴즈 시작", "玩测验"),
+      profile: human("Mở nhật ký", "Open journal", "일지 열기", "打开日记"),
     };
-    const dedup = [...new Set(actions)];
-    dedup.slice(0, 3).forEach((a) => {
+    const actions = ans.hints || [];
+    for (const action of [...new Set(actions)].slice(0, 3)) {
       const b = document.createElement("button");
       b.type = "button";
-      b.dataset.replyAction = a;
-      b.textContent = a.startsWith("artifact:")
+      b.dataset.replyAction = action;
+      b.textContent = action.startsWith("artifact:")
         ? human("Mở hồ sơ", "Open record", "기록 열기", "打开档案")
-        : a.startsWith("article:")
+        : action.startsWith("article:")
           ? cu("more")
-          : a.startsWith("map:")
+          : action.startsWith("map:")
             ? cu("where")
-            : names[a] || a;
+            : names[action] || action;
       wrap.appendChild(b);
-    });
-    $("messages").appendChild(wrap);
+    }
+    for (const question of (ans.questions || []).slice(0, 3)) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.chatQuestion = question;
+      b.textContent = question;
+      wrap.appendChild(b);
+    }
+    if (wrap.children.length) $("messages").appendChild(wrap);
     scrollChat();
   }
   let chatBusy = false;
@@ -3097,8 +3539,9 @@
         .map((turn) => ({ ...turn, content: turn.content.slice(0, 1200) }));
       guideContext.turns.push({ role: "user", content: q });
       guideContext.turns = guideContext.turns.slice(-10);
+      const localAnswer = replyKnowledge(q);
       const endpoint = safeEndpoint(sv("museum_ai_endpoint"));
-      if (endpoint) {
+      if (endpoint && !localAnswer.applicationOnly) {
         const typing = addBubble(t("loading"), false, "", "🤔");
         try {
           const controller = new AbortController();
@@ -3156,13 +3599,18 @@
           state.guideMode =
             payload.mode === "generative" ? "generative" : "offline";
           renderGuide();
-          addBubble(
+          const responseBubble = addBubble(
             payload.answer,
             false,
             payload.mode === "data" ? modeLabel() : "",
             payload.mode === "generative" ? "🤩" : "🤔",
             sources[0] || "",
+            {
+              animate: true,
+              sources: sources.map((url) => ({ url, label: cu("source") })),
+            },
           );
+          await responseBubble.reveal.finished;
           guideContext.turns.push({
             role: "assistant",
             content: payload.answer,
@@ -3177,15 +3625,17 @@
       }
       state.guideMode = "offline";
       renderGuide();
-      const answer = replyKnowledge(q);
+      const answer = localAnswer;
       guideContext.lastMood = answer.mood;
-      addBubble(
+      const responseBubble = addBubble(
         answer.text,
         false,
         modeLabel(),
         answer.mood || "😊",
         answer.source || "",
+        { animate: true, sources: answer.sources },
       );
+      await responseBubble.reveal.finished;
       smartButtons(answer);
       guideContext.turns.push({ role: "assistant", content: answer.text });
       guideContext.turns = guideContext.turns.slice(-10);
@@ -3509,6 +3959,16 @@
   }
   function syncEvents() {
     document.addEventListener("click", (e) => {
+      if (e.target.closest("[data-low-walking]")) {
+        guideContext.preferences = {
+          ...(guideContext.preferences || {}),
+          lowWalking: !guideContext.preferences?.lowWalking,
+        };
+        renderPlan();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
       const btn = e.target.closest("button,[data-route-open],[data-map-topic]");
       if (!btn) return;
       if (btn.matches("[data-go]")) {
@@ -3558,6 +4018,10 @@
       }
       if (btn.matches("[data-min]")) {
         state.time = Number(btn.dataset.min);
+        guideContext.preferences = {
+          ...(guideContext.preferences || {}),
+          minutes: state.time,
+        };
         renderPlan();
         return;
       }
@@ -3566,6 +4030,13 @@
         state.interests.has(k)
           ? state.interests.delete(k)
           : state.interests.add(k);
+        guideContext.preferences = {
+          ...(guideContext.preferences || {}),
+          interest: [...state.interests][0] || null,
+          excluded: (guideContext.preferences?.excluded || []).filter(
+            (tag) => !state.interests.has(tag),
+          ),
+        };
         renderPlan();
         return;
       }

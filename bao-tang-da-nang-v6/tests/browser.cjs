@@ -13,7 +13,10 @@ const results = [];
 let browser;
 
 async function fixture(options = {}) {
-  const context = await browser.newContext({ viewport: {width:390,height:844}, locale:'vi-VN', ...options });
+  const context = await browser.newContext({ viewport: {width:390,height:844}, locale:'vi-VN', reducedMotion:'reduce', ...options });
+  // External photos are fixture responses in this suite: the cloud egress policy
+  // blocks museum image hosts. A dedicated test checks failure fallback too.
+  await context.route(/^https:\/\/(?:baotangdanang\.vn|dnfam-website\.vr360\.com\.vn)\/uploads\//, route=>route.fulfill({status:200,contentType:'image/png',body:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLbtAAAAABJRU5ErkJggg==','base64')}));
   const page = await context.newPage();
   const errors = [], external = [];
   page.on('pageerror', e => errors.push(e.message));
@@ -71,7 +74,7 @@ async function test(name, work) {
           await nav(f.page,'home');
           const buttons = await f.page.locator('.nav button,.home-grid button,#hero-plan').evaluateAll(es => es.map(e => ({text:e.innerText,rect:e.getBoundingClientRect().toJSON()})));
           assert.deepEqual(buttons.filter(x=>x.rect.height<43.5||x.rect.width<43.5),[],'Main controls have 44px touch targets');
-          assert.deepEqual(f.errors,[]);assert.deepEqual(f.external,[],'Core experience must not load unlicensed external photos');
+          assert.deepEqual(f.errors,[]);assert.ok(f.external.every(u=>/^https:\/\/(baotangdanang\.vn|dnfam-website\.vr360\.com\.vn)\/uploads\//.test(u)),'Only original source image hosts may be requested');
           if(process.env.SCREENSHOT_DIR){await fs.mkdir(process.env.SCREENSHOT_DIR,{recursive:true});await f.page.screenshot({path:path.join(process.env.SCREENSHOT_DIR,`home-${width}.png`),fullPage:true});}
         } finally {await f.context.close();}
       });
@@ -167,6 +170,69 @@ async function test(name, work) {
     });
     await test('unknown answers, dangerous QR and incorrect QR paths stay explicit',async()=>{
       const f=await fixture();try{await open(f.page);await nav(f.page,'guide');assert.match(await send(f.page,'Bảo tàng có viên ngọc của người ngoài hành tinh không?'),/chưa tìm được thông tin đáng tin cậy/);await nav(f.page,'scan');await f.page.locator('#qr-manual').fill('javascript:alert(1)');await f.page.locator('#qr-manual-go').click();assert.equal(await f.page.locator('#qr-result a').count(),0);assert.match(await f.page.locator('#qr-result').innerText(),/Không nhận ra/);assert.equal(await f.page.evaluate(()=>Museum.state.page),'scan');assert.deepEqual(f.errors,[]);}finally{await f.context.close();}
+    });
+    await test('the user screenshot questions work, with pictured recommendations and useful real actions',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'guide');
+        const intro=await send(f.page,'hiện vật nào đáng xem nhất');assert.match(intro,/Súng thần công/);assert.match(intro,/không phải bảng xếp hạng/);assert.equal(await f.page.locator('.chat-record-card').count(),3);
+        assert.match(await send(f.page,'cái thứ hai'),/Trang sức mã não/);
+        assert.match(await send(f.page,'nó làm bằng gì'),/Chất liệu: Mã não/);
+        assert.match(await send(f.page,'tôi tới mà k muốn xem thì làm gì'),/quiz 5 câu/);
+        await f.page.locator('[data-reply-action=quiz]').last().click();assert.equal(await f.page.evaluate(()=>Museum.state.page),'quiz');await nav(f.page,'guide');
+        assert.match(await send(f.page,'tôi nhát đi bộ lắm có cách nào ko'),/ít điểm dừng/);
+        const shorter=await send(f.page,'tôi chỉ có 10 phút');assert.match(shorter,/10 phút/);assert.doesNotMatch(shorter,/bao nhiêu phút/);
+        await f.page.locator('[data-reply-action=plan]').last().click();assert.equal(await f.page.locator('[data-min="10"]').getAttribute('class'),'chip selected');
+        await f.page.locator('#plan-build').click();const route=await f.page.evaluate(()=>Museum.state.route);assert.equal(route.time,10);assert.ok(route.ids.length<=2);assert.ok(route.sameFloor);assert.equal(await f.page.locator('[data-low-walking]').getAttribute('aria-pressed'),'true');
+        assert.equal(await f.page.evaluate(()=>new Set(Museum.state.route.ids.map(id=>Museum.D.find(d=>d.id===id).floor)).size),1);
+        assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('recommendation preferences support negation, comparison and all four languages',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'guide');
+        await send(f.page,'hiện vật nào đáng xem nhất');await send(f.page,'không thích lịch sử, thích văn hóa hơn');assert.equal(await f.page.evaluate(()=>Museum.guideContext.preferences.interest),'culture');assert.ok(await f.page.evaluate(()=>Museum.guideContext.preferences.excluded.includes('history')));
+        assert.match(await send(f.page,'So sánh súng thần công và sắc phong'),/1840/);assert.match(await f.page.locator('.assistant-row .bubble').last().innerText(),/Kim loại/);
+        for(const [lang,question,expected]of [['en','I don’t want to see exhibits',/quiz/],['ko','많이 걷고 싶지 않아요',/한 층/],['zh','有什么必看文物？',/推荐|官方排名/]]){await f.page.locator('#lang-switch').click();await f.page.locator(`[data-lang="${lang}"]`).click();await f.page.locator('#language-start').click();assert.match(await send(f.page,question),expected);await noOverflow(f.page,lang+' practical chat')}
+        assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('artifact and gallery photos use their actual source URLs, with a working failure fallback',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'catalog');
+        const photos=f.page.locator('#catalog-list .photo-wrap img');assert.equal(await photos.count(),9);
+        const urls=await photos.evaluateAll(images=>images.map(i=>i.src));const expected=await f.page.evaluate(()=>Museum.A.map(a=>a.image));assert.deepEqual(urls,expected);
+        await photos.evaluateAll(images=>Promise.all(images.map(i=>{i.loading='eager';return i.decode()})));assert.equal(await photos.first().evaluate(i=>i.naturalWidth>0),true);
+        await f.page.locator('#catalog-list [data-artifact="sung-than-cong"]').click();assert.match(await f.page.locator('#artifact-photo .photo-credit').innerText(),/Bảo tàng Đà Nẵng/);assert.ok(await f.page.locator('#artifact-photo img').getAttribute('src'));
+        await f.page.evaluate(()=>Museum.openArticle('co-vat'));assert.match(await f.page.locator('#article-photo img').getAttribute('src'),/^https:\/\/dnfam-website\.vr360\.com\.vn\//);
+        await f.context.route('**/uploads/**',route=>route.abort());await f.page.evaluate(()=>{Museum.A.find(a=>a.id==='ghe-bau').image+='?failure-case';Museum.openArtifact('ghe-bau')});await f.page.locator('#artifact-photo .photo-retry:not([hidden])').waitFor({state:'visible'});assert.match(await f.page.locator('#artifact-photo').innerText(),/không tải được/);
+        assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('text reveals progressively without zoom, can be shown immediately and preserves Unicode',async()=>{
+      const f=await fixture({reducedMotion:'no-preference'});try{await open(f.page);await nav(f.page,'guide');
+        await f.page.locator('#chat-input').fill('hiện vật nào đáng xem nhất');await f.page.locator('#chat-form button[type=submit]').click();
+        const bubble=f.page.locator('.assistant-row .bubble').last();await f.page.waitForFunction(()=>!!document.querySelector('.is-revealing'));
+        const first=await bubble.innerText();assert.ok(first.length<100);assert.equal(await f.page.locator('.assistant-row').last().evaluate(e=>getComputedStyle(e).animationName),'none');
+        await f.page.waitForTimeout(130);const second=await bubble.innerText();assert.ok(second.length>first.length);assert.ok(second.length<500);assert.equal(await f.page.locator('#chat-form button[type=submit]').isDisabled(),true);
+        await f.page.locator('.chat-reveal-all:visible').click();await f.page.waitForFunction(()=>document.querySelector('#messages').getAttribute('aria-busy')==='false');assert.match(await bubble.innerText(),/Súng thần công/);assert.equal(await f.page.locator('.chat-record-card').count(),3);
+        const unicode=await f.page.evaluate(async()=>{const el=document.createElement('p');document.body.appendChild(el);const text='Mây 😊 a\u0306\u0301 · 한국어 · 中文';const control=MuseumChatText.reveal(el,text);control.finish();await control.finished;const output=el.textContent;el.remove();return output});assert.equal(unicode,'Mây 😊 a\u0306\u0301 · 한국어 · 中文');
+        assert.equal(await f.page.locator('.assistant-row').last().locator('.sr-only').textContent(),await bubble.textContent());assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('typing respects a reader scrolling up and finishes safely when navigating away',async()=>{
+      const f=await fixture({reducedMotion:'no-preference'});try{await open(f.page);await nav(f.page,'guide');
+        // Populate real transcript entries without waiting for presentation effects.
+        await f.page.evaluate(()=>{const log=document.querySelector('#messages');for(let i=0;i<15;i++){const p=document.createElement('p');p.className='bubble';p.textContent=('Một đoạn hội thoại trước đó. ').repeat(6);log.appendChild(p)}log.scrollTop=log.scrollHeight});
+        await f.page.locator('#chat-input').fill('tôi nhát đi bộ lắm có cách nào ko');await f.page.locator('#chat-form button[type=submit]').click();await f.page.waitForFunction(()=>!!document.querySelector('.is-revealing'));
+        await f.page.locator('#messages').evaluate(el=>{el.scrollTop=0;el.dispatchEvent(new Event('scroll'))});await f.page.waitForTimeout(160);assert.equal(await f.page.locator('#messages').evaluate(el=>el.scrollTop),0);
+        await nav(f.page,'home');await f.page.waitForFunction(()=>document.querySelector('#messages').getAttribute('aria-busy')==='false');await nav(f.page,'guide');assert.match(await f.page.locator('.assistant-row .bubble').last().innerText(),/ít điểm dừng/);assert.equal(await f.page.locator('.is-revealing').count(),0);assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('chat can open app actions without claiming notes were already saved or spending provider calls',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'guide');
+        await f.page.evaluate(()=>Museum.persist('museum_ai_endpoint','https://museum-api.example/chat'));
+        let calls=0;await f.page.route('https://museum-api.example/chat',route=>{calls++;return route.abort()});
+        assert.match(await send(f.page,'bạn giúp được gì'),/sở thích/);
+        assert.match(await send(f.page,'chơi quiz'),/quiz 5 câu/);await f.page.locator('[data-reply-action=quiz]').last().click();assert.equal(await f.page.evaluate(()=>Museum.state.page),'quiz');await nav(f.page,'guide');
+        assert.match(await send(f.page,'mở nhật ký'),/chưa được tự lưu/);await f.page.locator('[data-reply-action=profile]').last().click();assert.equal(await f.page.evaluate(()=>Museum.state.page),'profile');assert.equal(calls,0);assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
     });
     await test('reduced motion, manual carousel and keyboard language dialog',async()=>{
       const f=await fixture({reducedMotion:'reduce'});try{await open(f.page);assert.equal(await f.page.locator('#hero-pause').getAttribute('aria-pressed'),'false');assert.equal(await f.page.locator('.orbit').first().evaluate(e=>getComputedStyle(e).animationName),'none');

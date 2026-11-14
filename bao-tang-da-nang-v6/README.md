@@ -20,6 +20,9 @@ Mở thư mục `/bao-tang-da-nang-v6/` trên máy chủ vừa chạy. Camera/mi
 - Robot Mây từ V5 trên banner và mỗi phản hồi. Năm nội dung banner; chuyển thủ công, tự chạy theo lựa chọn người dùng, tạm dừng và giảm chuyển động.
 - 9 hồ sơ hiện vật và 15 chủ đề kế thừa; dịch tên, mô tả, niên đại, chất liệu, điều hướng và quiz sang Việt/Anh/Hàn/Trung.
 - Tìm kiếm gợi ý theo thời gian thực, không dấu, một lỗi gõ nhẹ, Enter mở kết quả. Cả thư viện và tìm kiếm chung đều tìm hồ sơ hiện vật.
+- Ảnh hiện vật và không gian được hiển thị từ URL nguồn gốc đã có trong V5, ghi công bảo tàng; có fallback khi nguồn ảnh không tải được.
+- Phản hồi hiện chữ dần, giữ nguyên dấu tiếng Việt/emoji; nút **Hiện ngay**, giảm chuyển động và hỗ trợ trình đọc màn hình. Không dùng hiệu ứng zoom cả câu trả lời.
+- Hiểu cách viết tắt `k/ko`, lỗi gõ nhẹ; gợi ý hiện vật đáng xem, câu hỏi so sánh, lựa chọn ít đi bộ, không muốn xem triển lãm, quiz/nhật ký; giữ sở thích, loại trừ và thời gian trong phiên. Chọn tiếp bằng “cái thứ hai” và hỏi niên đại/chất liệu của đúng hiện vật.
 - Trợ lý dữ liệu có dẫn nguồn, nối tiếp hiện vật/chất liệu/niên đại và sở thích/thời gian, đọc, sao chép, đánh giá và mở hồ sơ/sơ đồ. Hội thoại được giữ trong phiên khi đổi ngôn ngữ; không lưu nội dung chat vào storage.
 - Camera QR xử lý trên thiết bị; nhập mã và chọn ảnh; tạo QR SVG tại máy, không gọi dịch vụ tạo QR. Tám mã mẫu có thể bấm hoặc quét; URL mở đúng tầng/chủ đề/khu/hiện vật ngay sau chọn ngôn ngữ lần đầu.
 - Sơ đồ chủ đề tương tác, check-in theo mốc QR và chọn mốc thủ công được phân biệt. Luôn ghi **mô phỏng**, không phải GPS hay vị trí vật lý đã xác thực.
@@ -34,7 +37,7 @@ Mở thư mục `/bao-tang-da-nang-v6/` trên máy chủ vừa chạy. Camera/mi
 | Hạng mục | Trạng thái |
 | --- | --- |
 | AI tạo sinh thực tế | **Chưa triển khai/chưa kiểm thử với mô hình thật.** Mặc định ghi “Chế độ trợ lý dữ liệu”. Chỉ báo AI tạo sinh sau phản hồi hợp lệ từ backend. |
-| Ảnh hiện vật | **Chưa có bằng chứng giấy phép.** Giữ 9 URL ảnh và URL hồ sơ gốc trong dữ liệu; dùng placeholder rõ ràng. Mở nguồn để xem ảnh, không tự sao chép ảnh chưa được phép. |
+| Ảnh hiện vật | Đã bật URL ảnh nguồn theo yêu cầu chủ dự án, không còn chặn chờ xác nhận quyền. Ảnh có ghi nguồn; khả năng tải thực tế phụ thuộc máy chủ nguồn. Môi trường cloud đang chặn các host ảnh nên kiểm thử tải thành công dùng fixture, không khẳng định đã kiểm chứng ảnh live. |
 | Nguồn lịch sử, giờ mở cửa, vé | Kế thừa dữ liệu có dẫn nguồn của V5, không xác nhận lại là dữ liệu hiện hành. Vé mở thông báo chính thức; lịch cần đối chiếu trước chuyến đi. |
 | Địa điểm hiện vật | Chưa có mặt bằng/chứng thực vị trí. Quan hệ hiện vật–chủ đề không phải tọa độ hay đường đi thực. |
 | Chất liệu Đôi bầu | Chưa xác minh; “vật dụng sinh hoạt” là loại đồ vật, không phải chất liệu. |
@@ -42,12 +45,12 @@ Mở thư mục `/bao-tang-da-nang-v6/` trên máy chủ vừa chạy. Camera/mi
 | iPhone/Android/Safari thực tế | Chưa kiểm thử trên thiết bị thật. Kiểm thử tự động dùng Chromium ở 4 độ rộng, không thay thế Safari/VoiceOver/TalkBack. |
 | Lưu/chia sẻ | Lưu cục bộ từng trình duyệt, không đồng bộ tài khoản. Chia sẻ dùng Web Share hoặc clipboard; luôn có tải tệp. |
 
-Chi tiết nguồn, quyền ảnh và giới hạn dữ liệu: [DATA_SOURCES.md](DATA_SOURCES.md).
+Chi tiết nguồn và giới hạn dữ liệu: [DATA_SOURCES.md](DATA_SOURCES.md).
 
 ## Kiểm thử và ảnh chụp
 
 ```sh
-node --test bao-tang-da-nang-v6/backend/worker.test.mjs
+node --test bao-tang-da-nang-v6/tests/guide-engine.test.mjs bao-tang-da-nang-v6/backend/worker.test.mjs
 node bao-tang-da-nang-v6/tests/browser.cjs
 ```
 
@@ -67,6 +70,12 @@ Không tự triển khai backend, hợp nhất hoặc xuất bản môi trườn
 
 ## Cấu trúc
 
-`index.html`: các màn hình; `base.css`: phong cách kế thừa; `v6.css`: thiết kế V6; `app.js`: dữ liệu/quy trình chính; `data-v6.js`: bản dịch hồ sơ; `v6.js`: dashboard/trợ năng; `profile.js/css`: nhật ký/quiz; `qr-decoder.js` và `qr-generator.js`: thư viện chạy tại máy; `backend/`: Worker tùy chọn.
+`index.html`: các màn hình; `base.css`: phong cách kế thừa; `v6.css`: thiết kế V6; `app.js`: dữ liệu/quy trình chính; `data-v6.js`: bản dịch hồ sơ; `guide-engine.js`: nhận diện ý định và sở thích, dùng chung với backend; `chat-text.js`: hiện chữ từng cụm ký tự Unicode; `v6.js`: dashboard/trợ năng; `profile.js/css`: nhật ký/quiz; `qr-decoder.js` và `qr-generator.js`: thư viện chạy tại máy; `backend/`: Worker tùy chọn.
 
-Thư viện QR và font được lưu kèm thông báo giấy phép trong `licenses/`. Ảnh robot là tài sản có sẵn của dự án V5; nguồn/quyền của tài sản kế thừa cần nhóm dự thi xác nhận trước khi công bố thương mại.
+Thư viện QR và font được lưu kèm thông báo giấy phép trong `licenses/`. Ảnh robot là tài sản có sẵn của dự án V5. Ảnh hiện vật giữ nguyên liên kết và chú thích nguồn gốc.
+
+## Bản cập nhật hội thoại/ảnh sau V6 đầu tiên
+
+“Luyện não” trong bản này là cải thiện nhận diện ý định, tìm hồ sơ, ngữ cảnh và prompt backend; **không phải huấn luyện hay fine-tune trọng số một mô hình**. Chế độ dữ liệu hoạt động ngay trên Pages. Trò chuyện tạo sinh cần triển khai Worker và cấu hình API key ở server; chưa có key, endpoint hay model thật trong môi trường này. Mẫu backend được cải thiện nhưng chưa triển khai. Đánh giá 👍/👎 được ghi nhận, không được quảng cáo là tự huấn luyện mô hình.
+
+Lựa chọn ít đi bộ chỉ giảm số chủ đề/số tầng; không chứng minh đường ngắn nhất, thang máy hay lối xe lăn. Hỏi nhân viên bảo tàng khi cần thông tin hỗ trợ di chuyển.

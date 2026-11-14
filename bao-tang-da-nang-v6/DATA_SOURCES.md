@@ -49,14 +49,13 @@ Một số ảnh toàn cảnh được gán cho nhiều chủ đề. Đây khôn
 | `toa-thi-chinh` | [Ảnh](https://dnfam-website.vr360.com.vn/uploads/images/DSC00923.JPG) |
 | `van-hoa-quang` | [Ảnh](https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20ngh%E1%BB%81%20th%E1%BB%A7%20c%C3%B4ng%20truy%E1%BB%81n%20th%E1%BB%91ng.jpg) |
 
-## Quyền sử dụng ảnh
+## Hiển thị ảnh nguồn theo yêu cầu chủ dự án
 
-- Kho mã không có văn bản cho phép hoặc giấy phép tái sử dụng đối với ảnh trên `baotangdanang.vn` và `dnfam-website.vr360.com.vn`. Dẫn nguồn, hotlink, hoặc ảnh tải được qua HTTPS không thay thế giấy phép.
-- Giữ lại URL tham chiếu và đường dẫn mở hồ sơ gốc. **Không tự tải, đóng gói lại hay hiển thị mặc định những ảnh chưa có quyền sử dụng được xác nhận.** Dùng khối minh họa trung tính, ghi rõ chưa cung cấp ảnh được cấp phép; tuyệt đối không dùng ảnh AI hoặc ảnh khác thay cho ảnh hiện vật thật mà không ghi nhãn.
-- Robot `ai-robot.webp` là tài sản do người dùng cung cấp trong V5 và được người dùng yêu cầu tái sử dụng cho V6. Kho mã chưa lưu giấy phép phân phối độc lập của tài sản này. Trước khi nộp cuộc thi hoặc phát hành rộng, chủ dự án cần xác nhận quyền phân phối robot cùng sản phẩm.
-- Với ảnh hiện vật, xin bảo tàng/chủ sở hữu quyền xác nhận bằng văn bản: tệp được phép dùng, người chụp, chủ sở hữu, phạm vi web/cuộc thi, quyền lưu trữ/phân phối, yêu cầu ghi công, thời hạn và hạn chế chỉnh sửa. Lưu giấy phép cùng hồ sơ trong repository hoặc hệ thống quản lý tài sản, không đưa thông tin cá nhân vào trang công khai.
-- Khi đủ quyền: lưu bản tối ưu vào thư mục ảnh V6, gắn đúng ID hồ sơ, giữ thông tin ghi công/giấy phép/URL gốc, kiểm tra mô tả thay thế ở cả bốn ngôn ngữ, cập nhật trạng thái quyền từng ảnh. Không đánh dấu toàn bộ thư viện “đã cấp phép” từ giấy phép của một ảnh.
-- Nguồn nội dung cũng cần được chủ dự án kiểm tra điều khoản sử dụng; bản dịch trong prototype không chứng nhận sự chính xác của nguồn.
+Theo yêu cầu cập nhật của chủ dự án, V6 bật ảnh trực tiếp từ các URL nguồn đã lưu trong V5, giữ chú thích Bảo tàng Đà Nẵng và liên kết hồ sơ gốc. Không còn bước chờ xác nhận quyền hay placeholder chặn hiển thị. Không thay ảnh hiện vật bằng ảnh robot, ảnh AI hoặc ảnh vật khác.
+
+Ảnh từ `baotangdanang.vn` là ảnh hồ sơ hiện vật; ảnh từ `dnfam-website.vr360.com.vn` là ảnh không gian trưng bày, có ghi rõ ảnh toàn cảnh. URL được giữ nguyên, không khẳng định nguồn ảnh là tọa độ vật lý của hiện vật. Nếu nguồn ảnh không tải được, giao diện báo đúng lỗi tải ảnh và vẫn cho mở hồ sơ nguồn.
+
+Trong môi trường cloud ngày 14/11/2026, proxy trả `Tunnel connection failed: 403 Forbidden` cho hai host ảnh. Đây là giới hạn mạng của môi trường kiểm thử, chưa xác định được trạng thái của các tệp nguồn qua mạng công khai. Kiểm thử tự động xác nhận URL, cách hiển thị, ghi công và fallback bằng phản hồi ảnh giả lập; không báo các ảnh live đã tải thành công. Không có giấy phép mới được tạo ra hoặc được xác nhận chỉ bởi thay đổi phần mềm này.
 
 ## Sơ đồ và định vị
 
@@ -66,4 +65,4 @@ QR check-in chỉ lưu **mốc mã đã quét** và thời gian. Mã demo không
 
 ## English implementation notes
 
-`MuseumDataV6.artifacts[id]` contains four-element `names`, `summaries`, `eras`, and `materials` arrays in `vi`, `en`, `ko`, `zh` order. Existing `Museum.A` still contains source URLs and original fields. The `doi-bau` record adds `classification` and `flags.materialUnverified`; do not render its inherited functional classification as a confirmed material. `imageRights: "unconfirmed"` describes the inherited reference photographs, not a license grant. This audit did not download third-party photographs or verify current source pages.
+`MuseumDataV6.artifacts[id]` contains four-element `names`, `summaries`, `eras`, and `materials` arrays in `vi`, `en`, `ko`, `zh` order. Existing `Museum.A` still contains source URLs and original fields. The `doi-bau` record adds `classification` and `flags.materialUnverified`; do not render its inherited functional classification as a confirmed material. `imageMode: "remote-source"` records that the source URLs are displayed directly at the project owner’s request. No new image license or live source availability is asserted. The cloud proxy blocks these image hosts; successful image delivery and failure fallback are fixture-tested.
