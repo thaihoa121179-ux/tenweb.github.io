@@ -1,2 +1,21 @@
-/* Filled by the original-photo import workflow. Source URLs remain a fallback. */
-window.MuseumMediaMap = {};
+/* Original museum photo URLs mapped to local files. */
+window.MuseumMediaMap = {
+  "https://baotangdanang.vn/uploads/artifacts/artifact_3epz1nk68i-1774802764488.webp": "assets/museum/66356b47a26b3ebd.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_5mpvcd3k71-1777265281891.webp": "assets/museum/74e43249c98170e9.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_93pul2vr1m-1774794472986.webp": "assets/museum/8e6e15dab0e30205.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_gshe48iiab-1777263997460.webp": "assets/museum/71e343040f8e3f2e.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_iosdna45zc-1774801711882.webp": "assets/museum/1328b715f80b89e5.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_kvx3ir44ha-1774803583740.webp": "assets/museum/5a7aadc292b7da85.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_m59hgxxluy-1774794845046.webp": "assets/museum/0352f195da2204e9.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_qm704x4fvt-1775100280017.webp": "assets/museum/01c059cf4c93559a.webp",
+  "https://baotangdanang.vn/uploads/artifacts/artifact_u392gzmdqs-1774775225176.webp": "assets/museum/f3197b1d3813c7f2.webp",
+  "https://dnfam-website.vr360.com.vn/uploads/images/DSC00923.JPG": "assets/museum/d64286f3dbe189cc.jpg",
+  "https://dnfam-website.vr360.com.vn/uploads/images/DSC02502.JPG": "assets/museum/dbab919206d7f999.jpg",
+  "https://dnfam-website.vr360.com.vn/uploads/images/DSCF1963.webp": "assets/museum/0599422889609cd6.webp",
+  "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20Cu%E1%BB%99c%20%C4%91%E1%BA%A5u%20tranh%20b%E1%BA%A3o%20v%E1%BB%87%20n%E1%BB%81n%20%C4%91%E1%BB%99c%20l%E1%BA%ADp%20d%C3%A2n%20t%E1%BB%99c%281%29.webp": "assets/museum/cae0becb619ed1bf.webp",
+  "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20Thi%C3%AAn%20nhi%C3%AAn%20v%C3%A0%20con%20ng%C6%B0%E1%BB%9Di%20%C4%90%C3%A0%20N%E1%BA%B5ng%281%29.webp": "assets/museum/3d6bbfbd9554cef7.webp",
+  "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20ngh%E1%BB%81%20th%E1%BB%A7%20c%C3%B4ng%20truy%E1%BB%81n%20th%E1%BB%91ng.jpg": "assets/museum/64fe617363f2905f.jpg",
+  "https://dnfam-website.vr360.com.vn/uploads/images/h2.webp": "assets/museum/52b295ca02e559fb.webp",
+  "https://dnfam-website.vr360.com.vn/uploads/images/khu%20v%E1%BB%B1c%20thieu%20nhi.webp": "assets/museum/9e429f41d55d0b6b.webp",
+  "https://dnfam-website.vr360.com.vn/uploads/images/trien%20lam%20dinh%20ky.webp": "assets/museum/ee28a2e281a89226.webp"
+};
