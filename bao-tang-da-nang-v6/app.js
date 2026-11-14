@@ -1275,13 +1275,13 @@
   }
   function aname(a) {
     return (
-      adata(a)?.names[L[state.lang]] || (state.lang === "vi" ? a.name : a.en)
+      adata(a)?.names[L[state.lang]] || (state.lang === "vi" ? a.name : (a.en||a.name))
     );
   }
   function asummary(a) {
     return (
       adata(a)?.summaries[L[state.lang]] ||
-      (state.lang === "vi" ? a.summary : a.enSummary)
+      (state.lang === "vi" ? a.summary : (a.enSummary||a.summary))
     );
   }
   function ameta(a) {
@@ -1543,7 +1543,9 @@
 
   function renderCatalog() {
     const q = ($("catalog-input")?.value || "").trim();
-    const items = artifactSearch(q);
+    const items = artifactSearch(q).filter(a=>!state.catalogSite||state.catalogSite==='all'||(a.sourceSite||'site1')===state.catalogSite);
+    let filters=$('catalog-sites');if(!filters){filters=document.createElement('div');filters.id='catalog-sites';filters.className='chiprow';$('catalog-input').closest('.text-input').after(filters);}
+    filters.innerHTML=[['all',human('Tất cả','All','전체','全部')],['site1',human('Cơ sở 1','Site 1','제1관','第一馆')],['site2',human('Cơ sở 2','Site 2','제2관','第二馆')]].map(([site,title])=>`<button type="button" class="chip${(state.catalogSite||'all')===site?' selected':''}" data-catalog-site="${site}" aria-pressed="${(state.catalogSite||'all')===site}">${esc(title)}</button>`).join('');
     $("catalog-count").textContent = human(
       `${items.length} hồ sơ hiện vật`,
       `${items.length} artifact records`,
@@ -1554,7 +1556,7 @@
       items
         .map(
           (a) =>
-            `<button class="artifact-listitem" data-artifact="${a.id}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)}</small><em>${esc(asummary(a))}</em></span><span class="artifact-arrow">›</span></button>`,
+            `<button class="artifact-listitem" data-artifact="${a.id}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)} · ${esc(a.sourceSiteLabel||human("Cơ sở 1","Site 1","제1관","第一馆"))}</small><em>${esc(asummary(a))}</em></span><span class="artifact-arrow">›</span></button>`,
         )
         .join("") || `<p class="muted">${esc(t("noResult"))}</p>`;
   }
@@ -1566,7 +1568,11 @@
     $("artifact-title").textContent = aname(a);
     $("artifact-photo").innerHTML = imageBox(a.image, aname(a));
     $("artifact-id").textContent = "DM-" + a.id.toUpperCase();
-    $("artifact-text").textContent = asummary(a);
+    $('artifact-text').textContent=asummary(a);
+    let full=$('artifact-full-data');if(!full){full=document.createElement('div');full.id='artifact-full-data';full.className='artifact-source-data';$('artifact-text').after(full);}
+    full.innerHTML=a.imported?`<p class="note">${esc(a.sourceSiteLabel)} · ${esc(human('Hồ sơ gốc tiếng Việt','Original source in Vietnamese; translations pending','베트남어 원문 자료; 번역 준비 중','越南语原始档案，译文待补充'))}</p><h2>${esc(human('Nguồn gốc','Provenance','유래','来源'))}</h2><p>${esc(a.origin)}</p>${a.description?`<h2>${esc(human('Nội dung hồ sơ','Source description','원문 설명','档案正文'))}</h2><p>${esc(a.description)}</p>`:''}`:'';
+    $('artifact-map').disabled=!!a.imported;
+    $('artifact-map').title=a.imported?human('Nguồn chưa cung cấp tầng/vị trí hiện vật','The source gives no verified floor or object position','전시 층과 위치 미확인','来源未核实展出楼层或位置'):'';
     $("artifact-meta").innerHTML =
       `<div><b>${human("Niên đại", "Date", "연대", "年代")}</b><span>${esc(m.era)}</span></div><div><b>${human("Chất liệu", "Material", "재질", "材质")}</b><span>${esc(m.material)}</span></div><div><b>${human("Chủ đề liên quan", "Related theme", "관련 주제", "相关主题")}</b><span>${esc(nm(D.find((d) => d.id === a.topic)))}</span></div>`;
     $("artifact-source").href = a.url;
@@ -1840,6 +1846,7 @@
       [
         ...(d?.summaries || [a.summary, a.enSummary]),
         ...(d?.materials || [a.material]),
+      a.origin||"",a.description||"",a.sourceSiteLabel||"",
         ...(d?.eras || [a.era]),
       ].join(" "),
     );
@@ -2490,9 +2497,9 @@
   }
   function answerForArtifact(a, intent) {
     guideContext.artifact = a.id;
-    guideContext.topic = a.topic;
+    guideContext.topic = a.imported?null:a.topic;
     const d = D.find((x) => x.id === a.topic);
-    guideContext.floor = d.floor;
+    guideContext.floor = a.imported?null:d.floor;
     const name = aname(a),
       desc = asummary(a),
       meta = ameta(a);
@@ -2558,6 +2565,7 @@
         " · " +
         human("Chất liệu: ", "Material: ", "재질: ", "材质：") +
         meta.material;
+    if(a.imported&&intent==='where')text=aname(a)+' · '+a.sourceSiteLabel+'\n'+human('Hồ sơ nguồn chưa nêu tầng hoặc vị trí trưng bày cụ thể; không áp dụng sơ đồ mô phỏng cơ sở 1 cho hiện vật cơ sở 2.','The source does not specify a verified floor or display position. Site 1’s illustrative diagram does not locate Site 2 objects.','원문에 확인된 층이나 전시 위치가 없습니다. 제1관 예시 지도로 제2관 유물 위치를 알 수 없습니다.','原始档案未提供已核实楼层或展位，第一馆示意图不能定位第二馆文物。');
     return {
       text,
       mood: intent === "where" ? "🧭" : intent === "more" ? "📚" : "🤩",
@@ -2565,8 +2573,8 @@
       action: "artifact",
       artifact: a.id,
       cards: ["summary", "photo", "more"].includes(intent) ? [a.id] : [],
-      floor: d.floor,
-      hints: ["artifact:" + a.id, "map:" + d.floor],
+      floor: a.imported?null:d.floor,
+      hints: a.imported?["artifact:"+a.id]:["artifact:" + a.id, "map:" + d.floor],
     };
   }
   function answerForTopic(d, intent) {
@@ -3960,6 +3968,8 @@
     }
   }
   function syncEvents() {
+    document.addEventListener('click',e=>{const b=e.target.closest('[data-catalog-site]');if(b){state.catalogSite=b.dataset.catalogSite;renderCatalog();}});
+
     document.addEventListener("click", (e) => {
       if (e.target.closest("[data-low-walking]")) {
         guideContext.preferences = {

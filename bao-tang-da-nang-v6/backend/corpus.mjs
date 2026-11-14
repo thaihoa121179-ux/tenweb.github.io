@@ -1,3 +1,4 @@
+import '../collection.js';
 // Snapshot extracted from V5; inherited records have not been independently reverified.
 // Editorial translations match data-v6.js; they are not museum-approved translations.
 // No object coordinates or licensing claims are inferred.
@@ -659,3 +660,6 @@ export const records = [
     ]
   }
 ];
+
+// Additional records remain source-language data; no new translations or locations are inferred.
+records.push(...(globalThis.MuseumCollection?.items||[]).filter(a=>!records.some(r=>r.source===a.url)).map(a=>({id:'artifact:'+a.id,type:'artifact',names:[a.name],descriptions:[a.summary],era:a.era,material:a.material,origin:a.origin,description:a.description,sourceSite:a.sourceSiteLabel,sourceLanguage:'vi',relatedTopic:a.topic,source:a.url,floor:null})));

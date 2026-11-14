@@ -2157,3 +2157,5 @@ a:hover {
   margin-top: 10px;
   font-size: 13px;
 }
+
+.artifact-source-data h2{font-size:17px;margin:22px 0 10px}.artifact-source-data p{font-size:14px;line-height:1.9;white-space:pre-line}.artifact-source-data .note{font-size:12px}#catalog-sites{flex:none}

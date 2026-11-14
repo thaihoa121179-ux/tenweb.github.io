@@ -387,7 +387,7 @@
   }
   function update() {
     document.querySelectorAll("[data-v6]").forEach((el) => {
-      el.textContent = tr(el.dataset.v6);
+      el.textContent = el.dataset.v6==='catalogSub'?M.human(`${M.A.length} hồ sơ · 15 chủ đề`,`${M.A.length} records · 15 themes`,`${M.A.length}개 유물 · 15개 주제`,`${M.A.length}件文物 · 15个主题`):tr(el.dataset.v6);
     });
     const labels = {
       "lang-switch": "lang",
