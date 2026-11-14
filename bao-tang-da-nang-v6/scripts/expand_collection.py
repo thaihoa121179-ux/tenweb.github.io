@@ -48,6 +48,10 @@ def parse_record(html,url):
     material=fields.get('chất liệu','');era=fields.get('niên đại','');origin=fields.get('nguồn gốc','')
     content=soup.select_one('.artifact-description-content')
     description=clean(content.get_text(' ',strip=True)) if content else ''
+    material_quote=''
+    if not material:
+        explicit=re.search(r'(?:được\s+)?(?:làm|chế tác)\s+(?:bằng|từ)(?:\s+chất liệu)?\s+((?:đá|gỗ|kim loại|gốm|sứ|đồng|giấy|sắt|bạc|vàng|xương|ngà|thủy tinh)[^.;]{0,65})(?:[.;]|$)',description,re.I)
+        if explicit:material=clean(explicit[1]);material_quote=explicit[0]
     image=soup.find('img',alt=h.get_text(strip=True))
     if not image or '/uploads/artifacts/' not in image.get('src',''):
         image=soup.select_one('.artifact-detail img[src*="/uploads/artifacts/"]')
@@ -56,7 +60,7 @@ def parse_record(html,url):
     image_url=image.get('src','') if image else ''
     if image_url.startswith('/'):image_url=SITE+image_url
     invalid={'','-','...','chưa rõ','không rõ','chưa xác định','đang cập nhật'}
-    if len(name)<3 or material.lower() in invalid or era.lower() in invalid or len(origin)<20 or not image_url:
+    if len(name)<3 or material.lower() in invalid or era.lower() in invalid or len(origin)<3 or (len(origin)<20 and len(description)<80) or not image_url:
         raise ValueError('Incomplete title/image/material/date/origin')
     # Do not infer a material from an object category.
     if material.lower() in {'vật dụng sinh hoạt','hiện vật','tư liệu'}:raise ValueError('Object category is not a material')
@@ -67,7 +71,7 @@ def parse_record(html,url):
     summary=description or origin
     if len(summary)>520:
         cut=summary[:520].rfind('. ');summary=summary[:cut+1] if cut>120 else summary[:517]+'…'
-    return {'id':'hv-'+slug+'-'+digest[:6],'name':name,'en':name,'summary':summary,'enSummary':summary,'description':description,'origin':origin,'era':era,'material':material,'url':url,'sourceImage':image_url,'sourceSite':site,'sourceSiteLabel':'Bảo tàng Đà Nẵng · Cơ sở '+('2' if site=='site2' else '1'),'sourceLanguage':'vi','imported':True,'locationVerified':False,'topic':topic(name,material,description),'image':'assets/collection/'+digest+'.webp'}
+    return {'id':'hv-'+slug+'-'+digest[:6],'name':name,'en':name,'summary':summary,'enSummary':summary,'description':description,'origin':origin,'era':era,'material':material,'url':url,'sourceImage':image_url,'sourceSite':site,'sourceSiteLabel':'Bảo tàng Đà Nẵng · Cơ sở '+('2' if site=='site2' else '1'),'sourceLanguage':'vi','dimensions':fields.get('kích thước',''),'sourceFields':fields,'materialEvidence':material_quote,'imported':True,'locationVerified':False,'topic':topic(name,material,description),'image':'assets/collection/'+digest+'.webp'}
 
 def fetch_record(url):
     try:
