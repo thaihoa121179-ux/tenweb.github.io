@@ -83,3 +83,13 @@ Lựa chọn ít đi bộ chỉ giảm số chủ đề/số tầng; không ch�
 ## Ảnh đã lưu nội bộ
 
 Bản cập nhật sau cùng đã tải đủ 18 ảnh gốc vào `assets/museum/`, gồm ảnh cho 9 hồ sơ hiện vật và các ảnh không gian. `media-map.js` ánh xạ URL nguồn sang tệp nội bộ; `SOURCES.json` giữ nguồn. GitHub Actions nhập ảnh bằng HTTPS, kiểm tra mã HTTP/kích thước/chữ ký định dạng rồi mới lưu. Đã kiểm tra 9 ảnh hiện vật thật trong Chromium, không dùng fixture cho các ảnh nội bộ. Các nhận xét trước đó về chưa tải được ảnh chỉ phản ánh giai đoạn cloud bị chặn nguồn; bước nhập ảnh nay đã hoàn tất qua workflow.
+
+## Thư viện mở rộng: 57 hiện vật
+
+Đợt nhập ngày 14/11/2026 rà 77 hồ sơ từ sitemap chính thức thuộc Cơ sở 1 và Cơ sở 2. Giữ 9 mục cũ, thêm 48 mục có ảnh được giải mã thật, niên đại, chất liệu và thông tin nguồn gốc/mô tả đủ rõ; bỏ 20 hồ sơ thiếu dữ liệu. Tổng cộng **57 hiện vật: 33 Cơ sở 1, 24 Cơ sở 2**. Không lấy thêm tác phẩm Mỹ thuật chỉ để tăng số lượng.
+
+`collection.js` chứa dữ liệu nguồn, `assets/collection/` lưu 48 ảnh WebP tối ưu từ ảnh gốc; `data/collection-audit.json` lưu số lượng và danh sách loại trừ. Mỗi hồ sơ có URL nguồn, SHA-256 ảnh gốc, thông tin cơ sở và nội dung tiếng Việt nguyên nguồn. Chất liệu ngoài bảng chỉ được lấy khi văn bản ghi rõ, có lưu câu bằng chứng. Không suy đoán từ hình ảnh.
+
+Thư viện có bộ lọc hai cơ sở, tìm kiếm, QR/link mở trực tiếp, kích thước khi có và phần nội dung hồ sơ đầy đủ. Sơ đồ cơ sở 1 không được dùng để định vị các hiện vật nhập thêm khi nguồn chưa xác nhận vị trí. Backend cũng nhận thêm 48 hồ sơ; không cần triển khai model để tìm và hỏi chất liệu theo dữ liệu cục bộ.
+
+Dữ liệu mới giữ nguyên tiếng Việt của nguồn; giao diện vẫn có 4 ngôn ngữ và trang chi tiết ghi rõ khi nội dung chưa có bản dịch. Không tự tạo bản dịch hoặc ghi niên đại mới như thông tin lịch sử đã xác minh. Những giới hạn cũ về cơ sở dữ liệu 9 mục/24 bản ghi backend chỉ mô tả bản đầu.

@@ -45,3 +45,10 @@ Proxy cloud trả `Tunnel connection failed: 403 Forbidden` cho `baotangdanang.v
 ## Kết quả bổ sung: ảnh nội bộ
 
 Workflow `Import original museum photos` run `43615884744` đã thành công, lưu 18 ảnh gốc ở commit `6c3ec42`. Pages run `43615980831` đã triển khai thành công. Chromium tải và giải mã thành công cả 9 ảnh hiện vật thật từ `assets/museum/` (kích thước gốc 589–1600px ngang), không sử dụng fixture cho các ảnh này. Các URL JavaScript/CSS đã có mã phiên bản để bỏ cache của bản placeholder cũ.
+
+## Đợt mở rộng 57 hiện vật
+
+- 23/23 nhóm browser đạt, gồm giải mã đủ 57 ảnh nội bộ thật, bộ lọc 33/24 hiện vật theo cơ sở, dữ liệu nguồn mới, hỏi nối tiếp chất liệu, không bịa tầng, deep link và nhãn tiếng Việt ở giao diện ngoại ngữ.
+- 34 kiểm thử Node đạt (11 hội thoại, 23 backend); thêm 5 kiểm thử parser Python đạt trên HTML nguồn chính thức: giữ nguyên metadata, lấy chất liệu chỉ từ câu rõ ràng, loại vật liệu chưa biết, nhận nguồn gốc trong mô tả và không nhận tin tức thành hiện vật.
+- Nguồn rà 77 hồ sơ, thêm 48, giữ 9, loại 20 thiếu dữ liệu; dữ liệu và ảnh không trùng URL/ảnh gốc giữa các mục mới. Cả 57 ảnh nội bộ đã giải mã trong Chromium.
+- Chỉ sửa V6 và các workflow phục vụ nhập dữ liệu; website gốc và V1–V5 giữ nguyên. Chưa có bản dịch mới hay mặt bằng vị trí được xác minh; nguồn tiếng Việt được ghi nhãn rõ.

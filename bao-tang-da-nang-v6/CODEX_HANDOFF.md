@@ -11,3 +11,5 @@ Mặc định là **trợ lý dữ liệu**, không phải mô hình tạo sinh.
 Chạy kiểm thử browser/backend sau thay đổi. Camera, micro, đọc trên điện thoại, screen reader và mặt bằng thật còn cần kiểm thử/xác nhận riêng. Không merge PR hoặc deploy nếu chưa có chỉ dẫn.
 
 `guide-engine.js` phân loại ý định và trích sở thích, thời gian, ít đổi tầng và loại trừ trong phiên; backend dùng cùng bộ phân loại. `chat-text.js` chỉ là hiệu ứng hiện chữ, không phải token streaming từ model. Giữ nút Hiện ngay, hỗ trợ giảm chuyển động và không kéo người đang đọc tin cũ xuống cuối chat. Kiểm thử các câu thực tế của chủ dự án trong `tests/guide-engine.test.mjs` và browser suite.
+
+Thư viện hiện có 57 hiện vật. `collection.js` được nạp trước `app.js` và dùng chung với `backend/corpus.mjs`; không sửa 48 mục mới thành bản dịch giả hoặc gán vị trí tầng. Dùng script `scripts/expand_collection.py` với BeautifulSoup/Pillow để nhập lại có kiểm tra; các hồ sơ thiếu dữ liệu nằm trong audit. Ảnh mới ở `assets/collection/`, bộ lọc hai cơ sở và bộ đếm lấy theo dữ liệu thực tế. Khi đổi script/CSS phải cập nhật mã phiên bản trong index để tránh cache cũ.

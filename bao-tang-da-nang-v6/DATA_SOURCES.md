@@ -70,3 +70,9 @@ QR check-in chỉ lưu **mốc mã đã quét** và thời gian. Mã demo không
 ## Bản lưu nội bộ đã hoàn tất
 
 Workflow `43615884744` đã tải thành công đủ 18 ảnh gốc và lưu vào `assets/museum/`. Từ commit `6c3ec42`, `media-map.js` chuyển các URL nguồn sang bản nội bộ; website không còn cần tải ảnh từ host bảo tàng để hiển thị. 9 ảnh hiện vật thật đã được giải mã trong Chromium. Các thông tin chặn mạng ở trên ghi lại giai đoạn trước khi dùng workflow, không phải trạng thái hiển thị hiện tại.
+
+## Mở rộng hồ sơ chính thức
+
+Tham khảo `data/collection-audit.json` và `collection.js`: 77 URL chính thức thuộc hai cơ sở được rà soát, giữ 9 hồ sơ cũ và chọn thêm 48 hồ sơ (24 mỗi cơ sở), tổng 57. 20 hồ sơ khác không đạt tiêu chí dữ liệu; không bổ sung trường thiếu bằng suy đoán. Ảnh nhập đã mở và giải mã qua Pillow, chuẩn hóa hướng ảnh và tối ưu WebP tối đa 1600px. Trình duyệt đã giải mã đủ 57 ảnh thực tế từ tệp cùng website.
+
+Hồ sơ thêm chứa `origin`, `description`, `dimensions` nếu có, `sourceFields`, `sourceSite`, `sourceLanguage`, `sourceImage`, `sourceImageSha256`. `materialEvidence` giữ câu gốc khi chất liệu được lấy từ nội dung thay vì bảng. Nội dung mới chưa được dịch; có nhãn nguồn tiếng Việt. Chỉ liên kết chủ đề mang tính tham khảo, không suy ra vị trí trưng bày.

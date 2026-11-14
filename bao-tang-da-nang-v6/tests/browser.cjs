@@ -196,7 +196,7 @@ async function test(name, work) {
     });
     await test('artifact and gallery photos use their actual source URLs, with a working failure fallback',async()=>{
       const f=await fixture();try{await open(f.page);await nav(f.page,'catalog');
-        const photos=f.page.locator('#catalog-list .photo-wrap img');assert.equal(await photos.count(),9);
+        const photos=f.page.locator('#catalog-list .photo-wrap img');assert.equal(await photos.count(),await f.page.evaluate(()=>Museum.A.length));
         const urls=await photos.evaluateAll(images=>images.map(i=>i.src));const expected=await f.page.evaluate(()=>Museum.A.map(a=>new URL(window.MuseumMediaMap?.[a.image]||a.image,document.baseURI).href));assert.deepEqual(urls,expected);
         await photos.evaluateAll(images=>Promise.all(images.map(i=>{i.loading='eager';return i.decode()})));assert.equal(await photos.first().evaluate(i=>i.naturalWidth>0),true);
         await f.page.locator('#catalog-list [data-artifact="sung-than-cong"]').click();assert.match(await f.page.locator('#artifact-photo .photo-credit').innerText(),/Bảo tàng Đà Nẵng/);assert.ok(await f.page.locator('#artifact-photo img').getAttribute('src'));
@@ -232,6 +232,21 @@ async function test(name, work) {
         assert.match(await send(f.page,'bạn giúp được gì'),/sở thích/);
         assert.match(await send(f.page,'chơi quiz'),/quiz 5 câu/);await f.page.locator('[data-reply-action=quiz]').last().click();assert.equal(await f.page.evaluate(()=>Museum.state.page),'quiz');await nav(f.page,'guide');
         assert.match(await send(f.page,'mở nhật ký'),/chưa được tự lưu/);await f.page.locator('[data-reply-action=profile]').last().click();assert.equal(await f.page.evaluate(()=>Museum.state.page),'profile');assert.equal(calls,0);assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('expanded official catalogue has 50–100 unique complete records and every real photo decodes',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'catalog');
+        const data=await f.page.evaluate(()=>({total:Museum.A.length,reported:MuseumCollection.totalCount,items:MuseumCollection.items}));assert.ok(data.total>=50&&data.total<=100);assert.equal(data.total,data.reported);assert.equal(new Set(data.items.map(a=>a.url)).size,data.items.length);assert.equal(new Set(data.items.map(a=>a.sourceImageSha256)).size,data.items.length);
+        for(const a of data.items){assert.ok(a.name&&a.era&&a.material&&a.origin);assert.match(a.image,/^assets\/collection\/.*\.webp$/);assert.match(a.url,/^https:\/\/baotangdanang\.vn\/(bao-tang-da-nang|bao-tang-da-nang-co-so-2)\/hien-vat\//);assert.equal(a.locationVerified,false)}
+        const photos=await f.page.locator('#catalog-list img').evaluateAll(async images=>{for(const i of images){i.loading='eager';await i.decode()}return images.map(i=>({path:i.getAttribute('src'),w:i.naturalWidth,h:i.naturalHeight}))});assert.equal(photos.length,data.total);assert.ok(photos.every(i=>i.path.startsWith('assets/')&&i.w>=128&&i.h>=128));
+        await nav(f.page,'home');assert.match(await f.page.locator('[data-v6=catalogSub]').innerText(),new RegExp(String(data.total)));assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('site filters, full provenance, source-language disclosure and new deep links work',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'catalog');await f.page.locator('[data-catalog-site=site2]').click();const expected=await f.page.evaluate(()=>MuseumCollection.items.filter(a=>a.sourceSite==='site2').length);assert.equal(await f.page.locator('#catalog-list [data-artifact]').count(),expected);
+        const item=await f.page.evaluate(()=>MuseumCollection.items.find(a=>a.sourceSite==='site2'&&a.dimensions));await f.page.locator(`#catalog-list [data-artifact="${item.id}"]`).click();assert.equal(await f.page.locator('#artifact-title').innerText(),item.name);assert.ok((await f.page.locator('#artifact-full-data').innerText()).includes(item.origin));assert.ok((await f.page.locator('#artifact-full-data').innerText()).includes(item.sourceSiteLabel));assert.ok((await f.page.locator('#artifact-meta').innerText()).includes(item.material));assert.ok((await f.page.locator('#artifact-meta').innerText()).includes(item.dimensions));assert.equal(await f.page.locator('#artifact-map').isDisabled(),true);
+        await nav(f.page,'guide');await send(f.page,item.name);assert.match(await send(f.page,'Nó làm bằng gì?'),new RegExp(item.material.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));const where=await send(f.page,'Nó ở tầng nào?');assert.match(where,/chưa nêu tầng/);assert.doesNotMatch(where,/Tầng [123]/);
+        await f.page.goto(BASE+'?artifact='+item.id+'&lang=vi');await f.page.waitForFunction(()=>!!window.Museum);assert.equal(await f.page.locator('#artifact-title').innerText(),item.name);await f.page.locator('#lang-switch').click();await f.page.locator('[data-lang=en]').click();await f.page.locator('#language-start').click();assert.match(await f.page.locator('#artifact-full-data').innerText(),/Original source in Vietnamese/);assert.deepEqual(f.errors,[]);
       }finally{await f.context.close();}
     });
     await test('reduced motion, manual carousel and keyboard language dialog',async()=>{

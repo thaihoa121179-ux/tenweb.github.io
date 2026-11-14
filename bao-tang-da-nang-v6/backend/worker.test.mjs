@@ -20,7 +20,7 @@ const answerResponse = (source_ids = ['artifact:sung-than-cong']) => new Respons
 
 test('corpus retains 15 V5 themes and 9 objects with authoritative source links', () => {
   assert.equal(records.filter(r => r.type === 'topic').length, 15);
-  assert.equal(records.filter(r => r.type === 'artifact').length, 9);
+  assert.equal(records.filter(r => r.type === 'artifact').length,9+(globalThis.MuseumCollection?.items.length||0));
   assert(records.every(r => ['baotangdanang.vn', 'www.baotangdanang.vn'].includes(new URL(r.source).hostname)));
   assert.equal(records.find(r => r.id === 'artifact:doi-bau').material, null);
   assert.equal(records.find(r => r.id === 'artifact:doi-bau').classification, 'Vật dụng sinh hoạt');
@@ -34,7 +34,7 @@ test('retrieval selects named objects and retains follow-up context', () => {
   assert.equal(retrieve({ ...goodInput, message: '역사적 대포에 대해 알려 주세요', language: 'ko' })[0].id, 'artifact:sung-than-cong');
 });
 test('all artifacts include the four editorial language variants', () => {
-  for (const artifact of records.filter(r => r.type === 'artifact')) {
+  for (const artifact of records.filter(r => r.type === 'artifact'&&!r.sourceLanguage)) {
     assert(artifact.names.length >= 4);
     assert.equal(artifact.descriptions.length, 4);
     assert.equal(artifact.eras.length, 4);
@@ -42,7 +42,7 @@ test('all artifacts include the four editorial language variants', () => {
   }
 });
 test('all nine artifacts resolve by their Korean and Chinese names', () => {
-  for (const artifact of records.filter(r => r.type === 'artifact')) {
+  for (const artifact of records.filter(r => r.type === 'artifact'&&!r.sourceLanguage)) {
     for (const [language, script] of [['ko', /[\uac00-\ud7af]/], ['zh', /[\u3400-\u9fff]/]]) {
       const name = artifact.names.find(value => script.test(value));
       assert(name, `${artifact.id} has a ${language} name`);
@@ -186,4 +186,8 @@ test('the provider receives actual preferences and an explicit limit on facility
  const handler=createHandler(async(url,init)=>{payload=JSON.parse(init.body);return answerResponse(['topic:co-vat'])});
  const response=await handler(request({...goodInput,message:'tôi nhát đi bộ lắm có cách nào ko'}),env());assert.equal(response.status,200);
  const system=payload.messages[0].content;assert.match(system,/lowWalking/);assert.match(system,/do not invent elevators/);assert.match(system,/Never claim to have trained/);
+});
+
+test('expanded source records are retrievable without invented translations or floor positions',()=>{
+ const items=globalThis.MuseumCollection.items;assert.ok(items.length>=41);const first=items[0];const record=records.find(r=>r.id==='artifact:'+first.id);assert.equal(record.material,first.material);assert.equal(record.origin,first.origin);assert.equal(record.floor,null);assert.equal(record.source,first.url);assert.equal(retrieve({...goodInput,message:first.name})[0].id,record.id);
 });
