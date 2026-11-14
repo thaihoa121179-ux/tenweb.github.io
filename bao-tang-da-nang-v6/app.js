@@ -1210,6 +1210,7 @@
       url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ghe-bau",
     },
   ];
+  A.push(...(window.MuseumCollection?.items||[]).filter(item=>!A.some(existing=>existing.url===item.url||existing.id===item.id)));
   const FLOOR_NAMES = {
     1: [
       "Cổ vật & khám phá",
