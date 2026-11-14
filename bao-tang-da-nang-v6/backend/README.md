@@ -10,7 +10,7 @@ API không tải website tùy ý và không nhận tài liệu do trình duyệt
 
 Tên, mô tả, niên đại và chất liệu của cả 9 hiện vật có đủ bốn bản dịch biên tập (Việt/Anh/Hàn/Trung), đồng nhất với `data-v6.js`; đây không phải bản dịch được bảo tàng phê duyệt. Bộ tìm kiếm chuẩn hóa Hangul về NFC sau xử lý dấu và giữ sở thích khi câu hỏi nối tiếp chỉ đổi thời gian tham quan.
 
-API không phân phối ảnh. Giấy phép ảnh trong dữ liệu cũ chưa được xác nhận; liên kết nguồn không thay thế quyền sử dụng. Hãy xin phép bảo tàng/chủ sở hữu trước khi dùng ảnh cho cuộc thi hoặc thương mại.
+API không phân phối ảnh; frontend hiển thị URL ảnh nguồn theo yêu cầu chủ dự án và giữ ghi công nguồn.
 
 ## Kiểm thử cục bộ
 
@@ -64,3 +64,9 @@ Tài liệu rate limit chính thức: <https://developers.cloudflare.com/workers
 Thành công: `{ "answer": "...", "sources": ["https://baotangdanang.vn/..."], "mode": "generative", "grounded": true }`. Khi không có bản ghi phù hợp: `mode: "data"`, `sources: []`, `grounded: false`, với câu trả lời thiếu dữ liệu theo ngôn ngữ. Chỉ trả nguồn nằm trong tập truy xuất phía máy chủ. Không phản hồi lỗi thô hay thông tin khóa từ nhà cung cấp.
 
 Mã lỗi: 400 đầu vào không hợp lệ, 403 origin không được phép, 404 sai đường dẫn, 405 sai phương thức, 413 quá kích thước, 415 sai kiểu nội dung, 429 quá giới hạn, 502 nhà cung cấp lỗi/hết 12 giây hoặc phản hồi sai định dạng, 503 thiếu cấu hình/giới hạn tần suất. Mọi phản hồi dùng `Cache-Control: no-store`; không bật ghi log hội thoại ở Worker. Câu hỏi và tối đa 8 lượt gần nhất được gửi tới OpenAI khi cần sinh câu trả lời: cần thông báo quyền riêng tư và chính sách lưu dữ liệu phù hợp trước vận hành công khai. Không gửi thông tin cá nhân nhạy cảm.
+
+## Nhận diện nhu cầu và bộ nhớ hội thoại
+
+`../guide-engine.js` được dùng chung với frontend để hiểu cách viết tắt `k/ko`, gợi ý hiện vật, so sánh, ít đi bộ, loại trừ sở thích và đổi thời gian. Backend suy ra sở thích từ các lượt trước của **chính request đó**, không lưu trạng thái chung giữa người dùng. Prompt yêu cầu trả lời đúng nhu cầu và đưa bước tiếp theo, không lặp câu từ chối chung cho yêu cầu tư vấn. Gợi ý ít đi bộ không được biến thành xác nhận thang máy, lối xe lăn hoặc khoảng cách thực tế.
+
+Các thao tác UI như mở quiz, ghi nhật ký hoặc hỏi khả năng ứng dụng được xử lý tại client và vẫn ghi chế độ dữ liệu, không gọi provider. Hiệu ứng hiện chữ ở client là trình bày kết quả hoàn chỉnh; API này không tuyên bố truyền token trực tiếp hoặc đã fine-tune mô hình.

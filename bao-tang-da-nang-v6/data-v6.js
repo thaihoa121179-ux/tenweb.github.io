@@ -158,7 +158,7 @@
     artifacts,
     provenance:
       "Inherited V5 reference records; translations prepared for this independent prototype, not approved by the museum.",
-    imageRights: "unconfirmed",
+    imageMode: "remote-source",
     positions: "thematic-only",
   });
 })();

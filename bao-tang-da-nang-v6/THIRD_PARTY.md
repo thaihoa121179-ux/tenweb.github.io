@@ -4,6 +4,6 @@
 - `qr-decoder.js`: bản jsQR kế thừa V4, giấy phép MIT giữ trong `licenses/qr-decoder.txt`.
 - `fonts/*.woff2`: Be Vietnam Pro, gói **@fontsource/be-vietnam-pro 5.2.6**, SIL OFL 1.1. Lưu các subset latin và vietnamese, normal 400/500/600/700; `licenses/be-vietnam-pro-OFL.txt`.
 - `ai-robot.webp`: sao chép nguyên tệp V5, không chỉnh sửa hay tải ảnh bên thứ ba. Nguồn/quyền tài sản gốc do chủ dự án xác nhận.
-- URL ảnh bảo tàng/VR360 được giữ để tham khảo, chưa có giấy phép tái sử dụng trong repository; **không được tải/hiển thị tự động trong V6**. Xem `DATA_SOURCES.md`.
+- Ảnh bảo tàng/VR360 được hiển thị trực tiếp từ URL nguồn gốc theo yêu cầu chủ dự án, có ghi công. Không tạo giấy phép mới hoặc thay ảnh hiện vật bằng ảnh khác. Xem `DATA_SOURCES.md`.
 
-Frontend không cần CDN, tải font bên ngoài, dịch vụ QR hoặc trình quản lý gói khi chạy.
+Frontend không cần CDN script, tải font bên ngoài, dịch vụ QR hoặc trình quản lý gói khi chạy. Ảnh hiện vật/không gian tải từ hai host nguồn đã ghi trong DATA_SOURCES.
