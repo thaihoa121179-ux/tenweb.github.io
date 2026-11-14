@@ -5,10 +5,13 @@ from pathlib import Path
 import urllib.request
 
 urls = [
- 'https://baotangdanang.vn/bao-tang-da-nang/hien-vat',
+ 'https://baotangdanang.vn/bao-tang-da-nang/hien-vat-va-phim-tu-lieu/hien-vat',
  'https://baotangdanang.vn/sitemap.xml',
  'https://baotangdanang.vn/robots.txt',
  'https://baotangdanang.vn/bao-tang-da-nang/hien-vat/trang-sc-ma-nao',
+ 'https://baotangdanang.vn/bao-tang-da-nang/hien-vat/khuyan-tai-henh-vanh-khan',
+ 'https://baotangdanang.vn/bao-tang-da-nang/hien-vat/yan-mang-xing',
+ 'https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/benh-tu-ba-trung',
 ]
 def fetch(url):
  try:
