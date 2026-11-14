@@ -197,10 +197,10 @@ async function test(name, work) {
     await test('artifact and gallery photos use their actual source URLs, with a working failure fallback',async()=>{
       const f=await fixture();try{await open(f.page);await nav(f.page,'catalog');
         const photos=f.page.locator('#catalog-list .photo-wrap img');assert.equal(await photos.count(),9);
-        const urls=await photos.evaluateAll(images=>images.map(i=>i.src));const expected=await f.page.evaluate(()=>Museum.A.map(a=>a.image));assert.deepEqual(urls,expected);
+        const urls=await photos.evaluateAll(images=>images.map(i=>i.src));const expected=await f.page.evaluate(()=>Museum.A.map(a=>new URL(window.MuseumMediaMap?.[a.image]||a.image,document.baseURI).href));assert.deepEqual(urls,expected);
         await photos.evaluateAll(images=>Promise.all(images.map(i=>{i.loading='eager';return i.decode()})));assert.equal(await photos.first().evaluate(i=>i.naturalWidth>0),true);
         await f.page.locator('#catalog-list [data-artifact="sung-than-cong"]').click();assert.match(await f.page.locator('#artifact-photo .photo-credit').innerText(),/Bảo tàng Đà Nẵng/);assert.ok(await f.page.locator('#artifact-photo img').getAttribute('src'));
-        await f.page.evaluate(()=>Museum.openArticle('co-vat'));assert.match(await f.page.locator('#article-photo img').getAttribute('src'),/^https:\/\/dnfam-website\.vr360\.com\.vn\//);
+        await f.page.evaluate(()=>Museum.openArticle('co-vat'));assert.match(await f.page.locator('#article-photo img').getAttribute('src'),/^(assets\/museum\/|https:\/\/dnfam-website\.vr360\.com\.vn\/)/);
         await f.context.route('**/uploads/**',route=>route.abort());await f.page.evaluate(()=>{Museum.A.find(a=>a.id==='ghe-bau').image+='?failure-case';Museum.openArtifact('ghe-bau')});await f.page.locator('#artifact-photo .photo-retry:not([hidden])').waitFor({state:'visible'});assert.match(await f.page.locator('#artifact-photo').innerText(),/không tải được/);
         assert.deepEqual(f.errors,[]);
       }finally{await f.context.close();}

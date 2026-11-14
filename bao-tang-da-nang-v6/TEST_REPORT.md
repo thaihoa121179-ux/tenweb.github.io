@@ -41,3 +41,7 @@ Proxy cloud trả `Tunnel connection failed: 403 Forbidden` cho `baotangdanang.v
 - [ ] Triển khai Worker và kiểm tra model/API thật, chi phí và chất lượng dẫn nguồn. Môi trường chưa có endpoint hoặc API key; không huấn luyện/fine-tune trọng số model.
 - [ ] Đối chiếu thông tin lịch sử, lịch tham quan và mặt bằng hiện hành với bảo tàng. Kiểm thử phần mềm không xác minh các dữ liệu này.
 - [ ] Sau khi chủ dự án hợp nhất: chờ GitHub Pages cập nhật, kiểm tra URL V6 công khai và tải lại bỏ cache. Chưa tự hợp nhất hoặc deploy trong nhiệm vụ này.
+
+## Kết quả bổ sung: ảnh nội bộ
+
+Workflow `Import original museum photos` run `43615884744` đã thành công, lưu 18 ảnh gốc ở commit `6c3ec42`. Pages run `43615980831` đã triển khai thành công. Chromium tải và giải mã thành công cả 9 ảnh hiện vật thật từ `assets/museum/` (kích thước gốc 589–1600px ngang), không sử dụng fixture cho các ảnh này. Các URL JavaScript/CSS đã có mã phiên bản để bỏ cache của bản placeholder cũ.

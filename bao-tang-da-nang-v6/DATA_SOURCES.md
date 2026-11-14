@@ -66,3 +66,7 @@ QR check-in chỉ lưu **mốc mã đã quét** và thời gian. Mã demo không
 ## English implementation notes
 
 `MuseumDataV6.artifacts[id]` contains four-element `names`, `summaries`, `eras`, and `materials` arrays in `vi`, `en`, `ko`, `zh` order. Existing `Museum.A` still contains source URLs and original fields. The `doi-bau` record adds `classification` and `flags.materialUnverified`; do not render its inherited functional classification as a confirmed material. `imageMode: "remote-source"` records that the source URLs are displayed directly at the project owner’s request. No new image license or live source availability is asserted. The cloud proxy blocks these image hosts; successful image delivery and failure fallback are fixture-tested.
+
+## Bản lưu nội bộ đã hoàn tất
+
+Workflow `43615884744` đã tải thành công đủ 18 ảnh gốc và lưu vào `assets/museum/`. Từ commit `6c3ec42`, `media-map.js` chuyển các URL nguồn sang bản nội bộ; website không còn cần tải ảnh từ host bảo tàng để hiển thị. 9 ảnh hiện vật thật đã được giải mã trong Chromium. Các thông tin chặn mạng ở trên ghi lại giai đoạn trước khi dùng workflow, không phải trạng thái hiển thị hiện tại.

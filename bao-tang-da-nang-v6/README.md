@@ -37,7 +37,7 @@ Mở thư mục `/bao-tang-da-nang-v6/` trên máy chủ vừa chạy. Camera/mi
 | Hạng mục | Trạng thái |
 | --- | --- |
 | AI tạo sinh thực tế | **Chưa triển khai/chưa kiểm thử với mô hình thật.** Mặc định ghi “Chế độ trợ lý dữ liệu”. Chỉ báo AI tạo sinh sau phản hồi hợp lệ từ backend. |
-| Ảnh hiện vật | Đã bật URL ảnh nguồn theo yêu cầu chủ dự án, không còn chặn chờ xác nhận quyền. Ảnh có ghi nguồn; khả năng tải thực tế phụ thuộc máy chủ nguồn. Môi trường cloud đang chặn các host ảnh nên kiểm thử tải thành công dùng fixture, không khẳng định đã kiểm chứng ảnh live. |
+| Ảnh hiện vật | Đã lưu 18 ảnh gốc tại `assets/museum/` và phục vụ cùng website; 9 ảnh hiện vật thật đã được tải và giải mã thành công trong Chromium. Nguồn gốc giữ trong `SOURCES.json`. |
 | Nguồn lịch sử, giờ mở cửa, vé | Kế thừa dữ liệu có dẫn nguồn của V5, không xác nhận lại là dữ liệu hiện hành. Vé mở thông báo chính thức; lịch cần đối chiếu trước chuyến đi. |
 | Địa điểm hiện vật | Chưa có mặt bằng/chứng thực vị trí. Quan hệ hiện vật–chủ đề không phải tọa độ hay đường đi thực. |
 | Chất liệu Đôi bầu | Chưa xác minh; “vật dụng sinh hoạt” là loại đồ vật, không phải chất liệu. |
@@ -79,3 +79,7 @@ Thư viện QR và font được lưu kèm thông báo giấy phép trong `licen
 “Luyện não” trong bản này là cải thiện nhận diện ý định, tìm hồ sơ, ngữ cảnh và prompt backend; **không phải huấn luyện hay fine-tune trọng số một mô hình**. Chế độ dữ liệu hoạt động ngay trên Pages. Trò chuyện tạo sinh cần triển khai Worker và cấu hình API key ở server; chưa có key, endpoint hay model thật trong môi trường này. Mẫu backend được cải thiện nhưng chưa triển khai. Đánh giá 👍/👎 được ghi nhận, không được quảng cáo là tự huấn luyện mô hình.
 
 Lựa chọn ít đi bộ chỉ giảm số chủ đề/số tầng; không chứng minh đường ngắn nhất, thang máy hay lối xe lăn. Hỏi nhân viên bảo tàng khi cần thông tin hỗ trợ di chuyển.
+
+## Ảnh đã lưu nội bộ
+
+Bản cập nhật sau cùng đã tải đủ 18 ảnh gốc vào `assets/museum/`, gồm ảnh cho 9 hồ sơ hiện vật và các ảnh không gian. `media-map.js` ánh xạ URL nguồn sang tệp nội bộ; `SOURCES.json` giữ nguồn. GitHub Actions nhập ảnh bằng HTTPS, kiểm tra mã HTTP/kích thước/chữ ký định dạng rồi mới lưu. Đã kiểm tra 9 ảnh hiện vật thật trong Chromium, không dùng fixture cho các ảnh nội bộ. Các nhận xét trước đó về chưa tải được ảnh chỉ phản ánh giai đoạn cloud bị chặn nguồn; bước nhập ảnh nay đã hoàn tất qua workflow.
