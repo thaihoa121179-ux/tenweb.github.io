@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#103e35" />
+    <meta
+      name="description"
+      content="Trợ lý tham quan Bảo tàng Đà Nẵng: chọn ngôn ngữ, quét QR, khám phá sơ đồ tầng và lộ trình theo sở thích."
+    />
+    <title>Di sản Đà Nẵng • Museum Companion V6</title>
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="v6.css" />
+    <link rel="stylesheet" href="profile.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-v6="skip"
+      >Bỏ qua đến nội dung</a
+    >
+    <div class="app" id="app">
+      <header class="top">
+        <div class="top-left">
+          <div class="logo">✳</div>
+          <div class="brand">
+            <b>DA NANG MUSEUM</b><small>YOUR HERITAGE COMPANION</small>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="round" id="lang-switch" aria-label="Change language">
+            <span class="langtag" id="lang-tag">VI</span></button
+          ><button class="round" id="top-info" aria-label="Information">
+            <svg class="ico" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 11v6M12 7h.01" />
+            </svg>
+          </button>
+        </div>
+      </header>
+      <main class="stage" id="main-content" tabindex="-1">
+        <section class="page home active" id="page-home">
+          <div class="home-heading">
+            <div>
+              <div class="eyebrow" data-v6="welcome"></div>
+              <h1 data-v6="homeTitle"></h1>
+            </div>
+            <span class="edition">MUSEUM COMPANION <b>06</b></span>
+          </div>
+          <div class="quick-search">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m16 16 5 5" /></svg
+            ><button id="home-search-btn" data-t="searchHint"></button
+            ><button class="mic-short" id="home-mic" aria-label="Voice search">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="9" y="3" width="6" height="12" rx="3" />
+                <path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8" />
+              </svg>
+            </button>
+          </div>
+          <div class="home-feature">
+            <div
+              class="may-hero"
+              aria-roledescription="carousel"
+              aria-label="Mây AI"
+            >
+              <div class="hero-copy">
+                <span class="hero-kicker"
+                  ><i></i> MÂY · <span data-v6="companion"></span
+                ></span>
+                <h2 id="hero-title"></h2>
+                <p id="hero-text"></p>
+                <div class="hero-buttons">
+                  <button class="gold-btn" data-go="guide">
+                    <span data-v6="talk"></span>
+                    <span aria-hidden="true"
+                      ><svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg
+                    ></span></button
+                  ><button
+                    class="hero-link"
+                    id="hero-plan"
+                    data-v6="makeRoute"
+                  ></button
+                  ><button
+                    class="hero-link"
+                    data-go="scan"
+                    data-t="scan"
+                  ></button>
+                </div>
+                <div class="hero-controls">
+                  <div id="hero-dots"></div>
+                  <button id="hero-pause" type="button"></button>
+                </div>
+              </div>
+              <div class="hero-robot">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <img
+                  src="ai-robot.webp"
+                  alt="Mây AI"
+                  fetchpriority="high"
+                /><span class="robot-sticker"
+                  >✧ <span data-v6="robotHello"></span
+                ></span>
+              </div>
+            </div>
+            <aside class="home-aside">
+              <div class="aside-top">
+                <span class="eyebrow" data-v6="yourVisit"></span
+                ><span aria-hidden="true">✳</span>
+              </div>
+              <h2 data-v6="visitHeading"></h2>
+              <p data-v6="visitIntro"></p>
+              <div class="visit-detail">
+                <span aria-hidden="true">⌖</span>
+                <div>
+                  <b>31 Trần Phú</b><span data-v6="addressShort"></span>
+                </div>
+              </div>
+              <div class="visit-detail">
+                <span aria-hidden="true">◷</span>
+                <div><b>08:00–17:00</b><span data-v6="checkHours"></span></div>
+              </div>
+              <button
+                class="secondary full"
+                data-go="info"
+                data-v6="visitDetails"
+              ></button
+              ><small data-v6="independent"></small>
+            </aside>
+          </div>
+          <div class="sectionline dashboard-title">
+            <h2 data-v6="discover"></h2>
+            <span data-v6="atYourPace"></span>
+          </div>
+          <div class="home-grid">
+            <button class="tile" data-go="catalog">
+              <span class="tile-icon"
+                ><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M4 5h16v15H4zM4 10h16M10 10v10M8 3v4m8-4v4"
+                  /></svg></span
+              ><span class="tile-body"
+                ><b data-v6="catalog"></b
+                ><small data-v6="catalogSub"></small></span
+              ><span class="tile-arrow" aria-hidden="true"
+                ><svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span></button
+            ><button class="tile" data-go="map">
+              <span class="tile-icon"
+                ><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15m6-12v15"
+                  /></svg></span
+              ><span class="tile-body"
+                ><b data-v6="map"></b><small data-v6="mapSub"></small></span
+              ><span class="tile-arrow" aria-hidden="true"
+                ><svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span></button
+            ><button class="tile" data-go="plan">
+              <span class="tile-icon"
+                ><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="6" cy="18" r="2" />
+                  <circle cx="18" cy="6" r="2" />
+                  <path
+                    d="M8 18h4a5 5 0 0 0 0-10h-2M10 8l-2-2 2-2"
+                  /></svg></span
+              ><span class="tile-body"
+                ><b data-v6="plan"></b><small data-v6="planSub"></small></span
+              ><span class="tile-arrow" aria-hidden="true"
+                ><svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span></button
+            ><button class="tile" data-go="quiz">
+              <span class="tile-icon"
+                ><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M8 3h8v6a4 4 0 0 1-8 0zM8 5H4v3a4 4 0 0 0 5 4m7-7h4v3a4 4 0 0 1-5 4m-3 1v6m-4 0h8"
+                  /></svg></span
+              ><span class="tile-body"
+                ><b data-v6="quiz"></b><small data-v6="quizSub"></small></span
+              ><span class="tile-arrow" aria-hidden="true"
+                ><svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span></button
+            ><button class="tile" data-go="info">
+              <span class="tile-icon"
+                ><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 11v6M12 7h.01" /></svg></span
+              ><span class="tile-body"
+                ><b data-v6="info"></b><small data-v6="infoSub"></small></span
+              ><span class="tile-arrow" aria-hidden="true"
+                ><svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span></button
+            ><button class="tile" data-go="profile">
+              <span class="tile-icon"
+                ><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M7 3h12v18H7a3 3 0 0 1 0-6h12M7 3v12M10 7h6m-6 4h5"
+                  /></svg></span
+              ><span class="tile-body"
+                ><b data-v6="profile"></b
+                ><small data-v6="profileSub"></small></span
+              ><span class="tile-arrow" aria-hidden="true"
+                ><svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span>
+            </button>
+          </div>
+          <div class="home-footnote">
+            <span class="mode-dot"></span><span data-v6="dataMode"></span
+            ><button data-go="guide" data-v6="meetMay"></button>
+          </div>
+        </section>
+        <section class="page" id="page-catalog">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="catalogCaption">
+                BỘ SƯU TẬP THAM KHẢO
+              </div>
+              <h1 data-t="catalogTitle">Hiện vật có hình ảnh</h1>
+            </div>
+          </div>
+          <div class="text-input">
+            <input
+              id="catalog-input"
+              data-placeholder="searchHint"
+              placeholder="Tìm tên hiện vật, chất liệu..."
+              autocomplete="off"
+            />
+          </div>
+          <div class="buttonrow">
+            <button class="secondary" id="catalog-floor" data-t="catalogFloor">
+              Khám phá nội dung 3 tầng ↗</button
+            ><span class="muted" id="catalog-count"></span>
+          </div>
+          <p class="catalog-warning" data-v6="catalogNotice"></p>
+          <div class="scroll" id="catalog-list"></div>
+        </section>
+        <section class="page" id="page-artifact">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="artifactCaption">HỒ SƠ HIỆN VẬT</div>
+              <h1 id="artifact-title">Hiện vật</h1>
+            </div>
+          </div>
+          <div class="scroll">
+            <div id="artifact-photo"></div>
+            <div class="artifact-info">
+              <small id="artifact-id"></small>
+              <p class="article-lead" id="artifact-text"></p>
+              <div id="artifact-meta" class="artifact-meta"></div>
+              <div class="buttonrow">
+                <button
+                  class="primary"
+                  id="artifact-speak"
+                  data-t="artifactListen"
+                >
+                  ♬ Nghe thuyết minh</button
+                ><button
+                  class="secondary"
+                  id="artifact-share"
+                  data-t="artifactShare"
+                >
+                  ↗ Chia sẻ QR/link
+                </button>
+              </div>
+              <div class="buttonrow">
+                <button
+                  class="secondary"
+                  id="artifact-map"
+                  data-t="artifactMap"
+                >
+                  Chủ đề liên quan
+                </button>
+              </div>
+              <p id="artifact-location" class="catalog-warning"></p>
+              <a
+                class="source"
+                id="artifact-source"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-t="artifactSource"
+                >Xem hồ sơ chính thức ↗</a
+              >
+            </div>
+            <div class="artifact-qr-preview">
+              <p data-t="artifactQRExplain">
+                Quét QR này bằng camera iPhone khác để mở trực tiếp hồ sơ hiện
+                vật.
+              </p>
+              <img
+                src="ai-robot.webp"
+                id="artifact-qr"
+                alt="Mã QR trang hiện vật"
+              />
+            </div>
+          </div>
+        </section>
+        <section class="page" id="page-floors">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="collections">Thư viện</div>
+              <h1 data-t="chooseFloor">Khám phá từng tầng</h1>
+            </div>
+          </div>
+          <p class="muted" data-t="collectionDesc">
+            Bấm vào từng tầng để xem nội dung trưng bày.
+          </p>
+          <div class="scroll" id="floor-list"></div>
+        </section>
+        <section class="page" id="page-topics">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" id="topic-eyebrow"></div>
+              <h1 id="topic-floor-title"></h1>
+            </div>
+          </div>
+          <div class="buttonrow">
+            <button class="secondary" id="topics-map" data-t="openMap">
+              Xem sơ đồ tầng</button
+            ><button class="secondary" id="topics-scan" data-t="scan">
+              Quét mã QR
+            </button>
+          </div>
+          <div class="scroll" id="topic-list"></div>
+        </section>
+        <section class="page" id="page-article">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="story">Câu chuyện di sản</div>
+              <h1 data-t="detail">Thông tin trưng bày</h1>
+            </div>
+          </div>
+          <div class="scroll">
+            <div class="article-header">
+              <small id="article-floor"></small>
+              <h2 id="article-title"></h2>
+            </div>
+            <div id="article-photo"></div>
+            <div class="card">
+              <p class="article-lead" id="article-summary"></p>
+              <ul class="article-facts" id="article-facts"></ul>
+              <div class="buttonrow">
+                <button class="primary" id="article-speak" data-t="listen">
+                  Nghe thuyết minh</button
+                ><button class="secondary" id="article-pin" data-t="pinMap">
+                  Xem khu trên sơ đồ
+                </button>
+              </div>
+              <div class="buttonrow" style="margin-top: 8px">
+                <button class="secondary" id="article-chat" data-t="askAbout">
+                  Hỏi trợ lý</button
+                ><button class="secondary" id="article-add" data-t="addRoute">
+                  Lưu vào hành trình
+                </button>
+              </div>
+              <a
+                id="article-source"
+                class="source"
+                href="https://baotangdanang.vn"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-t="source"
+                >Nguồn: Bảo tàng Đà Nẵng ↗</a
+              >
+            </div>
+            <div id="article-related"></div>
+            <div class="note" data-t="verifiedNote">
+              Thông tin dựa trên chuyên mục chính thức. Vị trí trên sơ đồ chỉ là
+              mô phỏng.
+            </div>
+          </div>
+        </section>
+        <section class="page" id="page-map">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="floorOverview">
+                KHÔNG GIAN TRƯNG BÀY
+              </div>
+              <h1 data-t="interactiveMap">Sơ đồ tương tác</h1>
+            </div>
+          </div>
+          <div class="floor-tabs">
+            <button data-floor="1">01</button><button data-floor="2">02</button
+            ><button data-floor="3">03</button>
+          </div>
+          <div class="scroll">
+            <div class="map-panel">
+              <div class="map-head">
+                <b id="map-floor-title"></b
+                ><small data-t="illustration">SƠ ĐỒ MÔ PHỎNG</small>
+              </div>
+              <svg
+                id="floor-svg"
+                class="plan-svg"
+                viewBox="0 0 340 260"
+                role="img"
+                aria-label="Illustrative floor diagram"
+              ></svg>
+              <div class="map-bottom" id="map-selected"></div>
+            </div>
+            <div id="location-panel"></div>
+            <div class="zone-index-label" data-t="zoneIndexTitle">
+              CÁC CHỦ ĐỀ TRÊN TẦNG
+            </div>
+            <div id="map-zone-list" class="zone-index"></div>
+            <div class="map-alert" data-t="mapCaveat">
+              ⚠ Sơ đồ mang tính minh họa theo nhóm chủ đề, CHƯA phải bản vẽ bố
+              trí hiện vật thực tế. Cần bảo tàng cung cấp sơ đồ để định vị chính
+              xác.
+            </div>
+            <div class="buttonrow">
+              <button class="secondary" id="map-list" data-t="allTopics">
+                Xem tất cả chủ đề tầng này</button
+              ><button class="primary" id="map-scan" data-t="scanFloorQR">
+                Quét QR tầng
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="page" id="page-search">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="smartFind">TÌM KIẾM THÔNG MINH</div>
+              <h1 data-t="searchTitle">Bạn muốn tìm gì?</h1>
+            </div>
+          </div>
+          <div class="text-input">
+            <svg class="ico" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m16 16 5 5" /></svg
+            ><input
+              id="search-input"
+              autocomplete="off"
+              enterkeyhint="search"
+              data-placeholder="searchHint"
+              placeholder="Tìm hiện vật, khu trưng bày..."
+            /><button id="search-mic" aria-label="Voice search">
+              <svg class="ico" viewBox="0 0 24 24">
+                <rect x="9" y="3" width="6" height="12" rx="3" />
+                <path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8" />
+              </svg>
+            </button>
+          </div>
+          <div id="search-quick" class="chiprow"></div>
+          <div class="scroll" id="search-results">
+            <div id="search-artifacts"></div>
+          </div>
+        </section>
+        <section class="page" id="page-scan">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="qrGuide">HAI LOẠI MÃ QR</div>
+              <h1 data-t="qrTitle">Quét để khám phá</h1>
+            </div>
+          </div>
+          <div class="scroll">
+            <div class="card">
+              <b style="font-size: 12px" data-t="qrExplainTitle"
+                >Mã QR hoạt động thế nào?</b
+              >
+              <p data-t="qrExplain">
+                QR ngoài bảo tàng mở website; QR đặt tại tầng hoặc hiện vật mở
+                đúng nội dung trong website.
+              </p>
+            </div>
+            <p class="note" data-v6="cameraPrivacy"></p>
+            <div class="qr-video" id="scan-video-box">
+              <video id="qr-video" playsinline muted autoplay></video
+              ><span id="scan-state" data-t="qrIdle"
+                >Bấm Mở camera để bắt đầu quét</span
+              >
+            </div>
+            <div class="buttonrow">
+              <button class="primary" id="scan-start" data-t="openCamera">
+                Mở camera</button
+              ><button class="secondary" id="scan-stop" data-t="stopCamera">
+                Tắt camera
+              </button>
+            </div>
+            <div class="buttonrow">
+              <button class="secondary" id="scan-upload-btn" data-t="uploadQr">
+                Chọn ảnh QR</button
+              ><button class="secondary" id="scan-demo-btn" data-t="demoCodes">
+                Mã thử nghiệm
+              </button>
+            </div>
+            <input id="qr-file" type="file" accept="image/*" class="hidden" />
+            <div class="text-input">
+              <input
+                id="qr-manual"
+                data-placeholder="qrManual"
+                placeholder="Nhập mã ví dụ DN-MUSEUM-F1"
+              /><button id="qr-manual-go" aria-label="Open code">↗</button>
+            </div>
+            <div id="qr-result" class="note hidden"></div>
+            <div class="qr-samples hidden" id="qr-codes"></div>
+            <p class="muted" data-t="qrWarning">
+              Mã minh họa do nhóm tạo, KHÔNG phải mã QR đang được bảo tàng lắp
+              đặt.
+            </p>
+          </div>
+        </section>
+        <section class="page" id="page-plan">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="personalized">CÁ NHÂN HÓA</div>
+              <h1 data-t="planTitle">Thiết kế chuyến đi</h1>
+            </div>
+          </div>
+          <div class="scroll">
+            <div class="route-card">
+              <div class="route-option" data-t="planTime">
+                BẠN CÓ BAO NHIÊU THỜI GIAN?
+              </div>
+              <div class="chiprow" id="plan-time">
+                <button class="chip" data-min="15">15'</button
+                ><button class="chip" data-min="30">30'</button
+                ><button class="chip" data-min="60">60'</button>
+              </div>
+              <div
+                class="route-option"
+                style="margin-top: 16px"
+                data-t="planLikes"
+              >
+                BẠN QUAN TÂM ĐẾN ĐIỀU GÌ?
+              </div>
+              <div class="chiprow" id="plan-interests"></div>
+              <div
+                class="route-option"
+                style="margin-top: 16px"
+                data-t="planStyle"
+              >
+                PHONG CÁCH KHÁM PHÁ
+              </div>
+              <div class="chiprow" id="plan-pace"></div>
+              <button
+                class="primary full"
+                style="margin-top: 15px"
+                id="plan-build"
+                data-t="buildPlan"
+              >
+                ✦ Tạo lộ trình cá nhân
+              </button>
+            </div>
+            <div id="plan-result" class="route-card hidden"></div>
+            <p class="muted" data-t="planLimit">
+              Thời lượng và thứ tự điểm dừng là đề xuất tham khảo, chưa có dữ
+              liệu khoảng cách trong nhà.
+            </p>
+          </div>
+        </section>
+        <section class="page" id="page-guide">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="guideMode">HƯỚNG DẪN VIÊN SỐ</div>
+              <h1 data-t="guideTitle">Hỏi về bảo tàng</h1>
+            </div>
+          </div>
+          <div class="note" id="guide-status" data-t="offlineMode">
+            Chế độ tư vấn theo dữ liệu đã kiểm chứng. AI hội thoại nâng cao cần
+            backend riêng.
+          </div>
+          <div class="assistant-hero">
+            <img src="ai-robot.webp" alt="Mây AI robot" />
+            <div>
+              <b id="robot-label">Mây AI · Robot hướng dẫn</b>
+              <p id="robot-description">
+                Hỏi đáp hiện vật, tìm đường và tạo hành trình khám phá.
+              </p>
+              <small id="robot-tagline">🤖 Hướng dẫn viên số của bạn</small>
+            </div>
+          </div>
+          <div
+            class="messages"
+            id="messages"
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions"
+            aria-label="Mây AI"
+          ></div>
+          <div class="chat-actions" id="guide-chips"></div>
+          <form id="chat-form" class="chat-entry">
+            <input
+              id="chat-input"
+              autocomplete="off"
+              data-placeholder="askAnything"
+              placeholder="Tôi thích lịch sử, nên đi đâu?"
+            /><button
+              type="button"
+              class="speech"
+              id="chat-mic"
+              aria-label="Speech input"
+            >
+              <svg class="ico" viewBox="0 0 24 24">
+                <rect x="9" y="3" width="6" height="12" rx="3" />
+                <path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8" />
+              </svg></button
+            ><button type="submit" aria-label="Send">➤</button>
+          </form>
+        </section>
+        <section class="page" id="page-info">
+          <div class="backline">
+            <button class="back" data-back aria-label="Back">‹</button>
+            <div class="heading">
+              <div class="eyebrow" data-t="infoTag">THÔNG TIN THAM QUAN</div>
+              <h1 data-t="visit">Tham quan</h1>
+            </div>
+          </div>
+          <div class="scroll">
+            <div class="info-grid">
+              <div class="card">
+                <b>📍 <span data-t="address">Địa chỉ</span></b>
+                <p data-t="addressText">31 Trần Phú, Hải Châu, Đà Nẵng</p>
+              </div>
+              <div class="card">
+                <b>🕘 <span data-t="hours">Giờ mở cửa</span></b>
+                <p data-t="hoursText">08:00–17:00 hằng ngày</p>
+              </div>
+              <div class="card">
+                <b>🎫 <span data-t="tickets">Giá vé</span></b>
+                <p data-t="ticketsText">
+                  Xem bảng giá và ưu đãi mới nhất trên nguồn chính thức.
+                </p>
+              </div>
+              <div class="card">
+                <b>☎️ <span data-t="contact">Liên hệ</span></b>
+                <p>0236 388 6236</p>
+              </div>
+            </div>
+            <div class="card">
+              <h2 class="card-title" data-t="howTo">Cách sử dụng website</h2>
+              <p data-t="howToText">
+                Chọn ngôn ngữ → chọn sở thích hoặc tầng → quét QR để mở sơ đồ →
+                xem khu trưng bày → hỏi hướng dẫn viên.
+              </p>
+            </div>
+            <details class="card developer-config">
+              <summary data-v6="backendSettings"></summary>
+              <h2 class="card-title" data-t="developerSettings">
+                Kết nối AI cho Codex
+              </h2>
+              <p data-t="developerIntro">
+                Chỉ dành cho cấu hình backend. Không nhập khóa API vào trang web
+                công khai.
+              </p>
+              <div class="text-input" style="margin-top: 10px">
+                <input
+                  id="ai-endpoint"
+                  placeholder="https://your-worker.workers.dev/chat"
+                  aria-label="AI endpoint"
+                /><button id="ai-endpoint-save" aria-label="Save AI endpoint">
+                  ✓
+                </button>
+              </div>
+              <p class="muted" data-t="developerWarn" style="margin-top: 9px">
+                Địa chỉ backend được lưu trong trình duyệt này; API key phải nằm
+                ở máy chủ.
+              </p>
+            </details>
+            <a
+              href="https://baotangdanang.vn/bao-tang-da-nang-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="source"
+              data-t="officialSite"
+              >Nguồn chính thức của Bảo tàng Đà Nẵng ↗</a
+            >
+            <p class="muted" data-t="demoDisclaimer">
+              Dự án minh họa độc lập, không phải ứng dụng chính thức của bảo
+              tàng.
+            </p>
+          </div>
+        </section>
+      </main>
+      <nav class="nav" aria-label="Main">
+        <button data-go="home" class="on">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m3 10 9-7 9 7v11H3zM9 21v-7h6v7" /></svg
+          ><span data-v6="navhome"></span></button
+        ><button data-go="catalog" class="">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="2" />
+            <rect x="14" y="3" width="7" height="7" rx="2" />
+            <rect x="3" y="14" width="7" height="7" rx="2" />
+            <rect x="14" y="14" width="7" height="7" rx="2" /></svg
+          ><span data-v6="navcatalog"></span></button
+        ><button data-go="guide" class="">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="6" width="16" height="14" rx="5" />
+            <path d="M12 3v3M8 11h.01M16 11h.01M9 16h6" /></svg
+          ><span data-v6="navguide"></span></button
+        ><button data-go="scan" class="">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M7 12h10m-5-5v10"
+            /></svg
+          ><span data-v6="navscan"></span></button
+        ><button data-go="profile" class="">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 21v-2a8 8 0 0 1 16 0v2" /></svg
+          ><span data-v6="navprofile"></span>
+        </button>
+      </nav>
+      <div
+        id="lang-overlay"
+        class="lang-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="language-heading"
+      >
+        <img class="language-robot" src="ai-robot.webp" alt="Mây AI" />
+        <h2 id="language-heading">Chào mừng đến<br />Bảo tàng Đà Nẵng</h2>
+        <p id="language-intro">
+          Chọn ngôn ngữ của bạn trước khi bắt đầu chuyến khám phá.
+        </p>
+        <div class="lang-options">
+          <button data-lang="vi">🇻🇳 Tiếng Việt</button
+          ><button data-lang="en">🇬🇧 English</button
+          ><button data-lang="ko">🇰🇷 한국어</button
+          ><button data-lang="zh">🇨🇳 简体中文</button>
+        </div>
+        <div class="lang-suggest" id="language-detected"></div>
+        <button class="primary" id="language-start">Bắt đầu tham quan →</button>
+        <div class="legal" data-v6="independent"></div>
+      </div>
+      <div id="toast" class="toast hidden" role="status"></div>
+    </div>
+    <script src="qr-decoder.js"></script>
+    <script src="qr-generator.js"></script>
+    <script src="data-v6.js"></script>
+    <script src="app.js"></script>
+    <script src="v6.js"></script>
+    <script src="profile.js"></script>
+  </body>
+</html>

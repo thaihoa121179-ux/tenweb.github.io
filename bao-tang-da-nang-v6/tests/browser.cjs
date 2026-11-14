@@ -1,0 +1,181 @@
+/* Run against a local static server. No credentials or live AI services are used.
+ * node bao-tang-da-nang-v6/tests/browser.cjs
+ * Optional: MUSEUM_TEST_URL, CHROMIUM_PATH, SCREENSHOT_DIR.
+ */
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const { chromium } = require('playwright');
+const BASE = process.env.MUSEUM_TEST_URL || 'http://127.0.0.1:8000/bao-tang-da-nang-v6/';
+const origin = new URL(BASE).origin;
+const results = [];
+let browser;
+
+async function fixture(options = {}) {
+  const context = await browser.newContext({ viewport: {width:390,height:844}, locale:'vi-VN', ...options });
+  const page = await context.newPage();
+  const errors = [], external = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('request', r => {if (!r.url().startsWith(origin) && /^https?:/.test(r.url())) external.push(r.url());});
+  return { context, page, errors, external };
+}
+async function open(page, query = '', lang = 'vi') {
+  const response = await page.goto(BASE + query);
+  assert.equal(response.status(), 200);
+  await page.waitForFunction(() => !!window.Museum && !!window.MuseumProfile);
+  if (await page.locator('#lang-overlay:not(.hidden)').count()) {
+    await page.locator(`[data-lang="${lang}"]`).click();
+    await page.locator('#language-start').click();
+  }
+  await page.locator('#lang-overlay').waitFor({state:'hidden'});
+  await page.evaluate(() => document.fonts.ready);
+}
+async function nav(page, name) {
+  await page.locator(`.nav [data-go="${name}"]`).click();
+  assert.equal(await page.evaluate(() => Museum.state.page), name);
+  await page.locator(`#page-${name}.active`).waitFor({state:'visible'});
+}
+async function send(page, text) {
+  await page.locator('#chat-input').fill(text);
+  await page.locator('#chat-form button[type=submit]').click();
+  await page.waitForFunction(() => document.querySelector('#messages').getAttribute('aria-busy') !== 'true');
+  return page.locator('.assistant-row .bubble').last().innerText();
+}
+async function noOverflow(page, detail = '') {
+  const bad = await page.evaluate(() => [...document.querySelectorAll('html,body,.page.active,.page.active .scroll')]
+    .filter(e => e.clientWidth > 0 && e.scrollWidth > e.clientWidth + 2)
+    .map(e => `${e.tagName}#${e.id}.${e.className}: ${e.scrollWidth}>${e.clientWidth}`));
+  assert.deepEqual(bad, [], detail);
+}
+async function test(name, work) {
+  try { await work(); results.push({name,passed:true}); console.log(`PASS ${name}`); }
+  catch (e) { results.push({name,passed:false,error:e.stack}); console.error(`FAIL ${name}\n${e.stack}`); }
+}
+
+(async () => {
+  browser = await chromium.launch({headless:true, executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium', args:['--no-sandbox']});
+  try {
+    for (const width of [375,390,768,1366]) {
+      await test(`responsive navigation, local mascot and layout at ${width}px`, async () => {
+        const f = await fixture({viewport:{width,height:900}});
+        try {
+          await open(f.page);
+          const mascot = await f.page.locator('.hero-robot img').evaluate(i => ({loaded:i.complete&&i.naturalWidth>0,width:i.getBoundingClientRect().width}));
+          assert.equal(mascot.loaded,true);assert.ok(mascot.width>=120);
+          for (const name of ['home','catalog','guide','scan','profile']) {await nav(f.page,name);await noOverflow(f.page,`${width}px ${name}`);}
+          for (const name of ['map','plan','quiz','info']) {
+            await nav(f.page,'home');await f.page.locator(`.home-grid [data-go="${name}"]`).click();
+            assert.equal(await f.page.evaluate(() => Museum.state.page),name);await noOverflow(f.page,`${width}px ${name}`);
+          }
+          await nav(f.page,'home');
+          const buttons = await f.page.locator('.nav button,.home-grid button,#hero-plan').evaluateAll(es => es.map(e => ({text:e.innerText,rect:e.getBoundingClientRect().toJSON()})));
+          assert.deepEqual(buttons.filter(x=>x.rect.height<43.5||x.rect.width<43.5),[],'Main controls have 44px touch targets');
+          assert.deepEqual(f.errors,[]);assert.deepEqual(f.external,[],'Core experience must not load unlicensed external photos');
+          if(process.env.SCREENSHOT_DIR){await fs.mkdir(process.env.SCREENSHOT_DIR,{recursive:true});await f.page.screenshot({path:path.join(process.env.SCREENSHOT_DIR,`home-${width}.png`),fullPage:true});}
+        } finally {await f.context.close();}
+      });
+    }
+    await test('4 languages retain navigation and conversational artifact context', async () => {
+      const f=await fixture();try {
+        await open(f.page);await nav(f.page,'guide');
+        const cases=[['vi','Trang chủ','Súng thần công có từ khi nào?','Chất liệu là gì?','Kim loại'],['en','Home','Tell me about the cannon','What is it made of?','Metal'],['ko','홈','대포에 대해 알려줘','재질은 무엇인가요?','금속'],['zh','首页','介绍古炮','它的材质是什么？','金属']];
+        let prior=0;
+        for(const [lang,home,question,follow,material] of cases){
+          await f.page.locator('#lang-switch').click();await f.page.locator(`[data-lang="${lang}"]`).click();await f.page.locator('#language-start').click();
+          assert.equal(await f.page.locator('html').getAttribute('lang'),lang);
+          assert.equal(await f.page.locator('.nav [data-go=home]').innerText(),home);
+          assert.equal(await f.page.evaluate(()=>Museum.state.page),'guide');
+          const count=await f.page.locator('.assistant-row').count();assert.ok(count>=prior,'Changing language must preserve the conversation');
+          await send(f.page,question);assert.match(await send(f.page,follow),new RegExp(material));
+          prior=await f.page.locator('.assistant-row').count();await noOverflow(f.page,lang+' chat');
+        }
+        assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('search handles Vietnamese accents and a one-character typo', async()=>{
+      const f=await fixture();try{await open(f.page);await f.page.locator('#home-search-btn').click();
+        await f.page.locator('#search-input').fill('sung than congx');
+        assert.equal(await f.page.locator('#search-artifacts [data-artifact="sung-than-cong"]').count(),1);
+        await f.page.locator('#search-input').press('Enter');assert.equal(await f.page.locator('#artifact-title').innerText(),'Súng thần công');
+        await nav(f.page,'catalog');await f.page.locator('#catalog-input').fill('mã não');assert.equal(await f.page.locator('#catalog-list [data-artifact="ma-nao"]').count(),1);
+        await f.page.locator('#catalog-input').fill('qzxqzxqzx');assert.equal(await f.page.locator('#catalog-list [data-artifact]').count(),0);assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('all sample QR images actually decode to their V6 URLs',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'scan');await f.page.locator('#scan-demo-btn').click();
+        const decoded=await f.page.locator('#qr-codes .qr-sample').evaluateAll(async buttons=>{
+          const result=[];for(const button of buttons){const image=button.querySelector('img');await image.decode();const canvas=document.createElement('canvas');canvas.width=800;canvas.height=800;const c=canvas.getContext('2d',{willReadFrequently:true});c.fillStyle='white';c.fillRect(0,0,800,800);c.drawImage(image,0,0,800,800);const pixels=c.getImageData(0,0,800,800);const output=window.jsQR(pixels.data,800,800,{inversionAttempts:'attemptBoth'});result.push({expected:button.dataset.demoCode,actual:output?.data});}return result;
+        });assert.equal(decoded.length,8);for(const q of decoded)assert.equal(q.actual,q.expected);
+        await f.page.locator('#qr-codes [data-demo-code$="?zone=dan-toc"]').click();assert.equal(await f.page.evaluate(()=>Museum.state.currentZone.via),'qr');assert.equal(await f.page.evaluate(()=>Museum.state.currentZone.topic),'dan-toc');
+        await nav(f.page,'scan');await f.page.locator('#qr-manual').fill('DN-MUSEUM-TOPIC-co-vat');await f.page.locator('#qr-manual-go').click();assert.equal(await f.page.evaluate(()=>Museum.state.topic),'co-vat');assert.equal(await f.page.evaluate(()=>Museum.state.page),'article');
+        assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('first-language confirmation respects artifact, topic, floor and zone deep links',async()=>{
+      for(const [query,target,id] of [['?artifact=ghe-bau','artifact','ghe-bau'],['?topic=co-vat','article','co-vat'],['?floor=3','map',3],['?zone=dan-toc','map','dan-toc']]){
+        const f=await fixture();try{await open(f.page,query);const m=await f.page.evaluate(()=>({page:Museum.state.page,artifact:Museum.state.artifact,topic:Museum.state.topic,zone:Museum.state.currentZone,floor:Museum.state.floor}));assert.equal(m.page,target);if(target==='artifact')assert.equal(m.artifact,id);if(target==='article')assert.equal(m.topic,id);if(query.startsWith('?floor'))assert.equal(m.floor,id);if(query.startsWith('?zone'))assert.equal(m.zone.topic,id);assert.deepEqual(f.errors,[]);}finally{await f.context.close();}
+      }
+    });
+    await test('route time, interests, pace and visited progress persist',async()=>{
+      const f=await fixture();try{await open(f.page);await f.page.locator('#hero-plan').click();await f.page.locator('[data-min="15"]').click();await f.page.locator('#plan-build').click();const short=await f.page.locator('.route-stop').count();
+        await f.page.locator('[data-min="60"]').click();await f.page.locator('[data-interest="history"]').click();await f.page.locator('[data-interest="culture"]').click();await f.page.locator('#plan-build').click();const long=await f.page.locator('.route-stop').count();assert.ok(long>short);assert.deepEqual(await f.page.evaluate(()=>Museum.state.route.interests),['culture']);
+        await f.page.locator('[data-pace="focused"]').click();await f.page.locator('#plan-build').click();assert.ok(await f.page.locator('.route-stop').count()<long);
+        const done=await f.page.locator('[data-route-done]').first().getAttribute('data-route-done');await f.page.locator('[data-route-done]').first().click();assert.match(await f.page.locator('.route-stop.done').innerText(),/Đã ghé/);
+        await f.page.reload();await f.page.waitForFunction(()=>!!window.MuseumProfile);await f.page.evaluate(()=>Museum.nav('plan'));assert.ok(await f.page.evaluate(id=>Museum.state.route.done.includes(id),done));assert.equal(await f.page.locator('.route-stop.done').count(),1);assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('quiz score, badges, journal save, download, share and reload',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'catalog');await f.page.locator('#catalog-list [data-artifact="sac-phong"]').click();await nav(f.page,'profile');await f.page.locator('[data-personal="start-quiz"]').click();
+        for(const answer of [0,1,2,1,3]){await f.page.locator(`[data-quiz-choice="${answer}"]`).click();assert.equal(await f.page.locator('.quiz-option.correct').count(),1);assert.match(await f.page.locator('#quiz-feedback .source').getAttribute('href'),/^https:\/\/(www\.)?baotangdanang\.vn\//);await f.page.locator('[data-personal="next"]').click();}
+        assert.equal(await f.page.locator('.quiz-complete>strong').innerText(),'5/5');await nav(f.page,'profile');assert.equal(await f.page.locator('.personal-badge.earned').count(),2);
+        const note='Hôm nay tôi khám phá Sắc phong năm 1840. 🏛️';await f.page.locator('#personal-note').fill(note);await f.page.locator('[data-personal="save"]').click();assert.match(await f.page.locator('#personal-save-state').innerText(),/Đã lưu/);
+        const downloadPromise=f.page.waitForEvent('download');await f.page.locator('[data-personal="download"]').click();const download=await downloadPromise;const text=await fs.readFile(await download.path(),'utf8');assert.ok(text.includes(note));assert.ok(text.includes('Sắc phong'));assert.ok(text.includes('?artifact=sac-phong'));
+        await f.page.evaluate(()=>{window.testShared=null;Object.defineProperty(navigator,'share',{configurable:true,value:async payload=>{window.testShared=payload}})});await f.page.locator('[data-personal="share"]').click();assert.ok((await f.page.evaluate(()=>window.testShared?.text)).includes(note));
+        await f.page.reload();await f.page.waitForFunction(()=>!!window.MuseumProfile);await nav(f.page,'profile');assert.equal(await f.page.locator('#personal-note').inputValue(),note);assert.equal(await f.page.evaluate(()=>MuseumProfile.getData().best),5);assert.ok(await f.page.evaluate(()=>MuseumProfile.getData().visits.some(x=>x.key==='artifact:sac-phong')));assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('backend success is distinguished from outage and malformed responses',async()=>{
+      const f=await fixture();try{await open(f.page);await f.page.locator('#top-info').click();await f.page.locator('.developer-config summary').click();await f.page.locator('#ai-endpoint').fill('https://museum-api.example/chat');await f.page.locator('#ai-endpoint-save').click();await nav(f.page,'guide');assert.match(await f.page.locator('#guide-status').innerText(),/Chế độ trợ lý dữ liệu/);
+        let phase='success',requests=[];await f.page.route('https://museum-api.example/chat',async route=>{requests.push(route.request().postDataJSON());if(phase==='outage')return route.abort('failed');return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(phase==='data'?{answer:'Không đủ dữ liệu từ máy chủ.',mode:'data',sources:[]}:phase==='success'?{answer:'Câu trả lời từ máy chủ thử nghiệm.',mode:'generative',sources:['https://baotangdanang.vn/','javascript:alert(1)','https://attacker.invalid/']}:{answer:123,sources:[]})})});
+        assert.equal(await send(f.page,'Tầng 2 có gì?'),'Câu trả lời từ máy chủ thử nghiệm.');assert.match(await f.page.locator('#guide-status').innerText(),/AI tạo sinh/);assert.equal(requests[0].language,'vi');assert.ok(requests[0].history.length<=8);assert.equal(await f.page.locator('.assistant-row').last().locator('.assistant-source a').getAttribute('href'),'https://baotangdanang.vn/');
+        phase='data';assert.equal(await send(f.page,'Câu hỏi ngoài dữ liệu'),'Không đủ dữ liệu từ máy chủ.');assert.match(await f.page.locator('#guide-status').innerText(),/Chế độ trợ lý dữ liệu/);
+        phase='outage';assert.match(await send(f.page,'Súng thần công có từ khi nào?'),/thế kỷ XIX/);assert.match(await f.page.locator('#guide-status').innerText(),/Chế độ trợ lý dữ liệu/);
+        phase='invalid';assert.match(await send(f.page,'Chất liệu là gì?'),/Kim loại/);assert.match(await f.page.locator('#guide-status').innerText(),/Chế độ trợ lý dữ liệu/);assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('context stays scoped to artifacts, visitor information and Korean routes',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'guide');
+        await send(f.page,'Súng thần công có từ khi nào?');
+        assert.match(await send(f.page,'Tháp Eiffel có niên đại nào?'),/chưa tìm được thông tin đáng tin cậy/);
+        assert.match(await send(f.page,'What is this alien cube made of?'),/chưa tìm được thông tin đáng tin cậy/);
+        assert.match(await send(f.page,'Nó làm bằng gì?'),/Kim loại/);
+        assert.match(await send(f.page,'Bảo tàng ở đâu?'),/31 Trần Phú/);
+        assert.match(await send(f.page,'When does the museum open?'),/08:00–17:00/);
+        await f.page.locator('#lang-switch').click();await f.page.locator('[data-lang="ko"]').click();await f.page.locator('#language-start').click();
+        assert.match(await send(f.page,'역사 30분 코스'),/도시 역사/);
+        const shorter=await send(f.page,'15분은요?');assert.match(shorter,/15분/);assert.match(shorter,/도시 역사/);
+        assert.equal(await f.page.evaluate(()=>Museum.guideContext.artifact),null);
+        assert.match(await send(f.page,'박물관은 어디에 있나요?'),/31/);assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+    await test('blocked storage stays usable and accessibility settings persist',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'profile');await f.page.locator('#personal-large').check();await f.page.locator('#personal-contrast').check();await f.page.reload();await f.page.waitForFunction(()=>!!window.MuseumProfile);assert.equal(await f.page.locator('html').evaluate(e=>e.classList.contains('v6-large-text')&&e.classList.contains('v6-high-contrast')),true);
+        for(const name of ['profile','catalog','guide','home']){await nav(f.page,name);await noOverflow(f.page,'larger text '+name)}assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+      const blocked=await fixture();try{await blocked.context.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Blocked','SecurityError')};Storage.prototype.getItem=function(){throw new DOMException('Blocked','SecurityError')}});await open(blocked.page);await blocked.page.locator('#hero-plan').click();await blocked.page.locator('#plan-build').click();assert.match(await blocked.page.locator('#plan-result').innerText(),/Chỉ lưu trong phiên/);await nav(blocked.page,'profile');assert.match(await blocked.page.locator('.personal-storage-notice').innerText(),/phiên/);assert.deepEqual(blocked.errors,[]);}finally{await blocked.context.close();}
+    });
+    await test('unknown answers, dangerous QR and incorrect QR paths stay explicit',async()=>{
+      const f=await fixture();try{await open(f.page);await nav(f.page,'guide');assert.match(await send(f.page,'Bảo tàng có viên ngọc của người ngoài hành tinh không?'),/chưa tìm được thông tin đáng tin cậy/);await nav(f.page,'scan');await f.page.locator('#qr-manual').fill('javascript:alert(1)');await f.page.locator('#qr-manual-go').click();assert.equal(await f.page.locator('#qr-result a').count(),0);assert.match(await f.page.locator('#qr-result').innerText(),/Không nhận ra/);assert.equal(await f.page.evaluate(()=>Museum.state.page),'scan');assert.deepEqual(f.errors,[]);}finally{await f.context.close();}
+    });
+    await test('reduced motion, manual carousel and keyboard language dialog',async()=>{
+      const f=await fixture({reducedMotion:'reduce'});try{await open(f.page);assert.equal(await f.page.locator('#hero-pause').getAttribute('aria-pressed'),'false');assert.equal(await f.page.locator('.orbit').first().evaluate(e=>getComputedStyle(e).animationName),'none');
+        const original=await f.page.locator('#hero-title').innerText();await f.page.locator('[data-slide="2"]').click();assert.notEqual(await f.page.locator('#hero-title').innerText(),original);await f.page.locator('#hero-pause').click();await f.page.locator('#hero-pause').click();assert.equal(await f.page.locator('#hero-pause').getAttribute('aria-pressed'),'false');
+        await f.page.locator('#lang-switch').click();await f.page.locator('#language-start').focus();await f.page.keyboard.press('Tab');assert.equal(await f.page.locator('[data-lang="vi"]').evaluate(e=>e===document.activeElement),true);await f.page.keyboard.press('Escape');await f.page.locator('#lang-overlay').waitFor({state:'hidden'});assert.deepEqual(f.errors,[]);
+      }finally{await f.context.close();}
+    });
+  } finally { await browser.close(); }
+  const failed=results.filter(x=>!x.passed);console.log(`\n${results.length-failed.length}/${results.length} browser groups passed`);
+  if(process.env.MUSEUM_TEST_REPORT)await fs.writeFile(process.env.MUSEUM_TEST_REPORT,JSON.stringify({url:BASE,results},null,2));
+  if(failed.length)process.exitCode=1;
+})().catch(e=>{console.error(e);process.exitCode=1});
