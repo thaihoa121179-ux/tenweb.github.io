@@ -1,0 +1,3845 @@
+(() => {
+  "use strict";
+  const I18N = {
+    vi: {
+      searchHint: "Tìm hiện vật, chủ đề, khu trưng bày...",
+      heroEyebrow: "HÀNH TRÌNH DI SẢN",
+      heroTitle: "Khám phá theo cách của bạn.",
+      heroText: "Từ sở thích đến hành trình — bảo tàng trong lòng bàn tay.",
+      startPlan: "✦ Tạo hành trình riêng ↗",
+      exploreNow: "Bạn muốn làm gì?",
+      noInstall: "Không cần cài ứng dụng",
+      scan: "Quét mã QR",
+      scanSub: "Tầng / hiện vật",
+      map: "Sơ đồ tầng",
+      mapSub: "Xem các khu trưng bày",
+      askGuide: "Hỏi trợ lý",
+      guideSub: "Tư vấn theo sở thích",
+      collections: "Thư viện",
+      collectionsSub: "15 chủ đề / 3 tầng",
+      journey: "Hành trình riêng",
+      journeySub: "15 / 30 / 60 phút",
+      visit: "Tham quan",
+      visitSub: "Giờ mở cửa / vé",
+      homeFoot: "Cơ sở 1 · 31 Trần Phú · 08:00–17:00",
+      details: "Chi tiết ›",
+      chooseFloor: "Khám phá từng tầng",
+      collectionDesc:
+        "Chọn một tầng để xem các chủ đề, nghe giải thích và mở sơ đồ.",
+      openMap: "Xem sơ đồ tầng",
+      story: "CÂU CHUYỆN DI SẢN",
+      detail: "Thông tin trưng bày",
+      listen: "▶ Nghe thuyết minh",
+      pinMap: "Xem trên sơ đồ",
+      askAbout: "Hỏi trợ lý",
+      addRoute: "Lưu vào hành trình",
+      source: "Nguồn bảo tàng ↗",
+      verifiedNote:
+        "Nội dung theo nguồn chính thức. Vị trí trên sơ đồ là mô phỏng, không phải vị trí hiện vật thật.",
+      floorOverview: "KHÔNG GIAN TRƯNG BÀY",
+      interactiveMap: "Sơ đồ tương tác",
+      illustration: "SƠ ĐỒ MÔ PHỎNG",
+      mapCaveat:
+        "⚠ Sơ đồ chỉ minh họa các nhóm chủ đề. Chưa thể dẫn đường tới vị trí hiện vật chính xác nếu không có bản vẽ mặt bằng được bảo tàng xác nhận.",
+      allTopics: "Danh sách chủ đề",
+      scanFloorQR: "Quét QR tầng",
+      smartFind: "TÌM KIẾM THÔNG MINH",
+      searchTitle: "Bạn muốn tìm gì?",
+      qrGuide: "HAI LOẠI MÃ QR",
+      qrTitle: "Quét để khám phá",
+      qrExplainTitle: "QR hoạt động như thế nào?",
+      qrExplain:
+        "QR đặt ở lối vào dùng để mở website. Sau khi vào, QR của từng tầng/hiện vật mở sơ đồ hoặc trang thông tin tương ứng.",
+      qrIdle: "Bấm Mở camera để quét",
+      openCamera: "Mở camera",
+      stopCamera: "Tắt camera",
+      uploadQr: "Chọn ảnh QR",
+      demoCodes: "Mã dùng thử",
+      qrManual: "Nhập mã, ví dụ DN-MUSEUM-F1",
+      qrWarning:
+        "Mã demo do nhóm tự tạo, không phải QR đã lắp tại bảo tàng. QR thực tế chỉ hoạt động khi được đăng ký dữ liệu.",
+      personalized: "CÁ NHÂN HÓA",
+      planTitle: "Thiết kế chuyến đi",
+      planTime: "BẠN CÓ BAO NHIÊU THỜI GIAN?",
+      planLikes: "BẠN QUAN TÂM ĐẾN GÌ?",
+      planStyle: "NHỊP ĐỘ THAM QUAN",
+      buildPlan: "✦ Tạo lộ trình của tôi",
+      planLimit:
+        "Thời lượng từng điểm chỉ là ước tính, chưa có dữ liệu khoảng cách trong nhà.",
+      guideMode: "TRỢ LÝ THAM QUAN",
+      guideTitle: "Hỏi về bảo tàng",
+      offlineMode:
+        "Chế độ tư vấn theo dữ liệu mẫu có dẫn nguồn. AI đối thoại tự do chỉ hoạt động khi kết nối backend.",
+      askAnything: "Tôi thích lịch sử, nên đi đâu?",
+      infoTag: "THÔNG TIN THAM QUAN",
+      address: "Địa chỉ",
+      addressText: "31 Trần Phú, Hải Châu, Đà Nẵng",
+      hours: "Giờ mở cửa",
+      hoursText: "08:00–17:00 hằng ngày",
+      tickets: "Giá vé",
+      ticketsText: "Xem mức giá và ưu đãi mới nhất trên website chính thức.",
+      contact: "Liên hệ",
+      howTo: "Cách sử dụng",
+      howToText:
+        "Chọn ngôn ngữ → tạo hành trình hoặc xem tầng → quét QR để mở nội dung → hỏi trợ lý.",
+      developerSettings: "Kết nối AI (cho nhóm phát triển)",
+      developerIntro:
+        "Nhập URL máy chủ AI khi đã triển khai. KHÔNG nhập API key tại đây.",
+      developerWarn:
+        "Địa chỉ backend được lưu trên thiết bị này; API key phải được giữ ở máy chủ.",
+      officialSite: "Xem nguồn chính thức ↗",
+      demoDisclaimer:
+        "Dự án sinh viên độc lập; không phải website chính thức của bảo tàng.",
+      navHome: "Trang chủ",
+      navSearch: "Tìm kiếm",
+      navGuide: "Trợ lý",
+      floor: "Tầng",
+      floorLabel: "Tầng {n}",
+      floorIntro: "Khám phá các câu chuyện và không gian",
+      zone: "Vùng minh họa",
+      openTopic: "Xem nội dung",
+      noResult: "Không tìm thấy chủ đề phù hợp. Hãy thử từ khóa khác.",
+      popular: "Gợi ý khám phá",
+      history: "Lịch sử",
+      culture: "Văn hóa",
+      antique: "Cổ vật",
+      family: "Gia đình",
+      modern: "Thành phố",
+      relaxed: "Thư thả",
+      focused: "Tìm hiểu sâu",
+      planReady: "Hành trình đề xuất",
+      routeDone: "Đã ghé",
+      routeMark: "Đánh dấu đã ghé",
+      routeProgress: "Hoàn thành",
+      routeSave: "Hành trình đã được lưu trên thiết bị",
+      routeNo: "Chọn ít nhất một sở thích.",
+      clickStop: "Chạm vào tên để xem chi tiết",
+      qrEntry: "Mở website",
+      qrF1: "QR tầng 1",
+      qrF2: "QR tầng 2",
+      qrF3: "QR tầng 3",
+      qrInvalid:
+        "Không nhận ra mã này trong dữ liệu demo. Hãy thử mã mẫu hoặc xem danh sách chủ đề.",
+      qrExternal:
+        "Mã QR dẫn tới trang khác. Bạn có thể mở bằng trình duyệt, nhưng đây không phải mã nội bộ của dự án.",
+      qrScanned: "Đã nhận diện mã",
+      qrCameraError:
+        "Không thể mở camera. Kiểm tra quyền truy cập, dùng HTTPS hoặc chọn ảnh QR.",
+      qrLibraryError:
+        "Trình duyệt này chưa hỗ trợ đọc QR; hãy dùng mã nhập tay hoặc ảnh và thử lại.",
+      qrBusy: "Đang nhận diện mã QR...",
+      qrStopped: "Camera đã tắt",
+      qrManualMsg: "Nhập mã để xem kết quả.",
+      qrFileError: "Không đọc được mã QR từ ảnh. Thử ảnh rõ nét hơn.",
+      cameraStarted: "Đang quét, đưa mã vào khung",
+      speechUnsupported:
+        "Trình duyệt không hỗ trợ micro nhận dạng trực tiếp. Hãy dùng nút micro trên bàn phím hoặc gõ chữ.",
+      speechDenied: "Không được cấp quyền micro. Bạn có thể gõ câu hỏi.",
+      speechListening: "Đang nghe, hãy nói...",
+      voiceUnsupported: "Trình duyệt chưa hỗ trợ đọc văn bản.",
+      speakStop: "■ Dừng đọc",
+      sourceWarning:
+        "Liên kết nguồn bên ngoài có thể hiển thị bằng tiếng Việt, nhưng nội dung trong ứng dụng đã chuyển ngôn ngữ.",
+      guideHello:
+        "Xin chào! Bạn thích lịch sử, văn hóa hay cổ vật? Bạn có thể hỏi mình nên tham quan tầng nào, thông tin vé hoặc quét QR như thế nào.",
+      guideTry: "Mình thích văn hóa, nên đi tầng nào?",
+      guideQR: "Quét QR để làm gì?",
+      guideTicket: "Giá vé / giờ mở cửa",
+      guideMap: "Xem bản đồ tầng 1",
+      guideAnswerHistory:
+        "Nếu bạn thích lịch sử, hãy ưu tiên tầng 3 với lịch sử đô thị, đấu tranh giành độc lập và quá trình phát triển của Đà Nẵng.",
+      guideAnswerCulture:
+        "Nếu yêu thích văn hóa các dân tộc và nét đặc trưng xứ Quảng, hãy tham quan tầng 2, rồi tầng 3 để tìm hiểu văn hóa người Việt xứ Quảng.",
+      guideAnswerAntique:
+        "Nếu thích cổ vật, nên bắt đầu từ tầng 1: sưu tập cổ vật và khu trưng bày chuyên đề.",
+      guideAnswerFamily:
+        "Đi cùng gia đình hoặc trẻ em, hãy xem khu thiếu nhi ở tầng 1, sau đó khám phá thiên nhiên và con người ở tầng 3.",
+      guideAnswerQR:
+        "Có 2 loại QR: (1) Mã đặt ngoài lối vào mở website trên điện thoại; (2) Mã nội bộ được gắn cho tầng hoặc chủ đề, quét trong website để mở đúng sơ đồ hoặc trang chi tiết. Bản này chỉ có mã thử nghiệm.",
+      guideAnswerTime:
+        "Bảo tàng Đà Nẵng cơ sở 1, số 31 Trần Phú, mở 08:00–17:00 hằng ngày. Bạn nên kiểm tra lại lịch dịp lễ trên trang chính thức.",
+      guideAnswerTicket:
+        "Giá vé có các mức tùy đối tượng và thời điểm. Để tránh đưa giá cũ, vui lòng kiểm tra thông báo vé mới nhất trên website chính thức.",
+      guideAnswerUnknown:
+        "Mình chưa có dữ liệu chắc chắn để giải thích câu này. Hãy thử tìm chủ đề trong thư viện hoặc mở nguồn chính thức. Khi kết nối backend AI, câu hỏi sẽ được xử lý từ kho tri thức đã kiểm chứng.",
+      assistantActions: "Khám phá tiếp",
+      goMap: "Mở sơ đồ",
+      goPlan: "Tạo hành trình",
+      goSearch: "Tìm chủ đề",
+      openOfficial: "Mở trang chính thức",
+      saveOk: "Đã lưu vào hành trình",
+      endpointSaved: "Đã lưu địa chỉ backend. Hãy thử nhắn tin để kiểm tra.",
+      endpointClear: "Đã chuyển về chế độ tra cứu mẫu.",
+      aiOn: "AI đã kết nối máy chủ; câu trả lời phụ thuộc chất lượng dữ liệu và cấu hình.",
+      aiError: "Không kết nối được AI, đang trả lời bằng bộ tra cứu có sẵn.",
+      loading: "Đang trả lời...",
+      sampleTap: "Chạm vào mã để mô phỏng quét",
+      welcomeLanguage: "Chào mừng đến\nBảo tàng Đà Nẵng",
+      languagePrompt:
+        "Chọn ngôn ngữ trước khi bắt đầu. Bạn có thể thay đổi bất kỳ lúc nào.",
+      browserGuess: "Trình duyệt gợi ý: ",
+      languageStart: "Bắt đầu khám phá →",
+    },
+    en: {
+      searchHint: "Search exhibits, artifacts, and stories...",
+      heroEyebrow: "HERITAGE JOURNEY",
+      heroTitle: "Explore it your way.",
+      heroText:
+        "From your interests to your journey — the museum in your pocket.",
+      startPlan: "✦ Create my tour ↗",
+      exploreNow: "What would you like to do?",
+      noInstall: "No app required",
+      scan: "Scan QR",
+      scanSub: "Floor / exhibits",
+      map: "Floor map",
+      mapSub: "Explore zones",
+      askGuide: "Ask a guide",
+      guideSub: "Recommendations",
+      collections: "Collections",
+      collectionsSub: "15 topics / 3 floors",
+      journey: "My journey",
+      journeySub: "15 / 30 / 60 min",
+      visit: "Plan a visit",
+      visitSub: "Hours / tickets",
+      homeFoot: "Main site · 31 Tran Phu · 08:00–17:00",
+      details: "Details ›",
+      chooseFloor: "Explore each floor",
+      collectionDesc:
+        "Choose a floor to explore stories, listen, and see a floor diagram.",
+      openMap: "View floor map",
+      story: "HERITAGE STORIES",
+      detail: "Exhibition details",
+      listen: "▶ Listen",
+      pinMap: "Show on map",
+      askAbout: "Ask the guide",
+      addRoute: "Save to journey",
+      source: "Museum source ↗",
+      verifiedNote:
+        "Based on official museum information. The diagram is illustrative, not the actual location of artifacts.",
+      floorOverview: "EXHIBITION SPACE",
+      interactiveMap: "Interactive floor map",
+      illustration: "ILLUSTRATIVE MAP",
+      mapCaveat:
+        "⚠ Illustrative topic zones only. Accurate indoor directions require official floor plans and verified exhibit positions.",
+      allTopics: "All topics",
+      scanFloorQR: "Scan floor QR",
+      smartFind: "SMART SEARCH",
+      searchTitle: "What are you looking for?",
+      qrGuide: "TWO TYPES OF QR",
+      qrTitle: "Scan to explore",
+      qrExplainTitle: "What do QR codes do?",
+      qrExplain:
+        "An entrance QR opens this website. Inside, a floor or exhibit QR takes you to the relevant map or exhibit page.",
+      qrIdle: "Tap Open camera to scan",
+      openCamera: "Open camera",
+      stopCamera: "Stop camera",
+      uploadQr: "Choose QR image",
+      demoCodes: "Try demo codes",
+      qrManual: "Enter code e.g. DN-MUSEUM-F1",
+      qrWarning:
+        "Demo codes are created for this project, not installed in the museum. Actual QR labels require approved mappings.",
+      personalized: "PERSONALIZED",
+      planTitle: "Design your visit",
+      planTime: "HOW MUCH TIME DO YOU HAVE?",
+      planLikes: "WHAT INTERESTS YOU?",
+      planStyle: "PREFERRED PACE",
+      buildPlan: "✦ Build my journey",
+      planLimit:
+        "Stop durations are approximate; no verified indoor distance data is available.",
+      guideMode: "DIGITAL TOUR GUIDE",
+      guideTitle: "Ask about the museum",
+      offlineMode:
+        "Verified-data demo mode. Open-ended AI requires a separate configured backend.",
+      askAnything: "I like history. Which floor?",
+      infoTag: "VISITOR INFORMATION",
+      address: "Address",
+      addressText: "31 Tran Phu, Hai Chau, Da Nang",
+      hours: "Opening hours",
+      hoursText: "Daily 08:00–17:00",
+      tickets: "Tickets",
+      ticketsText:
+        "Check current admission and concessions on the official site.",
+      contact: "Contact",
+      howTo: "How to use",
+      howToText:
+        "Choose language → plan or browse floors → scan QR to open content → ask your guide.",
+      developerSettings: "Connect AI (for developers)",
+      developerIntro:
+        "Enter your deployed AI backend URL. Never enter an API key here.",
+      developerWarn:
+        "The URL is saved on this device. Keep API keys on the server.",
+      officialSite: "Official museum source ↗",
+      demoDisclaimer:
+        "Independent student prototype, not an official museum website.",
+      navHome: "Home",
+      navSearch: "Search",
+      navGuide: "Guide",
+      floor: "Floor",
+      floorLabel: "Floor {n}",
+      floorIntro: "Stories and galleries to explore",
+      zone: "Demo zone",
+      openTopic: "Open details",
+      noResult: "No matching topic. Try another search.",
+      popular: "Suggested discoveries",
+      history: "History",
+      culture: "Culture",
+      antique: "Antiquities",
+      family: "Families",
+      modern: "Modern city",
+      relaxed: "Relaxed",
+      focused: "In depth",
+      planReady: "Your suggested journey",
+      routeDone: "Visited",
+      routeMark: "Mark visited",
+      routeProgress: "Completed",
+      routeSave: "Tour saved on this device",
+      routeNo: "Choose at least one interest.",
+      clickStop: "Tap a stop to open details",
+      qrEntry: "Website entrance",
+      qrF1: "Floor 1 QR",
+      qrF2: "Floor 2 QR",
+      qrF3: "Floor 3 QR",
+      qrInvalid:
+        "Unknown demo code. Try a sample code or browse the collection.",
+      qrExternal:
+        "This QR points to another website. You may open it in your browser, but it is not an internal demo code.",
+      qrScanned: "QR detected",
+      qrCameraError:
+        "Camera unavailable. Check permission and HTTPS, or upload a QR image.",
+      qrLibraryError:
+        "QR decoding not supported in this browser. Enter the sample code manually.",
+      qrBusy: "Reading QR...",
+      qrStopped: "Camera stopped",
+      qrManualMsg: "Enter a code to continue.",
+      qrFileError: "No readable QR found. Try a clearer image.",
+      cameraStarted: "Scanning — align the QR in the frame",
+      speechUnsupported:
+        "Speech recognition is unsupported here. Use your keyboard microphone or type.",
+      speechDenied: "Microphone permission denied. You can type instead.",
+      speechListening: "Listening...",
+      voiceUnsupported: "Text-to-speech is unavailable.",
+      speakStop: "■ Stop audio",
+      sourceWarning:
+        "External source pages may be in Vietnamese; the content inside this app is localized.",
+      guideHello:
+        "Hello! Do you enjoy history, culture or antiquities? Ask me which floor to explore, ticket information, or how QR codes work.",
+      guideTry: "I love culture. Which floor?",
+      guideQR: "What do QR codes do?",
+      guideTicket: "Tickets and hours",
+      guideMap: "Show floor 1 map",
+      guideAnswerHistory:
+        "If you enjoy history, prioritize floor 3: urban history, independence movements and Da Nang’s development.",
+      guideAnswerCulture:
+        "For ethnic cultures and Quang traditions, start on floor 2, then continue to floor 3 for Vietnamese culture of the region.",
+      guideAnswerAntique:
+        "For antiquities, start on floor 1 with its artifact collections and special exhibition space.",
+      guideAnswerFamily:
+        "With children, explore the children’s section on floor 1, then nature and people on floor 3.",
+      guideAnswerQR:
+        "There are two QR flows: (1) an entrance QR opens the website; (2) a mapped floor or exhibit QR scanned inside the app opens its floor map or detail page. This prototype uses demo QR codes.",
+      guideAnswerTime:
+        "The museum at 31 Tran Phu is open daily 08:00–17:00. Check special holiday schedules on the official site.",
+      guideAnswerTicket:
+        "Ticket rates vary by visitor category and date. Check the latest official notice to avoid outdated prices.",
+      guideAnswerUnknown:
+        "I do not have verified data to answer that confidently. Search the collections or view the official source. A future AI backend can answer from a curated knowledge base.",
+      assistantActions: "Continue exploring",
+      goMap: "Show map",
+      goPlan: "Build a route",
+      goSearch: "Search topics",
+      openOfficial: "Official website",
+      saveOk: "Added to your journey",
+      endpointSaved: "AI backend URL saved. Try a message to test it.",
+      endpointClear: "Switched to the built-in guide.",
+      aiOn: "AI backend connected. Accuracy depends on verified sources and configuration.",
+      aiError: "AI unavailable; using built-in guide instead.",
+      loading: "Thinking...",
+      sampleTap: "Tap a QR code to simulate scanning",
+      welcomeLanguage: "Welcome to\nDa Nang Museum",
+      languagePrompt:
+        "Choose your language before entering. You can change it any time.",
+      browserGuess: "Browser suggests: ",
+      languageStart: "Start exploring →",
+    },
+    ko: {
+      searchHint: "유물, 전시, 이야기를 검색하세요...",
+      heroEyebrow: "문화유산 여행",
+      heroTitle: "나만의 방식으로 탐험하세요.",
+      heroText: "관심사에 맞춘 박물관 관람을 휴대전화에서 즐기세요.",
+      startPlan: "✦ 맞춤 관람 만들기 ↗",
+      exploreNow: "무엇을 하고 싶으세요?",
+      noInstall: "앱 설치 불필요",
+      scan: "QR 스캔",
+      scanSub: "층 / 전시",
+      map: "층별 안내도",
+      mapSub: "전시 구역 살펴보기",
+      askGuide: "가이드에게 질문",
+      guideSub: "맞춤 추천",
+      collections: "전시 자료",
+      collectionsSub: "15개 주제 / 3개 층",
+      journey: "나의 관람 코스",
+      journeySub: "15 / 30 / 60분",
+      visit: "방문 안내",
+      visitSub: "운영시간 / 요금",
+      homeFoot: "본관 · 쩐푸 31번지 · 08:00–17:00",
+      details: "자세히 ›",
+      chooseFloor: "층별 전시 둘러보기",
+      collectionDesc: "층을 선택해 전시 이야기를 확인하고 안내도를 보세요.",
+      openMap: "층별 안내도",
+      story: "문화유산 이야기",
+      detail: "전시 정보",
+      listen: "▶ 음성 안내",
+      pinMap: "안내도에서 보기",
+      askAbout: "가이드에게 질문",
+      addRoute: "코스에 저장",
+      source: "박물관 공식 자료 ↗",
+      verifiedNote:
+        "공식 자료 기반 콘텐츠입니다. 안내도는 실제 유물 위치가 아닌 예시입니다.",
+      floorOverview: "전시 공간",
+      interactiveMap: "인터랙티브 안내도",
+      illustration: "예시 안내도",
+      mapCaveat:
+        "⚠ 주제별 구역을 표현한 예시입니다. 정확한 실내 길 안내에는 박물관에서 확인한 도면이 필요합니다.",
+      allTopics: "전체 주제",
+      scanFloorQR: "층 QR 스캔",
+      smartFind: "스마트 검색",
+      searchTitle: "무엇을 찾으세요?",
+      qrGuide: "두 가지 QR 코드",
+      qrTitle: "QR로 탐색",
+      qrExplainTitle: "QR 코드는 어떻게 쓰나요?",
+      qrExplain:
+        "입구 QR은 웹사이트를 열고, 내부의 층/전시 QR은 해당 안내도나 상세 정보를 엽니다.",
+      qrIdle: "카메라 열기를 눌러 스캔하세요",
+      openCamera: "카메라 열기",
+      stopCamera: "카메라 끄기",
+      uploadQr: "QR 이미지 선택",
+      demoCodes: "예시 QR 보기",
+      qrManual: "코드 입력: DN-MUSEUM-F1",
+      qrWarning:
+        "본 QR은 프로젝트용 예시이며 실제 박물관에 설치된 코드가 아닙니다.",
+      personalized: "맞춤형 관람",
+      planTitle: "관람 계획 세우기",
+      planTime: "관람 시간은?",
+      planLikes: "관심 분야는?",
+      planStyle: "관람 속도",
+      buildPlan: "✦ 코스 만들기",
+      planLimit: "소요 시간은 예시이며 실제 실내 이동 거리 정보는 없습니다.",
+      guideMode: "디지털 가이드",
+      guideTitle: "박물관에 질문하기",
+      offlineMode:
+        "검증된 자료 기반 데모입니다. 자유 대화형 AI에는 별도 서버 연결이 필요합니다.",
+      askAnything: "역사를 좋아해요. 어느 층으로?",
+      infoTag: "방문 정보",
+      address: "주소",
+      addressText: "베트남 다낭 하이쩌우 쩐푸 31",
+      hours: "운영시간",
+      hoursText: "매일 08:00–17:00",
+      tickets: "입장료",
+      ticketsText: "최신 요금 및 할인은 공식 사이트에서 확인하세요.",
+      contact: "연락처",
+      howTo: "이용 방법",
+      howToText: "언어 선택 → 코스 또는 전시 선택 → QR 스캔 → 가이드에게 질문.",
+      developerSettings: "AI 연결 (개발자용)",
+      developerIntro: "AI 서버 URL을 입력하세요. API 키는 입력하지 마세요.",
+      developerWarn:
+        "서버 URL은 기기에 저장됩니다. API 키는 서버에서 보호해야 합니다.",
+      officialSite: "공식 박물관 사이트 ↗",
+      demoDisclaimer: "비공식 학생 프로젝트입니다.",
+      navHome: "홈",
+      navSearch: "검색",
+      navGuide: "가이드",
+      floor: "층",
+      floorLabel: "{n}층",
+      floorIntro: "층별 전시 이야기",
+      zone: "예시 구역",
+      openTopic: "상세 보기",
+      noResult: "검색 결과가 없습니다.",
+      popular: "추천 콘텐츠",
+      history: "역사",
+      culture: "문화",
+      antique: "유물",
+      family: "가족",
+      modern: "현대 도시",
+      relaxed: "여유롭게",
+      focused: "깊이 있게",
+      planReady: "추천 관람 코스",
+      routeDone: "방문 완료",
+      routeMark: "방문 표시",
+      routeProgress: "완료",
+      routeSave: "기기에 코스가 저장되었습니다",
+      routeNo: "관심사를 하나 이상 선택하세요.",
+      clickStop: "항목을 누르면 상세 정보를 볼 수 있습니다",
+      qrEntry: "입구 웹사이트",
+      qrF1: "1층 QR",
+      qrF2: "2층 QR",
+      qrF3: "3층 QR",
+      qrInvalid: "등록되지 않은 예시 코드입니다.",
+      qrExternal: "이 QR은 외부 사이트로 연결됩니다. 내부 코드가 아닙니다.",
+      qrScanned: "QR 인식됨",
+      qrCameraError:
+        "카메라를 사용할 수 없습니다. 권한, HTTPS를 확인하거나 이미지를 선택하세요.",
+      qrLibraryError: "이 브라우저에서는 QR 인식이 지원되지 않습니다.",
+      qrBusy: "QR 읽는 중...",
+      qrStopped: "카메라 종료",
+      qrManualMsg: "코드를 입력하세요.",
+      qrFileError: "이미지에서 QR을 읽지 못했습니다.",
+      cameraStarted: "스캔 중 — QR을 프레임에 맞추세요",
+      speechUnsupported:
+        "음성 인식이 지원되지 않습니다. 키보드 마이크나 입력을 사용하세요.",
+      speechDenied: "마이크 권한이 거부되었습니다.",
+      speechListening: "듣고 있습니다...",
+      voiceUnsupported: "음성 읽기가 지원되지 않습니다.",
+      speakStop: "■ 읽기 중지",
+      sourceWarning: "외부 공식 자료는 베트남어일 수 있습니다.",
+      guideHello:
+        "안녕하세요! 역사, 문화, 유물 중 무엇에 관심이 있나요? 층 추천이나 QR 사용법을 물어보세요.",
+      guideTry: "문화를 좋아해요. 어느 층?",
+      guideQR: "QR 사용법",
+      guideTicket: "입장료와 운영시간",
+      guideMap: "1층 안내도",
+      guideAnswerHistory:
+        "역사를 좋아한다면 도시의 역사와 독립운동을 소개하는 3층을 추천합니다.",
+      guideAnswerCulture:
+        "지역 문화와 민족 문화를 좋아한다면 2층을 먼저 둘러보세요. 3층에서도 꽝 지역 문화를 볼 수 있습니다.",
+      guideAnswerAntique:
+        "유물에 관심이 있다면 1층의 고대 유물 컬렉션을 추천합니다.",
+      guideAnswerFamily:
+        "어린이와 함께라면 1층의 어린이 전시 공간을 추천합니다.",
+      guideAnswerQR:
+        "입구 QR은 웹사이트를 열고, 박물관 내부 QR은 해당 층 안내도나 전시 상세 화면을 엽니다. 현재는 예시 QR을 사용합니다.",
+      guideAnswerTime: "본관 운영시간은 매일 08:00–17:00입니다.",
+      guideAnswerTicket:
+        "정확한 입장료는 공식 홈페이지의 최신 안내를 확인하세요.",
+      guideAnswerUnknown:
+        "확인된 정보가 없어 확실히 답하기 어렵습니다. 전시 검색이나 공식 자료를 이용하세요.",
+      assistantActions: "계속 탐색",
+      goMap: "안내도 보기",
+      goPlan: "코스 만들기",
+      goSearch: "전시 검색",
+      openOfficial: "공식 웹사이트",
+      saveOk: "코스에 추가했습니다",
+      endpointSaved: "AI 서버 주소가 저장되었습니다.",
+      endpointClear: "기본 가이드 모드입니다.",
+      aiOn: "AI 서버 연결됨.",
+      aiError: "AI에 연결할 수 없어 기본 답변을 표시합니다.",
+      loading: "답변 작성 중...",
+      sampleTap: "QR을 누르면 스캔을 시뮬레이션합니다",
+      welcomeLanguage: "다낭 박물관에\n오신 것을 환영합니다",
+      languagePrompt:
+        "시작하기 전에 언어를 선택하세요. 나중에 변경할 수 있습니다.",
+      browserGuess: "브라우저 추천: ",
+      languageStart: "탐험 시작 →",
+    },
+    zh: {
+      searchHint: "搜索文物、展览与故事...",
+      heroEyebrow: "文化遗产之旅",
+      heroTitle: "按自己的方式探索。",
+      heroText: "根据兴趣规划旅程，随时了解博物馆。",
+      startPlan: "✦ 创建专属路线 ↗",
+      exploreNow: "您想做什么？",
+      noInstall: "无需安装应用",
+      scan: "扫描二维码",
+      scanSub: "楼层 / 展品",
+      map: "楼层导览图",
+      mapSub: "查看展区",
+      askGuide: "咨询导览助手",
+      guideSub: "按兴趣推荐",
+      collections: "展览目录",
+      collectionsSub: "15个主题 / 3层",
+      journey: "我的参观路线",
+      journeySub: "15 / 30 / 60分钟",
+      visit: "参观信息",
+      visitSub: "开放时间 / 门票",
+      homeFoot: "主馆 · 陈富街31号 · 08:00–17:00",
+      details: "详情 ›",
+      chooseFloor: "探索各楼层",
+      collectionDesc: "选择楼层查看主题、语音介绍和示意图。",
+      openMap: "查看楼层图",
+      story: "文化遗产故事",
+      detail: "展览详情",
+      listen: "▶ 收听介绍",
+      pinMap: "查看地图位置",
+      askAbout: "询问助手",
+      addRoute: "加入路线",
+      source: "博物馆资料来源 ↗",
+      verifiedNote: "内容依据官方资料。导览图仅为示意，并非文物真实位置。",
+      floorOverview: "展览空间",
+      interactiveMap: "互动楼层图",
+      illustration: "示意图",
+      mapCaveat:
+        "⚠ 本图仅展示主题分区示意。准确的室内导航需要博物馆核实的平面图。",
+      allTopics: "查看本层主题",
+      scanFloorQR: "扫描楼层码",
+      smartFind: "智能搜索",
+      searchTitle: "您想找什么？",
+      qrGuide: "两种二维码",
+      qrTitle: "扫描探索",
+      qrExplainTitle: "二维码有什么作用？",
+      qrExplain:
+        "入口二维码打开网站；馆内楼层或展品二维码可打开相应楼层图或详情。",
+      qrIdle: "点击开启摄像头扫描",
+      openCamera: "开启摄像头",
+      stopCamera: "关闭摄像头",
+      uploadQr: "选择二维码图片",
+      demoCodes: "查看演示码",
+      qrManual: "输入代码，如 DN-MUSEUM-F1",
+      qrWarning: "这些是项目演示码，并非馆内已安装的二维码。",
+      personalized: "个性化",
+      planTitle: "规划您的参观",
+      planTime: "您有多少时间？",
+      planLikes: "您对什么感兴趣？",
+      planStyle: "参观节奏",
+      buildPlan: "✦ 生成专属路线",
+      planLimit: "各站时间为估算，目前没有经过核实的馆内距离数据。",
+      guideMode: "数字导览助手",
+      guideTitle: "向博物馆提问",
+      offlineMode: "基于已核实资料的演示问答。自由对话AI需另行连接服务器。",
+      askAnything: "我喜欢历史，该去几楼？",
+      infoTag: "参观须知",
+      address: "地址",
+      addressText: "越南岘港海洲坊陈富街31号",
+      hours: "开放时间",
+      hoursText: "每天 08:00–17:00",
+      tickets: "门票",
+      ticketsText: "请以官网最新票价及优惠信息为准。",
+      contact: "联系方式",
+      howTo: "使用方法",
+      howToText:
+        "选择语言 → 规划路线或查看楼层 → 扫码查看内容 → 咨询导览助手。",
+      developerSettings: "连接AI（开发者）",
+      developerIntro: "输入已部署的AI服务器地址。不要填写API密钥。",
+      developerWarn: "服务器地址保存在本设备；API密钥应保存在服务端。",
+      officialSite: "博物馆官方网站 ↗",
+      demoDisclaimer: "独立学生演示项目，并非博物馆官方网站。",
+      navHome: "首页",
+      navSearch: "搜索",
+      navGuide: "助手",
+      floor: "楼层",
+      floorLabel: "第{n}层",
+      floorIntro: "探索展区故事",
+      zone: "示意区域",
+      openTopic: "查看详情",
+      noResult: "未找到匹配主题，请换个词搜索。",
+      popular: "推荐探索",
+      history: "历史",
+      culture: "文化",
+      antique: "古物",
+      family: "家庭",
+      modern: "城市发展",
+      relaxed: "轻松",
+      focused: "深度探索",
+      planReady: "推荐路线",
+      routeDone: "已参观",
+      routeMark: "标记已参观",
+      routeProgress: "已完成",
+      routeSave: "路线已保存在本设备",
+      routeNo: "请至少选择一个兴趣。",
+      clickStop: "点击站点查看详情",
+      qrEntry: "网站入口码",
+      qrF1: "一层码",
+      qrF2: "二层码",
+      qrF3: "三层码",
+      qrInvalid: "无法识别此演示码，请尝试示例。",
+      qrExternal: "此码指向外部网站，不属于内部演示码。",
+      qrScanned: "已识别二维码",
+      qrCameraError: "无法访问摄像头。请检查权限和HTTPS，或上传二维码图片。",
+      qrLibraryError: "当前浏览器不支持二维码解码，请手动输入。",
+      qrBusy: "正在识别...",
+      qrStopped: "摄像头已关闭",
+      qrManualMsg: "请输入代码。",
+      qrFileError: "无法从图片识别二维码。",
+      cameraStarted: "正在扫描，请将二维码放入框内",
+      speechUnsupported: "浏览器不支持语音识别。请使用键盘麦克风或文字输入。",
+      speechDenied: "麦克风权限被拒绝。",
+      speechListening: "正在聆听...",
+      voiceUnsupported: "浏览器不支持语音朗读。",
+      speakStop: "■ 停止朗读",
+      sourceWarning: "外部来源网页可能是越南语，但本应用内内容已翻译。",
+      guideHello:
+        "您好！您对历史、文化还是古物感兴趣？可以询问楼层推荐、门票信息或二维码使用方法。",
+      guideTry: "我喜欢文化，推荐哪层？",
+      guideQR: "二维码如何使用？",
+      guideTicket: "门票与开放时间",
+      guideMap: "查看一层地图",
+      guideAnswerHistory:
+        "如果喜欢历史，推荐三层：城市历史、民族独立斗争和岘港的发展。",
+      guideAnswerCulture:
+        "对民族文化和广南传统感兴趣，建议先看二层，再去三层了解当地越南文化。",
+      guideAnswerAntique: "喜欢古物可先从一层的古物收藏与专题展开始。",
+      guideAnswerFamily:
+        "带孩子参观可先去一层的儿童展区，再看三层的自然与人文展览。",
+      guideAnswerQR:
+        "入口二维码可打开网站；馆内二维码在应用中扫描后打开对应楼层图或展品详情。目前仅提供演示码。",
+      guideAnswerTime: "岘港博物馆主馆每天08:00–17:00开放。",
+      guideAnswerTicket: "门票可能因人群和时间而异，请查看官网最新公告。",
+      guideAnswerUnknown:
+        "目前缺少核实资料，无法确定答复。请搜索展览或查看官方来源。",
+      assistantActions: "继续探索",
+      goMap: "查看地图",
+      goPlan: "规划路线",
+      goSearch: "搜索主题",
+      openOfficial: "官方网站",
+      saveOk: "已加入路线",
+      endpointSaved: "已保存AI服务器地址。",
+      endpointClear: "已切换至内置导览助手。",
+      aiOn: "AI服务器已连接。",
+      aiError: "无法连接AI，已改用内置答复。",
+      loading: "正在生成答复...",
+      sampleTap: "点击二维码模拟扫描",
+      welcomeLanguage: "欢迎来到\n岘港博物馆",
+      languagePrompt: "请先选择语言，之后可随时更改。",
+      browserGuess: "浏览器推荐：",
+      languageStart: "开始探索 →",
+    },
+  };
+
+  Object.assign(I18N.vi, {
+    catalogTitle: "Hiện vật có hình ảnh",
+    catalogCaption: "BỘ SƯU TẬP THAM KHẢO",
+    catalogFloor: "Khám phá nội dung 3 tầng ↗",
+    artifactCaption: "HỒ SƠ HIỆN VẬT",
+    artifactListen: "♬ Nghe thuyết minh",
+    artifactShare: "↗ Chia sẻ QR/link",
+    artifactMap: "Chủ đề liên quan",
+    artifactSource: "Xem hồ sơ chính thức ↗",
+    artifactQRExplain:
+      "Dùng camera điện thoại khác quét mã này để mở trực tiếp hồ sơ hiện vật.",
+    zoneIndexTitle: "CÁC CHỦ ĐỀ TRÊN TẦNG",
+  });
+  Object.assign(I18N.en, {
+    catalogTitle: "Artifact photo library",
+    catalogCaption: "VERIFIED REFERENCE COLLECTION",
+    catalogFloor: "Explore all three floors ↗",
+    artifactCaption: "ARTIFACT PROFILE",
+    artifactListen: "♬ Listen to audio",
+    artifactShare: "↗ Share QR/link",
+    artifactMap: "Related theme",
+    artifactSource: "Official museum record ↗",
+    artifactQRExplain:
+      "Scan with another phone’s camera to open this artifact profile.",
+    zoneIndexTitle: "EXHIBITION THEMES ON THIS FLOOR",
+  });
+  Object.assign(I18N.ko, {
+    catalogTitle: "사진 유물 자료",
+    catalogCaption: "전시 소장품 안내",
+    catalogFloor: "3개 층 콘텐츠 보기 ↗",
+    artifactCaption: "유물 정보",
+    artifactListen: "♬ 오디오 듣기",
+    artifactShare: "↗ QR/링크 공유",
+    artifactMap: "관련 주제",
+    artifactSource: "박물관 원본 자료 ↗",
+    artifactQRExplain:
+      "다른 휴대전화로 이 QR을 스캔하면 유물 정보를 열 수 있습니다.",
+    zoneIndexTitle: "층별 주제",
+  });
+  Object.assign(I18N.zh, {
+    catalogTitle: "文物照片资料",
+    catalogCaption: "馆藏资料",
+    catalogFloor: "浏览三层展厅 ↗",
+    artifactCaption: "文物详情",
+    artifactListen: "♬ 听语音介绍",
+    artifactShare: "↗ 分享二维码",
+    artifactMap: "相关主题",
+    artifactSource: "官方文物资料 ↗",
+    artifactQRExplain: "使用另一部手机扫描二维码，直接打开此文物详情。",
+    zoneIndexTitle: "本层展览主题",
+  });
+  // Opening information is inherited project data, not a live schedule feed.
+  Object.assign(I18N.vi, {
+    guideAnswerTime:
+      "Thông tin tham khảo trong dự án: cơ sở 1 tại 31 Trần Phú mở 08:00–17:00 hằng ngày. Hãy xác nhận lịch hiện tại và dịp lễ trên website chính thức.",
+  });
+  Object.assign(I18N.en, {
+    guideAnswerTime:
+      "The project records list site 1 at 31 Tran Phu as open daily 08:00–17:00. Confirm the current schedule and holiday hours on the official website.",
+  });
+  Object.assign(I18N.ko, {
+    guideAnswerTime:
+      "프로젝트 자료에 따르면 쩐푸 31번지 본관은 매일 08:00–17:00 운영합니다. 최신 일정과 공휴일 시간은 공식 웹사이트에서 확인하세요.",
+  });
+  Object.assign(I18N.zh, {
+    guideAnswerTime:
+      "项目资料记载陈富街31号主馆每天08:00–17:00开放。请在官方网站确认最新时间及节假日安排。",
+  });
+  const langs = ["vi", "en", "ko", "zh"];
+  const L = { vi: 0, en: 1, ko: 2, zh: 3 };
+  const S = {
+    overview: "https://baotangdanang.vn/bao-tang-da-nang-1",
+    floors: "https://baotangdanang.vn/bao-tang-da-nang/khong-gian-trung-bay",
+    f2: "https://www.baotangdanang.vn/khong-gian-trung-bay-tang-2",
+    main: "https://baotangdanang.vn/",
+  };
+  const D = [
+    [
+      "co-vat",
+      1,
+      "🏺",
+      ["antique", "history"],
+      [
+        "Sưu tập cổ vật",
+        "Antiquities collection",
+        "고대 유물 컬렉션",
+        "古物收藏",
+      ],
+      [
+        "Các sưu tập cổ vật giới thiệu dấu ấn vật chất và đời sống qua nhiều thời kỳ ở vùng đất Đà Nẵng và miền Trung.",
+        "Antiquities collections present material heritage and traces of everyday life from different historical periods in central Vietnam.",
+        "고대 유물 컬렉션을 통해 베트남 중부 지역의 여러 시대 생활과 물질문화를 살펴볼 수 있습니다.",
+        "古物收藏展示越南中部不同时代的物质文化与生活遗迹。",
+      ],
+      "gom co chu dau binh voi antiquities ceramics pottery",
+    ],
+    [
+      "thieu-nhi",
+      1,
+      "🧒",
+      ["family", "culture"],
+      [
+        "Khu trưng bày thiếu nhi",
+        "Children’s exhibition area",
+        "어린이 전시 공간",
+        "儿童展区",
+      ],
+      [
+        "Không gian dành cho các hoạt động khám phá và giáo dục di sản phù hợp với trẻ em.",
+        "A space for children to discover heritage through age-appropriate activities and learning.",
+        "어린이가 체험과 배움을 통해 지역 문화유산을 알아보는 공간입니다.",
+        "面向儿童的文化遗产探索与教育空间。",
+      ],
+      "tre em gia dinh kids family",
+    ],
+    [
+      "trien-lam",
+      1,
+      "🖼️",
+      ["modern", "culture"],
+      [
+        "Trưng bày định kỳ",
+        "Temporary exhibitions",
+        "기획·특별 전시",
+        "定期专题展览",
+      ],
+      [
+        "Không gian dành cho triển lãm ngắn hạn; nội dung có thể thay đổi theo từng đợt trưng bày.",
+        "A space for short-term exhibitions. Displays change according to the museum’s current program.",
+        "기간별로 주제가 바뀌는 특별 전시 공간입니다.",
+        "用于短期专题展览，具体展览内容会随活动计划调整。",
+      ],
+      "trien lam chuyen de temporary exhibitions",
+    ],
+    [
+      "den-co",
+      2,
+      "🏮",
+      ["culture", "antique"],
+      [
+        "Đèn cổ xứ Quảng",
+        "Historic lamps of Quang region",
+        "꽝 지역의 옛 등불",
+        "广南地区古灯",
+      ],
+      [
+        "Tìm hiểu các loại đèn cổ và nét sinh hoạt văn hóa gắn với ánh sáng trong cuộc sống xứ Quảng.",
+        "Discover historical lamps and their connections to everyday life and cultural practices in the Quang region.",
+        "꽝 지역의 옛 등불과 생활문화의 관계를 알아봅니다.",
+        "了解广南地区古灯及其与当地生活文化的联系。",
+      ],
+      "den mang xong den co lamp lantern lighting",
+    ],
+    [
+      "tram-huong",
+      2,
+      "🌿",
+      ["culture", "antique"],
+      [
+        "Trầm hương xứ Quảng",
+        "Agarwood of Quang region",
+        "꽝 지역의 침향",
+        "广南地区沉香",
+      ],
+      [
+        "Giới thiệu trầm hương như một nét đặc trưng trong tài nguyên, nghề nghiệp và đời sống văn hóa xứ Quảng.",
+        "Explore agarwood as part of the region’s natural resources, crafts and cultural traditions.",
+        "꽝 지역의 자원, 공예와 문화 전통 속 침향을 소개합니다.",
+        "介绍沉香与当地自然资源、工艺及文化传统的关系。",
+      ],
+      "tram huong agarwood incense",
+    ],
+    [
+      "nghien-cuu",
+      2,
+      "📚",
+      ["modern", "history"],
+      [
+        "Nghiên cứu và phát triển",
+        "Research and development",
+        "연구와 발전",
+        "研究与发展",
+      ],
+      [
+        "Không gian giới thiệu hoạt động tìm hiểu, nghiên cứu và phát triển gắn với di sản địa phương.",
+        "A thematic area presenting research and development related to local heritage.",
+        "지역 문화유산의 연구와 발전을 살펴보는 주제 공간입니다.",
+        "展示与当地文化遗产有关的研究与发展主题。",
+      ],
+      "nghien cuu phat trien research development",
+    ],
+    [
+      "dan-toc",
+      2,
+      "🧵",
+      ["culture", "family"],
+      ["Văn hóa các dân tộc", "Ethnic cultures", "소수민족 문화", "民族文化"],
+      [
+        "Tìm hiểu văn hóa của các cộng đồng Cơ Tu, Xơ Đăng, Giẻ-Triêng, Cor và những nét đa dạng văn hóa trong khu vực.",
+        "Explore the cultural diversity of communities such as Cơ Tu, Xơ Đăng, Giẻ-Triêng and Cor.",
+        "꺼뚜, 써당, 제찌엥, 꼬르 등 지역 공동체의 다양한 문화를 소개합니다.",
+        "了解格都、色登、耶-遮恩、戈尔等族群的多样文化。",
+      ],
+      "co tu xo dang gie trieng cor dan toc minority ethnic",
+    ],
+    [
+      "tong-quan",
+      3,
+      "🌉",
+      ["history", "modern"],
+      ["Tổng quan Đà Nẵng", "Da Nang overview", "다낭 개요", "岘港概览"],
+      [
+        "Bức tranh khái quát về thành phố Đà Nẵng, nơi thiên nhiên, đô thị và các cộng đồng cùng tạo nên bản sắc.",
+        "An introduction to the city and the natural, urban and social elements that shape its identity.",
+        "다낭의 자연, 도시와 공동체가 이룬 지역적 특색을 소개합니다.",
+        "概述岘港的自然、城市与社会特色。",
+      ],
+      "da nang city overview thanh pho",
+    ],
+    [
+      "thien-nhien",
+      3,
+      "🌊",
+      ["family", "culture"],
+      [
+        "Thiên nhiên và con người",
+        "Nature and people",
+        "자연과 사람",
+        "自然与人文",
+      ],
+      [
+        "Khám phá điều kiện tự nhiên cùng mối quan hệ giữa con người và môi trường ở Đà Nẵng.",
+        "Explore Da Nang’s natural environment and the relationship between its landscape and communities.",
+        "다낭의 자연환경과 사람들의 삶의 관계를 살펴봅니다.",
+        "了解岘港的自然环境及人与环境的关系。",
+      ],
+      "thien nhien con nguoi moi truong nature people",
+    ],
+    [
+      "lich-su-do-thi",
+      3,
+      "🏛️",
+      ["history", "modern"],
+      [
+        "Lịch sử đô thị Đà Nẵng",
+        "Urban history of Da Nang",
+        "다낭 도시 역사",
+        "岘港城市史",
+      ],
+      [
+        "Theo dõi những chuyển biến của Đà Nẵng qua các giai đoạn hình thành và phát triển đô thị.",
+        "Follow the evolution of Da Nang through stages of urban formation and development.",
+        "다낭의 도시 형성과 발전 과정을 살펴봅니다.",
+        "了解岘港城市形成与发展的历史进程。",
+      ],
+      "lich su tourane thanh pho urban history",
+    ],
+    [
+      "doc-lap",
+      3,
+      "🕊️",
+      ["history"],
+      [
+        "Đấu tranh bảo vệ độc lập",
+        "Struggle for independence",
+        "독립을 위한 투쟁",
+        "争取民族独立",
+      ],
+      [
+        "Chủ đề giới thiệu hành trình đấu tranh bảo vệ độc lập dân tộc được phản ánh trong lịch sử địa phương.",
+        "An exhibition theme about the struggle to defend national independence in the region’s history.",
+        "지역 역사 속 민족 독립을 위한 투쟁을 소개합니다.",
+        "展示当地历史中争取并捍卫民族独立的历程。",
+      ],
+      "khang chien doc lap independence struggle",
+    ],
+    [
+      "chien-tranh",
+      3,
+      "🪖",
+      ["history"],
+      ["Chứng tích chiến tranh", "War remnants", "전쟁의 흔적", "战争遗迹"],
+      [
+        "Những tư liệu và câu chuyện giúp du khách suy ngẫm về tác động của chiến tranh và giá trị của hòa bình.",
+        "Documents and stories invite reflection on the impact of war and the value of peace.",
+        "전쟁의 영향과 평화의 가치를 되새기는 자료와 이야기를 소개합니다.",
+        "通过资料与故事反思战争的影响与和平的价值。",
+      ],
+      "chien tranh war peace chung tich",
+    ],
+    [
+      "hoi-nhap",
+      3,
+      "✨",
+      ["modern", "history"],
+      [
+        "Hội nhập và phát triển",
+        "Integration and development",
+        "통합과 발전",
+        "融合与发展",
+      ],
+      [
+        "Tìm hiểu quá trình Đà Nẵng đổi mới và phát triển trong giai đoạn hiện đại.",
+        "Discover Da Nang’s modern transformation, integration and development.",
+        "현대 다낭의 변화와 발전 과정을 소개합니다.",
+        "了解现代岘港的转型、融合与发展。",
+      ],
+      "hoi nhap phat trien modern development",
+    ],
+    [
+      "toa-thi-chinh",
+      3,
+      "🏢",
+      ["history", "modern"],
+      ["Tòa thị chính Đà Nẵng", "Da Nang City Hall", "다낭 시청", "岘港市政厅"],
+      [
+        "Không gian giới thiệu dấu ấn công trình và câu chuyện đô thị gắn với Tòa thị chính Đà Nẵng.",
+        "An exhibition topic about the historic city hall and its place in Da Nang’s urban story.",
+        "다낭 시청과 도시사의 관련성을 소개하는 전시입니다.",
+        "介绍岘港市政厅及其承载的城市历史。",
+      ],
+      "toa thi chinh city hall",
+    ],
+    [
+      "van-hoa-quang",
+      3,
+      "🎎",
+      ["culture", "family"],
+      [
+        "Văn hóa người Việt xứ Quảng",
+        "Vietnamese culture of Quang region",
+        "꽝 지역 베트남 문화",
+        "广南地区越族文化",
+      ],
+      [
+        "Khám phá phong tục, đời sống và giá trị văn hóa của người Việt xứ Quảng trong dòng chảy lịch sử.",
+        "Explore traditions, daily life and cultural values of Vietnamese communities in the Quang region.",
+        "꽝 지역 베트남인들의 풍습, 생활과 문화적 가치를 알아봅니다.",
+        "探索广南地区越族的风俗、日常生活与文化价值。",
+      ],
+      "van hoa viet quang nam phong tuc traditions culture",
+    ],
+  ].map(([id, floor, icon, tags, names, descs, keywords]) => ({
+    id,
+    floor,
+    icon,
+    tags,
+    names,
+    descs,
+    keywords,
+    source: floor === 2 ? S.f2 : floor === 1 ? S.floors : S.overview,
+  }));
+
+  const GALLERY_IMAGES = {
+    "co-vat": "https://dnfam-website.vr360.com.vn/uploads/images/DSCF1963.webp",
+    "thieu-nhi":
+      "https://dnfam-website.vr360.com.vn/uploads/images/khu%20v%E1%BB%B1c%20thieu%20nhi.webp",
+    "trien-lam":
+      "https://dnfam-website.vr360.com.vn/uploads/images/trien%20lam%20dinh%20ky.webp",
+    "den-co": "https://dnfam-website.vr360.com.vn/uploads/images/DSC02502.JPG",
+    "tram-huong": "https://dnfam-website.vr360.com.vn/uploads/images/h2.webp",
+    "nghien-cuu": "https://dnfam-website.vr360.com.vn/uploads/images/h2.webp",
+    "dan-toc": "https://dnfam-website.vr360.com.vn/uploads/images/h2.webp",
+    "tong-quan":
+      "https://dnfam-website.vr360.com.vn/uploads/images/DSC00923.JPG",
+    "thien-nhien":
+      "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20Thi%C3%AAn%20nhi%C3%AAn%20v%C3%A0%20con%20ng%C6%B0%E1%BB%9Di%20%C4%90%C3%A0%20N%E1%BA%B5ng%281%29.webp",
+    "lich-su-do-thi":
+      "https://dnfam-website.vr360.com.vn/uploads/images/DSC00923.JPG",
+    "doc-lap":
+      "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20Cu%E1%BB%99c%20%C4%91%E1%BA%A5u%20tranh%20b%E1%BA%A3o%20v%E1%BB%87%20n%E1%BB%81n%20%C4%91%E1%BB%99c%20l%E1%BA%ADp%20d%C3%A2n%20t%E1%BB%99c%281%29.webp",
+    "chien-tranh":
+      "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20Cu%E1%BB%99c%20%C4%91%E1%BA%A5u%20tranh%20b%E1%BA%A3o%20v%E1%BB%87%20n%E1%BB%81n%20%C4%91%E1%BB%99c%20l%E1%BA%ADp%20d%C3%A2n%20t%E1%BB%99c%281%29.webp",
+    "hoi-nhap":
+      "https://dnfam-website.vr360.com.vn/uploads/images/DSC00923.JPG",
+    "toa-thi-chinh":
+      "https://dnfam-website.vr360.com.vn/uploads/images/DSC00923.JPG",
+    "van-hoa-quang":
+      "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20ngh%E1%BB%81%20th%E1%BB%A7%20c%C3%B4ng%20truy%E1%BB%81n%20th%E1%BB%91ng.jpg",
+  };
+  const A = [
+    {
+      id: "ma-nao",
+      topic: "tong-quan",
+      name: "Trang sức mã não",
+      en: "Agate jewelry",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_gshe48iiab-1777263997460.webp",
+      era: "Khoảng 2.500–2.000 năm trước",
+      material: "Mã não",
+      summary:
+        "Đồ trang sức tiêu biểu của cư dân văn hóa Sa Huỳnh, khai quật tại khu mộ chum Gò Đình năm 1980.",
+      enSummary:
+        "Agate ornaments associated with the Sa Huynh culture, recovered from the Go Dinh jar-burial site.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/trang-sc-ma-nao",
+    },
+    {
+      id: "sung-than-cong",
+      topic: "doc-lap",
+      name: "Súng thần công",
+      en: "Historic cannon",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_93pul2vr1m-1774794472986.webp",
+      era: "Theo hồ sơ: thế kỷ XIX",
+      material: "Kim loại",
+      summary:
+        "Khẩu thần công được phát hiện tại khu vực Xuân Thiều – Nam Ô năm 2019; hiện vật gợi mở câu chuyện phòng thủ Đà Nẵng.",
+      enSummary:
+        "A historical cannon discovered near Xuan Thieu – Nam O in 2019, linked to Da Nang’s defensive history.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/song-than-cing",
+    },
+    {
+      id: "sac-phong",
+      topic: "doc-lap",
+      name: "Sắc phong",
+      en: "Royal edict",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_u392gzmdqs-1774775225176.webp",
+      era: "1840",
+      material: "Giấy",
+      summary:
+        "Sắc phong thời Minh Mạng liên quan đến chức Thự thủ thành Điện Hải, viết chữ Hán trên giấy vàng có dấu triện đỏ.",
+      enSummary:
+        "An 1840 royal edict related to the Dien Hai Citadel, written on yellow paper with a red seal.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/sac-phong",
+    },
+    {
+      id: "doi-bau",
+      topic: "doc-lap",
+      name: "Đôi bầu",
+      en: "Double carrying vessels",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_5mpvcd3k71-1777265281891.webp",
+      era: "1954",
+      material: "Vật dụng sinh hoạt",
+      summary:
+        "Đôi bầu chị Phan Thị Truy sử dụng khi cải trang bán nước mắm để hoạt động cách mạng ở Đà Nẵng.",
+      enSummary:
+        "Carrying vessels used by Phan Thi Truy as part of her cover while gathering information during wartime.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/yii-bau",
+    },
+    {
+      id: "bom-cbu",
+      topic: "chien-tranh",
+      name: "Bom CBU 55",
+      en: "CBU-55 bomb",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_3epz1nk68i-1774802764488.webp",
+      era: "1955–1975",
+      material: "Sắt",
+      summary:
+        "Hiện vật chứng tích chiến tranh được bàn giao từ Nhà Chứng tích Chiến tranh năm 1990.",
+      enSummary:
+        "A wartime remnant transferred from the War Remnants House in 1990.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/bom-cbu-55",
+    },
+    {
+      id: "phu-dieu",
+      topic: "dan-toc",
+      name: "Phù điêu Cơ Tu",
+      en: "Co Tu carved reliefs",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_qm704x4fvt-1775100280017.webp",
+      era: "Thế kỷ XX",
+      material: "Gỗ",
+      summary:
+        "Bộ phù điêu gỗ chạm hình rồng và thằn lằn từ nhà Gươl của người Cơ Tu tại vùng Giằng – Quảng Nam.",
+      enSummary:
+        "Wooden relief carvings of dragons and lizards from a Co Tu communal Guol house.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/pho-yiau",
+    },
+    {
+      id: "di-chuc",
+      topic: "doc-lap",
+      name: "Bản di chúc",
+      en: "Historical testament",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_m59hgxxluy-1774794845046.webp",
+      era: "1884",
+      material: "Giấy",
+      summary:
+        "Bản di chúc chữ Hán Nôm gắn với danh nhân Ông Ích Khiêm, lưu lời căn dặn cho con cháu.",
+      enSummary:
+        "A handwritten testament associated with scholar and military figure Ong Ich Khiem.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ban-di-choc",
+    },
+    {
+      id: "canh-cua",
+      topic: "chien-tranh",
+      name: "Cánh cửa nhà tù",
+      en: "Prison doors",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_iosdna45zc-1774801711882.webp",
+      era: "1946–1954",
+      material: "Sắt",
+      summary:
+        "Cánh cửa được lưu giữ từ nhà lao Con Gà, ghi dấu lịch sử đấu tranh và giam cầm tại Đà Nẵng.",
+      enSummary:
+        "Original prison doors from the Con Ga detention facility, reflecting Da Nang’s wartime history.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/canh-ca-nha-to",
+    },
+    {
+      id: "ghe-bau",
+      topic: "van-hoa-quang",
+      name: "Ghe bầu",
+      en: "Traditional trading boat",
+      image:
+        "https://baotangdanang.vn/uploads/artifacts/artifact_kvx3ir44ha-1774803583740.webp",
+      era: "Mô hình thế kỷ XXI",
+      material: "Gỗ",
+      summary:
+        "Mô hình ghe bầu – phương tiện vận tải đường biển và giao thương truyền thống nổi tiếng của xứ Quảng.",
+      enSummary:
+        "A modern wooden model of a traditional trading boat associated with coastal Quang culture.",
+      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ghe-bau",
+    },
+  ];
+  const FLOOR_NAMES = {
+    1: [
+      "Cổ vật & khám phá",
+      "Antiquities & discovery",
+      "유물과 탐험",
+      "古物与探索",
+    ],
+    2: ["Sắc màu văn hóa", "Cultural mosaic", "다채로운 문화", "多元文化"],
+    3: ["Lịch sử & con người", "History & people", "역사와 사람", "历史与人文"],
+  };
+  const $ = (id) => document.getElementById(id);
+  const $all = (s) => [...document.querySelectorAll(s)];
+  const sv = (k, def = "") => {
+    try {
+      return localStorage.getItem("museum_v6:" + k) || def;
+    } catch (e) {
+      return def;
+    }
+  };
+  const persist = (k, v) => {
+    try {
+      localStorage.setItem("museum_v6:" + k, v);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+  const browser = (() => {
+    const v = (
+      (navigator.languages && navigator.languages[0]) ||
+      navigator.language ||
+      "vi"
+    ).toLowerCase();
+    return v.startsWith("ko")
+      ? "ko"
+      : v.startsWith("zh")
+        ? "zh"
+        : v.startsWith("en")
+          ? "en"
+          : "vi";
+  })();
+
+  const CANONICAL_BASE =
+    "https://thaihoa121179-ux.github.io/tenweb.github.io/bao-tang-da-nang-v6/";
+  function restoreZone() {
+    try {
+      const z = JSON.parse(sv("museum_zone_v4", "null"));
+      if (
+        z &&
+        [1, 2, 3].includes(z.floor) &&
+        typeof z.topic === "string" &&
+        (!z.topic || D.some((d) => d.id === z.topic && d.floor === z.floor)) &&
+        ["qr", "manual"].includes(z.via) &&
+        Number.isFinite(z.time)
+      )
+        return { floor: z.floor, topic: z.topic, via: z.via, time: z.time };
+    } catch {}
+    return null;
+  }
+  function adata(a) {
+    return window.MuseumDataV6?.artifacts?.[a.id];
+  }
+  function aname(a) {
+    return (
+      adata(a)?.names[L[state.lang]] || (state.lang === "vi" ? a.name : a.en)
+    );
+  }
+  function asummary(a) {
+    return (
+      adata(a)?.summaries[L[state.lang]] ||
+      (state.lang === "vi" ? a.summary : a.enSummary)
+    );
+  }
+  function ameta(a) {
+    const d = adata(a);
+    return {
+      era: d?.eras[L[state.lang]] || a.era,
+      material: d?.flags?.materialUnverified
+        ? human("Chưa xác minh", "Unverified", "미확인", "尚未核实")
+        : d?.materials[L[state.lang]] || a.material,
+    };
+  }
+  function modeLabel() {
+    return human(
+      "Chế độ trợ lý dữ liệu",
+      "Data assistant mode",
+      "자료 기반 도우미 모드",
+      "资料助手模式",
+    );
+  }
+  function emit(name, detail = {}) {
+    document.dispatchEvent(new CustomEvent("museum:" + name, { detail }));
+  }
+  const state = {
+    lang: langs.includes(new URLSearchParams(location.search).get("lang"))
+      ? new URLSearchParams(location.search).get("lang")
+      : langs.includes(sv("museum_language"))
+        ? sv("museum_language")
+        : browser,
+    confirmed: sv("museum_language_confirmed") === "yes",
+    page: "home",
+    stack: [],
+    floor: 1,
+    topic: "co-vat",
+    mapSelected: null,
+    time: 30,
+    interests: new Set(["history"]),
+    pace: "relaxed",
+    route: null,
+    guideMode: "offline",
+    currentZone: restoreZone(),
+    artifact: "ma-nao",
+    speech: null,
+    scan: null,
+    scanLoop: null,
+    qrBusy: false,
+  };
+  function t(k) {
+    return (I18N[state.lang] && I18N[state.lang][k]) || I18N.en[k] || k;
+  }
+  function label(f) {
+    return t("floorLabel").replace("{n}", f);
+  }
+  function nm(d) {
+    return d.names[L[state.lang]] || d.names[1];
+  }
+  function ds(d) {
+    return d.descs[L[state.lang]] || d.descs[1];
+  }
+  function norm(s) {
+    return String(s || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .normalize("NFC")
+      .replace(/đ/g, "d")
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  function esc(s) {
+    return String(s).replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
+  }
+  function toast(s) {
+    const el = $("toast");
+    el.textContent = s;
+    el.classList.remove("hidden");
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => el.classList.add("hidden"), 3600);
+  }
+  function updateTranslations() {
+    document.documentElement.lang = state.lang;
+    document.title =
+      state.lang === "vi"
+        ? "Di sản Đà Nẵng · Hướng dẫn viên bảo tàng"
+        : "Da Nang Museum · Heritage Companion";
+    $all("[data-t]").forEach((el) => {
+      el.textContent = t(el.dataset.t);
+    });
+    $all("[data-placeholder]").forEach((el) => {
+      el.placeholder = t(el.dataset.placeholder);
+    });
+    $("lang-tag").textContent = state.lang.toUpperCase();
+    $("language-heading").textContent = t("welcomeLanguage");
+    $("language-intro").textContent = t("languagePrompt");
+    $("language-start").textContent = t("languageStart");
+    $("language-detected").textContent =
+      t("browserGuess") + browser.toUpperCase();
+    $all("[data-lang]").forEach((el) =>
+      el.classList.toggle("selected", el.dataset.lang === state.lang),
+    );
+    renderPage();
+    emit("language", { language: state.lang });
+  }
+  function enterLanguage() {
+    const first = !state.confirmed;
+    persist("museum_language", state.lang);
+    persist("museum_language_confirmed", "yes");
+    state.confirmed = true;
+    $("lang-overlay").classList.add("hidden");
+    updateTranslations();
+    if (first) applyDeepLink(new URLSearchParams(location.search), false);
+  }
+  function applyDeepLink(q, remember = true) {
+    const item = q.get("artifact"),
+      zone = q.get("zone"),
+      topic = q.get("topic"),
+      floor = Number(q.get("floor"));
+    if (item && A.some((x) => x.id === item)) {
+      openArtifact(item, remember);
+      return true;
+    }
+    if (zone && D.some((x) => x.id === zone)) {
+      markPosition(zone, true, "qr");
+      openMap(D.find((x) => x.id === zone).floor, remember, zone);
+      return true;
+    }
+    if (topic && D.some((x) => x.id === topic)) {
+      openArticle(topic, remember);
+      return true;
+    }
+    if ([1, 2, 3].includes(floor)) {
+      markPosition("floor-" + floor, true, "qr");
+      openMap(floor, remember);
+      return true;
+    }
+    return false;
+  }
+
+  function nav(page, remember = true) {
+    const target = $("page-" + page);
+    if (!target) return;
+    if (state.page === "scan" && page !== "scan") stopCamera();
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    if (remember && state.page !== page) state.stack.push(state.page);
+    state.stack = state.stack.slice(-30);
+    state.page = page;
+    $all(".page").forEach((el) => {
+      const on = el === target;
+      el.classList.toggle("active", on);
+      el.setAttribute("aria-hidden", String(!on));
+      el.inert = !on;
+    });
+    $all(".nav button").forEach((el) => {
+      const active = el.dataset.go === page;
+      el.classList.toggle("on", active);
+      if (active) el.setAttribute("aria-current", "page");
+      else el.removeAttribute("aria-current");
+    });
+    renderPage();
+    target.scrollTop = 0;
+    const scroll = target.querySelector(".scroll");
+    if (scroll) scroll.scrollTop = 0;
+    const h = target.querySelector("h1");
+    if (h) {
+      h.tabIndex = -1;
+      h.focus({ preventScroll: true });
+    }
+    emit("navigate", { page });
+  }
+
+  function back() {
+    const dest = state.stack.pop() || "home";
+    nav(dest, false);
+  }
+  function openTopics(f) {
+    state.floor = f;
+    nav("topics");
+  }
+  function openArtifact(id, remember = true) {
+    const a = A.find((x) => x.id === id);
+    if (!a) return;
+    state.artifact = id;
+    nav("artifact", remember);
+  }
+  function openArticle(id, remember = true) {
+    const d = D.find((x) => x.id === id);
+    if (!d) return;
+    state.topic = id;
+    state.floor = d.floor;
+    nav("article", remember);
+  }
+  function openMap(f, remember = true, topic = null) {
+    state.floor = f;
+    state.mapSelected = topic;
+    nav("map", remember);
+  }
+  function renderPage() {
+    switch (state.page) {
+      case "floors":
+        renderFloors();
+        break;
+      case "catalog":
+        renderCatalog();
+        break;
+      case "artifact":
+        renderArtifact();
+        break;
+      case "topics":
+        renderTopics();
+        break;
+      case "article":
+        renderArticle();
+        break;
+      case "map":
+        renderMap();
+        break;
+      case "search":
+        renderSearch();
+        break;
+      case "plan":
+        renderPlan();
+        break;
+      case "guide":
+        renderGuide();
+        break;
+      case "scan":
+        renderSamples();
+        break;
+      case "info":
+        $("ai-endpoint").value = sv("museum_ai_endpoint");
+        break;
+    }
+  }
+  function human(vi, en, ko, zh) {
+    return { vi, en, ko: ko || en, zh: zh || en }[state.lang] || vi;
+  }
+  function imageBox(url, alt, small = false, caption = "") {
+    return `<div class="photo-wrap rights-pending${small ? " photo-small" : ""}" role="img" aria-label="${esc(alt + " · " + human("Ảnh chờ xác nhận quyền sử dụng", "Image permission pending", "이미지 이용 허가 대기", "图片使用授权待确认"))}"><span class="rights-icon" aria-hidden="true">🏺</span>${small ? "" : `<p>${esc(human("Ảnh tư liệu chờ xác nhận quyền sử dụng", "Reference image awaiting permission", "자료 사진 이용 허가 확인 대기 중", "资料图片使用授权待确认"))}</p><small>${esc(alt)}</small>`}</div>`;
+  }
+
+  function renderCatalog() {
+    const q = ($("catalog-input")?.value || "").trim();
+    const items = artifactSearch(q);
+    $("catalog-count").textContent = human(
+      `${items.length} hồ sơ hiện vật`,
+      `${items.length} artifact records`,
+      `${items.length}개 유물 기록`,
+      `${items.length}件文物记录`,
+    );
+    $("catalog-list").innerHTML =
+      items
+        .map(
+          (a) =>
+            `<button class="artifact-listitem" data-artifact="${a.id}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)}</small><em>${esc(asummary(a))}</em></span><span class="artifact-arrow">›</span></button>`,
+        )
+        .join("") || `<p class="muted">${esc(t("noResult"))}</p>`;
+  }
+
+  function renderArtifact() {
+    const a = A.find((x) => x.id === state.artifact);
+    if (!a) return;
+    const m = ameta(a);
+    $("artifact-title").textContent = aname(a);
+    $("artifact-photo").innerHTML = imageBox(a.image, aname(a));
+    $("artifact-id").textContent = "DM-" + a.id.toUpperCase();
+    $("artifact-text").textContent = asummary(a);
+    $("artifact-meta").innerHTML =
+      `<div><b>${human("Niên đại", "Date", "연대", "年代")}</b><span>${esc(m.era)}</span></div><div><b>${human("Chất liệu", "Material", "재질", "材质")}</b><span>${esc(m.material)}</span></div><div><b>${human("Chủ đề liên quan", "Related theme", "관련 주제", "相关主题")}</b><span>${esc(nm(D.find((d) => d.id === a.topic)))}</span></div>`;
+    $("artifact-source").href = a.url;
+    $("artifact-location").textContent = human(
+      "Phân loại chủ đề theo dữ liệu kế thừa V5; chưa xác minh vị trí trưng bày hoặc giấy phép ảnh. Mở hồ sơ nguồn để đối chiếu.",
+      "Theme classification inherited from V5; physical location and image rights are unverified. Consult the source record.",
+      "V5에서 이어받은 주제 분류입니다. 실제 전시 위치와 이미지 사용 권한은 확인되지 않았습니다. 원문을 확인하세요.",
+      "主题分类继承自V5，实际展位与图片授权尚未核实。请查看原始资料。",
+    );
+    $("artifact-qr").src = qrSrc(
+      CANONICAL_BASE + "?artifact=" + encodeURIComponent(a.id),
+    );
+  }
+
+  function markPosition(zone, silent = false, via = "manual") {
+    let floor = 0,
+      topic = "";
+    if (/^floor-[123]$/.test(zone)) floor = Number(zone.slice(-1));
+    else {
+      const d = D.find((x) => x.id === zone);
+      if (!d) return;
+      floor = d.floor;
+      topic = d.id;
+    }
+    state.currentZone = {
+      floor,
+      topic,
+      via: via === "qr" ? "qr" : "manual",
+      time: Date.now(),
+    };
+    persist("museum_zone_v4", JSON.stringify(state.currentZone));
+    emit("position", { ...state.currentZone });
+    if (!silent)
+      toast(
+        human(
+          "Đã lưu mốc tham chiếu · " + label(floor),
+          "Reference point saved · " + label(floor),
+          "참조 지점 저장 · " + label(floor),
+          "已保存参考点 · " + label(floor),
+        ),
+      );
+  }
+
+  function locationPanel() {
+    const z = state.currentZone;
+    const h = z
+      ? z.topic
+        ? nm(D.find((d) => d.id === z.topic))
+        : label(z.floor)
+      : human(
+          "Chưa có mốc tham chiếu",
+          "No reference point yet",
+          "참조 지점 없음",
+          "尚无参考点",
+        );
+    return `<div class="location-banner"><span class="loc-dot">●</span><div><b>${esc(human("Bạn đang ở đây · mốc mô phỏng", "You are here · demo marker", "현재 위치 · 예시 지점", "您在这里 · 模拟参考点"))}</b><p>${esc(h)} · ${esc(z?.via === "qr" ? human("QR check-in; không phải GPS", "QR check-in; not GPS", "QR 체크인; GPS 아님", "二维码签到，非GPS") : human("Chọn thủ công; không phải GPS", "Manual selection; not GPS", "수동 선택; GPS 아님", "手动选择，非GPS"))}</p></div><button data-set-floor-here="${state.floor}">${human("Tôi ở tầng này", "I am here", "이 층에 있어요", "我在本层")}</button></div>`;
+  }
+
+  function qrSrc(v) {
+    if (typeof window.qrcode !== "function") return "";
+    const qr = window.qrcode(0, "M");
+    qr.addData(String(v), "Byte");
+    qr.make();
+    return (
+      "data:image/svg+xml;charset=utf-8," +
+      encodeURIComponent(
+        qr.createSvgTag({ cellSize: 4, margin: 16, scalable: true }),
+      )
+    );
+  }
+  function renderFloors() {
+    $("floor-list").innerHTML = [3, 2, 1]
+      .map(
+        (f) =>
+          `<button class="listbutton" data-open-floor="${f}"><span class="num">${f.toString().padStart(2, "0")}</span><span class="body"><b>${esc(label(f))} · ${esc(FLOOR_NAMES[f][L[state.lang]])}</b><p>${esc(
+            D.filter((x) => x.floor === f)
+              .map((x) => nm(x))
+              .slice(0, 3)
+              .join(" · "),
+          )}</p></span><span class="arrow">›</span></button>`,
+      )
+      .join("");
+  }
+  function renderTopics() {
+    $("topic-eyebrow").textContent = label(state.floor);
+    $("topic-floor-title").textContent =
+      FLOOR_NAMES[state.floor][L[state.lang]];
+    $("topic-list").innerHTML = D.filter((x) => x.floor === state.floor)
+      .map(
+        (d) =>
+          `<button class="listbutton picture-topic" data-topic="${esc(d.id)}">${imageBox(GALLERY_IMAGES[d.id], nm(d), true)}<span class="body"><b>${esc(nm(d))}</b><p>${esc(ds(d))}</p></span><span class="arrow">›</span></button>`,
+      )
+      .join("");
+  }
+  function renderArticle() {
+    const d = D.find((x) => x.id === state.topic);
+    if (!d) return;
+    $("article-floor").textContent = label(d.floor) + " · " + t("story");
+    $("article-title").textContent = nm(d);
+    $("article-summary").textContent = ds(d);
+    $("article-facts").innerHTML =
+      `<li>${esc(label(d.floor))} — ${esc(FLOOR_NAMES[d.floor][L[state.lang]])}</li><li>${esc(t("verifiedNote"))}</li>`;
+    $("article-source").href = d.source;
+    $("article-speak").textContent = t("listen");
+    $("article-photo").innerHTML = imageBox(
+      GALLERY_IMAGES[d.id],
+      nm(d),
+      false,
+      human(
+        "Ảnh khu trưng bày: Bảo tàng Đà Nẵng · ảnh toàn cảnh, không phải ảnh riêng hiện vật",
+        "Gallery photograph: Da Nang Museum · overview, not an individual object",
+      ),
+    );
+    const related = A.filter((a) => a.topic === d.id);
+    $("article-related").innerHTML = related.length
+      ? `<h3>${human("Hồ sơ hiện vật liên quan", "Related artifact records", "관련 유물 기록", "相关文物档案")}</h3>` +
+        related
+          .map(
+            (a) =>
+              `<button class="artifact-listitem" data-artifact="${a.id}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)}</small></span><span>›</span></button>`,
+          )
+          .join("")
+      : "";
+  }
+  function makeFloorSVG() {
+    const items = D.filter((x) => x.floor === state.floor);
+    const active = state.currentZone?.topic;
+    const rows = items.length <= 4 ? 2 : 3;
+    const cols = Math.ceil(items.length / rows);
+    const width = 340;
+    let nodes = "";
+    items.forEach((d, i) => {
+      const col = i % cols,
+        row = Math.floor(i / cols),
+        w = 304 / cols - 8,
+        h = 55,
+        x = 22 + col * (304 / cols),
+        y = 41 + row * 70;
+      const selected = state.mapSelected === d.id;
+      const here = active === d.id;
+      nodes += `<g class="zone-node${selected ? " on" : ""}${here ? " is-here" : ""}" data-map-topic="${esc(d.id)}" tabindex="0" role="button" aria-label="${esc(nm(d))}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10"/><text x="${x + w / 2}" y="${y + 15}" text-anchor="middle">${i + 1}${here ? " ●" : ""}</text><foreignObject x="${x + 4}" y="${y + 21}" width="${w - 8}" height="30"><div xmlns="http://www.w3.org/1999/xhtml" class="svg-zone-label">${esc(nm(d))}</div></foreignObject></g>`;
+    });
+    return `<rect x="6" y="8" width="328" height="235" rx="16" fill="#f5f4ef" stroke="#c6d1c5" stroke-width="1.5"/><text x="19" y="28" fill="#7b907e" font-size="10">${esc(human("Sơ đồ chủ đề · Mô phỏng", "Thematic diagram · Simulation", "주제 안내도 · 예시", "主题示意图 · 模拟"))}</text>${nodes}<rect x="143" y="245" width="54" height="9" rx="5" fill="#c6d7c7"/>`;
+  }
+  function renderMap() {
+    $all("[data-floor]").forEach((x) =>
+      x.classList.toggle("selected", Number(x.dataset.floor) === state.floor),
+    );
+    $("map-floor-title").textContent =
+      label(state.floor) + " · " + FLOOR_NAMES[state.floor][L[state.lang]];
+    const d = D.find(
+      (x) => x.id === state.mapSelected && x.floor === state.floor,
+    );
+    const first = D.find((x) => x.floor === state.floor);
+    if (!d) state.mapSelected = first?.id;
+    $("floor-svg").innerHTML = makeFloorSVG();
+    const show = d || first;
+    if (show) {
+      $("map-selected").innerHTML =
+        `${imageBox(GALLERY_IMAGES[show.id], nm(show), true)}<div><b>${esc(nm(show))}</b><p>${esc(ds(show))}</p><div class="map-actions"><button id="map-open-topic">${esc(t("openTopic"))} ›</button><button data-set-here="${show.id}">${human("Tôi ở đây", "I am here", "여기에 있어요", "我在这里")}</button></div></div>`;
+    } else $("map-selected").textContent = t("noResult");
+    $("location-panel").innerHTML = locationPanel();
+    $("map-zone-list").innerHTML = D.filter((x) => x.floor === state.floor)
+      .map(
+        (x, i) =>
+          `<button class="zone-list-btn${state.currentZone?.topic === x.id ? " is-here" : ""}" data-map-topic="${x.id}"><span>${i + 1}</span><b>${esc(nm(x))}</b><small>›</small></button>`,
+      )
+      .join("");
+  }
+  function levens(a, b) {
+    if (Math.abs(a.length - b.length) > 3) return 9;
+    let old = Array.from({ length: b.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= a.length; i++) {
+      const row = [i];
+      for (let j = 1; j <= b.length; j++)
+        row.push(
+          Math.min(
+            row[j - 1] + 1,
+            old[j] + 1,
+            old[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1),
+          ),
+        );
+      old = row;
+    }
+    return old[b.length];
+  }
+  function searchScore(d, q) {
+    const needle = norm(q);
+    if (!needle) return 1;
+    const terms = [
+      ...d.names,
+      ...d.descs,
+      d.keywords,
+      label(d.floor),
+      "tang " + d.floor,
+      "floor " + d.floor,
+    ];
+    const name = norm(nm(d));
+    if (name === needle) return 100;
+    if (name.startsWith(needle)) return 80;
+    const hay = norm(terms.join(" "));
+    if (hay.includes(needle)) return 54;
+    const words = hay.split(" "),
+      queryWords = needle.split(" ");
+    const hits = queryWords.map((word) => {
+      if (words.some((w) => w.startsWith(word))) return 12;
+      if (
+        word.length >= 3 &&
+        words.some(
+          (w) =>
+            Math.abs(w.length - word.length) <= 2 &&
+            levens(w, word) <= Math.min(2, Math.floor(word.length / 3)),
+        )
+      )
+        return 7;
+      return 0;
+    });
+    return hits.some((x) => x === 0) ? 0 : hits.reduce((a, b) => a + b, 0);
+  }
+  function getSearch(q) {
+    return D.map((d) => ({ d, score: searchScore(d, q) }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 12)
+      .map((x) => x.d);
+  }
+  function renderSearch() {
+    const inp = $("search-input");
+    const q = inp.value.trim();
+    const interests = ["co-vat", "dan-toc", "lich-su-do-thi", "den-co"];
+    $("search-quick").innerHTML = interests
+      .map((id) => {
+        const d = D.find((x) => x.id === id);
+        return `<button class="chip" data-search-id="${id}">${esc(nm(d))}</button>`;
+      })
+      .join("");
+    const res = getSearch(q);
+    $("search-results").innerHTML = q
+      ? '<div class="muted">' +
+        esc(res.length ? t("popular") + " · " + res.length : t("noResult")) +
+        "</div>"
+      : '<div class="muted">' + esc(t("popular")) + "</div>";
+    $("search-results").innerHTML += res
+      .map(
+        (d) =>
+          `<button class="suggestion" data-topic="${esc(d.id)}"><span class="sicon">${d.icon}</span><span><strong>${esc(nm(d))}</strong><small>${esc(label(d.floor))} · ${esc(ds(d).slice(0, 95))}</small></span></button>`,
+      )
+      .join("");
+    $("search-results").innerHTML += '<div id="search-artifacts"></div>';
+    renderSearchArtifacts();
+  }
+  function artifactScore(a, q) {
+    const needle = norm(q);
+    if (!needle) return 1;
+    const d = adata(a),
+      names = (d?.names || [a.name, a.en]).map(norm);
+    if (names.includes(needle)) return 120;
+    if (names.some((x) => x.startsWith(needle))) return 95;
+    const nameWords = names.join(" ").split(" ");
+    const queries = needle.split(" ");
+    const nameHits = queries.map((w) =>
+      nameWords.some((x) => x.startsWith(w))
+        ? 15
+        : w.length >= 4 && nameWords.some((x) => levens(x, w) <= 1)
+          ? 10
+          : 0,
+    );
+    if (nameHits.every(Boolean))
+      return 65 + nameHits.reduce((a, b) => a + b, 0);
+    const hay = norm(
+      [
+        ...(d?.summaries || [a.summary, a.enSummary]),
+        ...(d?.materials || [a.material]),
+        ...(d?.eras || [a.era]),
+      ].join(" "),
+    );
+    return hay.includes(needle) ? 40 : 0;
+  }
+  function artifactSearch(q) {
+    return A.map((a) => ({ a, score: artifactScore(a, q) }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map((x) => x.a);
+  }
+  function renderSearchArtifacts() {
+    const q = $("search-input").value;
+    const data = q.trim() ? artifactSearch(q) : [];
+    $("search-artifacts").innerHTML = data.length
+      ? `<div class="muted">${human("HỒ SƠ HIỆN VẬT", "ARTIFACT RECORDS", "유물 기록", "文物档案")}</div>` +
+        data
+          .map(
+            (a) =>
+              `<button class="artifact-listitem" data-artifact="${a.id}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)}</small></span><span>›</span></button>`,
+          )
+          .join("")
+      : "";
+  }
+
+  function renderPlan() {
+    $all("[data-min]").forEach((x) =>
+      x.classList.toggle("selected", Number(x.dataset.min) === state.time),
+    );
+    $("plan-interests").innerHTML = [
+      "history",
+      "culture",
+      "antique",
+      "family",
+      "modern",
+    ]
+      .map(
+        (k) =>
+          `<button class="chip${state.interests.has(k) ? " selected" : ""}" data-interest="${k}">${esc(t(k))}</button>`,
+      )
+      .join("");
+    $("plan-pace").innerHTML = ["relaxed", "focused"]
+      .map(
+        (k) =>
+          `<button class="chip${state.pace === k ? " selected" : ""}" data-pace="${k}">${esc(t(k))}</button>`,
+      )
+      .join("");
+    if (state.route) renderRoute();
+  }
+  function buildRoute() {
+    if (!state.interests.size) {
+      toast(t("routeNo"));
+      return;
+    }
+    const base = state.time === 15 ? 2 : state.time === 30 ? 4 : 7;
+    const n = state.pace === "focused" ? Math.max(1, base - 1) : base;
+    const interests = [...state.interests];
+    const scored = D.map((d, i) => ({
+      d,
+      score:
+        d.tags.reduce((s, k) => s + (interests.includes(k) ? 13 : 0), 0) +
+        (d.floor === 3 ? 1 : 0) -
+        i * 0.02,
+    }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, n)
+      .map((x) => x.d);
+    const stops = scored.sort(
+      (a, b) => b.floor - a.floor || D.indexOf(a) - D.indexOf(b),
+    );
+    state.route = {
+      ids: stops.map((x) => x.id),
+      done: [],
+      time: state.time,
+      pace: state.pace,
+      interests,
+    };
+    saveRoute();
+    renderRoute();
+    $("plan-result").scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+  function saveRoute() {
+    state.routeStored = persist("museum_route", JSON.stringify(state.route));
+    emit("route", { route: state.route });
+  }
+  function restoreRoute() {
+    try {
+      const r = JSON.parse(sv("museum_route", "null"));
+      if (
+        !r ||
+        !Array.isArray(r.ids) ||
+        !r.ids.length ||
+        r.ids.length > D.length ||
+        !r.ids.every((id) => D.some((x) => x.id === id)) ||
+        !Array.isArray(r.done) ||
+        !Number.isFinite(r.time) ||
+        r.time < 1 ||
+        r.time > 180 ||
+        !["relaxed", "focused"].includes(r.pace) ||
+        !Array.isArray(r.interests) ||
+        !r.interests.every((k) =>
+          ["history", "culture", "antique", "family", "modern"].includes(k),
+        )
+      )
+        return;
+      state.route = {
+        ids: [...new Set(r.ids)],
+        done: [...new Set(r.done.filter((id) => r.ids.includes(id)))],
+        time: r.time,
+        pace: r.pace,
+        interests: r.interests,
+      };
+    } catch {}
+  }
+
+  function renderRoute() {
+    const el = $("plan-result");
+    if (!state.route) {
+      el.classList.add("hidden");
+      return;
+    }
+    el.classList.remove("hidden");
+    const r = state.route;
+    const pct = Math.round((100 * r.done.length) / Math.max(1, r.ids.length));
+    el.innerHTML = `<div class="sectionline"><b style="font-size:13px">${esc(t("planReady"))}</b><small>${r.time}' · ${esc(t("routeProgress"))} ${pct}%</small></div><div class="route-progress"><span style="width:${pct}%"></span></div>${r.ids
+      .map((id, i) => {
+        const d = D.find((x) => x.id === id);
+        const done = r.done.includes(id);
+        return `<div class="route-stop${done ? " done" : ""}"><span class="step-num">${done ? "✓" : i + 1}</span><div class="step-body"><b data-route-open="${id}" role="button" tabindex="0" style="cursor:pointer">${esc(nm(d))}</b><small>${esc(label(d.floor))} · ~${Math.max(3, Math.floor(r.time / r.ids.length))}′</small></div><button data-route-done="${id}">${esc(done ? t("routeDone") : t("routeMark"))}</button></div>`;
+      })
+      .join(
+        "",
+      )}<p class="muted">${esc(state.routeStored === false ? human("Chỉ lưu trong phiên này: trình duyệt đã chặn bộ nhớ", "Session only: browser storage is blocked", "브라우저 저장소가 차단되어 현재 세션에만 저장됩니다", "浏览器存储已禁用，仅在本次会话保存") : t("routeSave"))} · ${esc(t("clickStop"))}</p>`;
+  }
+  /* Museum Companion V5: conversational, source-grounded local assistant.
+   Not a generative AI model. An optional HTTPS backend can be connected separately. */
+  const guideContext = {
+    artifact: null,
+    topic: null,
+    floor: null,
+    turns: [],
+    lastMood: "😊",
+  };
+  const CHAT_UI = {
+    vi: {
+      welcome:
+        "Xin chào! 👋 Mình là Mây, bạn đồng hành tham quan. Bạn thích cổ vật, văn hóa hay lịch sử? Mình có thể tìm hiện vật, giải thích nội dung và gợi ý lộ trình.",
+      offline:
+        "🧠 Mây đang dùng dữ liệu bảo tàng có nguồn. Hỏi tiếp được nhé! AI tạo sinh cần kết nối máy chủ riêng.",
+      online: "✨ AI nâng cao đã kết nối máy chủ",
+      source: "Nguồn",
+      help: "Mình chưa tìm được thông tin đáng tin cậy cho câu đó 🤔. Bạn thử hỏi tên một hiện vật, tầng trưng bày, giá vé hoặc lộ trình nhé.",
+      like: "Cảm ơn bạn! Mình sẽ giữ cách trả lời này 😊",
+      dislike:
+        "Mình ghi nhận góp ý. Bạn có thể thử câu hỏi khác hoặc mở nguồn chính thức nhé 🙏",
+      prompt: [
+        "Tôi thích lịch sử, có 30 phút",
+        "Súng thần công có từ khi nào?",
+        "Tôi đang ở đâu?",
+        "Tầng 2 có gì?",
+      ],
+      photo: "📚 Mở hồ sơ",
+      where: "🧭 Xem tầng",
+      route: "✨ Tạo lộ trình",
+      more: "📚 Đọc chi tiết",
+      hear: "🔊 Nghe",
+      copy: "Sao chép",
+      good: "Hữu ích",
+      bad: "Chưa đúng",
+    },
+    en: {
+      welcome:
+        "Hello! 👋 I’m Mây, your museum companion. Interested in history, culture or antiquities? Ask me about exhibits or a personalized route.",
+      offline:
+        "🧠 Mây uses curated museum records. A separate AI server is needed for generative chat.",
+      online: "✨ Advanced AI server connected",
+      source: "Source",
+      help: "I do not have a verified answer yet 🤔. Try an artifact name, an exhibition floor or a short itinerary.",
+      like: "Thank you! 😊",
+      dislike:
+        "Thanks for the feedback. You can check the official museum source 🙏",
+      prompt: [
+        "30 minutes of history",
+        "Tell me about the cannon",
+        "Where am I?",
+        "What is on floor 2?",
+      ],
+      photo: "📚 Open record",
+      where: "🧭 View floor",
+      route: "✨ Plan a route",
+      more: "📚 Read more",
+      hear: "🔊 Listen",
+      copy: "Copy",
+      good: "Helpful",
+      bad: "Needs work",
+    },
+    ko: {
+      welcome:
+        "안녕하세요! 👋 박물관 안내 도우미 마이입니다. 역사, 문화, 유물에 대해 질문해 주세요.",
+      offline:
+        "🧠 검증된 박물관 자료를 바탕으로 답합니다. 생성형 AI는 별도 서버가 필요합니다.",
+      online: "✨ AI 서버 연결됨",
+      source: "출처",
+      help: "정확하게 확인된 자료가 없습니다 🤔. 유물 이름이나 층별 전시를 물어보세요.",
+      like: "감사합니다! 😊",
+      dislike: "의견 감사합니다 🙏",
+      prompt: [
+        "3층에는 무엇이 있나요?",
+        "대포에 대해 알려줘",
+        "30분 코스",
+        "어디에 있나요?",
+      ],
+      photo: "📚 기록 보기",
+      where: "🧭 층별 안내",
+      route: "✨ 관람 코스",
+      more: "📚 자세히",
+      hear: "🔊 듣기",
+      copy: "복사",
+      good: "좋아요",
+      bad: "아쉬워요",
+    },
+    zh: {
+      welcome:
+        "你好！👋 我是博物馆导览伙伴 Mây。可以询问历史、文化、文物或参观路线。",
+      offline: "🧠 我根据有来源的博物馆资料回答。生成式 AI 需要独立服务器。",
+      online: "✨ 高级 AI 已连接",
+      source: "资料来源",
+      help: "目前没有足够可靠的资料回答 🤔。可以尝试询问文物名称、楼层或参观路线。",
+      like: "谢谢！😊",
+      dislike: "感谢反馈 🙏",
+      prompt: ["三楼有什么？", "介绍古炮", "30分钟路线", "我在哪里？"],
+      photo: "📚 打开档案",
+      where: "🧭 楼层地图",
+      route: "✨ 规划路线",
+      more: "📚 详细介绍",
+      hear: "🔊 收听",
+      copy: "复制",
+      good: "有用",
+      bad: "待改进",
+    },
+  };
+  function cu(k) {
+    return (CHAT_UI[state.lang] || CHAT_UI.vi)[k];
+  }
+  function scrollChat() {
+    $("messages").scrollTop = $("messages").scrollHeight;
+  }
+  const ROBOT_COPY = {
+    vi: [
+      "Mây AI · Robot hướng dẫn",
+      "Hỏi đáp hiện vật, tìm chủ đề và tạo hành trình khám phá.",
+      "🤖 Hướng dẫn viên số của bạn",
+    ],
+    en: [
+      "Mây AI · Museum robot",
+      "Explore artifacts, find exhibitions and plan your visit.",
+      "🤖 Your digital museum guide",
+    ],
+    ko: [
+      "Mây AI · 박물관 로봇",
+      "유물을 알아보고 전시장을 찾으며 관람 코스를 계획하세요.",
+      "🤖 나만의 디지털 안내원",
+    ],
+    zh: [
+      "Mây AI · 博物馆机器人",
+      "探索文物、了解主题并规划专属参观路线。",
+      "🤖 您的数字导览助手",
+    ],
+  };
+  function renderGuide() {
+    if (!$("messages").children.length) resetGuide();
+    $("guide-status").textContent =
+      state.guideMode === "generative"
+        ? human(
+            "AI tạo sinh · máy chủ đã phản hồi",
+            "Generative AI · server responded",
+            "생성형 AI · 서버 응답 확인",
+            "生成式AI · 服务器已响应",
+          )
+        : modeLabel();
+    const robotCopy = ROBOT_COPY[state.lang] || ROBOT_COPY.vi;
+    ["robot-label", "robot-description", "robot-tagline"].forEach(
+      (id, i) => ($(id).textContent = robotCopy[i]),
+    );
+    $("guide-chips").innerHTML = cu("prompt")
+      .map((q) => `<button data-chat-question="${esc(q)}">${esc(q)}</button>`)
+      .join("");
+  }
+  function addBubble(text, you = false, extra = "", mood = "😊", src = "") {
+    const list = $("messages");
+    let box = document.createElement("div");
+    box.className = "bubble" + (you ? " you" : "");
+    box.textContent = text;
+    if (you) {
+      list.appendChild(box);
+      scrollChat();
+      return box;
+    }
+    const row = document.createElement("div");
+    row.className = "assistant-row";
+    const avatar = document.createElement("div");
+    avatar.className = "assistant-avatar";
+    avatar.title = "Mây · " + mood;
+    avatar.innerHTML =
+      '<img src="ai-robot.webp" alt="Mây AI"><span class="assistant-badge">' +
+      mood +
+      "</span>";
+    const stack = document.createElement("div");
+    stack.className = "assistant-stack";
+    stack.appendChild(box);
+    row.append(avatar, stack);
+    if (extra || src) {
+      const note = document.createElement("div");
+      note.className = "assistant-source";
+      if (src) {
+        const link = document.createElement("a");
+        link.href = src;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = cu("source") + " ↗";
+        note.appendChild(link);
+      }
+      if (extra) {
+        const span = document.createElement("span");
+        span.textContent = extra;
+        note.appendChild(span);
+      }
+      stack.appendChild(note);
+    }
+    const controls = document.createElement("div");
+    controls.className = "assistant-tools";
+    for (const [name, icon, title] of [
+      ["listen", "🔊", cu("hear")],
+      ["copy", "⧉", cu("copy")],
+      ["up", "👍", cu("good")],
+      ["down", "👎", cu("bad")],
+    ]) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = icon;
+      b.title = title;
+      b.setAttribute("aria-label", title);
+      b.onclick = async () => {
+        if (name === "listen") {
+          speakChat(text);
+          return;
+        }
+        if (name === "copy") {
+          try {
+            await navigator.clipboard.writeText(text);
+            toast("✓ " + cu("copy"));
+          } catch (e) {
+            toast(
+              human(
+                "Không thể sao chép tự động. Bạn có thể chọn đoạn trả lời và sao chép.",
+                "Automatic copy unavailable. Select the reply text to copy it.",
+                "자동 복사가 불가능합니다. 답변 텍스트를 선택해 복사하세요.",
+                "无法自动复制，请选中回复文字进行复制。",
+              ),
+            );
+          }
+          return;
+        }
+        if (name === "up" || name === "down") {
+          controls
+            .querySelectorAll("button")
+            .forEach((x) => x.classList.remove("reacted"));
+          b.classList.add("reacted");
+          controls.querySelectorAll("button").forEach((x) => {
+            if (["👍", "👎"].includes(x.textContent))
+              x.setAttribute("aria-pressed", String(x === b));
+          });
+          toast(name === "up" ? cu("like") : cu("dislike"));
+          guideContext.lastFeedback = name;
+          persist("museum_chat_feedback", name);
+        }
+      };
+      controls.appendChild(b);
+    }
+    stack.appendChild(controls);
+    list.appendChild(row);
+    scrollChat();
+    return box;
+  }
+  function speakChat(txt) {
+    if (!("speechSynthesis" in window)) {
+      toast(t("voiceUnsupported"));
+      return;
+    }
+    try {
+      speechSynthesis.cancel();
+      const s = new SpeechSynthesisUtterance(String(txt).slice(0, 2000));
+      s.lang = speechLang();
+      s.rate = 0.94;
+      speechSynthesis.speak(s);
+    } catch (e) {
+      toast(t("voiceUnsupported"));
+    }
+  }
+  function resetGuide() {
+    guideContext.artifact = null;
+    guideContext.topic = null;
+    guideContext.floor = null;
+    guideContext.turns = [];
+    $("messages").replaceChildren();
+    addBubble(cu("welcome"), false, "", "🤖");
+  }
+  function levenshtein1(a, b) {
+    if (a === b) return 0;
+    if (Math.abs(a.length - b.length) > 2) return 3;
+    let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= a.length; i++) {
+      let row = [i];
+      for (let j = 1; j <= b.length; j++)
+        row.push(
+          Math.min(
+            row[j - 1] + 1,
+            prev[j] + 1,
+            prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1),
+          ),
+        );
+      prev = row;
+    }
+    return prev[b.length];
+  }
+  function semanticHit(query, phrase) {
+    const a = norm(query),
+      b = norm(phrase);
+    if (!a || !b) return 0;
+    if (a.includes(b)) return 26 + Math.min(10, b.length / 3);
+    const aw = a.split(" ").filter((x) => x.length >= 3),
+      bw = b.split(" ").filter((x) => x.length >= 3);
+    const hits = bw.filter(
+      (w) =>
+        aw.includes(w) ||
+        aw.some((x) => x.length > 3 && w.length > 3 && levenshtein1(x, w) <= 1),
+    ).length;
+    const stop = new Set([
+      "tang",
+      "floor",
+      "museum",
+      "bao",
+      "tang",
+      "lich",
+      "su",
+      "van",
+      "hoa",
+      "the",
+      "tell",
+      "about",
+      "cua",
+      "nay",
+      "o",
+      "dau",
+      "what",
+      "where",
+      "hien",
+      "vat",
+      "gioi",
+      "thieu",
+      "cho",
+      "toi",
+      "cai",
+      "trong",
+    ]);
+    const informative = bw.filter((w) => !stop.has(w));
+    const clear = informative.filter(
+      (w) =>
+        aw.includes(w) ||
+        aw.some((x) => x.length > 3 && w.length > 3 && levenshtein1(x, w) <= 1),
+    ).length;
+    return hits >= 2 && clear >= 1
+      ? 7 + hits * 3 + clear * 3
+      : clear >= 1 && informative.length === 1 && informative[0].length >= 5
+        ? 8 + clear * 3
+        : 0;
+  }
+  function findMuseumEntity(q) {
+    const query = norm(q);
+    const exactPhrase = (phrase) => {
+      const n = norm(phrase);
+      return n && (query === n || query.includes(n));
+    };
+    const candidates = [];
+    for (const a of A) {
+      const names = adata(a)?.names || [a.name, a.en];
+      const aliases = names
+        .filter((n) => /[가-힣]/.test(n))
+        .map((n) => n.split(" ").at(-1))
+        .filter((n) => n.length >= 2);
+      const englishNoun = {
+        "sung-than-cong": "cannon",
+        "ma-nao": "agate",
+        "sac-phong": "royal edict",
+        "doi-bau": "carrying vessels",
+        "bom-cbu": "cbu 55",
+        "phu-dieu": "co tu",
+        "di-chuc": "testament",
+        "canh-cua": "prison doors",
+        "ghe-bau": "trading boat",
+      }[a.id];
+      if (englishNoun) aliases.push(englishNoun);
+      const hits = [...names, ...aliases].filter(exactPhrase);
+      if (hits.length)
+        candidates.push({
+          type: "artifact",
+          id: a.id,
+          item: a,
+          score: Math.max(...hits.map((n) => norm(n).length)) + 10,
+        });
+    }
+    for (const d of D) {
+      const hits = d.names.filter(exactPhrase);
+      if (hits.length)
+        candidates.push({
+          type: "topic",
+          id: d.id,
+          item: d,
+          score: Math.max(...hits.map((n) => norm(n).length)),
+        });
+    }
+    candidates.sort((a, b) => b.score - a.score);
+    return candidates[0] || null;
+  }
+  function answerLanguage(vi, en, ko, zh) {
+    return human(vi, en, ko, zh);
+  }
+  function shortName(d) {
+    return nm(d);
+  }
+  function safeCurrentZone() {
+    const z = state.currentZone;
+    if (!z) return null;
+    if (typeof z === "string") return z;
+    return z.topic || z.zone || z.id || (z.floor ? "floor-" + z.floor : null);
+  }
+  function locationText() {
+    const z = state.currentZone;
+    if (!z)
+      return human(
+        "Chưa có mốc tham chiếu. Hãy quét QR demo hoặc tự chọn một tầng. Ứng dụng không định vị GPS trong nhà.",
+        "No reference point yet. Scan a demo QR or select a floor. This app does not use indoor GPS.",
+        "참조 지점이 없습니다. 예시 QR을 스캔하거나 층을 선택하세요. 실내 GPS를 사용하지 않습니다.",
+        "尚无参考点。请扫描演示二维码或选择楼层。本应用不使用室内GPS。",
+      );
+    guideContext.floor = z.floor;
+    const title = z.topic
+      ? nm(D.find((d) => d.id === z.topic))
+      : label(z.floor);
+    return human(
+      "Mốc gần nhất: " +
+        title +
+        ". " +
+        (z.via === "qr" ? "QR check-in" : "Bạn chọn thủ công") +
+        ". Đây là mốc mô phỏng theo chủ đề, không xác nhận vị trí hiện vật thật.",
+      "Latest point: " +
+        title +
+        ". " +
+        (z.via === "qr" ? "QR check-in" : "Manually selected") +
+        ". This is a thematic demo marker, not a verified physical exhibit location.",
+      "최근 지점: " +
+        title +
+        ". " +
+        (z.via === "qr" ? "QR 체크인" : "수동 선택") +
+        ". 실제 유물 위치가 아닌 주제별 예시 지점입니다.",
+      "最近参考点：" +
+        title +
+        "。" +
+        (z.via === "qr" ? "二维码签到" : "手动选择") +
+        "。这是主题模拟点，并非已核实的实际展位。",
+    );
+  }
+  function artifactMeta(a) {
+    return ameta(a);
+  }
+  function answerForArtifact(a, intent) {
+    guideContext.artifact = a.id;
+    guideContext.topic = a.topic;
+    const d = D.find((x) => x.id === a.topic);
+    guideContext.floor = d.floor;
+    const name = aname(a),
+      desc = asummary(a),
+      meta = ameta(a);
+    let text = name + "\n" + desc;
+    if (intent === "when")
+      text =
+        name +
+        " · " +
+        human("Niên đại: ", "Date: ", "연대: ", "年代：") +
+        meta.era +
+        "\n" +
+        desc;
+    else if (intent === "material")
+      text =
+        name +
+        " · " +
+        human("Chất liệu: ", "Material: ", "재질: ", "材质：") +
+        (adata(a)?.flags?.materialUnverified
+          ? human(
+              "Chưa xác minh. Hồ sơ kế thừa chỉ ghi loại vật dụng sinh hoạt.",
+              "Unverified. The inherited record lists a household-object category only.",
+              "미확인. 기존 기록에는 생활용품 분류만 있습니다.",
+              "尚未核实。原记录仅标注生活用品类别。",
+            )
+          : meta.material) +
+        "\n" +
+        desc;
+    else if (intent === "where")
+      text =
+        name +
+        " · " +
+        human(
+          "Chủ đề tham chiếu: ",
+          "Related theme: ",
+          "관련 주제: ",
+          "相关主题：",
+        ) +
+        nm(d) +
+        " · " +
+        label(d.floor) +
+        "\n" +
+        human(
+          "Chưa có mặt bằng chính thức xác nhận vị trí trưng bày thực tế của hiện vật. Phân loại chủ đề không phải vị trí vật lý.",
+          "No official plan verifies the artifact’s physical location. Theme classification is not physical positioning.",
+          "실제 전시 위치를 확인할 공식 도면이 없습니다. 주제 분류는 실제 위치가 아닙니다.",
+          "尚无官方平面图核实文物的实际展位。主题分类不代表实际位置。",
+        );
+    else if (intent === "photo")
+      text =
+        name +
+        "\n" +
+        human(
+          "Hồ sơ nguồn có ảnh tư liệu. Quyền sử dụng ảnh chưa được xác nhận nên ứng dụng chưa hiển thị ảnh. Bạn có thể mở nguồn chính thức bên dưới.",
+          "The source record includes a reference photo. Image permission is unconfirmed, so the app does not display it. Open the official source below.",
+          "원문에는 자료 사진이 있습니다. 이용 허가가 확인되지 않아 앱에 표시하지 않습니다. 아래 공식 출처를 확인하세요.",
+          "原始档案含资料图片。使用授权尚未确认，应用暂不展示。可打开下方官方来源。",
+        );
+    else
+      text +=
+        "\n\n" +
+        human("Niên đại: ", "Date: ", "연대: ", "年代：") +
+        meta.era +
+        " · " +
+        human("Chất liệu: ", "Material: ", "재질: ", "材质：") +
+        meta.material;
+    return {
+      text,
+      mood: intent === "where" ? "🧭" : intent === "more" ? "📚" : "🤩",
+      source: a.url,
+      action: "artifact",
+      artifact: a.id,
+      floor: d.floor,
+      hints: ["artifact:" + a.id, "map:" + d.floor],
+    };
+  }
+  function answerForTopic(d, intent) {
+    guideContext.topic = d.id;
+    guideContext.floor = d.floor;
+    guideContext.artifact = null;
+    let text = nm(d) + " · " + label(d.floor) + "\n" + ds(d);
+    if (intent === "where") text += "\n\n" + t("verifiedNote");
+    if (intent === "when" || intent === "material")
+      text +=
+        "\n\n" +
+        human(
+          "Chưa có niên đại hoặc chất liệu cụ thể cho toàn bộ chủ đề. Hãy chọn một hồ sơ hiện vật.",
+          "A theme has no single verified date or material. Please choose an artifact record.",
+          "주제 전체의 연대나 재질은 하나로 확인할 수 없습니다. 유물 기록을 선택하세요.",
+          "整个主题没有统一且核实的年代或材质。请选择文物档案。",
+        );
+    const related = A.filter((a) => a.topic === d.id);
+    if (related.length)
+      text +=
+        "\n\n" +
+        human(
+          "Hồ sơ liên quan: ",
+          "Related records: ",
+          "관련 기록: ",
+          "相关档案：",
+        ) +
+        related.map(aname).join(", ");
+    return {
+      text,
+      mood: "📚",
+      source: d.source,
+      action: "article",
+      id: d.id,
+      floor: d.floor,
+      hints: ["article:" + d.id, "map:" + d.floor],
+    };
+  }
+  function interestRoute(s) {
+    guideContext.artifact = null;
+    guideContext.topic = null;
+    let tag = null;
+    if (/lich su|history|chien tranh|khang chien|war|역사|历史/.test(s))
+      tag = "history";
+    else if (/van hoa|dan toc|culture|ethnic|문화|文化/.test(s))
+      tag = "culture";
+    else if (/co vat|gom|antique|ceramic|pottery|古物|유물/.test(s))
+      tag = "antique";
+    else if (/tre em|gia dinh|children|family|kid|儿童|어린이/.test(s))
+      tag = "family";
+    const num = s.match(/(?:^|\D)(15|20|30|45|60|90|120)(?=\D|$)/);
+    const mins = num ? Number(num[1]) : guideContext.minutes || 30;
+    if (!tag && guideContext.interest) tag = guideContext.interest;
+    guideContext.minutes = mins;
+    const preferred = {
+      history: [
+        "lich-su-do-thi",
+        "doc-lap",
+        "chien-tranh",
+        "hoi-nhap",
+        "tong-quan",
+      ],
+      culture: [
+        "dan-toc",
+        "den-co",
+        "tram-huong",
+        "van-hoa-quang",
+        "thieu-nhi",
+      ],
+      antique: ["co-vat", "den-co", "tram-huong", "trien-lam", "tong-quan"],
+      family: [
+        "thieu-nhi",
+        "thien-nhien",
+        "co-vat",
+        "van-hoa-quang",
+        "tong-quan",
+      ],
+      default: [
+        "tong-quan",
+        "co-vat",
+        "dan-toc",
+        "lich-su-do-thi",
+        "van-hoa-quang",
+      ],
+    };
+    const n = mins <= 20 ? 2 : mins <= 45 ? 3 : 5;
+    const ids = (preferred[tag || "default"] || preferred.default)
+      .slice(0, n)
+      .map((id) => D.find((x) => x.id === id))
+      .filter(Boolean);
+    return { tag, mins, ids };
+  }
+  function visitorAnswer(answer) {
+    guideContext.artifact = null;
+    guideContext.topic = null;
+    return answer;
+  }
+  function replyKnowledge(q) {
+    const query = String(q).slice(0, 700),
+      s = norm(query),
+      say = (...a) => a.some((k) => s.includes(norm(k)));
+    const timeAsk = say(
+      "bao gio",
+      "nam nao",
+      "nien dai",
+      "thoi ky",
+      "tu khi nao",
+      "how old",
+      "when",
+      "date",
+      "era",
+      "年代",
+      "언제",
+      "연대",
+    );
+    const materialAsk = say(
+      "chat lieu",
+      "lam bang gi",
+      "vat lieu",
+      "material",
+      "made of",
+      "材质",
+      "재질",
+    );
+    const photoAsk = say(
+      "co anh",
+      "hinh anh",
+      "cho xem anh",
+      "xem hinh",
+      "photo",
+      "picture",
+      "image",
+      "照片",
+      "사진",
+    );
+    const moreAsk = say(
+      "ke them",
+      "noi them",
+      "chi tiet",
+      "giai thich",
+      "vi sao",
+      "read more",
+      "tell me more",
+      "details",
+      "explain",
+      "详情",
+      "자세히",
+    );
+    const whereAsk = say(
+      "o dau",
+      "vi tri",
+      "tang nao",
+      "lam sao den",
+      "duong di",
+      "where",
+      "how to get",
+      "which floor",
+      "位置",
+      "어디",
+    );
+    const intent = timeAsk
+      ? "when"
+      : materialAsk
+        ? "material"
+        : photoAsk
+          ? "photo"
+          : whereAsk
+            ? "where"
+            : moreAsk
+              ? "more"
+              : "summary";
+    if (
+      say(
+        "toi dang o dau",
+        "vi tri cua toi",
+        "dinh vi toi",
+        "where am i",
+        "my location",
+        "我在哪里",
+        "내 위치",
+        "나는 어디에",
+        "제가 어디에",
+      )
+    )
+      return {
+        text: locationText(),
+        mood: "🧭",
+        hints: ["map:" + (state.currentZone?.floor || state.floor), "scan"],
+      };
+    const museumSubject = say("bao tang", "museum", "박물관", "博物馆");
+    if (
+      (museumSubject &&
+        say("o dau", "where", "어디", "在哪", "地址", "주소")) ||
+      say("dia chi", "address", "주소", "地址")
+    )
+      return visitorAnswer({
+        text: t("addressText") + " · " + t("hoursText"),
+        mood: "🧭",
+        source: S.main,
+        hints: ["info"],
+      });
+    if (
+      say(
+        "gio mo cua",
+        "gio dong cua",
+        "bao gio mo",
+        "opening hour",
+        "hours",
+        "when does the museum open",
+        "开放时间",
+        "几点开",
+        "운영시간",
+        "문 여는",
+        "몇 시",
+      )
+    )
+      return visitorAnswer({
+        text: t("guideAnswerTime"),
+        mood: "📚",
+        source: S.main,
+        hints: ["info"],
+      });
+    if (
+      say(
+        "gia ve",
+        "mua ve",
+        "ticket",
+        "admission",
+        "vao cua bao nhieu",
+        "fee",
+        "门票",
+        "입장료",
+      )
+    )
+      return visitorAnswer({
+        text: t("guideAnswerTicket"),
+        mood: "📚",
+        source: S.main,
+        hints: ["info"],
+      });
+    const item = findMuseumEntity(query);
+    if (item?.type === "artifact") return answerForArtifact(item.item, intent);
+    if (item?.type === "topic") return answerForTopic(item.item, intent);
+    // Follow-up intent only applies to short contextual questions, never arbitrary unknown factual questions.
+    const followup = [
+      "nó làm bằng gì",
+      "nó làm bằng chất liệu gì",
+      "nó có từ khi nào",
+      "nó ở đâu",
+      "nó ở tầng nào",
+      "nó có ảnh không",
+      "nói thêm về nó",
+      "kể thêm về hiện vật đó",
+      "hiện vật đó làm bằng gì",
+      "cái đó ở đâu",
+      "what is it made of",
+      "what is that made of",
+      "what is this made of",
+      "when was it made",
+      "when was it created",
+      "where is it",
+      "where can i find it",
+      "tell me more about it",
+      "how old is it",
+      "what is its material",
+      "它是什么材质",
+      "它的材质是什么",
+      "它的材质",
+      "它在哪里",
+      "它在哪一层",
+      "它是什么年代",
+      "它有照片吗",
+      "这个是什么材质",
+      "그것은 무엇으로 만들었나요",
+      "그것의 재질은 무엇인가요",
+      "chất liệu",
+      "chất liệu gì",
+      "chất liệu là gì",
+      "còn chất liệu thì sao",
+      "làm bằng gì",
+      "niên đại",
+      "niên đại nào",
+      "còn niên đại thì sao",
+      "bao giờ",
+      "ở đâu",
+      "ở tầng nào",
+      "tầng nào",
+      "kể thêm",
+      "nói thêm",
+      "chi tiết",
+      "có ảnh không",
+      "xem hình",
+      "material",
+      "what material",
+      "what is the material",
+      "date",
+      "era",
+      "how old",
+      "when",
+      "where",
+      "tell me more",
+      "read more",
+      "show me a photo",
+      "재질",
+      "재질은",
+      "재질은요",
+      "재질은 무엇인가요",
+      "무슨 재질인가요",
+      "어떤 재질인가요",
+      "연대",
+      "연대는",
+      "언제",
+      "어디",
+      "자세히",
+      "사진",
+      "材质",
+      "什么材质",
+      "是什么材质",
+      "年代",
+      "什么年代",
+      "哪一层",
+      "在哪里",
+      "详情",
+      "照片",
+    ].some((phrase) => s === norm(phrase));
+    if (followup && intent !== "summary") {
+      const a = A.find((a) => a.id === guideContext.artifact);
+      if (a) return answerForArtifact(a, intent);
+      const d = D.find((d) => d.id === guideContext.topic);
+      if (d) return answerForTopic(d, intent);
+    }
+    if (
+      say("chao", "hello", "xin chao", "hey", "안녕", "你好") &&
+      s.split(" ").length <= 5
+    )
+      return {
+        text: cu("welcome"),
+        mood: "😊",
+        hints: ["plan", "catalog", "scan"],
+      };
+    if (say("cam on", "thank", "thanks", "고마워", "谢谢"))
+      return {
+        text: human(
+          "Rất vui vì giúp được bạn! Bạn muốn tìm hiểu hiện vật nào tiếp theo?",
+          "Happy to help! What would you like to explore next?",
+          "도움이 되어 기쁩니다! 다음에는 무엇을 알아볼까요?",
+          "很高兴能帮到您！接下来想了解什么？",
+        ),
+        mood: "😊",
+        hints: ["catalog", "plan"],
+      };
+    if (say("qr", "quet ma", "scan", "camera", "二维码", "코드"))
+      return {
+        text: human(
+          "Bạn có thể quét bằng camera sau khi cấp quyền, tải ảnh QR hoặc nhập mã. QR tầng/khu tạo mốc check-in mô phỏng; QR hiện vật mở hồ sơ. Đây không phải GPS trong nhà.",
+          "Grant camera permission to scan, upload a QR image, or enter a code. Floor/zone QR codes set a demo check-in point; artifact codes open records. This is not indoor GPS.",
+          "카메라 권한을 허용해 스캔하거나 QR 이미지를 업로드하거나 코드를 입력하세요. 층·구역 QR은 예시 체크인 지점을 설정하며 유물 QR은 기록을 엽니다. 실내 GPS가 아닙니다.",
+          "授权摄像头扫码、上传二维码图片或手动输入代码。楼层和区域码设置模拟签到点，文物码打开档案。这不是室内GPS。",
+        ),
+        mood: "🧭",
+        hints: ["scan", "map"],
+      };
+    if (
+      say(
+        "gia ve",
+        "mua ve",
+        "ticket",
+        "admission",
+        "vao cua bao nhieu",
+        "fee",
+        "门票",
+        "입장료",
+      )
+    )
+      return {
+        text: t("guideAnswerTicket"),
+        mood: "📚",
+        source: S.main,
+        hints: ["info"],
+      };
+    if (
+      say(
+        "gio mo cua",
+        "gio dong cua",
+        "bao gio mo",
+        "opening hour",
+        "hours",
+        "开放时间",
+        "운영시간",
+      )
+    )
+      return {
+        text: t("guideAnswerTime"),
+        mood: "📚",
+        source: S.main,
+        hints: ["info"],
+      };
+    if (
+      say(
+        "dia chi",
+        "bao tang o dau",
+        "toi muon den",
+        "address",
+        "how to get to museum",
+        "地址",
+        "주소",
+      )
+    )
+      return {
+        text: t("addressText") + " · " + t("hoursText"),
+        mood: "🧭",
+        source: S.main,
+        hints: ["info"],
+      };
+    for (const [f, phrases, key] of [
+      [
+        1,
+        ["tang 1", "tang mot", "floor 1", "1층", "一楼"],
+        "guideAnswerAntique",
+      ],
+      [
+        2,
+        ["tang 2", "tang hai", "floor 2", "2층", "二楼"],
+        "guideAnswerCulture",
+      ],
+      [
+        3,
+        ["tang 3", "tang ba", "floor 3", "3층", "三楼"],
+        "guideAnswerHistory",
+      ],
+    ])
+      if (say(...phrases)) {
+        guideContext.floor = f;
+        guideContext.artifact = null;
+        guideContext.topic = null;
+        return {
+          text: t(key),
+          mood: "📚",
+          source: f === 1 ? S.floors : f === 2 ? S.f2 : S.overview,
+          hints: ["map:" + f],
+        };
+      }
+    const routeAsk =
+      (guideContext.minutes && /\d+\s*(분|分钟|min|phut)/.test(s)) ||
+      say(
+        "nen di",
+        "lo trinh",
+        "hanh trinh",
+        "tour",
+        "route",
+        "phut",
+        "minute",
+        "thoi gian tham quan",
+        "tham quan gi",
+        "recommend",
+        "goi y",
+        "코스",
+        "路线",
+        "分钟",
+        "분 코스",
+      );
+    if (routeAsk) {
+      const r = interestRoute(s);
+      if (!r.tag && guideContext.interest) r.tag = guideContext.interest;
+      guideContext.interest = r.tag;
+      state.time = r.mins <= 20 ? 15 : r.mins <= 45 ? 30 : 60;
+      if (r.tag) state.interests = new Set([r.tag]);
+      const stops = r.ids
+        .map((d, i) => i + 1 + ". " + nm(d) + " · " + label(d.floor))
+        .join("\n");
+      return {
+        text:
+          human(
+            "Với khoảng " + r.mins + " phút, Mây gợi ý:\n",
+            "For about " + r.mins + " minutes, Mây suggests:\n",
+            r.mins + "분 관람 추천:\n",
+            r.mins + "分钟参观建议：\n",
+          ) +
+          stops +
+          "\n\n" +
+          t("planLimit"),
+        mood: "🧭",
+        source: S.overview,
+        hints: ["plan", "map"],
+      };
+    }
+    if (
+      say(
+        "lich su",
+        "history",
+        "chien tranh",
+        "war",
+        "khang chien",
+        "历史",
+        "역사",
+      )
+    ) {
+      guideContext.interest = "history";
+      return {
+        text: t("guideAnswerHistory"),
+        mood: "📚",
+        source: S.overview,
+        hints: ["map:3", "plan"],
+      };
+    }
+    if (say("van hoa", "culture", "dan toc", "ethnic", "文化", "문화")) {
+      guideContext.interest = "culture";
+      return {
+        text: t("guideAnswerCulture"),
+        mood: "📚",
+        source: S.f2,
+        hints: ["map:2", "plan"],
+      };
+    }
+    if (say("co vat", "gom", "antique", "ceramic", "pottery", "古物", "유물")) {
+      guideContext.interest = "antique";
+      return {
+        text: t("guideAnswerAntique"),
+        mood: "📚",
+        source: S.floors,
+        hints: ["map:1", "catalog"],
+      };
+    }
+    if (
+      say("tre em", "gia dinh", "family", "children", "kid", "儿童", "어린이")
+    ) {
+      guideContext.interest = "family";
+      return {
+        text: t("guideAnswerFamily"),
+        mood: "😊",
+        source: S.floors,
+        hints: ["map:1", "plan"],
+      };
+    }
+    return {
+      text: cu("help"),
+      mood: "🤔",
+      hints: ["catalog", "search", "info"],
+    };
+  }
+  function smartButtons(ans) {
+    const wrap = document.createElement("div");
+    wrap.className = "chat-actions contextual-actions";
+    const actions =
+      ans.hints ||
+      (ans.action === "artifact"
+        ? ["artifact:" + ans.artifact, "map:" + (ans.floor || state.floor)]
+        : ans.action === "article"
+          ? ["article:" + ans.id]
+          : ans.action === "scan"
+            ? ["scan"]
+            : ans.action === "info"
+              ? ["info"]
+              : ans.action === "map"
+                ? ["map:" + (ans.floor || state.floor)]
+                : ["plan", "catalog"]);
+    const names = {
+      plan: cu("route"),
+      catalog: t("collections"),
+      map: cu("where"),
+      scan: t("scan"),
+      info: t("visit"),
+      search: t("goSearch"),
+    };
+    const dedup = [...new Set(actions)];
+    dedup.slice(0, 3).forEach((a) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.replyAction = a;
+      b.textContent = a.startsWith("artifact:")
+        ? human("Mở hồ sơ", "Open record", "기록 열기", "打开档案")
+        : a.startsWith("article:")
+          ? cu("more")
+          : a.startsWith("map:")
+            ? cu("where")
+            : names[a] || a;
+      wrap.appendChild(b);
+    });
+    $("messages").appendChild(wrap);
+    scrollChat();
+  }
+  let chatBusy = false;
+  function safeEndpoint(value) {
+    try {
+      const u = new URL(value);
+      return u.protocol === "https:" &&
+        !u.username &&
+        !u.password &&
+        !u.hash &&
+        u.href.length <= 2048
+        ? u.href
+        : null;
+    } catch {
+      return null;
+    }
+  }
+  async function sendMessage(raw) {
+    const q = String(raw || "")
+      .trim()
+      .slice(0, 700);
+    if (!q || chatBusy) return;
+    chatBusy = true;
+    const submit = $("chat-form").querySelector('button[type="submit"]');
+    if (submit) submit.disabled = true;
+    $("messages").setAttribute("aria-busy", "true");
+    const language = state.lang;
+    try {
+      addBubble(q, true);
+      $("chat-input").value = "";
+      const history = guideContext.turns
+        .slice(-8)
+        .map((turn) => ({ ...turn, content: turn.content.slice(0, 1200) }));
+      guideContext.turns.push({ role: "user", content: q });
+      guideContext.turns = guideContext.turns.slice(-10);
+      const endpoint = safeEndpoint(sv("museum_ai_endpoint"));
+      if (endpoint) {
+        const typing = addBubble(t("loading"), false, "", "🤔");
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 14000);
+          let response;
+          try {
+            response = await fetch(endpoint, {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              credentials: "omit",
+              signal: controller.signal,
+              body: JSON.stringify({
+                message: q,
+                history,
+                language,
+                context: {
+                  floor: state.floor,
+                  topic: guideContext.topic,
+                  artifact: guideContext.artifact,
+                  zone: safeCurrentZone(),
+                },
+                version: "v6",
+              }),
+            });
+          } finally {
+            clearTimeout(timeout);
+          }
+          if (!response.ok) throw Error("HTTP " + response.status);
+          const payload = await response.json();
+          if (
+            typeof payload.answer !== "string" ||
+            !payload.answer.trim() ||
+            payload.answer.length > 5000 ||
+            !["generative", "data"].includes(payload.mode)
+          )
+            throw Error("Invalid AI response");
+          const sources = (
+            Array.isArray(payload.sources) ? payload.sources : []
+          ).filter((x) => {
+            try {
+              const u = new URL(x);
+              return (
+                u.protocol === "https:" &&
+                ["baotangdanang.vn", "www.baotangdanang.vn"].includes(
+                  u.hostname,
+                ) &&
+                !u.username &&
+                !u.password
+              );
+            } catch {
+              return false;
+            }
+          });
+          typing.closest(".assistant-row")?.remove();
+          state.guideMode =
+            payload.mode === "generative" ? "generative" : "offline";
+          renderGuide();
+          addBubble(
+            payload.answer,
+            false,
+            payload.mode === "data" ? modeLabel() : "",
+            payload.mode === "generative" ? "🤩" : "🤔",
+            sources[0] || "",
+          );
+          guideContext.turns.push({
+            role: "assistant",
+            content: payload.answer,
+          });
+          guideContext.turns = guideContext.turns.slice(-10);
+          return;
+        } catch (error) {
+          typing.closest(".assistant-row")?.remove();
+          state.guideMode = "offline";
+          toast(t("aiError"));
+        }
+      }
+      state.guideMode = "offline";
+      renderGuide();
+      const answer = replyKnowledge(q);
+      guideContext.lastMood = answer.mood;
+      addBubble(
+        answer.text,
+        false,
+        modeLabel(),
+        answer.mood || "😊",
+        answer.source || "",
+      );
+      smartButtons(answer);
+      guideContext.turns.push({ role: "assistant", content: answer.text });
+      guideContext.turns = guideContext.turns.slice(-10);
+    } finally {
+      chatBusy = false;
+      if (submit) submit.disabled = false;
+      $("messages").setAttribute("aria-busy", "false");
+    }
+  }
+
+  function speechLang() {
+    return (
+      { vi: "vi-VN", en: "en-US", ko: "ko-KR", zh: "zh-CN" }[state.lang] ||
+      "vi-VN"
+    );
+  }
+  function speakText(txt) {
+    if (!("speechSynthesis" in window)) {
+      toast(t("voiceUnsupported"));
+      return;
+    }
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      $("article-speak").textContent = t("listen");
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(txt);
+    u.lang = speechLang();
+    u.rate = 0.93;
+    u.onend = () => {
+      $("article-speak").textContent = t("listen");
+    };
+    u.onerror = () => {
+      $("article-speak").textContent = t("listen");
+    };
+    speechSynthesis.speak(u);
+    $("article-speak").textContent = t("speakStop");
+  }
+  function speechToInput(target, send = false) {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      toast(t("speechUnsupported"));
+      target.focus();
+      return;
+    }
+    try {
+      if (state.speech) {
+        state.speech.abort();
+      }
+      const r = new SR();
+      state.speech = r;
+      r.lang = speechLang();
+      r.interimResults = false;
+      r.maxAlternatives = 1;
+      const old = target.placeholder;
+      r.onstart = () => {
+        target.placeholder = t("speechListening");
+      };
+      r.onresult = (e) => {
+        const words = e.results[0][0].transcript;
+        target.value = words;
+        if (send) sendMessage(words);
+        else renderSearch();
+      };
+      r.onerror = (e) => {
+        if (e.error === "not-allowed" || e.error === "service-not-allowed")
+          toast(t("speechDenied"));
+      };
+      r.onend = () => {
+        target.placeholder = old;
+        state.speech = null;
+      };
+      r.start();
+    } catch (e) {
+      toast(t("speechUnsupported"));
+    }
+  }
+  const QR_VALUES = {
+    entry: CANONICAL_BASE,
+    f1: CANONICAL_BASE + "?floor=1",
+    f2: CANONICAL_BASE + "?floor=2",
+    f3: CANONICAL_BASE + "?floor=3",
+    a1: CANONICAL_BASE + "?artifact=sung-than-cong",
+    a2: CANONICAL_BASE + "?artifact=ghe-bau",
+    zone: CANONICAL_BASE + "?zone=dan-toc",
+    topic: CANONICAL_BASE + "?topic=co-vat",
+  };
+  function renderSamples() {
+    $("qr-codes").innerHTML = Object.entries(QR_VALUES)
+      .map(([k, v]) => {
+        const name =
+          k === "entry"
+            ? t("qrEntry")
+            : k.startsWith("f")
+              ? label(Number(k[1]))
+              : k === "a1"
+                ? aname(A.find((a) => a.id === "sung-than-cong"))
+                : k === "a2"
+                  ? aname(A.find((a) => a.id === "ghe-bau"))
+                  : nm(
+                      D.find(
+                        (d) => d.id === (k === "zone" ? "dan-toc" : "co-vat"),
+                      ),
+                    );
+        return `<button class="qr-sample" data-demo-code="${esc(v)}"><img loading="lazy" alt="QR ${esc(name)}" src="${qrSrc(v)}"><b>${esc(name)}</b><small>${esc(t("sampleTap"))}</small></button>`;
+      })
+      .join("");
+  }
+  function showQR(text) {
+    const box = $("qr-result");
+    box.classList.remove("hidden");
+    box.textContent = text;
+  }
+  function parseQR(raw) {
+    const val = String(raw || "").trim();
+    if (!val) {
+      showQR(t("qrManualMsg"));
+      return;
+    }
+    stopCamera();
+    if (val.length > 2048) {
+      showQR(t("qrInvalid"));
+      return;
+    }
+    const code = val.toUpperCase();
+    if (code === "DN-MUSEUM-ENTRY") {
+      nav("home");
+      return;
+    }
+    const fm = code.match(/^DN-MUSEUM-(?:F|FLOOR-)([123])$/);
+    if (fm) {
+      markPosition("floor-" + fm[1], false, "qr");
+      openMap(Number(fm[1]));
+      return;
+    }
+    const am = code.match(/^DN-MUSEUM-(?:ART-|ARTIFACT-)([A-Z0-9-]+)$/);
+    if (am && A.some((a) => a.id === am[1].toLowerCase())) {
+      openArtifact(am[1].toLowerCase());
+      return;
+    }
+    const zm = code.match(/^DN-MUSEUM-(ZONE|TOPIC)-([A-Z0-9-]+)$/);
+    if (zm && D.some((d) => d.id === zm[2].toLowerCase())) {
+      const d = D.find((d) => d.id === zm[2].toLowerCase());
+      if (zm[1] === "TOPIC") openArticle(d.id);
+      else {
+        markPosition(d.id, false, "qr");
+        openMap(d.floor, true, d.id);
+      }
+      return;
+    }
+    try {
+      const u = new URL(val, location.href),
+        canonical = new URL(CANONICAL_BASE);
+      const cleanPath = (x) => x.replace(/index\.html$/, "").replace(/\/$/, "");
+      const canonicalMatch =
+        u.protocol === "https:" &&
+        u.hostname === canonical.hostname &&
+        cleanPath(u.pathname) === cleanPath(canonical.pathname);
+      const localMatch =
+        u.origin === location.origin &&
+        cleanPath(u.pathname) === cleanPath(location.pathname) &&
+        (u.protocol === "https:" ||
+          (u.protocol === "http:" &&
+            ["localhost", "127.0.0.1", "[::1]"].includes(u.hostname)));
+      if (!u.username && !u.password && (canonicalMatch || localMatch)) {
+        if (!u.search) {
+          nav("home");
+          return;
+        }
+        if (!applyDeepLink(u.searchParams)) showQR(t("qrInvalid"));
+        return;
+      }
+      if (u.protocol === "https:" && !u.username && !u.password) {
+        const box = $("qr-result");
+        box.classList.remove("hidden");
+        box.replaceChildren();
+        const p = document.createElement("p");
+        p.textContent = t("qrExternal");
+        const a = document.createElement("a");
+        a.href = u.href;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.className = "source";
+        a.textContent = t("openOfficial");
+        box.append(p, a);
+        return;
+      }
+    } catch {}
+    showQR(t("qrInvalid"));
+  }
+  async function decode(canvas) {
+    if (window.jsQR) {
+      try {
+        const c = canvas.getContext("2d", { willReadFrequently: true });
+        const data = c.getImageData(0, 0, canvas.width, canvas.height);
+        const out = window.jsQR(data.data, data.width, data.height, {
+          inversionAttempts: "attemptBoth",
+        });
+        if (out) return out.data;
+      } catch (e) {}
+    }
+    if ("BarcodeDetector" in window) {
+      try {
+        const detector = new BarcodeDetector({ formats: ["qr_code"] });
+        const codes = await detector.detect(canvas);
+        if (codes.length) return codes[0].rawValue;
+      } catch (e) {}
+    }
+    return null;
+  }
+  function stopCamera() {
+    if (state.scanLoop) cancelAnimationFrame(state.scanLoop);
+    state.scanLoop = null;
+    const s = state.scan;
+    if (s) {
+      s.getTracks().forEach((track) => track.stop());
+      state.scan = null;
+    }
+    const video = $("qr-video");
+    video.pause();
+    video.srcObject = null;
+    $("scan-video-box").classList.remove("streaming");
+    if (state.page === "scan") $("scan-state").textContent = t("qrStopped");
+    state.qrBusy = false;
+  }
+  async function openCamera() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      toast(t("qrCameraError"));
+      return;
+    }
+    stopCamera();
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: { ideal: "environment" },
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+        },
+        audio: false,
+      });
+      if (state.page !== "scan") {
+        stream.getTracks().forEach((x) => x.stop());
+        return;
+      }
+      state.scan = stream;
+      const video = $("qr-video");
+      video.srcObject = stream;
+      await video.play();
+      $("scan-state").textContent = t("cameraStarted");
+      $("scan-video-box").classList.add("streaming");
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      let last = 0;
+      const tick = async (now) => {
+        if (!state.scan || state.page !== "scan") return;
+        if (!state.qrBusy && now - last > 140 && video.videoWidth) {
+          last = now;
+          state.qrBusy = true;
+          try {
+            const w = Math.min(700, video.videoWidth);
+            canvas.width = w;
+            canvas.height = Math.max(
+              1,
+              Math.round((video.videoHeight * w) / video.videoWidth),
+            );
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const result = await decode(canvas);
+            if (result) {
+              parseQR(result);
+              return;
+            }
+          } catch (e) {
+          } finally {
+            state.qrBusy = false;
+          }
+        }
+        state.scanLoop = requestAnimationFrame(tick);
+      };
+      state.scanLoop = requestAnimationFrame(tick);
+    } catch (e) {
+      toast(t("qrCameraError"));
+      showQR(t("qrCameraError"));
+      stopCamera();
+    }
+  }
+  async function scanFile(file) {
+    if (!file) return;
+    showQR(t("qrBusy"));
+    try {
+      const blobURL = URL.createObjectURL(file);
+      const im = new Image();
+      try {
+        await new Promise((res, rej) => {
+          im.onload = res;
+          im.onerror = rej;
+          im.src = blobURL;
+        });
+        const cn = document.createElement("canvas");
+        const w = Math.min(1500, im.naturalWidth);
+        cn.width = w;
+        cn.height = Math.max(
+          1,
+          Math.round((im.naturalHeight * w) / im.naturalWidth),
+        );
+        cn.getContext("2d", { willReadFrequently: true }).drawImage(
+          im,
+          0,
+          0,
+          cn.width,
+          cn.height,
+        );
+        const val = await decode(cn);
+        if (val) parseQR(val);
+        else showQR(t("qrFileError"));
+      } finally {
+        URL.revokeObjectURL(blobURL);
+      }
+    } catch (e) {
+      showQR(t("qrFileError"));
+    }
+  }
+  function syncEvents() {
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("button,[data-route-open],[data-map-topic]");
+      if (!btn) return;
+      if (btn.matches("[data-go]")) {
+        nav(btn.dataset.go);
+        return;
+      }
+      if (btn.matches("[data-back]")) {
+        back();
+        return;
+      }
+      if (btn.matches("[data-open-floor]")) {
+        openTopics(Number(btn.dataset.openFloor));
+        return;
+      }
+      if (btn.matches("[data-topic]")) {
+        openArticle(btn.dataset.topic);
+        return;
+      }
+      if (btn.matches("[data-artifact]")) {
+        openArtifact(btn.dataset.artifact);
+        return;
+      }
+      if (btn.matches("[data-set-here]")) {
+        markPosition(btn.dataset.setHere, false, "manual");
+        renderMap();
+        return;
+      }
+      if (btn.matches("[data-set-floor-here]")) {
+        markPosition("floor-" + btn.dataset.setFloorHere, false, "manual");
+        renderMap();
+        return;
+      }
+      if (btn.matches("[data-floor]")) {
+        state.floor = Number(btn.dataset.floor);
+        state.mapSelected = null;
+        renderMap();
+        return;
+      }
+      if (btn.matches("[data-map-topic]")) {
+        state.mapSelected = btn.dataset.mapTopic;
+        renderMap();
+        return;
+      }
+      if (btn.matches("[data-search-id]")) {
+        openArticle(btn.dataset.searchId);
+        return;
+      }
+      if (btn.matches("[data-min]")) {
+        state.time = Number(btn.dataset.min);
+        renderPlan();
+        return;
+      }
+      if (btn.matches("[data-interest]")) {
+        const k = btn.dataset.interest;
+        state.interests.has(k)
+          ? state.interests.delete(k)
+          : state.interests.add(k);
+        renderPlan();
+        return;
+      }
+      if (btn.matches("[data-pace]")) {
+        state.pace = btn.dataset.pace;
+        renderPlan();
+        return;
+      }
+      if (btn.matches("[data-route-open]")) {
+        openArticle(btn.dataset.routeOpen);
+        return;
+      }
+      if (btn.matches("[data-route-done]")) {
+        if (!state.route) return;
+        const id = btn.dataset.routeDone;
+        state.route.done = state.route.done.includes(id)
+          ? state.route.done.filter((x) => x !== id)
+          : [...state.route.done, id];
+        saveRoute();
+        renderRoute();
+        return;
+      }
+      if (btn.matches("[data-chat-sample]")) {
+        sendMessage(t(btn.dataset.chatSample));
+        return;
+      }
+      if (btn.matches("[data-chat-question]")) {
+        sendMessage(btn.dataset.chatQuestion);
+        return;
+      }
+      if (btn.matches("[data-reply-action]")) {
+        const a = btn.dataset.replyAction;
+        if (a.startsWith("map:")) openMap(Number(a.split(":")[1]));
+        else if (a.startsWith("article:")) openArticle(a.split(":")[1]);
+        else if (a.startsWith("artifact:")) openArtifact(a.split(":")[1]);
+        else nav(a);
+        return;
+      }
+      if (btn.matches("[data-demo-code]")) {
+        parseQR(btn.dataset.demoCode);
+        return;
+      }
+      if (btn.matches("[data-lang]")) {
+        state.lang = btn.dataset.lang;
+        updateTranslations();
+        return;
+      }
+    });
+    $("lang-switch").addEventListener("click", () => {
+      $("lang-overlay").classList.remove("hidden");
+    });
+    $("language-start").addEventListener("click", () => {
+      enterLanguage();
+    });
+    $("top-info").addEventListener("click", () => nav("info"));
+    $("catalog-input").addEventListener("input", renderCatalog);
+    $("catalog-floor").addEventListener("click", () => nav("floors"));
+    $("artifact-speak").addEventListener("click", () => {
+      const a = A.find((x) => x.id === state.artifact);
+      speakText(aname(a) + ". " + asummary(a));
+    });
+    $("artifact-share").addEventListener("click", async () => {
+      const url =
+        CANONICAL_BASE + "?artifact=" + encodeURIComponent(state.artifact);
+      try {
+        if (navigator.share)
+          await navigator.share({ title: document.title, url });
+        else {
+          await navigator.clipboard.writeText(url);
+          toast(human("Đã sao chép link hiện vật", "Artifact link copied"));
+        }
+      } catch (e) {
+        toast(url);
+      }
+    });
+    $("artifact-map").addEventListener("click", () => {
+      const a = A.find((x) => x.id === state.artifact);
+      const d = D.find((x) => x.id === a.topic);
+      openMap(d.floor, true, d.id);
+    });
+    $("home-search-btn").addEventListener("click", () => {
+      $("search-input").value = "";
+      nav("search");
+      $("search-input").focus();
+    });
+    $("home-mic").addEventListener("click", () => {
+      nav("search");
+      speechToInput($("search-input"));
+    });
+    $("hero-plan").addEventListener("click", () => nav("plan"));
+    $("topics-map").addEventListener("click", () => openMap(state.floor));
+    $("topics-scan").addEventListener("click", () => nav("scan"));
+    $("article-pin").addEventListener("click", () => {
+      const d = D.find((x) => x.id === state.topic);
+      openMap(d.floor, true, d.id);
+    });
+    $("article-chat").addEventListener("click", () => {
+      const d = D.find((x) => x.id === state.topic);
+      nav("guide");
+      sendMessage(nm(d));
+    });
+    $("article-add").addEventListener("click", () => {
+      if (!state.route)
+        state.route = {
+          ids: [],
+          done: [],
+          time: 30,
+          pace: "relaxed",
+          interests: [],
+        };
+      if (!state.route.ids.includes(state.topic))
+        state.route.ids.push(state.topic);
+      saveRoute();
+      toast(t("saveOk"));
+    });
+    $("article-speak").addEventListener("click", () => {
+      const d = D.find((x) => x.id === state.topic);
+      speakText(nm(d) + ". " + ds(d));
+    });
+    $("map-open-topic")?.addEventListener("click", () => {});
+    $("map-list").addEventListener("click", () => openTopics(state.floor));
+    $("map-scan").addEventListener("click", () => nav("scan"));
+    $("search-input").addEventListener("input", () => renderSearch());
+    $("search-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const q = $("search-input").value;
+        const artifacts = artifactSearch(q),
+          topics = getSearch(q);
+        if (
+          artifacts.length &&
+          (!topics.length ||
+            artifactScore(artifacts[0], q) >= searchScore(topics[0], q))
+        )
+          openArtifact(artifacts[0].id);
+        else if (topics.length) openArticle(topics[0].id);
+      }
+    });
+    $("search-mic").addEventListener("click", () =>
+      speechToInput($("search-input")),
+    );
+    $("plan-build").addEventListener("click", buildRoute);
+    $("chat-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      sendMessage($("chat-input").value);
+    });
+    $("chat-mic").addEventListener("click", () =>
+      speechToInput($("chat-input"), true),
+    );
+    $("scan-start").addEventListener("click", openCamera);
+    $("scan-stop").addEventListener("click", () => {
+      stopCamera();
+      showQR(t("qrStopped"));
+    });
+    $("scan-demo-btn").addEventListener("click", () => {
+      $("qr-codes").classList.toggle("hidden");
+      renderSamples();
+    });
+    $("scan-upload-btn").addEventListener("click", () => $("qr-file").click());
+    $("qr-file").addEventListener("change", (e) => {
+      scanFile(e.target.files?.[0]);
+      e.target.value = "";
+    });
+    $("qr-manual-go").addEventListener("click", () =>
+      parseQR($("qr-manual").value),
+    );
+    $("qr-manual").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") parseQR(e.target.value);
+    });
+    $("ai-endpoint-save").addEventListener("click", () => {
+      const val = $("ai-endpoint").value.trim();
+      if (val && !safeEndpoint(val)) {
+        toast(
+          human(
+            "Nhập URL HTTPS hợp lệ, không chứa khóa hoặc thông tin đăng nhập.",
+            "Use a valid HTTPS URL without credentials or keys.",
+            "키나 로그인 정보가 없는 HTTPS URL을 입력하세요.",
+            "请输入不含密钥或登录信息的有效HTTPS地址。",
+          ),
+        );
+        return;
+      }
+      persist("museum_ai_endpoint", val);
+      state.guideMode = "offline";
+      toast(t(val ? "endpointSaved" : "endpointClear"));
+      renderGuide();
+    });
+    window.addEventListener("pagehide", stopCamera);
+  }
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("#map-open-topic") && state.mapSelected)
+      openArticle(state.mapSelected);
+  });
+  document.addEventListener(
+    "error",
+    (e) => {
+      if (e.target.tagName === "IMG" && e.target.closest(".photo-wrap")) {
+        e.target.style.display = "none";
+        const n = e.target.nextElementSibling;
+        if (n) n.hidden = false;
+      }
+    },
+    true,
+  );
+  document.addEventListener("keydown", (e) => {
+    if (
+      (e.key === "Enter" || e.key === " ") &&
+      e.target.matches("[data-map-topic],[data-route-open]")
+    ) {
+      e.preventDefault();
+      e.target.click();
+    }
+    if (
+      e.key === "Escape" &&
+      $("lang-overlay").classList.contains("hidden") &&
+      state.page !== "home"
+    )
+      back();
+  });
+  restoreRoute();
+  syncEvents();
+  updateTranslations();
+  resetGuide();
+  $("lang-overlay").classList.toggle("hidden", state.confirmed);
+  if (state.confirmed)
+    applyDeepLink(new URLSearchParams(location.search), false);
+
+  window.Museum = {
+    state,
+    D,
+    A,
+    S,
+    t,
+    nm,
+    ds,
+    label,
+    human,
+    nav,
+    openArtifact,
+    openArticle,
+    openMap,
+    renderPage,
+    renderCatalog,
+    renderSearch,
+    renderGuide,
+    renderPlan,
+    renderMap,
+    renderArtifact,
+    renderArticle,
+    updateTranslations,
+    sendMessage,
+    parseQR,
+    markPosition,
+    speakText,
+    toast,
+    esc,
+    norm,
+    sv,
+    persist,
+    guideContext,
+    replyKnowledge,
+    buildRoute,
+    saveRoute,
+    getSearch,
+    searchScore,
+    levens,
+    qrSrc,
+    aname,
+    asummary,
+    ameta,
+    artifactSearch,
+    artifactScore,
+    CANONICAL_BASE,
+    applyDeepLink,
+    modeLabel,
+    stopCamera,
+  };
+})();
