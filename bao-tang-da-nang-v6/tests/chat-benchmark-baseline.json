@@ -1,0 +1,1291 @@
+{
+  "commit": "c391419",
+  "sourceSha256": "3461a9537da5ddd5ac8cadb10876abc0692d4dd3ea8831d1a1d75d034f78249b",
+  "engineSource": "/* Shared intent/slot resolver. It does not train a model or invent museum facts.\n * Used by the local assistant and optional Worker with the same source records. */\n((root) => {\n  \"use strict\";\n  const normalize = (value) =>\n    String(value || \"\")\n      .toLowerCase()\n      .normalize(\"NFD\")\n      .replace(/[\\u0300-\\u036f]/g, \"\")\n      .normalize(\"NFC\")\n      .replace(/đ/g, \"d\")\n      .replace(/[^\\p{L}\\p{N}]+/gu, \" \")\n      .trim()\n      .replace(/\\s+/g, \" \");\n  const colloquial = (text, lang) => {\n    let q = normalize(text);\n    if (lang === \"vi\")\n      q = q\n        .replace(/\\b(k|ko|khg|hok|hong|hem)\\b/g, \"khong\")\n        .replace(/\\b(dc|dk)\\b/g, \"duoc\")\n        .replace(/\\b(mik|mk|minh)\\b/g, \"minh\")\n        .replace(/\\b(vay|zay|z)\\b/g, \"vay\")\n        .replace(/\\b(j)\\b/g, \"gi\");\n    return q;\n  };\n  const aliases = {\n    \"sung-than-cong\": [\"sung than cong\", \"than cong\", \"cannon\", \"대포\", \"古炮\"],\n    \"ma-nao\": [\"ma nao\", \"agate\", \"마노\", \"玛瑙\"],\n    \"sac-phong\": [\"sac phong\", \"royal edict\", \"칙서\", \"敕封\"],\n    \"doi-bau\": [\"doi bau\", \"carrying vessels\", \"운반 용기\", \"挑担容器\"],\n    \"bom-cbu\": [\"bom cbu\", \"cbu 55\", \"cbu55\", \"cbu\"],\n    \"phu-dieu\": [\"phu dieu\", \"co tu relief\", \"목조 부조\", \"木雕浮雕\"],\n    \"di-chuc\": [\"di chuc\", \"testament\", \"유언장\", \"遗嘱\"],\n    \"canh-cua\": [\"canh cua\", \"prison doors\", \"감옥 문\", \"监狱门\"],\n    \"ghe-bau\": [\"ghe bau\", \"trading boat\", \"무역선\", \"商船\"],\n  };\n  const tags = {\n    history: [\"lich su\", \"chien tranh\", \"history\", \"war\", \"역사\", \"历史\"],\n    culture: [\"van hoa\", \"dan toc\", \"culture\", \"ethnic\", \"문화\", \"文化\"],\n    antique: [\"co vat\", \"do co\", \"antiquities\", \"antique\", \"유물\", \"古物\"],\n    family: [\n      \"gia dinh\",\n      \"tre em\",\n      \"tre nho\",\n      \"children\",\n      \"family\",\n      \"kids\",\n      \"가족\",\n      \"어린이\",\n      \"家庭\",\n      \"儿童\",\n    ],\n    modern: [\"thanh pho\", \"do thi\", \"modern\", \"city\", \"도시\", \"城市\"],\n  };\n  function has(q, phrase) {\n    const p = normalize(phrase);\n    return /[가-힣\\u3400-\\u9fff]/u.test(p)\n      ? q.includes(p)\n      : (\" \" + q + \" \").includes(\" \" + p + \" \");\n  }\n  const any = (q, phrases) => phrases.some((p) => has(q, p));\n  function editDistance(a, b) {\n    if (Math.abs(a.length - b.length) > 1) return 2;\n    let row = Array.from({ length: b.length + 1 }, (_, i) => i);\n    for (let i = 1; i <= a.length; i++) {\n      const next = [i];\n      for (let j = 1; j <= b.length; j++)\n        next[j] = Math.min(\n          next[j - 1] + 1,\n          row[j] + 1,\n          row[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1),\n        );\n      row = next;\n    }\n    return row[b.length];\n  }\n  function entities(query, records = []) {\n    const q = normalize(query),\n      words = q.split(\" \");\n    return records\n      .map((record) => {\n        const names = [\n          ...(record.names || []),\n          ...(aliases[record.id.replace(/^artifact:/, \"\")] || []),\n        ];\n        let score = 0;\n        for (const name of names) {\n          const n = normalize(name);\n          if (has(q, n)) score = Math.max(score, 60 + n.length);\n          // A typo can identify an object when its entire distinctive multiword name is present.\n          else if (/^[a-z0-9 ]+$/.test(n)) {\n            const parts = n.split(\" \");\n            if (parts.length < 2) continue;\n            for (let i = 0; i <= words.length - parts.length; i++) {\n              const d = parts.reduce(\n                (sum, p, j) => sum + editDistance(p, words[i + j]),\n                0,\n              );\n              if (d === 1 && parts.some((p) => p.length >= 4))\n                score = Math.max(score, 40 + n.length);\n            }\n          }\n        }\n        return { record, score };\n      })\n      .filter((x) => x.score > 0)\n      .sort((a, b) => b.score - a.score);\n  }\n  function duration(q) {\n    if (/nua (tieng|gio)|half an hour|half hour|半小时|반 시간/.test(q))\n      return 30;\n    const h = q.match(/(?:^|\\s)([12])\\s*(?:tieng|gio|hours?|시간|小时)/);\n    if (h) return Number(h[1]) * 60;\n    const m = q.match(\n      /(?:^|\\D)(\\d{1,3})\\s*(?:phut|p\\b|minutes?\\b|mins?\\b|분|分钟)/,\n    );\n    return m && Number(m[1]) > 0 && Number(m[1]) <= 180 ? Number(m[1]) : null;\n  }\n  function interest(q) {\n    const positive = [],\n      negative = [];\n    for (const [tag, phrases] of Object.entries(tags))\n      for (const phrase of phrases) {\n        const p = normalize(phrase),\n          at = q.indexOf(p);\n        if (at < 0) continue;\n        const prefix = q.slice(Math.max(0, at - 32), at);\n        const neg =\n          /(khong (thich|muon|xem|quan tam)( xem| ve)?|bo qua|not interested in|don t like|do not like|skip|싫어|不喜欢|不要)\\s*$/.test(\n            prefix,\n          );\n        (neg ? negative : positive).push(tag);\n      }\n    return {\n      positive: [...new Set(positive)],\n      negative: [...new Set(negative)],\n    };\n  }\n  function understand(message, memory = {}, options = {}) {\n    const lang = options.lang || \"vi\",\n      q = colloquial(message, lang);\n    const likes = interest(q),\n      minutes = duration(q);\n    const lowWalking = any(q, [\n      \"it di bo\",\n      \"ngai di bo\",\n      \"nhat di bo\",\n      \"luoi di bo\",\n      \"khong muon di bo\",\n      \"khong di bo nhieu\",\n      \"khong muon di nhieu\",\n      \"it di chuyen\",\n      \"khong muon leo cau thang\",\n      \"toi met\",\n      \"met chan\",\n      \"dau chan\",\n      \"xe lan\",\n      \"less walking\",\n      \"not much walking\",\n      \"don t want to walk\",\n      \"tired of walking\",\n      \"wheelchair\",\n      \"걷기 싫\",\n      \"걷고 싶지\",\n      \"걷는 게 힘들\",\n      \"오래 걷\",\n      \"많이 걷고\",\n      \"적게 걷\",\n      \"휠체어\",\n      \"많이 걷기\",\n      \"少走路\",\n      \"不想走\",\n      \"走累了\",\n      \"轮椅\",\n    ]);\n    const resetWalking = any(q, [\n      \"di bo thoai mai\",\n      \"di nhieu cung duoc\",\n      \"khong ngai di bo\",\n      \"khong luoi di bo\",\n      \"khong met\",\n      \"walking is fine\",\n      \"no walking limit\",\n      \"걷기 괜찮\",\n      \"可以多走\",\n      \"不怕走路\",\n    ]);\n    const preferences = {\n      ...(memory.preferences || {}),\n      excluded: [...(memory.preferences?.excluded || [])],\n    };\n    if (lowWalking) preferences.lowWalking = true;\n    if (resetWalking) preferences.lowWalking = false;\n    if (likes.positive.length) preferences.interest = likes.positive[0];\n    for (const tag of likes.negative) {\n      if (!preferences.excluded.includes(tag)) preferences.excluded.push(tag);\n      if (preferences.interest === tag) preferences.interest = null;\n    }\n    for (const tag of likes.positive)\n      preferences.excluded = preferences.excluded.filter((x) => x !== tag);\n    if (minutes) preferences.minutes = minutes;\n    const floor = q.match(/(?:tang|floor)\\s*([123])|([123])\\s*층|([一二三])楼/);\n    if (floor)\n      preferences.floor = Number(\n        floor[1] || floor[2] || { 一: 1, 二: 2, 三: 3 }[floor[3]],\n      );\n    const brief = q.match(/^(?:con )?(\\d{1,3})(?: thi sao| thoi|은요|呢)?$/);\n    if (\n      brief &&\n      Number(brief[1]) > 0 &&\n      Number(brief[1]) <= 180 &&\n      [\"route\", \"low-walking\", \"highlights\"].includes(memory.activeIntent)\n    )\n      preferences.minutes = Number(brief[1]);\n    const recognized = entities(q, options.records || []);\n    const wantsFact = any(q, [\n      \"chat lieu\",\n      \"lam bang\",\n      \"nien dai\",\n      \"nam nao\",\n      \"co tu khi nao\",\n      \"o dau\",\n      \"tang nao\",\n      \"material\",\n      \"made of\",\n      \"how old\",\n      \"when\",\n      \"where\",\n      \"재질\",\n      \"연대\",\n      \"어디\",\n      \"材质\",\n      \"年代\",\n      \"哪里\",\n    ]);\n    let intent = null;\n    // Visitor information and explicit facts keep the source-grounded core as authority.\n    if (\n      recognized.length >= 2 &&\n      any(q, [\n        \"so sanh\",\n        \"khac nhau\",\n        \"compare\",\n        \"difference\",\n        \"비교\",\n        \"比较\",\n        \"区别\",\n      ])\n    )\n      intent = \"compare\";\n    else if (recognized.length && wantsFact) intent = \"fact\";\n    else if (lowWalking && !resetWalking) intent = \"low-walking\";\n    else if (resetWalking) intent = \"route\";\n    else if (\n      any(q, [\n        \"choi quiz\",\n        \"bat dau quiz\",\n        \"cau do\",\n        \"play quiz\",\n        \"start quiz\",\n        \"퀴즈\",\n        \"测验\",\n        \"问答游戏\",\n      ])\n    )\n      intent = \"quiz\";\n    else if (\n      any(q, [\n        \"nhat ky\",\n        \"ghi chu chuyen di\",\n        \"journal\",\n        \"visit notes\",\n        \"일지\",\n        \"日记\",\n      ])\n    )\n      intent = \"journal\";\n    else if (\n      any(q, [\n        \"ban giup duoc gi\",\n        \"ban lam duoc gi\",\n        \"co the lam gi\",\n        \"what can you do\",\n        \"how can you help\",\n        \"무엇을 할 수\",\n        \"能做什么\",\n      ])\n    )\n      intent = \"help\";\n    else if (\n      !likes.negative.length &&\n      any(q, [\n        \"khong muon xem\",\n        \"chang muon xem\",\n        \"khong thich xem\",\n        \"khong muon tham quan\",\n        \"chan xem\",\n        \"khong xem hien vat\",\n        \"dont want to look\",\n        \"don t want to see\",\n        \"do not want to see\",\n        \"not interested in exhibits\",\n        \"전시 보기 싫\",\n        \"전시를 보고 싶지\",\n        \"전시가 지루\",\n        \"보기 싫\",\n        \"不想看展\",\n        \"不想参观\",\n      ])\n    )\n      intent = \"alternatives\";\n    else if (\n      any(q, [\n        \"dang xem\",\n        \"dang xem nhat\",\n        \"dep nhat\",\n        \"noi bat\",\n        \"nen xem gi\",\n        \"nen xem cai nao\",\n        \"xem gi truoc\",\n        \"lan dau\",\n        \"bat dau tu dau\",\n        \"khong biet xem gi\",\n        \"co gi hay\",\n        \"goi y hien vat\",\n        \"must see\",\n        \"must-see\",\n        \"best artifact\",\n        \"recommend an artifact\",\n        \"worth seeing\",\n        \"highlights\",\n        \"first visit\",\n        \"볼만한\",\n        \"추천 유물\",\n        \"처음 방문\",\n        \"值得看\",\n        \"推荐文物\",\n        \"必看\",\n        \"第一次\",\n      ])\n    )\n      intent = \"highlights\";\n    else if (\n      any(q, [\n        \"lo trinh\",\n        \"hanh trinh\",\n        \"nen di\",\n        \"tham quan gi\",\n        \"route\",\n        \"itinerary\",\n        \"tour\",\n        \"코스\",\n        \"路线\",\n      ]) ||\n      minutes ||\n      (brief &&\n        [\"route\", \"low-walking\", \"highlights\"].includes(memory.activeIntent))\n    )\n      intent = \"route\";\n    else if (\n      (likes.positive.length || likes.negative.length) &&\n      [\"highlights\", \"route\", \"low-walking\", \"preference\"].includes(\n        memory.activeIntent,\n      )\n    )\n      intent = memory.activeIntent === \"highlights\" ? \"highlights\" : \"route\";\n    else if (likes.negative.length) intent = \"highlights\";\n    else if (recognized.length) intent = \"entity\";\n    else if (\n      any(q, [\n        \"anh\",\n        \"xem anh\",\n        \"cho xem\",\n        \"picture\",\n        \"photo\",\n        \"사진\",\n        \"照片\",\n      ]) &&\n      memory.recommended?.length\n    )\n      intent = \"select\";\n    else if (\n      /^(cai |hien vat |so |thu |number |the )?(dau tien|thu nhat|thu hai|thu ba|mot|hai|ba|1|2|3|first|second|third)( ay| do| nhe| please)?$/.test(\n        q,\n      ) ||\n      /^(첫 번째|두 번째|세 번째|第一个|第二个|第三个)$/.test(q)\n    )\n      intent = \"select\";\n    else if (\n      /^(tai sao|vi sao|why|왜|为什么)( lai)?( chon| goi y| recommend| 추천)?( cai do| no| that| it|这个|它)?$/.test(\n        q,\n      ) &&\n      memory.recommended?.length\n    )\n      intent = \"reason\";\n    else if (\n      any(q, [\n        \"co cach nao khac\",\n        \"cach khac\",\n        \"con gi nua\",\n        \"khac nua\",\n        \"something else\",\n        \"another option\",\n        \"다른 방법\",\n        \"还有别的\",\n        \"换一个\",\n      ]) &&\n      memory.activeIntent === \"alternatives\"\n    )\n      intent = \"alternatives\";\n    if (intent === \"select\") {\n      const ordinal = /thu ba|\\bba\\b|\\b3\\b|third|세 번째|第三个/.test(q)\n        ? 2\n        : /thu hai|\\bhai\\b|\\b2\\b|second|두 번째|第二个/.test(q)\n          ? 1\n          : 0;\n      return {\n        intent,\n        preferences,\n        selected: memory.recommended?.[ordinal] || null,\n        entities: recognized.map((x) => x.record),\n        query: q,\n      };\n    }\n    return {\n      intent,\n      preferences,\n      entities: recognized.map((x) => x.record),\n      query: q,\n    };\n  }\n  function rank(artifacts, preferences = {}) {\n    const favorites = {\n      history: [\n        \"sung-than-cong\",\n        \"sac-phong\",\n        \"doi-bau\",\n        \"canh-cua\",\n        \"di-chuc\",\n        \"bom-cbu\",\n      ],\n      culture: [\"ghe-bau\", \"phu-dieu\", \"ma-nao\"],\n      antique: [\"ma-nao\", \"sac-phong\", \"sung-than-cong\"],\n      family: [\"ghe-bau\", \"ma-nao\", \"phu-dieu\"],\n      modern: [\"ghe-bau\", \"sac-phong\"],\n    };\n    const priority = favorites[preferences.interest] || [\n      \"sung-than-cong\",\n      \"ma-nao\",\n      \"ghe-bau\",\n    ];\n    return artifacts\n      .filter(\n        (a) => !(a.tags || []).some((t) => preferences.excluded?.includes(t)),\n      )\n      .map((a, i) => ({\n        a,\n        score: priority.includes(a.id) ? 100 - priority.indexOf(a.id) * 5 : 0,\n        order: i,\n      }))\n      .sort((a, b) => b.score - a.score || a.order - b.order)\n      .slice(0, 3)\n      .map((x) => x.a);\n  }\n  root.MuseumGuideEngine = Object.freeze({\n    normalize,\n    colloquial,\n    understand,\n    entities,\n    rank,\n    duration,\n  });\n})(globalThis);\n",
+  "artifactCount": 57,
+  "topicCount": 15,
+  "records": [
+    {
+      "id": "topic:co-vat",
+      "type": "topic",
+      "names": [
+        "Sưu tập cổ vật",
+        "Antiquities collection",
+        "고대 유물 컬렉션",
+        "古物收藏"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/khong-gian-trung-bay",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:thieu-nhi",
+      "type": "topic",
+      "names": [
+        "Khu trưng bày thiếu nhi",
+        "Children’s exhibition area",
+        "어린이 전시 공간",
+        "儿童展区"
+      ],
+      "tags": [
+        "family",
+        "culture"
+      ],
+      "floor": 1,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/khong-gian-trung-bay",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:trien-lam",
+      "type": "topic",
+      "names": [
+        "Trưng bày định kỳ",
+        "Temporary exhibitions",
+        "기획·특별 전시",
+        "定期专题展览"
+      ],
+      "tags": [
+        "modern",
+        "culture"
+      ],
+      "floor": 1,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/khong-gian-trung-bay",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:den-co",
+      "type": "topic",
+      "names": [
+        "Đèn cổ xứ Quảng",
+        "Historic lamps of Quang region",
+        "꽝 지역의 옛 등불",
+        "广南地区古灯"
+      ],
+      "tags": [
+        "culture",
+        "antique"
+      ],
+      "floor": 2,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://www.baotangdanang.vn/khong-gian-trung-bay-tang-2",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:tram-huong",
+      "type": "topic",
+      "names": [
+        "Trầm hương xứ Quảng",
+        "Agarwood of Quang region",
+        "꽝 지역의 침향",
+        "广南地区沉香"
+      ],
+      "tags": [
+        "culture",
+        "antique"
+      ],
+      "floor": 2,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://www.baotangdanang.vn/khong-gian-trung-bay-tang-2",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:nghien-cuu",
+      "type": "topic",
+      "names": [
+        "Nghiên cứu và phát triển",
+        "Research and development",
+        "연구와 발전",
+        "研究与发展"
+      ],
+      "tags": [
+        "modern",
+        "history"
+      ],
+      "floor": 2,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://www.baotangdanang.vn/khong-gian-trung-bay-tang-2",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:dan-toc",
+      "type": "topic",
+      "names": [
+        "Văn hóa các dân tộc",
+        "Ethnic cultures",
+        "소수민족 문화",
+        "民族文化"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://www.baotangdanang.vn/khong-gian-trung-bay-tang-2",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:tong-quan",
+      "type": "topic",
+      "names": [
+        "Tổng quan Đà Nẵng",
+        "Da Nang overview",
+        "다낭 개요",
+        "岘港概览"
+      ],
+      "tags": [
+        "history",
+        "modern"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:thien-nhien",
+      "type": "topic",
+      "names": [
+        "Thiên nhiên và con người",
+        "Nature and people",
+        "자연과 사람",
+        "自然与人文"
+      ],
+      "tags": [
+        "family",
+        "culture"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:lich-su-do-thi",
+      "type": "topic",
+      "names": [
+        "Lịch sử đô thị Đà Nẵng",
+        "Urban history of Da Nang",
+        "다낭 도시 역사",
+        "岘港城市史"
+      ],
+      "tags": [
+        "history",
+        "modern"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:doc-lap",
+      "type": "topic",
+      "names": [
+        "Đấu tranh bảo vệ độc lập",
+        "Struggle for independence",
+        "독립을 위한 투쟁",
+        "争取民族独立"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:chien-tranh",
+      "type": "topic",
+      "names": [
+        "Chứng tích chiến tranh",
+        "War remnants",
+        "전쟁의 흔적",
+        "战争遗迹"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:hoi-nhap",
+      "type": "topic",
+      "names": [
+        "Hội nhập và phát triển",
+        "Integration and development",
+        "통합과 발전",
+        "融合与发展"
+      ],
+      "tags": [
+        "modern",
+        "history"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:toa-thi-chinh",
+      "type": "topic",
+      "names": [
+        "Tòa thị chính Đà Nẵng",
+        "Da Nang City Hall",
+        "다낭 시청",
+        "岘港市政厅"
+      ],
+      "tags": [
+        "history",
+        "modern"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "topic:van-hoa-quang",
+      "type": "topic",
+      "names": [
+        "Văn hóa người Việt xứ Quảng",
+        "Vietnamese culture of Quang region",
+        "꽝 지역 베트남 문화",
+        "广南地区越族文化"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": null,
+      "relatedTopic": null,
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-1",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:ma-nao",
+      "type": "artifact",
+      "names": [
+        "Trang sức mã não",
+        "Agate jewelry",
+        "마노 장신구",
+        "玛瑙饰品"
+      ],
+      "tags": [
+        "history",
+        "modern"
+      ],
+      "floor": 3,
+      "material": "Mã não",
+      "era": "Khoảng 2.500–2.000 năm trước",
+      "relatedTopic": "tong-quan",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/trang-sc-ma-nao",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:sung-than-cong",
+      "type": "artifact",
+      "names": [
+        "Súng thần công",
+        "Historic cannon",
+        "역사적 대포",
+        "古炮"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Kim loại",
+      "era": "Theo hồ sơ: thế kỷ XIX",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/song-than-cing",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:sac-phong",
+      "type": "artifact",
+      "names": [
+        "Sắc phong",
+        "Royal edict",
+        "왕실 칙서",
+        "敕封文书"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Giấy",
+      "era": "1840",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/sac-phong",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:doi-bau",
+      "type": "artifact",
+      "names": [
+        "Đôi bầu",
+        "Double carrying vessels",
+        "Pair of carrying vessels",
+        "한 쌍의 운반 용기",
+        "一对挑担容器"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": null,
+      "era": "1954",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/yii-bau",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:bom-cbu",
+      "type": "artifact",
+      "names": [
+        "Bom CBU 55",
+        "CBU-55 bomb",
+        "CBU-55 폭탄",
+        "CBU-55炸弹"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Sắt",
+      "era": "1955–1975",
+      "relatedTopic": "chien-tranh",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/bom-cbu-55",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:phu-dieu",
+      "type": "artifact",
+      "names": [
+        "Phù điêu Cơ Tu",
+        "Co Tu carved reliefs",
+        "Cơ Tu carved reliefs",
+        "꺼뚜족 목조 부조",
+        "格都族木雕浮雕"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Gỗ",
+      "era": "Thế kỷ XX",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/pho-yiau",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:di-chuc",
+      "type": "artifact",
+      "names": [
+        "Bản di chúc",
+        "Historical testament",
+        "역사적 유언장",
+        "历史遗嘱"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Giấy",
+      "era": "1884",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ban-di-choc",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:canh-cua",
+      "type": "artifact",
+      "names": [
+        "Cánh cửa nhà tù",
+        "Prison doors",
+        "감옥 문",
+        "监狱门"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Sắt",
+      "era": "1946–1954",
+      "relatedTopic": "chien-tranh",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/canh-ca-nha-to",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:ghe-bau",
+      "type": "artifact",
+      "names": [
+        "Ghe bầu",
+        "Traditional trading boat",
+        "전통 무역선 모형",
+        "传统商船模型"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 3,
+      "material": "Gỗ",
+      "era": "Mô hình thế kỷ XXI",
+      "relatedTopic": "van-hoa-quang",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ghe-bau",
+      "sourceSite": null
+    },
+    {
+      "id": "artifact:hv-truyen-don-0fecbc",
+      "type": "artifact",
+      "names": [
+        "Truyền đơn"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Giấy",
+      "era": "1954",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/truyan-yn",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-sach-thu-that-dieu-e9f642",
+      "type": "artifact",
+      "names": [
+        "Sách \"Thư thất điều\""
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Giấy",
+      "era": "1958",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/sach-th-that-yiau",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-tay-ho-va-sante-thi-tap-642acc",
+      "type": "artifact",
+      "names": [
+        "Tây Hồ và Santé thi tập"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Giấy",
+      "era": "1961",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/tay-ho-va-santa-thi-tap",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-con-dau-aa916c",
+      "type": "artifact",
+      "names": [
+        "Con dấu"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Gỗ",
+      "era": "1975",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/con-dau",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-khuyen-tai-hinh-vanh-khan-13e561",
+      "type": "artifact",
+      "names": [
+        "Khuyên tai hình vành khăn"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "đá",
+      "era": "Cách ngày nay khoảng 2500 - 2000 năm",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/khuyan-tai-henh-vanh-khan",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-khuyen-tai-ba-mau-f7a824",
+      "type": "artifact",
+      "names": [
+        "Khuyên tai ba mấu"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "thủy tinh, có ba mấu nhọn và một chiếc móc nhỏ",
+      "era": "Cách ngày nay khoảng 2500 - 2000 năm",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/khuyan-tai-ba-mau",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-mat-but-nit-25a1c1",
+      "type": "artifact",
+      "names": [
+        "Mặt bút nịt"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Sắt",
+      "era": "1969",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/mat-bot-net",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-rang-heo-7ecdad",
+      "type": "artifact",
+      "names": [
+        "Răng heo"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Đồng",
+      "era": "Thế kỷ XX",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/rang-heo",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-bo-gu-dan-toc-cor-a8a0a8",
+      "type": "artifact",
+      "names": [
+        "Bộ gu dân tộc Cor"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Gỗ cây bút",
+      "era": "Thế kỷ XXI",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/bo-gu-dan-toc-cor",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-bo-khung-det-xa-xao-2c1626",
+      "type": "artifact",
+      "names": [
+        "Bộ khung dệt (Xa xao)"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Gỗ chò, dây mây, sợi len",
+      "era": "Thế kỷ XXI",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/bo-khung-det-xa-xao",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-vo-ro-dan-6c255f",
+      "type": "artifact",
+      "names": [
+        "Vơ ró (Đàn)"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Tre, gỗ, kim loại",
+      "era": "1998",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/v-ri-yan",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-koong-vong-deo-tay-96ddc1",
+      "type": "artifact",
+      "names": [
+        "Koong (Vòng đeo tay)"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Hợp kim",
+      "era": "Thế kỷ XX",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/koong-ving-yeo-tay",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-tuong-dan-ba-co-tu-mua-ya-ya-1ca507",
+      "type": "artifact",
+      "names": [
+        "Tượng đàn bà Cơ-tu múa ya yá"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gỗ",
+      "era": "Thế kỷ XX",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-yan-ba-c-tu-moa-ya-ya",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-tuong-go-be-gai-co-tu-608076",
+      "type": "artifact",
+      "names": [
+        "Tượng gỗ bé gái Cơ-tu"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gỗ",
+      "era": "Thế kỷ XXI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-go-ba-gai-c-tu",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-coi-va-chay-gia-gao-a546ad",
+      "type": "artifact",
+      "names": [
+        "Cối và chày giã gạo"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gỗ",
+      "era": "1998",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/coi-va-chay-gia-gao",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-xuong-b03124",
+      "type": "artifact",
+      "names": [
+        "Xuổng"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Kim loại",
+      "era": "Thế kỷ XX",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/xuong",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-ham-bi-mat-ong-voi-649a01",
+      "type": "artifact",
+      "names": [
+        "Hầm bí mật (Ông Voi)"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Xi măng",
+      "era": "Thế kỷ XX",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/ham-be-mat-ing-voi",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-tuong-nguoi-cau-nguyen-ngoi-423e22",
+      "type": "artifact",
+      "names": [
+        "Tượng người cầu nguyện (ngồi)"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đá sa thạch",
+      "era": "Thế kỷ XI-XII",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-ngi-cau-nguyen-ngoi",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-tuong-tu-si-balamon-647422",
+      "type": "artifact",
+      "names": [
+        "Tượng tu sĩ Bàlamôn"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đá sa thạch",
+      "era": "Thế kỷ XI-XII",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-tu-si-balamin",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-ganara-715aa8",
+      "type": "artifact",
+      "names": [
+        "Ganara"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đá sa thạch",
+      "era": "Thế kỷ XI-XII",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/ganara",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-hop-co-nap-trung-0aac4c",
+      "type": "artifact",
+      "names": [
+        "Hộp có nắp (trung)"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm - Sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/hop-ci-nap-trung",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-hu-co-nap-lon-f47883",
+      "type": "artifact",
+      "names": [
+        "Hủ có nắp (lớn)"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm - Sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/hu-ci-nap-ln",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-tuong-nu-than-bay-c8e625",
+      "type": "artifact",
+      "names": [
+        "Tượng nữ thần bay"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đá sa thạch",
+      "era": "Thế kỷ XI-XII",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-n-than-bay",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-dia-lon-6745de",
+      "type": "artifact",
+      "names": [
+        "Đĩa (lớn)"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm -sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/yia-ln",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-am-hai-dau-ga-d1aaa9",
+      "type": "artifact",
+      "names": [
+        "Ấm hai đầu gà"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm - Sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/am-hai-yau-ga",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-dau-tuong-dan-ong-6c48d5",
+      "type": "artifact",
+      "names": [
+        "Đầu tượng đàn ông"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm - Sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/yau-tng-yan-ing",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-am-hai-bau-48008a",
+      "type": "artifact",
+      "names": [
+        "Ấm hai bầu"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm - Sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/am-hai-bau",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-am-co-quai-a28ef2",
+      "type": "artifact",
+      "names": [
+        "Ấm có quai"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm - Sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/am-ci-quai",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-binh-ty-ba-trung-150480",
+      "type": "artifact",
+      "names": [
+        "Bình tỳ bà (trung)"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm - Sứ",
+      "era": "Thế kỷ XV-XVI",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/benh-tu-ba-trung",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-ken-toghey-5ceff0",
+      "type": "artifact",
+      "names": [
+        "Kèn Tơghêy"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Sừng trâu",
+      "era": "Cuối thế kỷ 20",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/kan-tghay",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-ao-kho-vo-cay-17f208",
+      "type": "artifact",
+      "names": [
+        "Áo khố vỏ cây"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Vỏ cây",
+      "era": "2005",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ao-kho-v-cay",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-tuong-de079e",
+      "type": "artifact",
+      "names": [
+        "Tượng"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Gỗ",
+      "era": "1986 - 1987",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/tng",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-tuong-cong-lang-1865d2",
+      "type": "artifact",
+      "names": [
+        "Tượng cổng làng"
+      ],
+      "tags": [
+        "culture",
+        "family"
+      ],
+      "floor": 2,
+      "material": "Gỗ",
+      "era": "Thế kỷ 20",
+      "relatedTopic": "dan-toc",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/tng-cong-lang",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-xe-honda-dame-1f8095",
+      "type": "artifact",
+      "names": [
+        "Xe Honda Dame"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Kim loại",
+      "era": "1960 - 1975",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/xe-honda-dame",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-tuong-phat-55881e",
+      "type": "artifact",
+      "names": [
+        "Tượng phật"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Đồng",
+      "era": "1962",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/tng-phat",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-bo-quan-ao-cb1cdc",
+      "type": "artifact",
+      "names": [
+        "Bộ quần áo"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Đồ dệt",
+      "era": "1946",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/bo-quan-ao",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-ong-phong-tromblom-9ed719",
+      "type": "artifact",
+      "names": [
+        "Ống phóng Tromblom"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Sắt - thép",
+      "era": "1946 - 1954",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ong-phing-tromblom",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-chen-dia-hieu-sach-viet-quang-37559f",
+      "type": "artifact",
+      "names": [
+        "Chén đĩa hiệu sách Việt Quảng"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm, sành sứ",
+      "era": "1936",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/chan-yia-hieu-sach-viet-quang",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-binh-gom-kendy-7de409",
+      "type": "artifact",
+      "names": [
+        "Bình gốm Kendy"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đất nung",
+      "era": "Thế kỷ 9 - 11",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/benh-gom-kendy",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-mo-noi-76b0cd",
+      "type": "artifact",
+      "names": [
+        "Mộ nồi"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Gốm, sành sứ",
+      "era": "thế kỷ 2 TCN - thế kỷ 2 CN",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/mo-noi",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-mo-chum-tabhing-0251da",
+      "type": "artifact",
+      "names": [
+        "Mộ chum Tabhing"
+      ],
+      "tags": [
+        "history"
+      ],
+      "floor": 3,
+      "material": "Đất nung",
+      "era": "Cách ngày nay khoảng 2500 - 2000 năm",
+      "relatedTopic": "doc-lap",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/mo-chum-tabhing",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-doi-xe-chi-2a1dfe",
+      "type": "artifact",
+      "names": [
+        "Dọi xe chỉ"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đất nung",
+      "era": "Cách ngày nay khoảng 2500 - 2000 năm",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/doi-xe-che",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-vong-deo-tay-thuy-tinh-5182f3",
+      "type": "artifact",
+      "names": [
+        "Vòng đeo tay thủy tinh"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Thủy tinh",
+      "era": "Cách ngày nay khoảng 2500 - 2000 năm",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ving-yeo-tay-thuy-tinh",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-riu-da-65413d",
+      "type": "artifact",
+      "names": [
+        "RÌU ĐÁ"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đá",
+      "era": "Cách ngày nay khoảng 2500 - 2000 năm",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/reu-ya",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-khuyen-tai-hai-dau-thu-8a56ff",
+      "type": "artifact",
+      "names": [
+        "KHUYÊN TAI HAI ĐẦU THÚ"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Đá nêphrit",
+      "era": "Cách ngày nay khoảng 2.000 – 2.500 năm",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/khuyan-tai-hai-yau-tho",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 1"
+    },
+    {
+      "id": "artifact:hv-tuong-than-siva-105d35",
+      "type": "artifact",
+      "names": [
+        "Tượng thần Siva"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Kim loại vàng",
+      "era": "Thế kỷ IX",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/tng-than-siva",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-bo-suu-tap-trang-suc-vang-lai-nghi-0d51e6",
+      "type": "artifact",
+      "names": [
+        "Bộ sưu tập trang sức vàng Lai Nghi"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Kim loại vàng",
+      "era": "thế kỷ III Trước Công nguyên đến giữa thế kỷ I",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/bo-su-tap-trang-sc-vang-lai-nghi",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    },
+    {
+      "id": "artifact:hv-hat-ma-nao-hinh-thu-lai-nghi-76c4da",
+      "type": "artifact",
+      "names": [
+        "Hạt mã não hình thú Lai Nghi"
+      ],
+      "tags": [
+        "antique",
+        "history"
+      ],
+      "floor": 1,
+      "material": "Mã não",
+      "era": "thế kỷ III Trước Công nguyên đến giữa thế kỷ I",
+      "relatedTopic": "co-vat",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang-co-so-2/hien-vat/hat-ma-nao-henh-tho-lai-nghi",
+      "sourceSite": "Bảo tàng Đà Nẵng · Cơ sở 2"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -141,6 +142,7 @@ class SourceHTML(HTMLParser):
 def classify(url, text=""):
     parsed = urllib.parse.urlsplit(url)
     hay = urllib.parse.unquote(parsed.path) + " " + text
+    hay = "".join(c for c in unicodedata.normalize("NFD", hay.lower().replace("đ", "d")) if not unicodedata.combining(c)).replace(" ", "-")
     # An index is not an object record, nor is a news article automatically one.
     if EDITORIAL.search(hay): return "editorial-review-required"
     if OBJECT.search(hay): return "collection-or-object-candidate"
@@ -193,6 +195,14 @@ def inspect_response(source_id, url):
                 if allowed(link["url"], SOURCES[source_id]["hosts"]) and link["url"] not in seen:
                     seen.add(link["url"]); item["anchors"].append({**link, "classification": classify(link["url"], link["text"])})
             item["html_sample"], item["html_sample_truncated"] = sample_html(body)
+            item["public_api_hints"] = []
+            for raw_hint in re.findall(r'''["']((?:https://[^/"']+)?/(?:api|wp-json|ajax)[^"'\s<>]{0,200})["']''', body, re.I):
+                hint = normalize_url(raw_hint, response.url)
+                if hint and allowed(hint, SOURCES[source_id]["hosts"]):
+                    parts = urllib.parse.urlsplit(hint)
+                    safe_hint = {"url": urllib.parse.urlunsplit((parts.scheme, parts.netloc, parts.path, "", "")), "query_parameter_names": sorted(urllib.parse.parse_qs(parts.query))}
+                    if safe_hint not in item["public_api_hints"]: item["public_api_hints"].append(safe_hint)
+                if len(item["public_api_hints"]) >= 30: break
             # Media URLs embedded in public page data, not external pages to visit.
             for match in re.finditer(r"https?:(?:\\/|/){2}(?:www\.)?(?:youtube(?:-nocookie)?\.com|youtu\.be|player\.vimeo\.com)[^\s\"'<>\\]+", body):
                 parser.add_media(match.group(0).replace("\\/", "/"), "page-data")

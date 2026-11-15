@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['.github/workflows/import-reference-objects.yml', 'bao-tang-da-nang-v6/scripts/import_reference_objects.py']
+    paths: ['.github/workflows/import-reference-objects.yml', 'bao-tang-da-nang-v6/scripts/import_reference_objects.py', 'bao-tang-da-nang-v6/scripts/enrich_object_videos.py']
 permissions:
   contents: write
   pages: write
@@ -28,6 +28,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add bao-tang-da-nang-v6/collection.js bao-tang-da-nang-v6/index.html bao-tang-da-nang-v6/data/reference-import.log
           if test -f bao-tang-da-nang-v6/data/reference-import-audit.json; then git add bao-tang-da-nang-v6/data/reference-import-audit.json; fi
+          if test -f bao-tang-da-nang-v6/data/extra-video-audit.json; then git add bao-tang-da-nang-v6/data/extra-video-audit.json; fi
           if test -d bao-tang-da-nang-v6/assets/reference; then git add bao-tang-da-nang-v6/assets/reference; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Import verified illustrated institution-scoped reference objects'

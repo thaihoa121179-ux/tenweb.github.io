@@ -1,0 +1,1852 @@
+{
+  "scope": "Deterministic intent/entity/preference/reference resolver only. Not answer factuality, generative AI quality, user satisfaction, or end-to-end app success.",
+  "methodology": "80 scenarios authored independently from baseline source and frozen source corpus. Candidate completed and unit-checked before first held-out evaluation. No changes based on held-out failures. Each scenario passes only if every annotated expectation matches. Unannotated fields are not scored. Timings use warm-up plus 3 passes on the current machine and exclude network.",
+  "baselineCommit": "c391419",
+  "baselineEngineSha256": "3461a9537da5ddd5ac8cadb10876abc0692d4dd3ea8831d1a1d75d034f78249b",
+  "candidateEngineSha256": "5f0fde7e23e7975ef9ac2401fbe36cb1b1384de138fe168a0031c2721479d27b",
+  "heldoutSha256": "8a214485f53e9736f466950437532662bcc3a3a853aeabf802680c2659d6b206",
+  "artifactCount": 57,
+  "topicCount": 15,
+  "scenarioCount": 80,
+  "baseline": {
+    "passed": 53,
+    "total": 80,
+    "accuracy": 0.6625,
+    "byCategory": {
+      "direct-source-record": {
+        "passed": 18,
+        "total": 20
+      },
+      "typing-variation": {
+        "passed": 6,
+        "total": 8
+      },
+      "context-fact": {
+        "passed": 0,
+        "total": 5
+      },
+      "ordinal-reference": {
+        "passed": 0,
+        "total": 7
+      },
+      "constraints": {
+        "passed": 16,
+        "total": 20
+      },
+      "safety-unknown": {
+        "passed": 6,
+        "total": 6
+      },
+      "safety-floor": {
+        "passed": 0,
+        "total": 4
+      },
+      "unresolved-reference": {
+        "passed": 0,
+        "total": 2
+      },
+      "action": {
+        "passed": 7,
+        "total": 8
+      }
+    },
+    "byLanguage": {
+      "vi": {
+        "passed": 26,
+        "total": 35
+      },
+      "en": {
+        "passed": 11,
+        "total": 21
+      },
+      "ko": {
+        "passed": 7,
+        "total": 11
+      },
+      "zh": {
+        "passed": 9,
+        "total": 13
+      }
+    },
+    "cases": [
+      {
+        "id": "heldout-001",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.0092769999999973
+      },
+      {
+        "id": "heldout-002",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.557516000000021
+      },
+      {
+        "id": "heldout-003",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.9579390000000103
+      },
+      {
+        "id": "heldout-004",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.2819299999999885
+      },
+      {
+        "id": "heldout-005",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "entities",
+            "expected": [
+              "hv-tuong-than-siva-105d35"
+            ],
+            "actual": [
+              "hv-tuong-de079e",
+              "hv-tuong-than-siva-105d35"
+            ]
+          }
+        ],
+        "elapsedMs": 3.31171999999998
+      },
+      {
+        "id": "heldout-006",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.9285119999999552
+      },
+      {
+        "id": "heldout-007",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 4.072397000000024
+      },
+      {
+        "id": "heldout-008",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.0676899999999705
+      },
+      {
+        "id": "heldout-009",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 4.60701499999999
+      },
+      {
+        "id": "heldout-010",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.680225999999948
+      },
+      {
+        "id": "heldout-011",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "entities",
+            "expected": [
+              "hv-hat-ma-nao-hinh-thu-lai-nghi-76c4da"
+            ],
+            "actual": [
+              "hv-hat-ma-nao-hinh-thu-lai-nghi-76c4da",
+              "ma-nao"
+            ]
+          }
+        ],
+        "elapsedMs": 4.290976000000001
+      },
+      {
+        "id": "heldout-012",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.8443570000000022
+      },
+      {
+        "id": "heldout-013",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.7269719999999893
+      },
+      {
+        "id": "heldout-014",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.911258000000032
+      },
+      {
+        "id": "heldout-015",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.929267999999979
+      },
+      {
+        "id": "heldout-016",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.458534000000043
+      },
+      {
+        "id": "heldout-017",
+        "category": "direct-source-record",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3929449999999974
+      },
+      {
+        "id": "heldout-018",
+        "category": "direct-source-record",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.8769270000000233
+      },
+      {
+        "id": "heldout-019",
+        "category": "direct-source-record",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.000206999999989
+      },
+      {
+        "id": "heldout-020",
+        "category": "direct-source-record",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.689817000000005
+      },
+      {
+        "id": "heldout-021",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.6254799999999818
+      },
+      {
+        "id": "heldout-022",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.2423220000000015
+      },
+      {
+        "id": "heldout-023",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.49628899999999
+      },
+      {
+        "id": "heldout-024",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.5260559999999828
+      },
+      {
+        "id": "heldout-025",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.2080379999999877
+      },
+      {
+        "id": "heldout-026",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.8660060000000271
+      },
+      {
+        "id": "heldout-027",
+        "category": "typing-variation",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "sung-than-cong"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 0.9788580000000024
+      },
+      {
+        "id": "heldout-028",
+        "category": "typing-variation",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "entity",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "sac-phong"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 2.377365999999995
+      },
+      {
+        "id": "heldout-029",
+        "category": "context-fact",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "ghe-bau"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 1.7627769999999714
+      },
+      {
+        "id": "heldout-030",
+        "category": "context-fact",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "ma-nao"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 3.147487999999953
+      },
+      {
+        "id": "heldout-031",
+        "category": "context-fact",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "sac-phong"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 1.2922820000000002
+      },
+      {
+        "id": "heldout-032",
+        "category": "context-fact",
+        "lang": "ko",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "canh-cua"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 1.2998850000000175
+      },
+      {
+        "id": "heldout-033",
+        "category": "context-fact",
+        "lang": "zh",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "phu-dieu"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 0.9473870000000488
+      },
+      {
+        "id": "heldout-034",
+        "category": "ordinal-reference",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "select",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": "ma-nao",
+            "actual": null
+          }
+        ],
+        "elapsedMs": 2.168051000000048
+      },
+      {
+        "id": "heldout-035",
+        "category": "ordinal-reference",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "select",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": "sac-phong",
+            "actual": null
+          }
+        ],
+        "elapsedMs": 2.1568489999999656
+      },
+      {
+        "id": "heldout-036",
+        "category": "ordinal-reference",
+        "lang": "ko",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "select",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": "sac-phong",
+            "actual": null
+          }
+        ],
+        "elapsedMs": 1.313348000000019
+      },
+      {
+        "id": "heldout-037",
+        "category": "ordinal-reference",
+        "lang": "zh",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "select",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": "ma-nao",
+            "actual": null
+          }
+        ],
+        "elapsedMs": 0.857340000000022
+      },
+      {
+        "id": "heldout-038",
+        "category": "ordinal-reference",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": "sac-phong",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "sac-phong"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 2.8248570000000655
+      },
+      {
+        "id": "heldout-039",
+        "category": "ordinal-reference",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": "ghe-bau",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "ghe-bau"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 3.0209630000000516
+      },
+      {
+        "id": "heldout-040",
+        "category": "ordinal-reference",
+        "lang": "zh",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": "sac-phong",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "sac-phong"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 0.7806589999999005
+      },
+      {
+        "id": "heldout-041",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 7.437567999999942
+      },
+      {
+        "id": "heldout-042",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 4.454651999999896
+      },
+      {
+        "id": "heldout-043",
+        "category": "constraints",
+        "lang": "ko",
+        "passed": false,
+        "failures": [
+          {
+            "key": "preferences.interest",
+            "expected": "culture",
+            "actual": "history"
+          },
+          {
+            "key": "preferences.excluded",
+            "expected": [
+              "history"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 2.546745000000101
+      },
+      {
+        "id": "heldout-044",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.032652999999982
+      },
+      {
+        "id": "heldout-045",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 4.418410999999992
+      },
+      {
+        "id": "heldout-046",
+        "category": "constraints",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "preferences.interest",
+            "expected": "antique",
+            "actual": "culture"
+          },
+          {
+            "key": "preferences.excluded",
+            "expected": [
+              "history",
+              "culture"
+            ],
+            "actual": [
+              "history"
+            ]
+          }
+        ],
+        "elapsedMs": 2.208650000000034
+      },
+      {
+        "id": "heldout-047",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.505623000000014
+      },
+      {
+        "id": "heldout-048",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.0884629999999333
+      },
+      {
+        "id": "heldout-049",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.752775999999926
+      },
+      {
+        "id": "heldout-050",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 4.190857000000051
+      },
+      {
+        "id": "heldout-051",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.58735200000001
+      },
+      {
+        "id": "heldout-052",
+        "category": "constraints",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.751690999999937
+      },
+      {
+        "id": "heldout-053",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.0322400000000016
+      },
+      {
+        "id": "heldout-054",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "route",
+            "actual": null
+          },
+          {
+            "key": "preferences.minutes",
+            "expected": 10,
+            "actual": 30
+          }
+        ],
+        "elapsedMs": 1.7537629999999353
+      },
+      {
+        "id": "heldout-055",
+        "category": "constraints",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "route",
+            "actual": null
+          },
+          {
+            "key": "preferences.minutes",
+            "expected": 20,
+            "actual": 60
+          }
+        ],
+        "elapsedMs": 2.0708150000000387
+      },
+      {
+        "id": "heldout-056",
+        "category": "constraints",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.9892920000000913
+      },
+      {
+        "id": "heldout-057",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.6905850000000555
+      },
+      {
+        "id": "heldout-058",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 5.137081999999964
+      },
+      {
+        "id": "heldout-059",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.7993940000000066
+      },
+      {
+        "id": "heldout-060",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.846541000000002
+      },
+      {
+        "id": "heldout-061",
+        "category": "safety-unknown",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.7897140000000036
+      },
+      {
+        "id": "heldout-062",
+        "category": "safety-unknown",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 6.422589000000016
+      },
+      {
+        "id": "heldout-063",
+        "category": "safety-unknown",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.1014310000000478
+      },
+      {
+        "id": "heldout-064",
+        "category": "safety-unknown",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.8034069999999929
+      },
+      {
+        "id": "heldout-065",
+        "category": "safety-unknown",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.420254
+      },
+      {
+        "id": "heldout-066",
+        "category": "safety-unknown",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.664309000000003
+      },
+      {
+        "id": "heldout-067",
+        "category": "safety-floor",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": null,
+            "actual": "entity"
+          },
+          {
+            "key": "unsupportedFloor",
+            "expected": 8,
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [],
+            "actual": [
+              "sung-than-cong"
+            ]
+          }
+        ],
+        "elapsedMs": 3.4910529999999653
+      },
+      {
+        "id": "heldout-068",
+        "category": "safety-floor",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": null,
+            "actual": "route"
+          },
+          {
+            "key": "unsupportedFloor",
+            "expected": 12,
+            "actual": null
+          }
+        ],
+        "elapsedMs": 2.1765750000000708
+      },
+      {
+        "id": "heldout-069",
+        "category": "safety-floor",
+        "lang": "ko",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": null,
+            "actual": "route"
+          },
+          {
+            "key": "unsupportedFloor",
+            "expected": 7,
+            "actual": null
+          }
+        ],
+        "elapsedMs": 1.5636809999999741
+      },
+      {
+        "id": "heldout-070",
+        "category": "safety-floor",
+        "lang": "zh",
+        "passed": false,
+        "failures": [
+          {
+            "key": "unsupportedFloor",
+            "expected": 9,
+            "actual": null
+          }
+        ],
+        "elapsedMs": 0.7095829999999523
+      },
+      {
+        "id": "heldout-071",
+        "category": "unresolved-reference",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "needsClarification",
+            "expected": true,
+            "actual": null
+          }
+        ],
+        "elapsedMs": 1.3919650000000274
+      },
+      {
+        "id": "heldout-072",
+        "category": "unresolved-reference",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "select",
+            "actual": null
+          },
+          {
+            "key": "selected",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "key": "needsClarification",
+            "expected": true,
+            "actual": null
+          }
+        ],
+        "elapsedMs": 1.330159999999978
+      },
+      {
+        "id": "heldout-073",
+        "category": "action",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.8767110000000002
+      },
+      {
+        "id": "heldout-074",
+        "category": "action",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "quiz",
+            "actual": null
+          }
+        ],
+        "elapsedMs": 2.6136619999999766
+      },
+      {
+        "id": "heldout-075",
+        "category": "action",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2208180000000084
+      },
+      {
+        "id": "heldout-076",
+        "category": "action",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.7046489999999039
+      },
+      {
+        "id": "heldout-077",
+        "category": "action",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 5.585027999999966
+      },
+      {
+        "id": "heldout-078",
+        "category": "action",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 3.338380000000029
+      },
+      {
+        "id": "heldout-079",
+        "category": "action",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.347629999999981
+      },
+      {
+        "id": "heldout-080",
+        "category": "action",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.9181330000000116
+      }
+    ]
+  },
+  "candidate": {
+    "passed": 74,
+    "total": 80,
+    "accuracy": 0.925,
+    "byCategory": {
+      "direct-source-record": {
+        "passed": 19,
+        "total": 20
+      },
+      "typing-variation": {
+        "passed": 8,
+        "total": 8
+      },
+      "context-fact": {
+        "passed": 4,
+        "total": 5
+      },
+      "ordinal-reference": {
+        "passed": 7,
+        "total": 7
+      },
+      "constraints": {
+        "passed": 17,
+        "total": 20
+      },
+      "safety-unknown": {
+        "passed": 6,
+        "total": 6
+      },
+      "safety-floor": {
+        "passed": 4,
+        "total": 4
+      },
+      "unresolved-reference": {
+        "passed": 2,
+        "total": 2
+      },
+      "action": {
+        "passed": 7,
+        "total": 8
+      }
+    },
+    "byLanguage": {
+      "vi": {
+        "passed": 33,
+        "total": 35
+      },
+      "en": {
+        "passed": 18,
+        "total": 21
+      },
+      "ko": {
+        "passed": 11,
+        "total": 11
+      },
+      "zh": {
+        "passed": 12,
+        "total": 13
+      }
+    },
+    "cases": [
+      {
+        "id": "heldout-001",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.6007889999999634
+      },
+      {
+        "id": "heldout-002",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.5635450000000901
+      },
+      {
+        "id": "heldout-003",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3021270000000413
+      },
+      {
+        "id": "heldout-004",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7256569999999556
+      },
+      {
+        "id": "heldout-005",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.5085470000000214
+      },
+      {
+        "id": "heldout-006",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3757440000000543
+      },
+      {
+        "id": "heldout-007",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.4397179999999707
+      },
+      {
+        "id": "heldout-008",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2719510000000582
+      },
+      {
+        "id": "heldout-009",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.915104000000042
+      },
+      {
+        "id": "heldout-010",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.4467170000000351
+      },
+      {
+        "id": "heldout-011",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.0997559999999567
+      },
+      {
+        "id": "heldout-012",
+        "category": "direct-source-record",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.6529369999999517
+      },
+      {
+        "id": "heldout-013",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.396257999999989
+      },
+      {
+        "id": "heldout-014",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3609729999999445
+      },
+      {
+        "id": "heldout-015",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.6912990000000718
+      },
+      {
+        "id": "heldout-016",
+        "category": "direct-source-record",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.9085300000000416
+      },
+      {
+        "id": "heldout-017",
+        "category": "direct-source-record",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.135338000000047
+      },
+      {
+        "id": "heldout-018",
+        "category": "direct-source-record",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.1277330000000347
+      },
+      {
+        "id": "heldout-019",
+        "category": "direct-source-record",
+        "lang": "zh",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "entity",
+            "actual": "fact"
+          }
+        ],
+        "elapsedMs": 0.9814609999999675
+      },
+      {
+        "id": "heldout-020",
+        "category": "direct-source-record",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2741539999999532
+      },
+      {
+        "id": "heldout-021",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2573130000000674
+      },
+      {
+        "id": "heldout-022",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7706320000000915
+      },
+      {
+        "id": "heldout-023",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7902520000000095
+      },
+      {
+        "id": "heldout-024",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.4707910000000766
+      },
+      {
+        "id": "heldout-025",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.543405000000007
+      },
+      {
+        "id": "heldout-026",
+        "category": "typing-variation",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7848770000000513
+      },
+      {
+        "id": "heldout-027",
+        "category": "typing-variation",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.035857999999962
+      },
+      {
+        "id": "heldout-028",
+        "category": "typing-variation",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7928980000000365
+      },
+      {
+        "id": "heldout-029",
+        "category": "context-fact",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.538552999999979
+      },
+      {
+        "id": "heldout-030",
+        "category": "context-fact",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "fact",
+            "actual": null
+          },
+          {
+            "key": "entities",
+            "expected": [
+              "ma-nao"
+            ],
+            "actual": []
+          }
+        ],
+        "elapsedMs": 1.6648910000000114
+      },
+      {
+        "id": "heldout-031",
+        "category": "context-fact",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7146910000000162
+      },
+      {
+        "id": "heldout-032",
+        "category": "context-fact",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.1211729999999989
+      },
+      {
+        "id": "heldout-033",
+        "category": "context-fact",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.8990029999999933
+      },
+      {
+        "id": "heldout-034",
+        "category": "ordinal-reference",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.8196649999999863
+      },
+      {
+        "id": "heldout-035",
+        "category": "ordinal-reference",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2444449999999279
+      },
+      {
+        "id": "heldout-036",
+        "category": "ordinal-reference",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3509849999999233
+      },
+      {
+        "id": "heldout-037",
+        "category": "ordinal-reference",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.0870099999999638
+      },
+      {
+        "id": "heldout-038",
+        "category": "ordinal-reference",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.958755999999994
+      },
+      {
+        "id": "heldout-039",
+        "category": "ordinal-reference",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.3548019999999497
+      },
+      {
+        "id": "heldout-040",
+        "category": "ordinal-reference",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.4993240000000014
+      },
+      {
+        "id": "heldout-041",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.95522399999993
+      },
+      {
+        "id": "heldout-042",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.2316190000000233
+      },
+      {
+        "id": "heldout-043",
+        "category": "constraints",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7868470000000798
+      },
+      {
+        "id": "heldout-044",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.22591100000011
+      },
+      {
+        "id": "heldout-045",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.0425050000000056
+      },
+      {
+        "id": "heldout-046",
+        "category": "constraints",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "preferences.excluded",
+            "expected": [
+              "history",
+              "culture"
+            ],
+            "actual": [
+              "history"
+            ]
+          }
+        ],
+        "elapsedMs": 2.6558410000000094
+      },
+      {
+        "id": "heldout-047",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.5674220000000787
+      },
+      {
+        "id": "heldout-048",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.41404
+      },
+      {
+        "id": "heldout-049",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.685434999999984
+      },
+      {
+        "id": "heldout-050",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.4053089999999884
+      },
+      {
+        "id": "heldout-051",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.87925400000006
+      },
+      {
+        "id": "heldout-052",
+        "category": "constraints",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.585550000000012
+      },
+      {
+        "id": "heldout-053",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.0668939999999338
+      },
+      {
+        "id": "heldout-054",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "route",
+            "actual": null
+          },
+          {
+            "key": "preferences.minutes",
+            "expected": 10,
+            "actual": 30
+          }
+        ],
+        "elapsedMs": 1.215229000000022
+      },
+      {
+        "id": "heldout-055",
+        "category": "constraints",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "route",
+            "actual": null
+          },
+          {
+            "key": "preferences.minutes",
+            "expected": 20,
+            "actual": 60
+          }
+        ],
+        "elapsedMs": 1.5393419999999196
+      },
+      {
+        "id": "heldout-056",
+        "category": "constraints",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2898830000000316
+      },
+      {
+        "id": "heldout-057",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.9575499999999693
+      },
+      {
+        "id": "heldout-058",
+        "category": "constraints",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.3042540000000145
+      },
+      {
+        "id": "heldout-059",
+        "category": "constraints",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.6974809999999252
+      },
+      {
+        "id": "heldout-060",
+        "category": "constraints",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.001557000000048
+      },
+      {
+        "id": "heldout-061",
+        "category": "safety-unknown",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.5783369999999195
+      },
+      {
+        "id": "heldout-062",
+        "category": "safety-unknown",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.7061649999999418
+      },
+      {
+        "id": "heldout-063",
+        "category": "safety-unknown",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3015280000000757
+      },
+      {
+        "id": "heldout-064",
+        "category": "safety-unknown",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2445989999999938
+      },
+      {
+        "id": "heldout-065",
+        "category": "safety-unknown",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3686370000000352
+      },
+      {
+        "id": "heldout-066",
+        "category": "safety-unknown",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.3943030000000363
+      },
+      {
+        "id": "heldout-067",
+        "category": "safety-floor",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.6441730000000234
+      },
+      {
+        "id": "heldout-068",
+        "category": "safety-floor",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.292852000000039
+      },
+      {
+        "id": "heldout-069",
+        "category": "safety-floor",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.1569610000000239
+      },
+      {
+        "id": "heldout-070",
+        "category": "safety-floor",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.8349809999999707
+      },
+      {
+        "id": "heldout-071",
+        "category": "unresolved-reference",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.4564430000000357
+      },
+      {
+        "id": "heldout-072",
+        "category": "unresolved-reference",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.4950730000000476
+      },
+      {
+        "id": "heldout-073",
+        "category": "action",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.9582169999999905
+      },
+      {
+        "id": "heldout-074",
+        "category": "action",
+        "lang": "en",
+        "passed": false,
+        "failures": [
+          {
+            "key": "intent",
+            "expected": "quiz",
+            "actual": null
+          }
+        ],
+        "elapsedMs": 1.6674750000000813
+      },
+      {
+        "id": "heldout-075",
+        "category": "action",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.2152960000000803
+      },
+      {
+        "id": "heldout-076",
+        "category": "action",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 0.922286999999983
+      },
+      {
+        "id": "heldout-077",
+        "category": "action",
+        "lang": "vi",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 2.2383670000000393
+      },
+      {
+        "id": "heldout-078",
+        "category": "action",
+        "lang": "en",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.501720999999975
+      },
+      {
+        "id": "heldout-079",
+        "category": "action",
+        "lang": "ko",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.0212790000000496
+      },
+      {
+        "id": "heldout-080",
+        "category": "action",
+        "lang": "zh",
+        "passed": true,
+        "failures": [],
+        "elapsedMs": 1.048680000000104
+      }
+    ]
+  },
+  "accuracyGainPercentagePoints": 26.250000000000007,
+  "relativeTaskSuccess": 1.3962264150943395,
+  "gained": [
+    "heldout-005",
+    "heldout-011",
+    "heldout-027",
+    "heldout-028",
+    "heldout-029",
+    "heldout-031",
+    "heldout-032",
+    "heldout-033",
+    "heldout-034",
+    "heldout-035",
+    "heldout-036",
+    "heldout-037",
+    "heldout-038",
+    "heldout-039",
+    "heldout-040",
+    "heldout-043",
+    "heldout-067",
+    "heldout-068",
+    "heldout-069",
+    "heldout-070",
+    "heldout-071",
+    "heldout-072"
+  ],
+  "regressions": [
+    "heldout-019"
+  ],
+  "timing": {
+    "baseline": {
+      "samples": 240,
+      "medianMs": 2.1779619999999795,
+      "p95Ms": 4.889400999999907
+    },
+    "candidate": {
+      "samples": 240,
+      "medianMs": 1.488591999999926,
+      "p95Ms": 2.2287559999999758
+    }
+  }
+}

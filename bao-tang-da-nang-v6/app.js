@@ -1218,6 +1218,10 @@
         ),
     ),
   );
+  for (const record of A) {
+    const linked = window.MuseumObjectVideos?.[record.id] || [];
+    record.videos = [...(record.videos || []), ...linked];
+  }
   const FLOOR_NAMES = {
     1: [
       "Cổ vật & khám phá",
@@ -1538,8 +1542,9 @@
   }
   function imageBox(url, alt, small = false, caption = "") {
     url = window.MuseumMediaMap?.[url] || url;
+    const record = A.find(a => (window.MuseumMediaMap?.[a.image] || a.image) === url);
     const credit =
-      caption ||
+      caption || record?.imageCredit || (record?.institutionName ? human("Ảnh: ", "Photo: ", "사진: ", "图片：") + record.institutionName : "") ||
       human(
         "Ảnh: Bảo tàng Đà Nẵng",
         "Photo: Da Nang Museum",
@@ -1549,7 +1554,10 @@
     return `<div class="photo-wrap${small ? " photo-small" : ""}"><img src="${esc(url)}" alt="${esc(alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"><div class="photo-retry" hidden><span>${esc(human("Ảnh nguồn tạm thời không tải được", "Source image temporarily unavailable", "원본 사진을 불러올 수 없습니다", "暂时无法加载原图"))}</span></div>${small ? "" : `<span class="photo-credit">${esc(credit)}</span>`}</div>`;
   }
 
+  let libraryController=null;
   function renderCatalog() {
+    if(window.MuseumLibrary){libraryController ||= window.MuseumLibrary.createController({state,A,aname,asummary,ameta,openArtifact,esc});libraryController.render(artifactSearch($('catalog-input').value),{query:$('catalog-input').value,allItems:A});return;}
+
     const q = ($("catalog-input")?.value || "").trim();
     const items = artifactSearch(q).filter(
       (a) =>
@@ -1595,7 +1603,7 @@
     const m = ameta(a);
     $("artifact-title").textContent = aname(a);
     $("artifact-photo").innerHTML = imageBox(a.image, aname(a));
-    $("artifact-id").textContent = "DM-" + a.id.toUpperCase();
+    $("artifact-id").textContent = (a.referenceOnly ? "REF-" : "DM-") + a.id.toUpperCase();
     $("artifact-text").textContent = asummary(a);
     let full = $("artifact-full-data");
     if (!full) {
@@ -1605,8 +1613,9 @@
       $("artifact-text").after(full);
     }
     full.innerHTML = a.imported
-      ? `<p class="note">${esc(a.sourceSiteLabel)} · ${esc(human("Hồ sơ gốc tiếng Việt", "Original source in Vietnamese; translations pending", "베트남어 원문 자료; 번역 준비 중", "越南语原始档案，译文待补充"))}</p><h2>${esc(human("Nguồn gốc", "Provenance", "유래", "来源"))}</h2><p>${esc(a.origin)}</p>${a.description ? `<h2>${esc(human("Nội dung hồ sơ", "Source description", "원문 설명", "档案正文"))}</h2><p>${esc(a.description)}</p>` : ""}`
+      ? `<p class="note">${esc(a.sourceSiteLabel)} · ${esc(a.sourceLanguage === "en" ? human("Hồ sơ gốc tiếng Anh", "Original source in English", "영어 원문 기록", "英语原始档案") : human("Hồ sơ gốc tiếng Việt", "Original source in Vietnamese; translations pending", "베트남어 원문 자료; 번역 준비 중", "越南语原始档案，译文待补充"))}</p><h2>${esc(human("Nguồn gốc", "Provenance", "유래", "来源"))}</h2><p>${esc(a.origin)}</p>${a.description ? `<h2>${esc(human("Nội dung hồ sơ", "Source description", "원문 설명", "档案正文"))}</h2><p>${esc(a.description)}</p>` : ""}`
       : "";
+    $("artifact-map").hidden = !!a.referenceOnly;
     $("artifact-map").disabled = !!a.imported;
     $("artifact-map").title = a.imported
       ? human(
@@ -1617,12 +1626,18 @@
         )
       : "";
     $("artifact-meta").innerHTML =
-      `<div><b>${human("Niên đại", "Date", "연대", "年代")}</b><span>${esc(m.era)}</span></div><div><b>${human("Chất liệu", "Material", "재질", "材质")}</b><span>${esc(m.material)}</span></div><div><b>${human("Chủ đề liên quan", "Related theme", "관련 주제", "相关主题")}</b><span>${esc(nm(D.find((d) => d.id === a.topic)))}</span></div>`;
+      `<div><b>${human("Niên đại", "Date", "연대", "年代")}</b><span>${esc(m.era)}</span></div><div><b>${human("Chất liệu", "Material", "재질", "材质")}</b><span>${esc(m.material)}</span></div><div><b>${a.referenceOnly ? human("Đơn vị nguồn", "Source institution", "출처 기관", "来源机构") : human("Chủ đề liên quan", "Related theme", "관련 주제", "相关主题")}</b><span>${esc(a.referenceOnly ? (a.institutionName || a.sourceSiteLabel) : nm(D.find((d) => d.id === a.topic)))}</span></div>`;
     if (a.dimensions)
       $("artifact-meta").innerHTML +=
         `<div><b>${human("Kích thước", "Dimensions", "크기", "尺寸")}</b><span>${esc(a.dimensions)}</span></div>`;
+    let media=$('artifact-videos');if(!media){media=document.createElement('section');media.id='artifact-videos';$('artifact-full-data').after(media);}window.MuseumVideos?.render(media,a,state.lang);
     $("artifact-source").href = a.url;
-    $("artifact-location").textContent = human(
+    $("artifact-location").textContent = a.referenceOnly ? human(
+      `Hồ sơ tham khảo từ ${a.institutionName || a.sourceSiteLabel}. Không phải hồ sơ xác nhận hiện vật thuộc hoặc đang trưng bày tại Bảo tàng Đà Nẵng.`,
+      `Reference record from ${a.institutionName || a.sourceSiteLabel}. This does not establish ownership or display at Da Nang Museum.`,
+      `${a.institutionName || a.sourceSiteLabel}의 참고 기록입니다. 다낭 박물관 소장 또는 전시 유물이라는 뜻이 아닙니다.`,
+      `参考来源：${a.institutionName || a.sourceSiteLabel}。这不表示文物由岘港博物馆收藏或展出。`,
+    ) : human(
       "Chủ đề liên quan không phải vị trí đặt hiện vật. Ảnh và dữ liệu có liên kết tới hồ sơ nguồn của bảo tàng.",
       "Related themes are not physical object locations. Images and data link to the original museum record.",
       "관련 주제는 실제 유물 위치가 아닙니다. 사진과 자료는 박물관 원문으로 연결됩니다.",
@@ -1732,7 +1747,7 @@
         "Gallery photograph: Da Nang Museum · overview, not an individual object",
       ),
     );
-    const related = A.filter((a) => a.topic === d.id);
+    const related = A.filter((a) => !a.referenceOnly && a.topic === d.id);
     $("article-related").innerHTML = related.length
       ? `<h3>${human("Hồ sơ hiện vật liên quan", "Related artifact records", "관련 유물 기록", "相关文物档案")}</h3>` +
         related
@@ -1742,6 +1757,9 @@
           )
           .join("")
       : "";
+    let media=$('article-videos');
+    if(!media){media=document.createElement('section');media.id='article-videos';$('article-related').after(media);}
+    window.MuseumVideos?.render(media,{name:nm(d),videos:window.MuseumTopicVideos?.[d.id]||[]},state.lang);
   }
   function makeFloorSVG() {
     const items = D.filter((x) => x.floor === state.floor);
@@ -2544,99 +2562,29 @@
     return ameta(a);
   }
   function answerForArtifact(a, intent) {
-    guideContext.artifact = a.id;
-    guideContext.topic = a.imported ? null : a.topic;
-    const d = D.find((x) => x.id === a.topic);
-    guideContext.floor = a.imported ? null : d.floor;
-    const name = aname(a),
-      desc = asummary(a),
-      meta = ameta(a);
-    let text = name + "\n" + desc;
-    if (intent === "when")
-      text =
-        name +
-        " · " +
-        human("Niên đại: ", "Date: ", "연대: ", "年代：") +
-        meta.era +
-        "\n" +
-        desc;
-    else if (intent === "material")
-      text =
-        name +
-        " · " +
-        human("Chất liệu: ", "Material: ", "재질: ", "材质：") +
-        (adata(a)?.flags?.materialUnverified
-          ? human(
-              "Chưa xác minh. Hồ sơ kế thừa chỉ ghi loại vật dụng sinh hoạt.",
-              "Unverified. The inherited record lists a household-object category only.",
-              "미확인. 기존 기록에는 생활용품 분류만 있습니다.",
-              "尚未核实。原记录仅标注生活用品类别。",
-            )
-          : meta.material) +
-        "\n" +
-        desc;
-    else if (intent === "where")
-      text =
-        name +
-        " · " +
-        human(
-          "Chủ đề tham chiếu: ",
-          "Related theme: ",
-          "관련 주제: ",
-          "相关主题：",
-        ) +
-        nm(d) +
-        " · " +
-        label(d.floor) +
-        "\n" +
-        human(
-          "Chưa có mặt bằng chính thức xác nhận vị trí trưng bày thực tế của hiện vật. Phân loại chủ đề không phải vị trí vật lý.",
-          "No official plan verifies the artifact’s physical location. Theme classification is not physical positioning.",
-          "실제 전시 위치를 확인할 공식 도면이 없습니다. 주제 분류는 실제 위치가 아닙니다.",
-          "尚无官方平面图核实文物的实际展位。主题分类不代表实际位置。",
-        );
-    else if (intent === "photo")
-      text =
-        name +
-        "\n" +
-        human(
-          "Mây gửi ảnh hiện vật bên dưới. Mở hồ sơ để xem ảnh lớn, niên đại và thông tin nguồn.",
-          "Here is the artifact photo. Open its record for a larger image, date and source information.",
-          "아래 유물 사진을 확인하세요. 기록을 열면 큰 사진, 연대와 출처를 볼 수 있습니다.",
-          "下方是文物照片。打开档案可查看大图、年代与来源资料。",
-        );
-    else
-      text +=
-        "\n\n" +
-        human("Niên đại: ", "Date: ", "연대: ", "年代：") +
-        meta.era +
-        " · " +
-        human("Chất liệu: ", "Material: ", "재질: ", "材质：") +
-        meta.material;
-    if (a.imported && intent === "where")
-      text =
-        aname(a) +
-        " · " +
-        a.sourceSiteLabel +
-        "\n" +
-        human(
-          "Hồ sơ nguồn chưa nêu tầng hoặc vị trí trưng bày cụ thể; không áp dụng sơ đồ mô phỏng cơ sở 1 cho hiện vật cơ sở 2.",
-          "The source does not specify a verified floor or display position. Site 1’s illustrative diagram does not locate Site 2 objects.",
-          "원문에 확인된 층이나 전시 위치가 없습니다. 제1관 예시 지도로 제2관 유물 위치를 알 수 없습니다.",
-          "原始档案未提供已核实楼层或展位，第一馆示意图不能定位第二馆文物。",
-        );
-    return {
-      text,
-      mood: intent === "where" ? "🧭" : intent === "more" ? "📚" : "🤩",
-      source: a.url,
-      action: "artifact",
-      artifact: a.id,
-      cards: ["summary", "photo", "more"].includes(intent) ? [a.id] : [],
-      floor: a.imported ? null : d.floor,
-      hints: a.imported
-        ? ["artifact:" + a.id]
-        : ["artifact:" + a.id, "map:" + d.floor],
-    };
+    const d=D.find(x=>x.id===a.topic);
+    const hasThematicFloor=!a.imported&&!a.referenceOnly&&!!d;
+    guideContext.artifact=a.id;guideContext.topic=hasThematicFloor?a.topic:null;guideContext.floor=hasThematicFloor?d.floor:null;
+    const name=aname(a),desc=asummary(a),meta=ameta(a);
+    const institution=a.institutionName||a.sourceSiteLabel||human('Nguồn tham khảo ngoài Đà Nẵng','External reference institution','외부 참고 기관','岘港以外参考机构');
+    const prefix=a.referenceOnly?human('Tham khảo ngoài Đà Nẵng · ','Reference outside Da Nang · ','다낭 외부 참고 자료 · ','岘港以外参考资料 · ')+institution+'\n':'';
+    const field={when:'era',where:'location',more:'summary',photo:'photo'}[intent]||intent;
+    const fields=a.sourceFields&&typeof a.sourceFields==='object'?a.sourceFields:{};
+    const exactField=(...keys)=>{for(const key of keys){const value=fields[key];if(typeof value==='string'&&value.trim())return value.trim()}return ''};
+    const unknown=label=>human('Chưa có dữ liệu có nguồn về '+label+' trong hồ sơ này. Mây không suy đoán; bạn có thể mở hồ sơ nguồn để đối chiếu.','This record has no sourced '+label+'. I will not guess; consult the original source.','이 기록에 출처가 있는 '+label+' 정보가 없습니다. 추측하지 않고 원문 확인을 권합니다.','本档案缺少有来源的'+label+'资料。我不会猜测，请查看原始来源。');
+    let text=name+'\n'+desc;
+    if(field==='era')text=name+' · '+human('Niên đại: ','Date: ','연대: ','年代：')+meta.era+'\n'+desc;
+    else if(field==='material')text=name+' · '+human('Chất liệu: ','Material: ','재질: ','材质：')+(adata(a)?.flags?.materialUnverified?human('Chưa xác minh. Hồ sơ kế thừa chỉ ghi loại vật dụng sinh hoạt.','Unverified. The inherited record lists a household-object category only.','미확인. 기존 기록에는 생활용품 분류만 있습니다.','尚未核实。原记录仅标注生活用品类别。'):meta.material)+'\n'+desc;
+    else if(['weight','dimensions','origin'].includes(field)){
+      const label=field==='weight'?human('trọng lượng','weight','무게','重量'):field==='dimensions'?human('kích thước','dimensions','크기','尺寸'):human('nguồn gốc','provenance','출처·발견 경위','来源');
+      const value=field==='weight'?(typeof a.weight==='string'?a.weight:exactField('trọng lượng','khối lượng')):field==='dimensions'?(a.dimensions||exactField('kích thước','kích thước (cm)')):(a.origin||exactField('nguồn gốc','xuất xứ'));
+      const known=typeof value==='string'&&value.trim()&&!/^(?:chưa|không có|không nêu|chưa xác minh|unknown|unverified)/i.test(value.trim());
+      text=name+'\n'+(known?label+': '+value:unknown(label));
+    }else if(field==='location'){
+      text=name+'\n'+(a.referenceOnly?institution+'\n':'')+(hasThematicFloor?human('Chủ đề tham chiếu: ','Related theme: ','관련 주제: ','相关主题：')+nm(d)+' · '+label(d.floor)+'\n':'')+human('Hồ sơ chưa xác nhận tầng, phòng hoặc tủ trưng bày thực tế. Sơ đồ chủ đề cơ sở 1 không xác định vị trí của hiện vật này.','The record does not verify a physical floor, room or case. The Site 1 thematic diagram does not locate this object.','실제 층, 전시실 또는 진열장 위치가 확인되지 않았습니다. 제1관 주제 안내도로 이 유물의 실제 위치를 알 수 없습니다.','档案未核实实际楼层、展厅或展柜。第一馆主题示意图不能确定本件文物的实际位置。');
+    }else if(field==='photo')text=name+'\n'+human('Mây gửi ảnh hiện vật bên dưới. Mở hồ sơ để xem ảnh lớn, niên đại và thông tin nguồn.','Here is the artifact photo. Open its record for a larger image, date and source information.','아래 유물 사진을 확인하세요. 기록을 열면 큰 사진, 연대와 출처를 볼 수 있습니다.','下方是文物照片。打开档案可查看大图、年代与来源资料。');
+    else text+='\n\n'+human('Niên đại: ','Date: ','연대: ','年代：')+meta.era+' · '+human('Chất liệu: ','Material: ','재질: ','材质：')+meta.material;
+    return {text:prefix+text,mood:field==='location'?'🧭':field==='summary'?'📚':'🤩',source:a.url,action:'artifact',artifact:a.id,cards:['summary','photo','more'].includes(intent)?[a.id]:[],floor:hasThematicFloor?d.floor:null,hints:hasThematicFloor?['artifact:'+a.id,'map:'+d.floor]:['artifact:'+a.id]};
   }
   function answerForTopic(d, intent) {
     guideContext.topic = d.id;
@@ -2653,7 +2601,7 @@
           "주제 전체의 연대나 재질은 하나로 확인할 수 없습니다. 유물 기록을 선택하세요.",
           "整个主题没有统一且核实的年代或材质。请选择文物档案。",
         );
-    const related = A.filter((a) => a.topic === d.id);
+    const related = A.filter((a) => !a.referenceOnly && a.topic === d.id);
     if (related.length)
       text +=
         "\n\n" +
@@ -2751,11 +2699,32 @@
     });
     guideContext.preferences = decision.preferences;
     const p = decision.preferences;
+    const rawId=id=>String(id||'').replace(/^(?:artifact|topic):/,'');
+    if(decision.unsupportedFloor!==null&&decision.unsupportedFloor!==undefined)return {
+      text:human('Mình chưa có dữ liệu xác minh cho tầng '+decision.unsupportedFloor+'. Dự án chỉ có sơ đồ chủ đề mô phỏng tầng 1–3 của cơ sở 1; không thể tạo đường đi hay gán hiện vật vào tầng bạn nêu.','I have no verified information for floor '+decision.unsupportedFloor+'. Only a thematic simulation of Site 1 floors 1–3 is available; I cannot assign artifacts or create directions to that requested floor.','요청하신 '+decision.unsupportedFloor+'층 정보는 확인되지 않았습니다. 제1관 1~3층 주제별 예시만 있으며 실제 위치나 경로를 만들 수 없습니다.','尚无已核实的第'+decision.unsupportedFloor+'层资料。项目仅有第一馆1至3层主题模拟图，不能将文物分配到所述楼层或编造路线。'),mood:'🤔',applicationOnly:true,hints:['info']};
+    if(decision.needsClarification){const cards=(guideContext.recommended||[]).filter(id=>A.some(a=>a.id===rawId(id))).slice(0,3).map(rawId);return {text:human('Bạn đang hỏi hồ sơ nào? Mây chưa xác định chắc hiện vật hoặc thứ tự bạn muốn chọn. Hãy chọn một hồ sơ bên dưới hoặc nói rõ tên hiện vật.','Which record do you mean? I cannot identify the intended object or list position confidently. Choose a record below or give its name.','어떤 기록을 뜻하나요? 유물이나 목록 순서를 확실히 알 수 없습니다. 아래 기록을 선택하거나 이름을 알려 주세요.','您指的是哪份档案？暂时不能确定文物或列表顺序。请选择下方档案，或说出具体名称。'),mood:'🤔',applicationOnly:true,cards,hints:['catalog']}}
+    if (/\b(?:video|clip|phim)\b|영상|视频/.test(decision.query)) {
+      const namedId=rawId(decision.entities?.find(r=>r.type==='artifact')?.id);
+      const contextual=/\b(?:no|cai do|hien vat do|it|this|that)\b|그것|그 유물|它|这件/.test(decision.query);
+      const target=A.find(a=>a.id===(namedId||(contextual?guideContext.artifact:null)));
+      const records=target?[target]:A.filter(a=>window.MuseumVideos?.items(a).length).slice(0,6);
+      const withVideos=records.filter(a=>window.MuseumVideos?.items(a).length);
+      if (!withVideos.length) return {text:(target?aname(target)+'\n':'')+human('Mình chưa có video được đối chiếu với nguồn chính thức cho hồ sơ này. Bạn có thể xem ảnh và mở trang nguồn.','There is no video verified against an official source for this record yet. You can view its photo and original source.','이 기록에 공식 출처와 대조한 영상은 아직 없습니다. 사진이나 원문을 확인하세요.','这份档案暂时没有经过官方来源核对的视频，可以查看照片或原始来源。'),mood:'📚',cards:target?[target.id]:[],source:target?.url,hints:['catalog']};
+      return {text:human('Mở hồ sơ bên dưới rồi bấm Phát video. Tư liệu cùng chủ đề có nhãn riêng, không khẳng định hiện vật cụ thể xuất hiện trong phim.','Open a record below and choose Play video. Thematic media is labeled separately; it does not establish that this particular object appears.','아래 기록을 열고 영상 재생을 누르세요. 주제 관련 자료는 별도로 표시되며 해당 유물의 등장을 확인하는 뜻은 아닙니다.','打开下方档案，再点击播放视频。主题相关资料会单独标注，不代表本件文物一定出镜。')+'\n\n'+withVideos.map(a=>aname(a)+' · '+(a.institutionName||a.sourceSiteLabel||'Bảo tàng Đà Nẵng')).join('\n'),mood:'📽️',cards:withVideos.map(a=>a.id),source:withVideos[0].url,sources:withVideos.map(a=>({url:a.url,label:aname(a)})),hints:[]};
+    }
+    if(decision.intent==='fact'){
+      const record=decision.entities?.[0];const id=rawId(record?.id||decision.selected);const artifact=A.find(a=>a.id===id);
+      if(artifact){guideContext.activeIntent='entity';return answerForArtifact(artifact,{era:'when',location:'where',summary:'more'}[decision.factField]||decision.factField||'summary')}
+      const topic=D.find(d=>d.id===id);
+      if(topic){guideContext.activeIntent='entity';if(['material','era','weight','dimensions','origin'].includes(decision.factField))return {text:nm(topic)+'\n'+human('Đây là chủ đề trưng bày, không phải một hiện vật có cùng niên đại, chất liệu hay kích thước. Hãy chọn hồ sơ hiện vật cụ thể.','This is an exhibition theme, not an individual object with one date, material or size. Choose a specific artifact record.','개별 유물이 아닌 전시 주제입니다. 하나의 연대·재질·크기를 지정할 수 없으니 유물 기록을 선택하세요.','这是展览主题，而非具有统一年代、材质或尺寸的单件文物。请选择具体文物档案。'),mood:'🤔',source:topic.source,hints:['article:'+topic.id,'catalog']};return answerForTopic(topic,decision.factField==='location'?'where':'summary')}
+    }
     if (p.interest) state.interests = new Set([p.interest]);
     const source = S.overview;
-    const artifacts = A.map((a) => ({
+    const artifacts = A.filter(a=>!a.referenceOnly).map((a) => ({
       ...a,
       tags: D.find((d) => d.id === a.topic)?.tags || [],
+      thematicFloor:!a.imported&&!a.referenceOnly?D.find(d=>d.id===a.topic)?.floor:null,
+      sourceSite:a.sourceSite||'site1',
     }));
     const chooseHighlights = () => engine.rank(artifacts, p);
     const setScope = (intent) => {
@@ -2864,7 +2833,7 @@
             items
               .map(
                 (a) =>
-                  `${aname(a)}\n${asummary(a)}\n${ameta(a).era} · ${ameta(a).material}`,
+                  `${a.referenceOnly?(a.institutionName||a.sourceSiteLabel||human('Tham khảo ngoài Đà Nẵng','External reference','외부 참고 자료','外部参考资料'))+'\n':''}${aname(a)}\n${asummary(a)}\n${ameta(a).era} · ${ameta(a).material}`,
               )
               .join("\n\n"),
           mood: "📚",
@@ -2883,10 +2852,10 @@
       if (!chosen.length)
         return {
           text: human(
-            "Mình đã bỏ các nhóm bạn không muốn xem. Bạn thích cổ vật, văn hóa hay câu chuyện thành phố hơn?",
-            "I have excluded the themes you do not want. Would you prefer antiquities, culture or city stories?",
-            "원하지 않는 주제를 제외했어요. 유물, 문화, 도시 이야기 중 무엇이 좋으세요?",
-            "已排除您不想看的主题。您更喜欢古物、文化还是城市故事？",
+            "Mình chưa tìm được hồ sơ phù hợp với tất cả điều kiện đang chọn. Mình vẫn giữ các bộ lọc về cơ sở, chất liệu, tầng tham chiếu và nhóm loại trừ; bạn muốn đổi điều kiện nào?",
+            "No record matches all current conditions. I have retained the site, material, thematic-floor and exclusion filters. Which condition would you like to change?",
+            "모든 조건에 맞는 기록이 없습니다. 기관·재질·참조 층·제외 조건을 그대로 유지합니다. 어떤 조건을 바꿀까요?",
+            "没有档案同时符合全部条件。馆区、材质、主题参考楼层和排除条件均予保留。您想更改哪项？",
           ),
           mood: "🤔",
           hints: ["catalog"],
@@ -2949,6 +2918,10 @@
           questions[2],
         ],
       };
+    }
+    if(['route','low-walking'].includes(decision.intent)&&(p.site&&p.site!=='site1'||p.materials?.length||p.excludedMaterials?.length)){
+      setScope('route');const chosen=chooseHighlights();guideContext.recommended=chosen.map(a=>a.id);
+      return {text:(chosen.length?human('Mây giữ các điều kiện bạn chọn và gợi ý các hồ sơ sau để tìm hiểu trên điện thoại. Đây không phải tuyến đường trong bảo tàng:\n','Keeping your conditions, here are sourced records to explore on your phone. This is not an indoor route:\n','선택한 조건을 유지한 기록을 휴대전화에서 살펴보세요. 실제 실내 경로가 아닙니다:\n','保留所选条件，推荐以下有来源档案在手机上了解。这不是馆内导航路线：\n')+chosen.map((a,i)=>(i+1)+'. '+aname(a)).join('\n'):human('Chưa có hồ sơ phù hợp với tất cả điều kiện. Mây giữ nguyên bộ lọc; hãy đổi một điều kiện nếu muốn tìm rộng hơn.','No records match every condition. Filters are retained; change a condition if you want a broader search.','모든 조건에 맞는 기록이 없습니다. 필터를 유지하므로 검색을 넓히려면 조건을 바꿔 주세요.','没有同时符合全部条件的档案。筛选条件保留，如需扩大搜索，请更改条件。'))+'\n\n'+human('Chưa có mặt bằng, khoảng cách, lối xe lăn hoặc tầng trưng bày được xác minh cho các hồ sơ này.','Verified floor plans, distances, wheelchair access and display floors are not available for these records.','이 기록의 실제 도면·거리·휠체어 통로·전시 층 정보는 확인되지 않았습니다.','这些档案尚无已核实的平面图、距离、轮椅通道或实际展出楼层。'),mood:'🧭',cards:chosen.map(a=>a.id),sources:chosen.map(a=>({url:a.url,label:aname(a)})),hints:['catalog','info']};
     }
     if (
       decision.intent === "low-walking" ||
@@ -3027,8 +3000,9 @@
       if (p.interest) state.interests = new Set([p.interest]);
       const r = interestRoute(engine.colloquial(query, state.lang));
       const stops = r.ids.filter(
-        (d) => !(d.tags || []).some((t) => p.excluded?.includes(t)),
+        (d) => (!p.floor||d.floor===p.floor)&&!(d.tags || []).some((t) => p.excluded?.includes(t)),
       );
+      if(!stops.length)return {text:human('Chưa có chủ đề phù hợp với tầng tham chiếu và các nhóm đã loại trừ. Mây giữ nguyên điều kiện; bạn muốn đổi tầng hay sở thích?','No theme matches the thematic floor and exclusions. Conditions are retained; would you like to change the floor or interests?','참조 층과 제외 조건에 맞는 주제가 없습니다. 조건을 유지합니다. 층이나 관심사를 바꿀까요?','没有符合主题参考楼层及排除条件的主题。条件保留，是否更改楼层或兴趣？'),mood:'🤔',hints:['plan','info']};
       return {
         text:
           human(
@@ -3536,7 +3510,7 @@
         .slice(0, 3)
         .map(
           (a) =>
-            `<button type="button" class="chat-record-card" data-artifact="${esc(a.id)}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)}</small><span class="chat-card-open">${esc(human("Mở hồ sơ", "Open record", "기록 열기", "打开档案"))} ›</span></span></button>`,
+            `<button type="button" class="chat-record-card" data-artifact="${esc(a.id)}">${imageBox(a.image, aname(a), true)}<span><b>${esc(aname(a))}</b><small>${esc(ameta(a).era)}</small>${a.referenceOnly?`<small>${esc(a.institutionName||a.sourceSiteLabel)} · ${esc(human("Tham khảo", "Reference", "참고", "参考"))}</small>`:""}<span class="chat-card-open">${esc(human("Mở hồ sơ", "Open record", "기록 열기", "打开档案"))} ›</span></span></button>`,
         )
         .join("");
       $("messages").appendChild(cards);
@@ -3656,9 +3630,7 @@
               const u = new URL(x);
               return (
                 u.protocol === "https:" &&
-                ["baotangdanang.vn", "www.baotangdanang.vn"].includes(
-                  u.hostname,
-                ) &&
+                new Set(['baotangdanang.vn','www.baotangdanang.vn',...A.map(a=>{try{return new URL(a.url).hostname}catch{return ''}})]).has(u.hostname) &&
                 !u.username &&
                 !u.password
               );

@@ -1,4 +1,5 @@
 import "../collection.js";
+import "../object-videos.js";
 // Snapshot extracted from V5; inherited records have not been independently reverified.
 // Editorial translations match data-v6.js; they are not museum-approved translations.
 // No object coordinates or licensing claims are inferred.
@@ -543,10 +544,27 @@ records.push(
       material: a.material,
       origin: a.origin,
       description: a.description,
-      sourceSite: a.sourceSiteLabel,
-      sourceLanguage: "vi",
+      sourceSite: a.sourceSite,
+      sourceSiteLabel: a.sourceSiteLabel,
+      institutionId: a.institutionId || "danang-museum",
+      institutionName: a.institutionName || a.sourceSiteLabel || "Bảo tàng Đà Nẵng",
+      referenceOnly: a.referenceOnly === true,
+      dimensions: a.dimensions,
+      weight: a.weight,
+      locationVerified: false,
+      media: [
+        {type: "image", url: a.sourceImage, source: a.url, title: a.name, credit: a.institutionName || a.sourceSiteLabel},
+        ...(a.videos || []).filter(v => v.verifiedSource).map(v => ({type: "video",url: v.url,source: v.sourceUrl,title: v.title,relation: v.relation})),
+      ],
+      sourceLanguage: a.sourceLanguage || "vi",
       relatedTopic: a.topic,
       source: a.url,
       floor: null,
     })),
 );
+
+for (const record of records) {
+  if (record.type !== 'artifact') continue;
+  const videos = globalThis.MuseumObjectVideos?.[record.id.replace(/^artifact:/, '')] || [];
+  record.media = [...(record.media || []), ...videos.filter(v => v.verifiedSource).map(v => ({type:'video',url:v.url,source:v.sourceUrl,title:v.title,relation:v.relation}))];
+}

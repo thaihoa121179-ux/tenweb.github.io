@@ -6,7 +6,9 @@ Mặc định V6 chạy bằng **Chế độ trợ lý dữ liệu**, không c�
 
 `corpus.mjs` là bản chụp 15 chủ đề và 9 hồ sơ hiện vật từ V5 tại commit `83b2d7fb0804965a274f502638bf16986c940cba`. Các URL nguồn được giữ nguyên. Một lỗi phân loại được làm rõ: “Vật dụng sinh hoạt” của Đôi bầu là loại đồ vật, không phải chất liệu; trường chất liệu được đặt `null` (chưa xác minh), đồng nhất với dữ liệu V6. Đây là dữ liệu kế thừa của dự án, **chưa được kiểm chứng độc lập lại**; cần đối chiếu với bảo tàng trước khi công bố là thông tin đã xác thực. Không suy ra tọa độ hiện vật từ chủ đề hoặc tầng. Không có bản vẽ mặt bằng chính thức. QR chỉ xác nhận mốc check-in; lộ trình là gợi ý chủ đề, thời lượng ước tính.
 
-API không tải website tùy ý và không nhận tài liệu do trình duyệt cung cấp làm nguồn tin. Nó xếp hạng bản ghi ở máy chủ bằng tên, từ khóa, chủ đề và ngữ cảnh hiện vật hợp lệ; chỉ gửi tối đa 6 bản ghi cho mô hình. Lịch sử hội thoại dùng để hiểu câu hỏi nối tiếp về thuộc tính/thông tin bảo tàng, không được coi là nguồn sự thật hoặc tự làm câu hỏi mới trở thành có căn cứ. Không tìm thấy nguồn hoặc hỏi chất liệu đã biết là chưa xác minh thì trả lời thiếu dữ liệu, không gọi mô hình. Đầu ra mô hình không dẫn nguồn được thay bằng câu trả lời thiếu dữ liệu. Phương pháp này chưa phải tìm kiếm vector. Kiểm tra ID nguồn chỉ bảo đảm URL thuộc tập dữ liệu đã truy xuất, **không chứng minh mọi mệnh đề được nguồn đó hỗ trợ**; chỉ dẫn mô hình và cấu trúc JSON không thể bảo đảm điều này. Cần kiểm duyệt kết quả với chuyên gia trước khi dùng chính thức.
+Corpus hiện tại còn nối thêm các hồ sơ đã nhập ở `../collection.js`; số lượng thay đổi theo lần nhập và phải đọc báo cáo nguồn thực tế, không mặc định đã có 200 hồ sơ. Kiểm thử với bộ dữ liệu tổng hợp 220 hồ sơ chỉ kiểm tra khả năng truy xuất và giới hạn ngữ cảnh, không chứng minh có 220 hiện vật thật.
+
+API không tải website tùy ý và không nhận tài liệu do trình duyệt cung cấp làm nguồn tin. Nó xếp hạng bản ghi ở máy chủ bằng tên, từ khóa, chủ đề và ngữ cảnh hiện vật hợp lệ; chỉ gửi tối đa 6 bản ghi cho mô hình. Chỉ mục ID/tên/nội dung được tạo và dùng lại cho mỗi corpus trong Worker; một câu hỏi hiện vật đơn lẻ chọn bản ghi phù hợp nhất thay vì đẩy cả thư viện vào prompt. Mỗi bản ghi có đoạn mô tả tối đa 1.200 ký tự, trường metadata giới hạn độ dài, đầu ra tối đa 900 token và phản hồi thô từ provider tối đa 64 KiB. Lịch sử hội thoại dùng để hiểu câu hỏi nối tiếp về thuộc tính/thông tin bảo tàng, không được coi là nguồn sự thật hoặc tự làm câu hỏi mới trở thành có căn cứ. Không tìm thấy nguồn hoặc hỏi chất liệu đã biết là chưa xác minh thì trả lời thiếu dữ liệu, không gọi mô hình. Đầu ra mô hình không dẫn nguồn được thay bằng câu trả lời thiếu dữ liệu. Phương pháp này chưa phải tìm kiếm vector. Kiểm tra ID nguồn chỉ bảo đảm URL thuộc tập dữ liệu đã truy xuất, **không chứng minh mọi mệnh đề được nguồn đó hỗ trợ**; chỉ dẫn mô hình và cấu trúc JSON không thể bảo đảm điều này. Cần kiểm duyệt kết quả với chuyên gia trước khi dùng chính thức.
 
 Tên, mô tả, niên đại và chất liệu của cả 9 hiện vật có đủ bốn bản dịch biên tập (Việt/Anh/Hàn/Trung), đồng nhất với `data-v6.js`; đây không phải bản dịch được bảo tàng phê duyệt. Bộ tìm kiếm chuẩn hóa Hangul về NFC sau xử lý dấu và giữ sở thích khi câu hỏi nối tiếp chỉ đổi thời gian tham quan.
 
@@ -45,6 +47,33 @@ Không triển khai backend lên GitHub Pages: Pages chỉ phục vụ tệp tĩ
 
 Tài liệu rate limit chính thức: <https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/>. Cú pháp `ratelimits` đã được đối chiếu với nguồn tài liệu Cloudflare; toàn bộ `wrangler.jsonc` cũng đã được kiểm tra với JSON Schema trong gói `wrangler@4.36.0` chính thức. Hai binding có namespace riêng và `period: 60` hợp lệ. Cấu hình trên tài khoản thật vẫn cần kiểm thử sau triển khai.
 
+## Phân biệt cơ quan nguồn và tư liệu tham khảo
+
+Hồ sơ có thể bổ sung `institutionId`, `institutionName`, `referenceOnly`, `sourceSite` và `media`; Worker cũng đọc alias `institution_id`/`institution_name`/`reference_only`. Hồ sơ từ host khác nguồn Bảo tàng Đà Nẵng được xử lý bảo thủ là **tham khảo**, kể cả nếu chưa có cờ phân loại. Không tự coi tất cả hồ sơ mới là hiện vật đang ở Đà Nẵng. Nguồn bên ngoài chỉ được nhập sau khi kiểm chứng/duyệt theo quy trình dữ liệu của dự án; khả năng kỹ thuật trong API không thay thế phê duyệt nhập nguồn.
+
+Gợi ý hiện vật và lộ trình mặc định chỉ dùng hồ sơ Đà Nẵng. Hỏi rõ tên hiện vật tham khảo hoặc tên cơ quan nguồn có thể truy xuất hồ sơ tham khảo; khi có trích dẫn từ nguồn đó, API tự thêm nhãn cơ quan và câu không xác nhận hiện vật thuộc/đang trưng bày tại Bảo tàng Đà Nẵng. Dữ liệu `thematicFloor` chỉ dùng lọc theo chủ đề, không phải tọa độ thật. Bộ lọc tầng chủ đề, cơ sở, chất liệu không được tự bỏ khi không có kết quả.
+
+Danh sách miền nguồn được suy ra từ URL HTTPS đã lưu **ở server corpus**, không nhận allowlist hay URL nguồn từ request hoặc văn bản mô hình. Cấu trúc `sourceDetails` trong phản hồi lưu cơ quan, trạng thái tham khảo và ID hồ sơ để frontend hiển thị đúng nguồn. Khi bổ sung bảo tàng khác, frontend cũng phải kiểm tra URL theo corpus cục bộ của nó thay vì chỉ cho phép một miền cũ.
+
+Trường `media` chỉ được xây dựng từ media của **hồ sơ server được trích dẫn**, không lấy URL ảnh/video do mô hình tự trả. Mẫu dữ liệu được hỗ trợ:
+
+```json
+{
+  "institutionId": "museum-reference",
+  "institutionName": "Tên bảo tàng nguồn",
+  "referenceOnly": true,
+  "media": [{
+    "type": "video",
+    "url": "https://official-museum.example/video/record-id",
+    "source": "https://official-museum.example/objects/record-id",
+    "title": "Tiêu đề tư liệu",
+    "credit": "Chủ sở hữu/nguồn"
+  }]
+}
+```
+
+Đây là **ví dụ cấu trúc**, không phải nguồn video thật. Chỉ dùng liên kết thực sự kiểm chứng, có nguồn và quyền phù hợp. Có cấu trúc API không có nghĩa mỗi hồ sơ đã có video.
+
 ## Giao thức
 
 `POST /chat`, `Content-Type: application/json`, `Origin` thuộc allowlist. Body tối đa 16 KiB:
@@ -61,9 +90,9 @@ Tài liệu rate limit chính thức: <https://developers.cloudflare.com/workers
 
 `language`: `vi`, `en`, `ko`, `zh`; câu hỏi tối đa 700 ký tự; tối đa 10 lượt lịch sử, mỗi lượt tối đa 5.000 ký tự. Chỉ chấp nhận vai trò `user` và `assistant`. ID hiện vật/chủ đề được đối chiếu corpus. Trường bổ sung bị bỏ qua, không được đưa vào prompt làm dữ kiện.
 
-Thành công: `{ "answer": "...", "sources": ["https://baotangdanang.vn/..."], "mode": "generative", "grounded": true }`. Khi không có bản ghi phù hợp: `mode: "data"`, `sources: []`, `grounded: false`, với câu trả lời thiếu dữ liệu theo ngôn ngữ. Chỉ trả nguồn nằm trong tập truy xuất phía máy chủ. Không phản hồi lỗi thô hay thông tin khóa từ nhà cung cấp.
+Thành công: `{ "answer": "...", "sources": ["https://baotangdanang.vn/..."], "mode": "generative", "grounded": true }`. Khi không có bản ghi phù hợp: `mode: "data"`, `sources: []`, `grounded: false`, với câu trả lời thiếu dữ liệu theo ngôn ngữ. Chỉ trả nguồn nằm trong tập truy xuất phía máy chủ. Phản hồi có thể thêm `sourceDetails: [{recordId,title,institution,institutionId,referenceOnly,source}]` và `media: [{recordId,type,url,source,title,credit}]`; các trường này lấy từ corpus, không lấy từ mô hình. Khi thiếu chất liệu, niên đại, xuất xứ, kích thước, trọng lượng hoặc vị trí đã xác minh trong trường dữ liệu, Worker trả lời cụ thể thuộc tính đang thiếu; không suy ra từ ảnh hay loại vật dụng. Câu hỏi thiếu đối tượng và số tầng không được hỗ trợ được xử lý thành lời hỏi làm rõ trước khi gọi mô hình. Không phản hồi lỗi thô hay thông tin khóa từ nhà cung cấp.
 
-Mã lỗi: 400 đầu vào không hợp lệ, 403 origin không được phép, 404 sai đường dẫn, 405 sai phương thức, 413 quá kích thước, 415 sai kiểu nội dung, 429 quá giới hạn, 502 nhà cung cấp lỗi/hết 12 giây hoặc phản hồi sai định dạng, 503 thiếu cấu hình/giới hạn tần suất. Mọi phản hồi dùng `Cache-Control: no-store`; không bật ghi log hội thoại ở Worker. Câu hỏi và tối đa 8 lượt gần nhất được gửi tới OpenAI khi cần sinh câu trả lời: cần thông báo quyền riêng tư và chính sách lưu dữ liệu phù hợp trước vận hành công khai. Không gửi thông tin cá nhân nhạy cảm.
+Mã lỗi: 400 đầu vào không hợp lệ, 403 origin không được phép, 404 sai đường dẫn, 405 sai phương thức, 413 quá kích thước, 415 sai kiểu nội dung, 429 quá giới hạn, 502 nhà cung cấp lỗi/hết 12 giây hoặc phản hồi sai định dạng, 503 thiếu cấu hình/giới hạn tần suất. Mọi phản hồi dùng `Cache-Control: no-store`; không bật ghi log hội thoại ở Worker. Câu hỏi và tối đa 8 lượt gần nhất được gửi tới OpenAI khi cần sinh câu trả lời (mỗi lượt cắt tối đa 1.500 ký tự; tổng lịch sử tối đa 6.000 ký tự; `store: false` gửi cho OpenAI): cần thông báo quyền riêng tư và chính sách lưu dữ liệu phù hợp trước vận hành công khai. Không gửi thông tin cá nhân nhạy cảm.
 
 ## Nhận diện nhu cầu và bộ nhớ hội thoại
 
