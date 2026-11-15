@@ -1,0 +1,54 @@
+{
+  "observedAt": "2026-11-15T02:08:26.675342+00:00",
+  "institution": "Bảo tàng Lịch sử Quốc gia",
+  "pages": [
+    {
+      "url": "https://baotanglichsu.vn/vi/Video",
+      "cached": true,
+      "stage": "index"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Video/Page2",
+      "cached": false,
+      "stage": "index"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Video/Page3",
+      "cached": false,
+      "stage": "index"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Video/Page4",
+      "cached": false,
+      "stage": "index"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Video/Page5",
+      "cached": false,
+      "stage": "index"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Video/Page6",
+      "cached": false,
+      "stage": "index"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Video/Page7",
+      "cached": false,
+      "stage": "index"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Video/Page8",
+      "cached": false,
+      "stage": "index"
+    }
+  ],
+  "candidates": [],
+  "matchedObjects": [],
+  "failures": [],
+  "playbackTested": false,
+  "indexLinks": 50,
+  "eligibleObjects": 6,
+  "matchedObjectCount": 0,
+  "detailLimit": 8
+}

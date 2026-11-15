@@ -1,325 +1,185 @@
-Existing: 57; target: 200; requested additions: 143; bounded official candidates: 347
-SKIP https://baotanglichsu.vn/vi/Articles/1001/76300/bao-vat-quoc-gia-so-vang-truong-nguyen-ai-quoc-1949-1950.html Not a specific physical-object title
-ACCEPT 58 Mộ thuyền Việt Khê unknown: []
-ACCEPT 59 Thạp Đào Thịnh unknown: []
-ACCEPT 60 Trống Hoàng Hạ unknown: []
-ACCEPT 61 Tượng "Chân dung Chủ tịch Hồ Chí Minh" - năm 1946, bảo vật quốc gia tại Bảo tàng Lịch sử quốc gia unknown: ['era', 'material']
-ACCEPT 62 Trống Ngọc Lũ unknown: []
-ACCEPT 63 Ấn Hoàng đế tôn thân chi bảo unknown: []
-ACCEPT 64 Cây hương chùa Tứ Kỳ unknown: []
-ACCEPT 65 Ấn ngọc Đại Nam thụ thiên vĩnh mệnh truyền quốc tỷ unknown: ['era', 'material']
-ACCEPT 66 Ấn vàng truyền quốc của chúa Nguyễn Phúc Chu năm 1709 unknown: ['era', 'material']
-ACCEPT 67 Bình gốm hoa lam vẽ thiên nga unknown: ['era', 'material']
-ACCEPT 68 Ấn Sảnh Môn Hạ unknown: ['era', 'material']
-ACCEPT 69 Quả chuông chùa Vân Bản unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28543/bao-vat-quoc-gia-tuong-nguoi-cong-nhau-thoi-khen.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28542/bao-vat-quoc-gia-o-cua-bien-lach-truong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28541/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-3-va-het.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28540/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-2.html Not a specific physical-object title
-ACCEPT 70 Cuốn Đường Kách Mệnh của Nguyễn Ái Quốc: Sự xuất hiện và hành trình unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28535/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28534/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28533/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28532/bao-tang-lich-su-quoc-gia-lua-chon-danh-muc-bao-vat-quoc-gia-djot-4-nam-2015.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28519/an-vang-sac-menh-chi-bao.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28518/tac-pham-nguc-trung-nhat-ky.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28517/an-vang-djai-viet-quoc-nguyen-chua-vinh-chan-chi-bao.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28354/but-tich-loi-keu-goi-toan-quoc-khang-chien.html No source object photograph in article body
-ACCEPT 71 Sách "Đường Kách Mệnh" unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28303/bia-vo-canh.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28291/bia-djien-nam-giao.html No source object photograph in article body
-ACCEPT 72 Trống đồng Cảnh Thịnh unknown: ['era', 'material']
-ACCEPT 73 Bình vẽ thiên nga unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28177/an-mon-ha-sanh-an.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28174/chuong-van-ban.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28173/thong-gom-hoa-nau.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28124/quan-tai-viet-khe.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28121/cay-djen-hinh-nguoi-quy.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28118/tuong-hai-nguoi-cong-nhau-thoi-khen.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28056/thap-djao-thinh.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28054/trong-djong-hoang-ha.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28052/trong-djong-ngoc-lu.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/28033/trong-djong-canh-thinh.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1001/19790/bao-vat-quoc-gia-tuong-nguoi-cong-nhau-thoi-khen.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/19758/bao-vat-quoc-gia-o-cua-bien-lach-truong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/19720/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-3-va-het.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/19718/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-2.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/19365/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/19346/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/19341/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/18674/bao-tang-lich-su-quoc-gia-lua-chon-danh-muc-bao-vat-quoc-gia-djot-4-nam-2015.html Not a specific physical-object title
-ACCEPT 74 Giới thiệu bảo vật quốc gia. Ngôi Mộ cổ Việt Khê unknown: ['era', 'material']
-ACCEPT 75 Giới thiệu Bảo vật quốc gia - Bia Võ Cạnh, những ẩn số chưa được giải đáp. unknown: ['era', 'material']
-ACCEPT 76 Giới thiệu Bảo vật Quốc gia. 11. Ngục trung nhật ký (Nhật ký trong tù) unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1001/13640/gioi-thieu-bao-vat-quoc-gia-10-ban-thao-loi-keu-goi-toan-quoc-khang-chien.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/13639/gioi-thieu-bao-vat-quoc-gia-9-djuong-kach-menh-anh-sang-cho-con-djuong-cach-mang-viet-nam.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1001/13638/gioi-thieu-bao-vat-quoc-gia-8-trong-djong-canh-thinh-bau-vat-thoi-tay-son.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1001/13637/gioi-thieu-bao-vat-quoc-gia-7-thien-nga-mang-hon-viet-tren-binh-gom-hoa-lam.html No source object photograph in article body
-ACCEPT 77 Giới thiệu Bảo vật Quốc gia. 5. Ánh hào quang bí ẩn từ cây đèn hình người quỳ unknown: ['era', 'material']
-ACCEPT 78 Giới thiệu Bảo vật Quốc gia. 4. Tượng hai người cõng nhau thổi khèn unknown: ['era', 'material']
-ACCEPT 79 Chiếc lược đồi mồi và hành trình của một kỷ vật đặc biệt unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/76613/nhung-ky-vat-thieng-lieng-ve-thuong-binh-liet-si-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/76600/hai-ky-vat-ke-chuyen-ve-anh-hung-liet-si-le-thi-rieng.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/76209/mot-so-djo-dung-sinh-hoat-cua-lanh-tu-nguyen-ai-quoc-tai-pac-bo-cao-bang-trong-trung-bay-chuyen-dje-mua-xuan-khoi-nguon-thang-loi.html Not a specific physical-object title
-ACCEPT 80 Huy hiệu Bình dân học vụ – Biểu tượng của ánh sáng tri thức giữa ngục tù Côn Đảo unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/75288/ky-vat-ke-chuyen-long-dan.html Not a specific physical-object title
-ACCEPT 81 Cuốn sổ tay của dân công tỉnh Phú Thọ trong chiến dịch Điện Biên Phủ, năm 1954 unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/74212/suu-tap-hien-vat-ve-tong-bi-thu-truong-chinh-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/73926/tac-pham-lich-su-nuoc-ta-nam-1942-luu-giu-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/73335/suu-tap-hien-vat-ve-cach-mang-thang-tam-nam-1945-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-ACCEPT 82 Sách “Bản án chế độ Thực dân Pháp” (Le Procès de la Colonisation Francaise) lưu giữ tại Bảo tàng lịch sử quốc gia unknown: ['era', 'material']
-ACCEPT 83 Vở học bằng mo tre lưu giữ tại BTLSQG unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/72196/tuyen-ngon-cua-uy-ban-dan-toc-giai-phong-viet-nam.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/70876/ve-bon-so-bao-than-ai-do-chu-tich-ho-chi-minh-sang-lap-tai-thai-lan.html Not a specific physical-object title
-ACCEPT 84 Chiếc gầu Chủ tịch Hồ Chí Minh dùng để tát nước chống hạn lưu giữ tại BTLSQG unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28563/djoi-net-ve-nhung-tympan-cam-mit-djang-djuoc-trung-bay-phat-huy-gia-tri-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28560/ao-ba-nguyen-thi-tao-phu-tho.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28557/djen-hoc-sinh-truong-han-thuyen-bac-ninh.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28554/vo-hoc-bang-mo-tre.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28545/anh-sang-tu-djuong-kach-menh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28544/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-3-va-het.html Not a specific physical-object title
-ACCEPT 85 Lá cờ của Việt kiều Paris (Pháp) treo mừng Lễ Độc lập 2-9-1945 unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28530/tim-hieu-ve-cac-loai-gach-in-chu-djang-trung-bay-o-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-ACCEPT 86 Về tấm bia đàn Nam Giao thời Lê ở Hà Nội unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28527/chiec-am-sac-thuoc-cho-lanh-tu-ho-chi-minh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28526/chiec-hom-phieu-bau-cu-quoc-hoi-khoa-i.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28525/suu-tap-truyen-djon-cach-mang-truoc-thang-9-1945-hien-luu-giu-tai-btlsqg.html Not a specific physical-object title
-ACCEPT 87 Đôi lọ lục bình giấu tài liệu bí mật của Đảng unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28522/tap-chu-ky-ung-ho-viet-nam-chong-my-cuu-nuoc-cua-nhan-dan-bungari.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28521/chiec-djai-ban-dan-sony-xac-nhan-thong-tin-mien-nam-hoan-toan-giai-phong-djua-djen-quyet-djinh-giai-phong-con-djao-ngay-1-5-1975.html Not a specific physical-object title
-ACCEPT 88 Sự ra đời bức ảnh “Bác bắt nhịp bài ca Kết đoàn” unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28514/xe-o-to.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28511/lu-su-tu.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28508/buc-theu.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28505/bo-djo-an-bang-bac.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28502/bo-djo-tra.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28499/tuong-phat-nhan-dan-an-djo-tang.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28498/che-bien-thuy-san-djong-lanh-xuat-khau.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28497/san-xuat-su-ve-sinh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28496/djap-tran-nha-may-thuy-djien-hoa-binh.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28495/djai-hoi-djai-bieu-toan-quoc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28492/quat-djien-thoi-ky-bao-cap.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28489/tem-phieu-mua-hang-thoi-ky-bao-cap.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28486/so-mua-luong-thuc-thoi-ky-bao-cap.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28485/xep-hang-mua-luong-thuc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28484/quoc-hoi-khoa-vi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28483/hoi-nghi-hiep-thuong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28482/nhan-dan-thu-djo-ha-noi-mit-tinh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28481/xe-tang.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28480/le-ky-hiep-djinh-djinh-chien.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28477/bang-khau-hieu.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28474/bang-da.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28471/mu-cua-hoi-cuu-chien-binh-my.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28468/trong-cua-djoan-phat-giao-nhat-ban.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28465/lich.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28462/xich-va-khoa.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28459/tranh-lam-bang-xac-may-bay-my.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28456/cao-co.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28453/ca-uong-nuoc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28450/huy-hieu-son-la-quyet-thang.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28449/djan-mangdjolin.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28448/anh-hung-liet-si-nguyen-van-troi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28447/co-dji-la-chien-thang-djanh-la-diet-gon.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28446/mo.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28445/cua.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28442/sung-go.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28439/sung-ngua-troi.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28436/phong-trao-djong-khoi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28433/mu-rom.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28430/djon-vi-phao-cao-xa.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28427/ham-tru-an.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28424/dung-cu-lam-djuong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28421/gau-tat-nuoc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28418/chu-tich-ho-chi-minh-tat-nuoc-chong-han.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28415/djua-nhac-truong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28412/chu-tich-ho-chi-minh-bat-nhip-bai-ket-djoan.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28409/tau-khong-so.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28406/djuong-truong-son.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28403/cau-hien-luong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28402/thu-truong-bo-quoc-phong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28401/gan-huy-hieu.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28398/huy-hieu-chien-si-djien-bien.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28395/sung-djkz.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28392/mui-khoan.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28389/may-vo-tuyen-djien.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28386/cuoc-chim.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28383/co-quyet-chien-quyet-thang.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28380/coc-toi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28379/chien-thang-lich-su-djien-bien-phu.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28378/xe-djap-tho.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28377/djoan-xe-djap-tho.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28376/hai-bo-phan-cua-djai-phat-thanh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28375/djai-phat-thanh-tieng-noi-nam-bo.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28374/lop-hoc-van-hoa.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28371/may-dap-thuoc-vien.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28370/djen.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28369/ao.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28366/hu-gao-nuoi-quan.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28363/chien-si-quyet-tu.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28360/bom-ba-cang.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28357/tranh-chu-tich-ho-chi-minh-va-thieu-nhi-bac-trung-nam.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28353/chu-tich-ho-chi-minh-tai-ky-hop-thu-nhat-quoc-hoi-khoa-i.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28352/chinh-phu-lam-thoi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28351/ban-nhac-tien-quan-ca.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28350/tuong-djong-chu-tich-ho-chi-minh.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28349/le-djoc-lap-tai-quang-truong-ba-djinh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28347/gay-tam-vong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28344/mui-lao.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28341/ma-tau.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28338/kiem.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28335/dao-truong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28334/nhan-dan-ha-noi-djanh-chiem-phu-kham-sai.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28333/nhan-dan-sai-gon-mit-tinh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28332/co-djo-sao-vang.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28331/dje-an-nghi-quyet.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28330/la-ban.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28329/ao-vet-tong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28328/le-thanh-lap-djoi-viet-nam-tuyen-truyen-giai-phong-quan.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28327/ban-dja-va-rulo.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28326/bao-viet-nam-djoc-lap.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28325/may-chem.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28324/tru-so-bao-tin-tuc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28323/bao-lao-djong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28322/bao-tin-hoc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28321/bao-dan-chung.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28318/djen-toa-djang.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28312/nguyen-ai-quoc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28309/tranh-ba-tang-ap-buc.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28306/bia-my-son-1.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28300/bien-chinh-djong-mon-tay-nam-mon.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28297/cay-huong-dja.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28294/cong-tam-quan.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28288/tuong-ho.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28285/bia-chua-bao-an.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28282/cap-chan-djen.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28279/gia-djen-hinh-toa-cuu-long.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28276/tuong-ban-than-thieu-nu-ha-noi.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28273/tuong-nguoi-nong-dan-dji-cay.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28270/phu-djieu-su-tu.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28267/djai-tho-uroja.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28264/phu-djieu-than-siva.html Not a specific physical-object title
-ACCEPT 89 Sưu tập tiền kim loại unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28260/binh-kendi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28257/nhan.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28254/tuong-phat.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28251/tuong-than-visnu.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28248/suu-tap-lu-huong-djinh-djong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28245/suu-tap-djo-go-kham-trai.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28242/suu-tap-djo-su-men-trang-ve-lam-va-djo-phap-lam.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28239/suu-tap-djo-go-son-son-thep-vang.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28236/suu-tap-gom-bat-trang.html Not a specific physical-object title
-ACCEPT 90 Hộp đựng sách, nghiên mài mực unknown: ['era', 'material']
-ACCEPT 91 Thước gỗ, quả cân đồng, đấu đong unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28228/suu-tap-chuong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28225/bo-tranh-luc-bo.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28222/djoi-bat-tho.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28219/lenh-chi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28212/suu-tap-gom-phu-lang.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28211/am-trang-tri-chu-tho.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28210/suu-tap-djo-djong-the-ki-15-18.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28209/suu-tap-tranh-tho.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28206/bo-tranh-thap-djien-diem-vuong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28203/tuong-phat-nhap-niet-ban.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28200/thuyen-tho.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28197/djoi-vet-tho.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28196/lu-huong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28192/djan-dja.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28189/djau-phuong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28186/coc-bach-djang.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28183/moc-bai-dja-boi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28178/an-mon-ha-sanh-an.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28172/suu-tap-gom-hoa-nau.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28171/suu-tap-vat-lieu-trang-tri-kien-truc-djat-nung.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28170/suu-tap-gom-ly-tran-the-ky-11-14.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28167/bia-linh-xung.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28164/tuong-djau-nguoi-minh-chim-djanh-trong-kinnari.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28161/be-ke-chan-cot.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28158/coc-djong-mong-thanh-hoa-lu.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28155/tuong-uyen-uong-trang-tri-kien-truc.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28151/gach-in-chu-djai-viet-quoc-quan-thanh-chuyen-gach-in-chu-giang-tay-quan.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28148/bia-truong-xuan.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28145/am-voi-hinh-djau-ga.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28142/khay.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28139/chau-trong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28136/trong-tan-long-loai-heger-ii.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28133/bo-phan-ket-cau-nha-san.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28132/chuoi-hat-ma-nao.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28131/khuyen-tai-hai-djau-thu-dja.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28129/chan-djen.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28128/noi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28127/hat-chuoi-thuy-tinh.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28117/tram-cai.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28116/vong-ong-tay-gan-luc-lac.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28115/vong-tay-thuy-tinh.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28112/dau-in-ban-dap-hoa-van.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28109/cong-cu-tra-lap-can.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28106/chuoi-hat.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28103/xeng.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28100/riu-bon.html Insufficient object description
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28097/cuoc.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28094/suu-tap-vo-nhuyen-the.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28091/gom-djay-nhon.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28088/ban-mai-luoi-cong-cu-dau-bac-son.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28085/riu-tay.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28082/chay-va-ban-nghien-thuc-an.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28079/riu-ngan.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28076/bo-phan-ket-cau-nha-san.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28075/khuyen-tai-hai-djau-thu.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28072/mo-vo.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28071/noi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28070/khuyen-tai-ba-mau-bon-mau.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28067/mo-chum.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28066/ho-tam-phien.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28065/mui-ten.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28064/vu-khi-djong-son.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28063/luoi-hai.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28062/riu.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28057/thap-djao-thinh.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28055/trong-djong-hoang-ha.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28053/trong-djong-ngoc-lu.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28049/luoi-cau.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28046/chi-luoi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28043/tuong-bo-ga.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28040/doi-se-soi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28037/tuong-nguoi-djan-ong.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/28034/rang-nguoi-vuon.html Missing object title or article content
-SKIP https://baotanglichsu.vn/vi/Articles/1002/19424/chiec-am-sac-thuoc-cho-lanh-tu-ho-chi-minh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/18813/tim-hieu-ve-cac-loai-gach-in-chu-djang-trung-bay-o-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/18072/chiec-djai-ban-dan-sony-xac-nhan-thong-tin-mien-nam-hoan-toan-giai-phong-djua-djen-quyet-djinh-giai-phong-con-djao-ngay-1-5-1975.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/17954/tap-chu-ky-ung-ho-viet-nam-chong-my-cuu-nuoc-cua-nhan-dan-bungari.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/17653/suu-tap-truyen-djon-cach-mang-truoc-thang-9-1945-hien-luu-giu-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/17555/chiec-hom-phieu-bau-cu-quoc-hoi-khoa-i.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/17469/ky-vat-cua-djoi-truong-djoi-viet-nam-tuyen-truyen-giai-phong-quan-hoang-sam.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/17222/nhung-ky-vat-cua-me-suot-nguoi-cheo-thuyen-tren-song-nhat-le.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/17199/sac-mau-van-hoa-qua-suu-tap-tang-pham-cua-nhan-dan-viet-nam-nhan-dan-the-gioi-tang-chu-tich-ho-chi-minh-va-djang-cong-san-viet-nam-tai-btlsqg.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/17040/djo-gom-the-ky-1-3-sau-cong-nguyen-luu-giu-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/16966/cay-nhiet-djoi-vu-khi-trinh-sat-djien-tu-my-su-dung-trong-chien-tranh-viet-nam.html Not a specific physical-object title
-ACCEPT 92 Cờ bình dân học vụ của lớp Sơ cấp Thị trấn Gia Rai tặng Hồ Chí Minh unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/16800/bao-hon-nuoc-cua-thanh-nien-cuu-quoc-khu-hoang-dieu-nam-1945.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/16374/thu-choi-co-ngoan-cua-nguoi-ha-noi-xua.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/16373/suu-tap-tranh-tuyen-truyen-co-djong-trong-khang-chien-chong-thuc-dan-phap-1946-1954.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/16155/chiec-va-li-may-cua-chu-tich-ho-chi-minh.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/15110/ve-mot-ky-vat-cua-anh-hung-liet-si-hoang-le-kha.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14834/mot-so-thong-tin-ve-tranh-tuong-dje-tai-chien-tranh-cach-mang-djang-trung-bay-tai-bao-tang-lich-su-quoc-gia-phan-cuoi.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14806/djo-gom-men-thoi-ly-tran-tim-djuoc-trong-khu-vuc-thanh-thang-long-luu-giu-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14788/mot-so-thong-tin-ve-tranh-tuong-dje-tai-chien-tranh-cach-mang-hien-djang-trung-bay-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-ACCEPT 93 Bia Cấm tệ sách nhiễu dân (Thân cấm khử tệ) unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14609/bom-ba-cang-quyet-tu-quan-thu-djo-dung-djanh-xe-tang-phap-trong-nhung-ngay-djau-toan-quoc-khang-chien-12-1946.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14549/ky-niem-88-nam-ngay-bao-chi-cach-mang-viet-nam-21-6-1925-21-6-2013-mot-so-bao-chi-cach-mang-thoi-ky-1936-1939-hien-bao-tang-lich-su-quoc-gia-luu-giu-djuoc-dju-so.html Not a specific physical-object title
-ACCEPT 94 Bức tranh “Bác Hồ với ba cháu thiếu nhi Trung Nam Bắc” được vẽ bằng máu của họa sĩ Diệp Minh Châu. unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14493/suu-tap-bao-chi-cach-mang-viet-nam-truoc-nam-1945-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-ACCEPT 95 Anh hùng liệt sĩ Bế Văn Đàn (1931-1954) unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14449/suu-tap-bao-cua-trung-uong-djang-cong-san-viet-nam-xuat-ban-truoc-thang-12-1945-hien-luu-giu-tai-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14349/noi-dung-bai-ky-khac-tren-bia-chua-bao-an-hien-vat-bao-tang-lich-su-quoc-gia.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14326/200-luong-vang-mua-ao-len-cua-ho-chu-tich.html No source object photograph in article body
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14283/bang-khen-cua-tong-bo-viet-minh-truy-tang-anh-kim-djong-nguoi-djoi-truong-djau-tien-cua-djoi-tntp-hcm.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14278/suu-tap-bao-co-giai-phong-1943-1945-cua-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14270/suu-tap-bao-dan-chung-1938-1939-cua-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/14262/suu-tap-bao-viet-nam-djoc-lap-1941-1945-cua-bao-tang-lich-su-quoc-gia.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/13832/djia-ban-djoi-du-kich-ba-to-tinh-quang-ngai-thu-djuoc-cua-phat-xit-nhat-nam-1945.html Not a specific physical-object title
-ACCEPT 96 Súng trường do Cao Thắng chế tạo trong cuộc khởi nghĩa Hương Khê (1885-1896) unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/13728/chiec-djai-ban-dan-sony-dung-nghe-tin-mien-nam-hoan-toan-giai-phong.html Not a specific physical-object title
-SKIP https://baotanglichsu.vn/vi/Articles/1002/13678/nu-anh-hung-ngo-thi-tuyen-trong-tran-chien-cau-ham-rong.html Not a specific physical-object title
-ACCEPT 97 Cuốn sổ ghi cảm tưởng của quân dân Âu - Phi mừng thọ Bác Hồ unknown: ['era', 'material']
-SKIP https://baotanglichsu.vn/vi/Articles/1002/12914/tac-pham-sua-djoi-loi-lam-viec-cua-chu-tich-ho-chi-minh-ky-niem-65-nam-ngay-tac-pham-ra-djoi.html Not a specific physical-object title
-RESULT {"target": 200, "originalRetained": 57, "added": 40, "total": 97, "shortfall": 103}
+Re-reviewed complete National records: 6
+API vam page 1 candidates 100
+API SKIP {'provider': 'vam', 'identifier': 'O89704', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O123216', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O102305', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 1 Poster: Victory to the National Liberation Front of South Vietnam · E.618-2013 ca. 1969
+API SKIP {'provider': 'vam', 'identifier': 'O1024153', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O102496', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O90822', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 2 Photograph: The Air War: phosphorus bombs dropped by a U.S. Skyraider, destroy a jungle village, Vietnam · RPS.1373-2023 ca. 1968
+API SKIP {'provider': 'vam', 'identifier': 'O102497', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O117553', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 3 Photograph: Shell-shocked soldier awaiting transportation away from the frontline, Hue · PH.1280-1980 1968
+API SKIP {'provider': 'vam', 'identifier': 'O102019', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 4 Ensemble: WRỒNG · IS.22:1, 2-2019 2016-2017
+API SKIP {'provider': 'vam', 'identifier': 'O1663897', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O1663938', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O1663943', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O102240', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O20386', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O24952', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 5 Bottle · C.14-1965 1450-1550
+API SKIP {'provider': 'vam', 'identifier': 'O1439769', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 6 Poster: Agriculture is the Most Important Front · E.619-2013 ca. 1975
+API SKIP {'provider': 'vam', 'identifier': 'O1023929', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O1439806', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O90113', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 7 Bowl · FE.13-2006 13th century to 14th century
+API ACCEPT 8 Poster: The War is Over! · E.631-2004 1972; 1975
+API SKIP {'provider': 'vam', 'identifier': 'O102302', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 9 Photograph: Interior of Hut - An Loc · RPS.3499-2026 ca. 1973
+API SKIP {'provider': 'vam', 'identifier': 'O101215', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O1024159', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 10 Dish and box · FE.10:1, 2-1987 1480 -1500
+API ACCEPT 11 Photograph: Mother and Child - Saigon · RPS.3503-2026 ca. 1973
+API ACCEPT 12 Saucer · FE.20:2-2007 1725-30
+API ACCEPT 13 Saucer · FE.19:2-2007 1725-30
+API ACCEPT 14 Saucer · FE.22:2-2007 1725-30
+API ACCEPT 15 Saucer · FE.21:2-2007 1725-30
+API SKIP {'provider': 'vam', 'identifier': 'O1667781', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 16 Saucer · FE.62:2-2007 ca. 1725
+API ACCEPT 17 Saucer · FE.61:2-2007 ca. 1725
+API ACCEPT 18 Saucer · FE.60:2-2007 ca. 1725
+API ACCEPT 19 Saucer · FE.59:2-2007 ca. 1725
+API ACCEPT 20 Teabowl · FE.58:1-2007 ca. 1725
+API ACCEPT 21 Teabowl · FE.57:1-2007 ca. 1725
+API ACCEPT 22 Teabowl · FE.56:1-2007 ca. 1725
+API ACCEPT 23 Teabowl · FE.55:1-2007 ca. 1725
+API ACCEPT 24 Teabowl · FE.54:1-2007 ca. 1725
+API ACCEPT 25 Teabowl · FE.53:1-2007 ca. 1725
+API ACCEPT 26 Teabowl · FE.52:1-2007 ca. 1725
+API ACCEPT 27 Teabowl · FE.51:1-2007 ca. 1725
+API ACCEPT 28 Teabowl · FE.50:1-2007 ca. 1725
+API SKIP {'provider': 'vam', 'identifier': 'O1024158', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O102503', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O101195', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 29 Panel · T.388-1960 ca. 1900
+API ACCEPT 30 Pair of shoes: Bitten Dragon · IS.5:1, 2-2019 2017
+API ACCEPT 31 Photograph: Crew Chief James Farley after the Copper Landed in Danang, Weeping · RPS.1375-2023 1965
+API ACCEPT 32 Photograph: Crew chief Farley opens fire with his M-60 machine gun at Vietcong positions · RPS.1369-2023 1965
+API ACCEPT 33 Photograph: Jumping out of the helicopter for an assault against the Vietcong hidden along the tree line in the background · RPS.1368-2023 1965
+API ACCEPT 34 Photograph: Crew chief Farley carries M-60 machine guns to helicopter · RPS.1367-2023 1965
+API ACCEPT 35 Photograph: 'Mekong Delta, Viet Cong Prisoners · RPS.1364-2023 1963
+API ACCEPT 36 Hanging · IS.24-2026 1900 - 1920
+API SKIP {'provider': 'vam', 'identifier': 'O101189', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O173207', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173206', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173205', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173204', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173203', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173200', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173197', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173208', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173198', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173196', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O173190', 'reason': 'Missing date/material or verified Vietnamese origin'}
+API SKIP {'provider': 'vam', 'identifier': 'O1813656', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 37 Bowl · IS.102-2002 late 14th century-15th century
+API ACCEPT 38 Mosquito Bag · IS.27-2026 1900 - 1920
+API SKIP {'provider': 'vam', 'identifier': 'O493291', 'reason': 'V&A object has no structured place association with Vietnam'}
+API SKIP {'provider': 'vam', 'identifier': 'O1667777', 'reason': 'V&A object has no structured place association with Vietnam'}
+API ACCEPT 39 Saucer · FE.128:2-2007 ca. 1725
+API ACCEPT 40 Saucer · FE.127:2-2007 ca. 1725
+API ACCEPT 41 Saucer · FE.126:2-2007 ca. 1725
+API ACCEPT 42 Saucer · FE.125:2-2007 ca. 1725
+API ACCEPT 43 Saucer · FE.124:2-2007 ca. 1725
+API ACCEPT 44 Saucer · FE.123:2-2007 ca. 1725
+API ACCEPT 45 Saucer · FE.122:2-2007 ca. 1725
+API ACCEPT 46 Saucer · FE.121:2-2007 ca. 1725
+API ACCEPT 47 Saucer · FE.120:2-2007 ca. 1725
+API ACCEPT 48 Saucer · FE.119:2-2007 ca. 1725
+API ACCEPT 49 Saucer · FE.118:2-2007 ca. 1725
+API ACCEPT 50 Saucer · FE.117:2-2007 ca. 1725
+API ACCEPT 51 Saucer · FE.116:2-2007 ca. 1725
+API vam page 2 candidates 100
+API ACCEPT 52 Saucer · FE.115:2-2007 ca. 1725
+API ACCEPT 53 Saucer · FE.114:2-2007 ca. 1725
+API ACCEPT 54 Saucer · FE.113:2-2007 ca. 1725
+API ACCEPT 55 Saucer · FE.112:2-2007 ca. 1725
+API ACCEPT 56 Saucer · FE.111:2-2007 ca. 1725
+API ACCEPT 57 Saucer · FE.110:2-2007 ca. 1725
+API ACCEPT 58 Saucer · FE.109:2-2007 ca. 1725
+API ACCEPT 59 Saucer · FE.108:2-2007 ca. 1725
+API ACCEPT 60 Saucer · FE.107:2-2007 ca. 1725
+API ACCEPT 61 Saucer · FE.106:2-2007 ca. 1725
+API ACCEPT 62 Saucer · FE.105:2-2007 ca. 1725
+API ACCEPT 63 Saucer · FE.104:2-2007 ca. 1725
+API ACCEPT 64 Saucer · FE.103:2-2007 ca. 1725
+API ACCEPT 65 Saucer · FE.102:2-2007 ca. 1725
+API ACCEPT 66 Saucer · FE.101:2-2007 ca. 1725
+API ACCEPT 67 Saucer · FE.100:2-2007 ca. 1725
+API ACCEPT 68 Saucer · FE.99:2-2007 ca. 1725
+API ACCEPT 69 Saucer · FE.98:2-2007 ca. 1725
+API ACCEPT 70 Saucer · FE.97:2-2007 ca. 1725
+API ACCEPT 71 Saucer · FE.96:2-2007 ca. 1725
+API ACCEPT 72 Saucer · FE.95:2-2007 ca. 1725
+API ACCEPT 73 Saucer · FE.94:2-2007 ca. 1725
+API ACCEPT 74 Saucer · FE.93:2-2007 ca. 1725
+API ACCEPT 75 Saucer · FE.92:2-2007 ca. 1725
+API ACCEPT 76 Saucer · FE.91:2-2007 ca. 1725
+API ACCEPT 77 Saucer · FE.90:2-2007 ca. 1725
+API ACCEPT 78 Saucer · FE.89:2-2007 ca. 1725
+API ACCEPT 79 Saucer · FE.88:2-2007 ca. 1725
+API ACCEPT 80 Saucer · FE.87:2-2007 ca. 1725
+API ACCEPT 81 Saucer · FE.86:2-2007 ca. 1725
+API ACCEPT 82 Saucer · FE.85:2-2007 ca. 1725
+API ACCEPT 83 Saucer · FE.84:2-2007 ca. 1725
+API ACCEPT 84 Saucer · FE.83:2-2007 ca. 1725
+API ACCEPT 85 Saucer · FE.82:2-2007 ca. 1725
+API ACCEPT 86 Saucer · FE.81:2-2007 ca. 1725
+API ACCEPT 87 Saucer · FE.80:2-2007 ca. 1725
+API ACCEPT 88 Saucer · FE.79:2-2007 ca. 1725
+API ACCEPT 89 Brush rest · FE.10-2007 ca. 1725
+API ACCEPT 90 Brush rest · FE.9-2007 ca. 1725
+API ACCEPT 91 Saucer · FE.178:2-2007 ca. 1725
+API ACCEPT 92 Saucer · FE.177:2-2007 ca. 1725
+API ACCEPT 93 Saucer · FE.176:2-2007 ca. 1725
+API ACCEPT 94 Saucer · FE.175:2-2007 ca. 1725
+API ACCEPT 95 Saucer · FE.174:2-2007 ca. 1725
+API ACCEPT 96 Saucer · FE.173:2-2007 ca. 1725
+API ACCEPT 97 Saucer · FE.172:2-2007 ca. 1725
+API ACCEPT 98 Saucer · FE.171:2-2007 ca. 1725
+API ACCEPT 99 Saucer · FE.170:2-2007 ca. 1725
+API ACCEPT 100 Saucer · FE.169:2-2007 ca. 1725
+API ACCEPT 101 Saucer · FE.168:2-2007 ca. 1725
+API vam page 3 candidates 100
+API ACCEPT 102 Saucer · FE.167:2-2007 ca. 1725
+API ACCEPT 103 Saucer · FE.166:2-2007 ca. 1725
+API ACCEPT 104 Saucer · FE.165:2-2007 ca. 1725
+API ACCEPT 105 Saucer · FE.164:2-2007 ca. 1725
+API ACCEPT 106 Saucer · FE.163:2-2007 ca. 1725
+API ACCEPT 107 Saucer · FE.162:2-2007 ca. 1725
+API ACCEPT 108 Saucer · FE.161:2-2007 ca. 1725
+API ACCEPT 109 Saucer · FE.160:2-2007 ca. 1725
+API ACCEPT 110 Saucer · FE.159:2-2007 ca. 1725
+API ACCEPT 111 Saucer · FE.158:2-2007 ca. 1725
+API ACCEPT 112 Saucer · FE.157:2-2007 ca. 1725
+API ACCEPT 113 Saucer · FE.156:2-2007 ca. 1725
+API ACCEPT 114 Saucer · FE.155:2-2007 ca. 1725
+API ACCEPT 115 Saucer · FE.154:2-2007 ca. 1725
+API ACCEPT 116 Saucer · FE.153:2-2007 ca. 1725
+API ACCEPT 117 Saucer · FE.152:2-2007 ca. 1725
+API ACCEPT 118 Saucer · FE.151:2-2007 ca. 1725
+API ACCEPT 119 Saucer · FE.150:2-2007 ca. 1725
+API ACCEPT 120 Saucer · FE.149:2-2007 ca. 1725
+API ACCEPT 121 Saucer · FE.148:2-2007 ca. 1725
+API ACCEPT 122 Saucer · FE.147:2-2007 ca. 1725
+API ACCEPT 123 Saucer · FE.146:2-2007 ca. 1725
+API ACCEPT 124 Saucer · FE.145:2-2007 ca. 1725
+API ACCEPT 125 Saucer · FE.144:2-2007 ca. 1725
+API ACCEPT 126 Saucer · FE.143:2-2007 ca. 1725
+API ACCEPT 127 Saucer · FE.142:2-2007 ca. 1725
+API ACCEPT 128 Saucer · FE.141:2-2007 ca. 1725
+API ACCEPT 129 Saucer · FE.139:2-2007 ca. 1725
+API ACCEPT 130 Saucer · FE.138:2-2007 ca. 1725
+API ACCEPT 131 Saucer · FE.137:2-2007 ca. 1725
+API ACCEPT 132 Saucer · FE.136:2-2007 ca. 1725
+API ACCEPT 133 Saucer · FE.135:2-2007 ca. 1725
+API ACCEPT 134 Saucer · FE.134:2-2007 ca. 1725
+API ACCEPT 135 Saucer · FE.140:2-2007 ca. 1725
+API ACCEPT 136 Saucer · FE.133:2-2007 ca. 1725
+API ACCEPT 137 Saucer · FE.132:2-2007 ca. 1725
+Existing: 57; selected references: 143; remaining HTML candidates: 0
+VERIFIED OBJECT VIDEOS 0
+RESULT {"target": 200, "originalRetained": 57, "added": 143, "total": 200, "shortfall": 0}
