@@ -32,6 +32,7 @@ jobs:
           if test -d bao-tang-da-nang-v6/assets/reference; then git add bao-tang-da-nang-v6/assets/reference; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Import verified illustrated institution-scoped reference objects'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
       - name: Rebuild website after valid import

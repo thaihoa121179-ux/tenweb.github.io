@@ -22,5 +22,6 @@ jobs:
           git add bao-tang-da-nang-v6/data/expansion-discovery.json
           if ! git diff --cached --quiet; then
             git commit -m 'Capture institution-scoped collection and video discovery'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
