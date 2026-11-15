@@ -1,0 +1,26 @@
+name: Inspect official object catalogue schemas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/expansion-samples.yml', 'bao-tang-da-nang-v6/scripts/fetch_expansion_samples.py']
+permissions:
+  contents: write
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture bounded official public sources
+        run: python3 bao-tang-da-nang-v6/scripts/fetch_expansion_samples.py
+      - name: Save bounded discovery snapshot
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add bao-tang-da-nang-v6/data/expansion-samples.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Capture institution-scoped collection and video discovery'
+            git push origin HEAD:main
+          fi
