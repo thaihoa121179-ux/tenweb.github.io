@@ -1,6 +1,12 @@
 # Dữ liệu và quyền hình ảnh V6
 
-V6 kế thừa **9 hồ sơ hiện vật và 15 chủ đề** từ V5; không bổ sung hiện vật, niên đại, chất liệu, vị trí hoặc câu chuyện lịch sử tự suy đoán. Ngày rà soát mã nguồn: 14/11/2026. Rà soát này xác định nguồn được lưu trong repository, **không xác nhận lại nội dung hoặc giấy phép trên website nguồn**.
+Cập nhật 15/11/2026: **200 hồ sơ hiện vật**, gồm 57 Đà Nẵng (9 kế thừa + 48 nhập từ hai cơ sở), 6 Bảo tàng Lịch sử Quốc gia và 137 Victoria and Albert Museum. 143 hồ sơ ngoài Đà Nẵng là `referenceOnly`, ghi rõ đơn vị nguồn, không gán tầng hoặc vị trí Đà Nẵng. Bộ sưu tập vẫn có 15 chủ đề kế thừa.
+
+Các hồ sơ tham khảo yêu cầu ảnh thật giải mã được, niên đại, chất liệu, số kiểm kê, URL nguồn và dấu kiểm tra ảnh. V&A được tra từ API hồ sơ đối tượng chính thức. Các liên hệ `China (made); Vietnam (found/excavated)` được giữ nguyên; không đổi nơi tìm thấy thành nơi chế tác. Ngôn ngữ gốc tiếng Anh/Việt được ghi rõ. Chuẩn hóa Unicode NFC và khử trùng số kiểm kê, danh tính, ảnh; không đếm nhiều bài viết hoặc góc ảnh thành hiện vật mới.
+
+Bằng chứng hiện hành: `collection.js`, `data/reference-import-audit.json`, `data/collection-audit.json`, `data/reference-api-sample.json`. `data/verified-videos.json` và bản chụp bất biến `data/verified-video-source-pages.json` chứng minh URL/chú thích video được quan sát trên trang bảo tàng chính thức. Bốn hồ sơ Cơ Tu dùng chung một phim theo chủ đề; Bài chòi chỉ gắn vào chủ đề. Không xác nhận hiện vật cụ thể xuất hiện hoặc video phát được hiện tại. Đợt dò video riêng trong `data/extra-video-audit.json` không tìm được phim đối tượng đủ điều kiện cho sáu hồ sơ Lịch sử Quốc gia; không gán phim tổng quan thay thế.
+
+Các bảng dưới đây ghi lịch sử dữ liệu V5/V6 và nguồn của chín hồ sơ kế thừa.
 
 `data-v6.js` cung cấp bản dịch Việt/Anh/Hàn/Trung của tên, mô tả, niên đại và chất liệu. Các bản dịch là biên tập của dự án, chưa được bảo tàng phê duyệt. Trường tiếng Việt gốc được giữ nguyên, trừ cách trình bày chất liệu của **Đôi bầu**: V5 ghi “Vật dụng sinh hoạt”, đây là phân loại công năng, chưa xác định chất liệu vật lý. V6 ghi “Chưa có dữ liệu chất liệu đã xác minh” và bảo lưu phân loại riêng. Những mốc năm được dịch từ dữ liệu gốc, không được coi là kết quả nghiên cứu mới.
 

@@ -1,0 +1,18 @@
+{
+  "scope": "Local HTTP verification, not publication evidence",
+  "passed": true,
+  "expected": {
+    "actualRecords": 200,
+    "legacyRecords": 9,
+    "collectionSha256": "364567c396d12d3742aaa9c392a81af46de99ccaa418059b5f647a7c3a5dfeec",
+    "minimumRecords": 200
+  },
+  "summary": {
+    "records": 200,
+    "decodedPhotosPassed": 200,
+    "distinctPhotoUrls": 200,
+    "distinctDecodedPhotoSha256": 200,
+    "duplicatePhotoBytes": [],
+    "failedPhotos": 0
+  }
+}

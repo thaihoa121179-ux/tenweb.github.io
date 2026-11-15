@@ -2,6 +2,14 @@
 
 Bản nâng cấp độc lập từ V5, dành cho trình diễn công nghệ. Không phải website chính thức của Bảo tàng Đà Nẵng. V1–V5 và website gốc được giữ nguyên.
 
+## Bản cập nhật thư viện và Mây — 15/11/2026
+
+Thư viện hiện có **200 hồ sơ có ảnh thật lưu cùng website**: 57 hồ sơ Đà Nẵng, 6 hồ sơ Bảo tàng Lịch sử Quốc gia và 137 hồ sơ tham khảo từ Victoria and Albert Museum. Nhóm tham khảo ghi rõ bảo tàng nguồn, không dùng làm điểm tham quan hoặc vị trí trưng bày Đà Nẵng. Dữ liệu V&A giữ nguyên nơi sản xuất/nơi tìm thấy; có hiện vật làm tại Trung Quốc, tìm thấy ở Việt Nam. Hồ sơ mới giữ ngôn ngữ nguồn, không giả bản dịch.
+
+Thư viện phân trang 24 hồ sơ, lọc bảo tàng/chất liệu/video, tìm không dấu và giữ lựa chọn khi quay lại. Cả 143 hồ sơ tham khảo có ảnh, niên đại, chất liệu, số kiểm kê và URL nguồn. Bốn hồ sơ điêu khắc Cơ Tu có một phim tư liệu cùng chủ đề; chủ đề văn hóa xứ Quảng có phim Bài chòi. Nhãn video phân biệt liên hệ theo chủ đề với bằng chứng hiện vật xuất hiện. Trình phát chỉ tải sau khi bấm, dừng khi đóng hoặc chuyển trang.
+
+Mây nhận dạng tên đầy đủ của cả 200 hồ sơ, nhớ ngữ cảnh và điều kiện, so sánh và xử lý câu hỏi về thuộc tính thiếu. Chưa triển khai mô hình tạo sinh; bản nâng cấp không tuyên bố đã huấn luyện hoặc tăng trí thông minh ba lần. Bộ đo 80 tình huống trên cùng tập 57 hồ sơ cũ: bộ nhận diện tăng từ 53/80 lên 74/80 (66,25% → 92,5%); còn 6 lỗi và 1 hồi quy so với bản gốc. Báo cáo lần đo đầu được giữ cố định, các sửa lỗi tích hợp sau đó được ghi riêng.
+
 ## Chạy tại máy
 
 Không cần build, tài khoản hoặc API key cho frontend. Dùng Python 3:
@@ -18,9 +26,9 @@ Mở thư mục `/bao-tang-da-nang-v6/` trên máy chủ vừa chạy. Camera/mi
 - Dashboard mobile-first và bố cục desktop rộng; xanh di sản, kem, đồng; Be Vietnam Pro tự lưu trữ, có dấu tiếng Việt.
 - Điều hướng 5 mục cố định; bàn phím, focus rõ ràng, skip link, đối thoại chọn ngôn ngữ có focus trap, mục không hoạt động được ẩn với trình đọc màn hình.
 - Robot Mây từ V5 trên banner và mỗi phản hồi. Năm nội dung banner; chuyển thủ công, tự chạy theo lựa chọn người dùng, tạm dừng và giảm chuyển động.
-- 9 hồ sơ hiện vật và 15 chủ đề kế thừa; dịch tên, mô tả, niên đại, chất liệu, điều hướng và quiz sang Việt/Anh/Hàn/Trung.
+- 200 hồ sơ hiện vật và 15 chủ đề; 9 hồ sơ kế thừa có bản dịch Việt/Anh/Hàn/Trung, hồ sơ bổ sung giữ nguyên ngôn ngữ nguồn và ghi nhãn.
 - Tìm kiếm gợi ý theo thời gian thực, không dấu, một lỗi gõ nhẹ, Enter mở kết quả. Cả thư viện và tìm kiếm chung đều tìm hồ sơ hiện vật.
-- Ảnh hiện vật và không gian được hiển thị từ URL nguồn gốc đã có trong V5, ghi công bảo tàng; có fallback khi nguồn ảnh không tải được.
+- Ảnh hiện vật được lưu nội bộ, ghi nguồn theo từng bảo tàng; có fallback khi tệp không tải được.
 - Phản hồi hiện chữ dần, giữ nguyên dấu tiếng Việt/emoji; nút **Hiện ngay**, giảm chuyển động và hỗ trợ trình đọc màn hình. Không dùng hiệu ứng zoom cả câu trả lời.
 - Hiểu cách viết tắt `k/ko`, lỗi gõ nhẹ; gợi ý hiện vật đáng xem, câu hỏi so sánh, lựa chọn ít đi bộ, không muốn xem triển lãm, quiz/nhật ký; giữ sở thích, loại trừ và thời gian trong phiên. Chọn tiếp bằng “cái thứ hai” và hỏi niên đại/chất liệu của đúng hiện vật.
 - Trợ lý dữ liệu có dẫn nguồn, nối tiếp hiện vật/chất liệu/niên đại và sở thích/thời gian, đọc, sao chép, đánh giá và mở hồ sơ/sơ đồ. Hội thoại được giữ trong phiên khi đổi ngôn ngữ; không lưu nội dung chat vào storage.
@@ -30,14 +38,14 @@ Mở thư mục `/bao-tang-da-nang-v6/` trên máy chủ vừa chạy. Camera/mi
 - Quiz 5 câu có nguồn, phản hồi đáp án, điểm cao nhất và huy hiệu thực sự mở khóa.
 - Cá nhân: số hồ sơ đã mở (không tự nhận đã tham quan thực tế), nhật ký 3.000 ký tự, lưu/tải/chia sẻ, tương phản cao, chữ lớn, xóa dữ liệu cá nhân.
 - Dữ liệu V6 dùng storage riêng, không sửa dữ liệu của phiên bản trước. Khi storage bị chặn, hồ sơ/quiz/nhật ký vẫn dùng được trong phiên và giao diện báo giới hạn.
-- Backend mẫu có truy xuất 24 bản ghi phía máy chủ, kiểm tra đầu vào, CORS, giới hạn yêu cầu và timeout; khóa không nằm trong frontend. Xem [backend/README.md](backend/README.md).
+- Backend mẫu có truy xuất theo chỉ mục từ 200 hiện vật và 15 chủ đề phía máy chủ, kiểm tra đầu vào, CORS, giới hạn yêu cầu và timeout; khóa không nằm trong frontend. Xem [backend/README.md](backend/README.md).
 
 ## Giới hạn còn lại — không đánh dấu hoàn tất
 
 | Hạng mục | Trạng thái |
 | --- | --- |
 | AI tạo sinh thực tế | **Chưa triển khai/chưa kiểm thử với mô hình thật.** Mặc định ghi “Chế độ trợ lý dữ liệu”. Chỉ báo AI tạo sinh sau phản hồi hợp lệ từ backend. |
-| Ảnh hiện vật | Đã lưu 18 ảnh gốc tại `assets/museum/` và phục vụ cùng website; 9 ảnh hiện vật thật đã được tải và giải mã thành công trong Chromium. Nguồn gốc giữ trong `SOURCES.json`. |
+| Ảnh hiện vật | 200 ảnh hiện vật được lưu ở `assets/museum/`, `assets/collection/`, `assets/reference/`; nguồn và mã kiểm tra giữ trong các audit. Cả 200 ảnh đã được tải, giải mã và kiểm tra không trùng trên máy chủ cục bộ. |
 | Nguồn lịch sử, giờ mở cửa, vé | Kế thừa dữ liệu có dẫn nguồn của V5, không xác nhận lại là dữ liệu hiện hành. Vé mở thông báo chính thức; lịch cần đối chiếu trước chuyến đi. |
 | Địa điểm hiện vật | Chưa có mặt bằng/chứng thực vị trí. Quan hệ hiện vật–chủ đề không phải tọa độ hay đường đi thực. |
 | Chất liệu Đôi bầu | Chưa xác minh; “vật dụng sinh hoạt” là loại đồ vật, không phải chất liệu. |

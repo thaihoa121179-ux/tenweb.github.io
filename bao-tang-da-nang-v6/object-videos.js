@@ -11,8 +11,8 @@ globalThis.MuseumObjectVideos = {
       "sourceCaption": "Điêu khắc gỗ của Dân tộc Cơ Tu ở tỉnh Quảng Nam",
       "provenance": {
         "verification": "link-and-caption-in-official-page",
-        "snapshot": "data/expansion-discovery.json",
-        "responseIndex": 10,
+        "snapshot": "data/verified-video-source-pages.json",
+        "responseIndex": 0,
         "officialPageStatus": 200,
         "fetchedAt": "2026-11-15T01:00:34.710161+00:00",
         "officialPageSha256": "9d2be948781bfbd8aef0e6ff6ad5dd97903aa89e3542f52e68cef34998b5082e",
@@ -42,8 +42,8 @@ globalThis.MuseumObjectVideos = {
       "sourceCaption": "Điêu khắc gỗ của Dân tộc Cơ Tu ở tỉnh Quảng Nam",
       "provenance": {
         "verification": "link-and-caption-in-official-page",
-        "snapshot": "data/expansion-discovery.json",
-        "responseIndex": 10,
+        "snapshot": "data/verified-video-source-pages.json",
+        "responseIndex": 0,
         "officialPageStatus": 200,
         "fetchedAt": "2026-11-15T01:00:34.710161+00:00",
         "officialPageSha256": "9d2be948781bfbd8aef0e6ff6ad5dd97903aa89e3542f52e68cef34998b5082e",
@@ -73,8 +73,8 @@ globalThis.MuseumObjectVideos = {
       "sourceCaption": "Điêu khắc gỗ của Dân tộc Cơ Tu ở tỉnh Quảng Nam",
       "provenance": {
         "verification": "link-and-caption-in-official-page",
-        "snapshot": "data/expansion-discovery.json",
-        "responseIndex": 10,
+        "snapshot": "data/verified-video-source-pages.json",
+        "responseIndex": 0,
         "officialPageStatus": 200,
         "fetchedAt": "2026-11-15T01:00:34.710161+00:00",
         "officialPageSha256": "9d2be948781bfbd8aef0e6ff6ad5dd97903aa89e3542f52e68cef34998b5082e",
@@ -104,8 +104,8 @@ globalThis.MuseumObjectVideos = {
       "sourceCaption": "Điêu khắc gỗ của Dân tộc Cơ Tu ở tỉnh Quảng Nam",
       "provenance": {
         "verification": "link-and-caption-in-official-page",
-        "snapshot": "data/expansion-discovery.json",
-        "responseIndex": 10,
+        "snapshot": "data/verified-video-source-pages.json",
+        "responseIndex": 0,
         "officialPageStatus": 200,
         "fetchedAt": "2026-11-15T01:00:34.710161+00:00",
         "officialPageSha256": "9d2be948781bfbd8aef0e6ff6ad5dd97903aa89e3542f52e68cef34998b5082e",

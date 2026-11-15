@@ -1,3 +1,23 @@
+# Kiểm thử bản mở rộng 200 hồ sơ — 15/11/2026
+
+Kiểm tra trên bộ dữ liệu thật tại commit dữ liệu `aa18764`: 200 hiện vật, gồm 57 Đà Nẵng, 6 Bảo tàng Lịch sử Quốc gia và 137 V&A. Tất cả 143 hồ sơ tham khảo có ảnh, niên đại, chất liệu, số kiểm kê và nguồn; không gán vị trí Đà Nẵng.
+
+- **25/25 nhóm trình duyệt**: điều hướng, tìm kiếm, 4 ngôn ngữ, 4 kích thước, QR, lộ trình, quiz, nhật ký, lưu/khôi phục, lỗi backend giả lập, phân trang và nguồn tham khảo. 200/200 ảnh thật được giải mã, không dùng fixture thay ảnh hiện vật.
+- **59/59 kiểm thử Node**: 37 backend, 20 bộ nhận diện và 2 bộ dữ liệu thực tế. Bộ kiểm tra tên xác nhận cả 200 hồ sơ truy xuất đúng bằng tên nguồn đầy đủ.
+- **17/17 kiểm thử Python**, bao gồm parser gốc, 4 bằng chứng nguồn video và 8 tình huống kiểm tra xuất bản.
+- **8/8 nhóm thành phần video**, cộng luồng tích hợp thật: chatbot → hồ sơ Cơ Tu → mở/đóng phim; Bài chòi chỉ trên chủ đề; rời trang giải phóng trình phát. Request player ngoài được chặn trong kiểm thử, không xác nhận YouTube phát được.
+- Thư viện kiểm tra với dữ liệu thật và fixture 205 mục riêng: chỉ dựng 24 mục/trang, lọc đúng, giữ focus, 4 ngôn ngữ và 4 chiều rộng. Fixture không được tính vào 200 hồ sơ thật.
+- Bộ kiểm tra HTTP cục bộ độc lập tải/giải mã đủ **200 ảnh, 200 URL và 200 SHA-256 khác nhau**, so khớp đúng tệp trong checkout, kích thước tối thiểu 128px mỗi chiều.
+- Bộ đo resolver cố định 80 tình huống trên corpus gốc 57 hiện vật: bản cũ **53/80 (66,25%)**, bản mới **74/80 (92,5%)**, còn 6 lỗi và 1 hồi quy. Không phải phép đo chất lượng mô hình tạo sinh hoặc bằng chứng “thông minh gấp ba”. Báo cáo lần đo đầu và các thay đổi tích hợp sau phép đo đều được giữ riêng.
+
+Workflow `Verify published V6 photos and deployed assets` kiểm tra lại byte của các module, dữ liệu, CSS và toàn bộ ảnh trên URL GitHub Pages; báo cáo nằm trong artifact của lần chạy. Dữ liệu kiểm tra cục bộ không tự được gọi là bằng chứng bản live.
+
+Phạm vi còn lại: chưa triển khai Worker với mô hình/credential thật; camera, micro, giọng đọc, Safari và thiết bị vật lý cần kiểm tra riêng. Video xác nhận URL/chú thích trên nguồn, chưa xác nhận khả năng phát hoặc hiện vật cụ thể xuất hiện trong phim chủ đề.
+
+---
+
+## Biên bản lưu trước bản mở rộng
+
 # Biên bản kiểm thử V6 — cập nhật ảnh và hội thoại
 
 Ngày: 14/11/2026. Linux, Python 3.12, Node 24, Playwright 1.62.1, Chromium headless; máy chủ tĩnh phục vụ từ gốc checkout.

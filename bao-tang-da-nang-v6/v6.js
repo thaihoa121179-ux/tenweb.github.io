@@ -45,7 +45,7 @@
       play: "▷ Tiếp tục",
       slide: "Nội dung",
       catalogNotice:
-        "Ảnh và mô tả từ nguồn Bảo tàng Đà Nẵng. Chủ đề liên quan không xác định vị trí thực tế của hiện vật.",
+        "Ảnh và dữ liệu có ghi bảo tàng nguồn trong từng hồ sơ. Hồ sơ tham khảo ngoài Đà Nẵng được gắn nhãn riêng; chủ đề không xác định vị trí thực tế.",
       backendSettings: "Cấu hình backend · dành cho nhóm phát triển",
       cameraPrivacy:
         "Camera chỉ mở khi bạn bấm “Mở camera” và cho phép truy cập. Khung hình được xử lý trên thiết bị, không gửi lên máy chủ. Camera tắt khi rời màn hình quét.",
@@ -109,7 +109,7 @@
       play: "▷ Resume",
       slide: "Slide",
       catalogNotice:
-        "Photographs and descriptions from Da Nang Museum sources. Related themes do not identify physical object locations.",
+        "Each record names its source museum. References outside Da Nang are labeled separately; themes do not identify physical object locations.",
       backendSettings: "Backend settings · for developers",
       cameraPrivacy:
         "The camera opens only after you tap “Open camera” and grant access. Frames are processed on your device, never uploaded. Leaving the scanner stops the camera.",
@@ -173,7 +173,7 @@
       play: "▷ 다시 시작",
       slide: "슬라이드",
       catalogNotice:
-        "사진과 설명은 다낭 박물관 자료를 출처로 합니다. 관련 주제는 유물의 실제 위치를 나타내지 않습니다.",
+        "각 기록에 출처 박물관이 표시됩니다. 다낭 외부 참고 자료는 별도 표시하며, 주제는 실제 유물 위치가 아닙니다.",
       backendSettings: "백엔드 설정 · 개발자용",
       cameraPrivacy:
         "카메라 열기를 누르고 권한을 허용한 경우에만 카메라가 켜집니다. 영상은 기기에서 처리되며 업로드되지 않습니다. 스캔 화면을 떠나면 카메라가 꺼집니다.",
@@ -236,7 +236,7 @@
       play: "▷ 继续",
       slide: "幻灯片",
       catalogNotice:
-        "图片与说明来自岘港博物馆资料。关联主题不代表文物实际位置。",
+        "每份档案均标明来源博物馆。岘港以外的参考资料会另作标注；关联主题不代表文物实际位置。",
       backendSettings: "后端设置 · 开发者专用",
       cameraPrivacy:
         "只有点击开启摄像头并授权后才会打开摄像头。画面仅在设备内处理，不会上传。离开扫码页面后摄像头会关闭。",

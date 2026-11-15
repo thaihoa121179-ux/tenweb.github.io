@@ -10,7 +10,7 @@ class VerifiedVideoEvidence(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.manifest = json.loads((ROOT/'data/verified-videos.json').read_text())
-        cls.discovery = json.loads((ROOT/'data/expansion-discovery.json').read_text())
+        cls.discovery = json.loads((ROOT/'data/verified-video-source-pages.json').read_text())
         cls.samples = json.loads((ROOT/'data/expansion-samples.json').read_text())
         text = (ROOT/'collection.js').read_text()
         cls.records = {r['id']: r for r in json.loads(text[text.index('{'):text.rfind('}')+1])['items']}

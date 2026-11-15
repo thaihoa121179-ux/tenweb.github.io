@@ -1,0 +1,105 @@
+{
+  "url": "http://127.0.0.1:8000/bao-tang-da-nang-v6/",
+  "results": [
+    {
+      "name": "responsive navigation, local mascot and layout at 375px",
+      "passed": true
+    },
+    {
+      "name": "responsive navigation, local mascot and layout at 390px",
+      "passed": true
+    },
+    {
+      "name": "responsive navigation, local mascot and layout at 768px",
+      "passed": true
+    },
+    {
+      "name": "responsive navigation, local mascot and layout at 1366px",
+      "passed": true
+    },
+    {
+      "name": "4 languages retain navigation and conversational artifact context",
+      "passed": true
+    },
+    {
+      "name": "search handles Vietnamese accents and a one-character typo",
+      "passed": true
+    },
+    {
+      "name": "all sample QR images actually decode to their V6 URLs",
+      "passed": true
+    },
+    {
+      "name": "first-language confirmation respects artifact, topic, floor and zone deep links",
+      "passed": true
+    },
+    {
+      "name": "route time, interests, pace and visited progress persist",
+      "passed": true
+    },
+    {
+      "name": "quiz score, badges, journal save, download, share and reload",
+      "passed": true
+    },
+    {
+      "name": "backend success is distinguished from outage and malformed responses",
+      "passed": true
+    },
+    {
+      "name": "context stays scoped to artifacts, visitor information and Korean routes",
+      "passed": true
+    },
+    {
+      "name": "blocked storage stays usable and accessibility settings persist",
+      "passed": true
+    },
+    {
+      "name": "unknown answers, dangerous QR and incorrect QR paths stay explicit",
+      "passed": true
+    },
+    {
+      "name": "the user screenshot questions work, with pictured recommendations and useful real actions",
+      "passed": true
+    },
+    {
+      "name": "recommendation preferences support negation, comparison and all four languages",
+      "passed": true
+    },
+    {
+      "name": "paginated thumbnails match source records and detail photos have a working failure fallback",
+      "passed": true
+    },
+    {
+      "name": "text reveals progressively without zoom, can be shown immediately and preserves Unicode",
+      "passed": true
+    },
+    {
+      "name": "typing respects a reader scrolling up and finishes safely when navigating away",
+      "passed": true
+    },
+    {
+      "name": "chat can open app actions without claiming notes were already saved or spending provider calls",
+      "passed": true
+    },
+    {
+      "name": "actual collection has 200 source records and every cached photograph decodes",
+      "passed": true
+    },
+    {
+      "name": "source filters, pagination, full provenance and new deep links work",
+      "passed": true
+    },
+    {
+      "name": "catalog controls stay usable in four languages and match actual material/video metadata",
+      "passed": true
+    },
+    {
+      "name": "external museum references disclose their source and never acquire a Da Nang floor through chat",
+      "passed": true
+    },
+    {
+      "name": "reduced motion, manual carousel and keyboard language dialog",
+      "passed": true
+    }
+  ]
+}
