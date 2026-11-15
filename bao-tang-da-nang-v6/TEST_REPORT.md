@@ -1,3 +1,19 @@
+# Điện thoại và hội thoại đời thường — bản 6.7, 15/11/2026
+
+- **25/25 nhóm trình duyệt hồi quy** đạt: giữ 200 hồ sơ/ảnh thật, tìm kiếm, QR, lộ trình, quiz, nhật ký, bốn ngôn ngữ, trường hợp lỗi backend, câu hỏi nối tiếp và nguồn tham khảo. Các lượt đời thường không lọt vào lịch sử gửi API ở câu hỏi bảo tàng tiếp theo.
+- **11/11 nhóm điện thoại/hội thoại** đạt: 320×568, 360×740, 375×812, 390×844, 430×932, 768×1024, 844×390; composer không bị khuất, không tràn ngang, đổi nhóm gợi ý giữ focus, bốn ngôn ngữ và chữ lớn. Thu vùng nhìn xuống 500px khi focus input rồi khôi phục để kiểm tra luồng bàn phím. Desktop không chồng nút chủ đề lên tin nhắn.
+- **73/73 Node** đạt, gồm 14 tình huống hội thoại mới: tâm trạng không bị chuyển thành trò đùa, tiếng Việt có dấu/viết hoa, đùa đổi câu, bữa ăn chay nối với yêu cầu nấu nhanh, thời gian học, giả tưởng có nhãn, phép tính âm/thập phân/ngoài giới hạn, bảo toàn phạm vi tư liệu và các ngôn ngữ hỗ trợ.
+- **19/19 Python** đạt: nguồn dữ liệu/video và trình kiểm tra xuất bản, thêm phát hiện CSS mobile cũ và sai thứ tự module hội thoại.
+- 200/200 ảnh cục bộ tiếp tục giải mã được, mã kiểm tra tệp/URL không trùng. Cập nhật bộ kiểm tra Pages để so khớp cả `conversation.js`, `mobile.js`, `mobile.css` và thứ tự tải trước/sau `app.js`.
+
+`docs/reports/mobile-6.7.json` và `docs/reports/browser-6.7.json` giữ kết quả thực chạy. Ảnh xem trước nằm ở `docs/screenshots/mobile-6.7/`.
+
+Phạm vi phép thử: Chromium mô phỏng thiết bị và thay đổi viewport, chưa kiểm tra bàn phím Safari/camera/giọng đọc trên máy thật. Các tình huống hội thoại kiểm tra bộ phản hồi cục bộ, không đo chất lượng một LLM và không chứng minh đã huấn luyện mô hình mới. Không gọi provider thật trong phép thử.
+
+---
+
+## Hồ sơ kiểm thử bản mở rộng trước đó
+
 # Kiểm thử bản mở rộng 200 hồ sơ — 15/11/2026
 
 Kiểm tra trên bộ dữ liệu thật tại commit dữ liệu `aa18764`: 200 hiện vật, gồm 57 Đà Nẵng, 6 Bảo tàng Lịch sử Quốc gia và 137 V&A. Tất cả 143 hồ sơ tham khảo có ảnh, niên đại, chất liệu, số kiểm kê và nguồn; không gán vị trí Đà Nẵng.

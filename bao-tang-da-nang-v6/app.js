@@ -66,11 +66,11 @@
       buildPlan: "✦ Tạo lộ trình của tôi",
       planLimit:
         "Thời lượng từng điểm chỉ là ước tính, chưa có dữ liệu khoảng cách trong nhà.",
-      guideMode: "TRỢ LÝ THAM QUAN",
-      guideTitle: "Hỏi về bảo tàng",
+      guideMode: "BẠN ĐỒNG HÀNH MỖI NGÀY",
+      guideTitle: "Trò chuyện cùng Mây",
       offlineMode:
         "Chế độ tư vấn theo dữ liệu mẫu có dẫn nguồn. AI đối thoại tự do chỉ hoạt động khi kết nối backend.",
-      askAnything: "Tôi thích lịch sử, nên đi đâu?",
+      askAnything: "Hỏi một điều, kể một chuyện…",
       infoTag: "THÔNG TIN THAM QUAN",
       address: "Địa chỉ",
       addressText: "31 Trần Phú, Hải Châu, Đà Nẵng",
@@ -246,11 +246,11 @@
       buildPlan: "✦ Build my journey",
       planLimit:
         "Stop durations are approximate; no verified indoor distance data is available.",
-      guideMode: "DIGITAL TOUR GUIDE",
-      guideTitle: "Ask about the museum",
+      guideMode: "HERITAGE & EVERYDAY LIFE",
+      guideTitle: "A moment with Mây",
       offlineMode:
         "Verified-data demo mode. Open-ended AI requires a separate configured backend.",
-      askAnything: "I like history. Which floor?",
+      askAnything: "Ask something, share a thought…",
       infoTag: "VISITOR INFORMATION",
       address: "Address",
       addressText: "31 Tran Phu, Hai Chau, Da Nang",
@@ -424,11 +424,11 @@
       planStyle: "관람 속도",
       buildPlan: "✦ 코스 만들기",
       planLimit: "소요 시간은 예시이며 실제 실내 이동 거리 정보는 없습니다.",
-      guideMode: "디지털 가이드",
-      guideTitle: "박물관에 질문하기",
+      guideMode: "일상과 유산 이야기",
+      guideTitle: "마이와 이야기해요",
       offlineMode:
         "검증된 자료 기반 데모입니다. 자유 대화형 AI에는 별도 서버 연결이 필요합니다.",
-      askAnything: "역사를 좋아해요. 어느 층으로?",
+      askAnything: "궁금한 점이나 오늘 이야기를 들려주세요…",
       infoTag: "방문 정보",
       address: "주소",
       addressText: "베트남 다낭 하이쩌우 쩐푸 31",
@@ -591,10 +591,10 @@
       planStyle: "参观节奏",
       buildPlan: "✦ 生成专属路线",
       planLimit: "各站时间为估算，目前没有经过核实的馆内距离数据。",
-      guideMode: "数字导览助手",
-      guideTitle: "向博物馆提问",
+      guideMode: "日常与文化小伙伴",
+      guideTitle: "和小云聊聊",
       offlineMode: "基于已核实资料的演示问答。自由对话AI需另行连接服务器。",
-      askAnything: "我喜欢历史，该去几楼？",
+      askAnything: "问个问题，聊聊今天……",
       infoTag: "参观须知",
       address: "地址",
       addressText: "越南岘港海洲坊陈富街31号",
@@ -1404,6 +1404,7 @@
     $all("[data-lang]").forEach((el) =>
       el.classList.toggle("selected", el.dataset.lang === state.lang),
     );
+    if (!guideContext.turns.length && $("messages").children.length) resetGuide();
     renderPage();
     emit("language", { language: state.lang });
   }
@@ -2099,6 +2100,7 @@
   }
   /* Museum Companion V5: conversational, source-grounded local assistant.
    Not a generative AI model. An optional HTTPS backend can be connected separately. */
+  const companion = window.MuseumConversation?.createResponder();
   const guideContext = {
     artifact: null,
     topic: null,
@@ -2109,7 +2111,7 @@
   const CHAT_UI = {
     vi: {
       welcome:
-        "Xin chào! 👋 Mình là Mây, bạn đồng hành tham quan. Bạn thích cổ vật, văn hóa hay lịch sử? Mình có thể tìm hiện vật, giải thích nội dung và gợi ý lộ trình.",
+        "Mây đây ☁️ Một chuyện hôm nay, một câu hỏi về hiện vật, hay một ý tưởng hơi kỳ cục — bạn muốn bắt đầu từ đâu?",
       offline:
         "🧠 Mây đang dùng dữ liệu bảo tàng có nguồn. Hỏi tiếp được nhé! AI tạo sinh cần kết nối máy chủ riêng.",
       online: "✨ AI nâng cao đã kết nối máy chủ",
@@ -2135,7 +2137,7 @@
     },
     en: {
       welcome:
-        "Hello! 👋 I’m Mây, your museum companion. Interested in history, culture or antiquities? Ask me about exhibits or a personalized route.",
+        "Hi, I’m Mây ☁️ A museum question, a story about your day, or a wonderfully odd idea — where shall we start?",
       offline:
         "🧠 Mây uses curated museum records. A separate AI server is needed for generative chat.",
       online: "✨ Advanced AI server connected",
@@ -2161,7 +2163,7 @@
     },
     ko: {
       welcome:
-        "안녕하세요! 👋 박물관 안내 도우미 마이입니다. 역사, 문화, 유물에 대해 질문해 주세요.",
+        "마이예요 ☁️ 유물에 대한 질문, 오늘의 이야기, 엉뚱한 상상 중 어디서 시작할까요?",
       offline:
         "🧠 검증된 박물관 자료를 바탕으로 답합니다. 생성형 AI는 별도 서버가 필요합니다.",
       online: "✨ AI 서버 연결됨",
@@ -2186,7 +2188,7 @@
     },
     zh: {
       welcome:
-        "你好！👋 我是博物馆导览伙伴 Mây。可以询问历史、文化、文物或参观路线。",
+        "我是小云 ☁️ 文物问题、今天的心事，或一个古怪又有趣的想法——想先聊哪个？",
       offline: "🧠 我根据有来源的博物馆资料回答。生成式 AI 需要独立服务器。",
       online: "✨ 高级 AI 已连接",
       source: "资料来源",
@@ -2219,14 +2221,14 @@
   });
   const ROBOT_COPY = {
     vi: [
-      "Mây AI · Robot hướng dẫn",
-      "Hỏi đáp hiện vật, tìm chủ đề và tạo hành trình khám phá.",
-      "🤖 Hướng dẫn viên số của bạn",
+      "Mây · Bạn đồng hành",
+      "Khám phá hiện vật, trò chuyện đời thường và cùng bạn nghĩ những điều vui.",
+      "☁️ Có chuyện gì, kể Mây nghe.",
     ],
     en: [
-      "Mây AI · Museum robot",
-      "Explore artifacts, find exhibitions and plan your visit.",
-      "🤖 Your digital museum guide",
+      "Mây · Your companion",
+      "Explore artifacts, talk about your day and share a little imagination.",
+      "☁️ A little curiosity, a little company.",
     ],
     ko: [
       "Mây AI · 박물관 로봇",
@@ -2254,7 +2256,29 @@
     ["robot-label", "robot-description", "robot-tagline"].forEach(
       (id, i) => ($(id).textContent = robotCopy[i]),
     );
-    $("guide-chips").innerHTML = cu("prompt")
+    let topics = $("chat-topics");
+    if (!topics) {
+      topics = document.createElement("div"); topics.id = "chat-topics"; topics.className = "chat-topics";
+      topics.setAttribute("role", "group"); $("guide-status").after(topics);
+      topics.addEventListener("click", e => { const button=e.target.closest('[data-chat-topic]'); if(button){state.chatTopic=button.dataset.chatTopic;renderGuide();} });
+    }
+    topics.setAttribute("aria-label",human("Gợi ý trò chuyện", "Conversation ideas", "대화 주제", "聊天主题"));
+    const labels = {museum:human("Khám phá", "Explore", "탐방", "探索"),life:human("Chuyện thường ngày", "Everyday life", "일상", "聊日常"),playful:human("Chút vui", "A little fun", "재미", "来点乐趣")};
+    const focusedTopic=document.activeElement?.dataset.chatTopic;
+    topics.innerHTML=Object.entries(labels).map(([key,value])=>`<button type="button" data-chat-topic="${key}" aria-pressed="${(state.chatTopic||'museum')===key}">${value}</button>`).join('');
+    if(focusedTopic)topics.querySelector(`[data-chat-topic="${focusedTopic}"]`)?.focus({preventScroll:true});
+    const suggestions = state.chatTopic === 'life' ? {
+      vi:["Hôm nay tôi hơi mệt", "Tối nay ăn gì?", "Cho tôi chút động lực"],
+      en:["I'm tired today", "What should I eat?", "I need motivation"],
+      ko:["오늘 피곤해요", "오늘 슬퍼요", "오늘 기뻐요"],
+      zh:["今天好累", "今天吃什么", "我有点难过"],
+    }[state.lang] : state.chatTopic === 'playful' ? {
+      vi:["Kể chuyện hài đi", "Nếu mèo làm giám đốc?", "Nếu hiện vật biết nói?"],
+      en:["Tell me a joke", "What if cats ran a museum?", "Tell me another joke"],
+      ko:["농담 해줘", "유물이 말한다면? 상상해줘", "오늘 재미있는 이야기"],
+      zh:["讲个笑话", "如果文物会说话？", "再讲个笑话"],
+    }[state.lang] : cu("prompt");
+    $("guide-chips").innerHTML = suggestions
       .map((q) => `<button data-chat-question="${esc(q)}">${esc(q)}</button>`)
       .join("");
   }
@@ -2411,6 +2435,7 @@
     }
   }
   function resetGuide() {
+    companion?.reset();
     guideContext.artifact = null;
     guideContext.topic = null;
     guideContext.floor = null;
@@ -3041,6 +3066,15 @@
     const query = String(q).slice(0, 700),
       s = norm(query),
       say = (...a) => a.some((k) => s.includes(norm(k)));
+    const named = findMuseumEntity(query);
+    const museumQuery = !!named || /bao tang|hien vat|than cong|ma nao|sac phong|ghe bau|lich su|van hoa|co vat|tham quan|lo trinh|so do|tang [0-9]|tang nao|gia ve|gio mo cua|di bo|khong muon xem|nien dai|chat lieu|lam bang|made of|which floor|museum|artifact|material|history|route|low walking|박물관|유물|대포|博物馆|文物|古炮/.test(s)
+      || ((guideContext.artifact || guideContext.recommended?.length) && /^(no |cai |hien vat do|what is|when was|where is|the second|thu hai|thu nhat)/.test(s));
+    const social = companion?.respond(query,{language:state.lang,museum:museumQuery,openConversation:['life','playful'].includes(state.chatTopic),artifactName:named?.type==='artifact'?aname(named.item):''});
+    if (social) {
+      guideContext.activeIntent='conversation'; guideContext.artifact=null; guideContext.topic=null; guideContext.recommended=[];
+      state.chatTopic=social.fiction||['joke','cat','riddle','riddleAnswer'].includes(social.conversationTopic)?'playful':'life';
+      return social;
+    }
     const timeAsk = say(
       "bao gio",
       "nam nao",
@@ -3580,11 +3614,14 @@
       addBubble(q, true);
       $("chat-input").value = "";
       const history = guideContext.turns
+        .filter((turn) => turn.scope !== "conversation")
         .slice(-8)
-        .map((turn) => ({ ...turn, content: turn.content.slice(0, 1200) }));
-      guideContext.turns.push({ role: "user", content: q });
+        .map((turn) => ({ role: turn.role, content: turn.content.slice(0, 1200) }));
+      const currentTurn = { role: "user", content: q };
+      guideContext.turns.push(currentTurn);
       guideContext.turns = guideContext.turns.slice(-10);
       const localAnswer = replyKnowledge(q);
+      currentTurn.scope = localAnswer.kind === "conversation" ? "conversation" : "museum";
       const endpoint = safeEndpoint(sv("museum_ai_endpoint"));
       if (endpoint && !localAnswer.applicationOnly) {
         const typing = addBubble(t("loading"), false, "", "🤔");
@@ -3657,6 +3694,7 @@
           guideContext.turns.push({
             role: "assistant",
             content: payload.answer,
+            scope: "museum",
           });
           guideContext.turns = guideContext.turns.slice(-10);
           return;
@@ -3670,17 +3708,18 @@
       renderGuide();
       const answer = localAnswer;
       guideContext.lastMood = answer.mood;
+      $("page-guide").dataset.mood=answer.mood || "☁️";
       const responseBubble = addBubble(
         answer.text,
         false,
-        modeLabel(),
+        answer.kind === "conversation" ? (answer.fiction ? human("Tưởng tượng vui", "Playful fiction", "재미있는 상상", "趣味想象") : human("Chuyện cùng Mây", "A moment with Mây", "마이와 대화", "和小云聊聊")) : modeLabel(),
         answer.mood || "😊",
         answer.source || "",
         { animate: true, sources: answer.sources },
       );
       await responseBubble.reveal.finished;
       smartButtons(answer);
-      guideContext.turns.push({ role: "assistant", content: answer.text });
+      guideContext.turns.push({ role: "assistant", content: answer.text, scope: answer.kind === "conversation" ? "conversation" : "museum" });
       guideContext.turns = guideContext.turns.slice(-10);
     } finally {
       chatBusy = false;

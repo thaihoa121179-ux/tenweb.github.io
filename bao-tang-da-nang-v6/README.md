@@ -2,6 +2,16 @@
 
 Bản nâng cấp độc lập từ V5, dành cho trình diễn công nghệ. Không phải website chính thức của Bảo tàng Đà Nẵng. V1–V5 và website gốc được giữ nguyên.
 
+## Giao diện điện thoại và trò chuyện đời thường — 15/11/2026
+
+Bản 6.7 sắp lại trang chủ, thẻ hiện vật, thanh điều hướng và màn hình Mây cho điện thoại. Banner gọn hơn, hai thẻ chức năng xuất hiện sớm hơn; bộ lọc thư viện nằm trên một hàng, ảnh hiện vật lớn hơn. Ô nhập chữ 16px, xử lý chiều cao `visualViewport`, thu gọn thành phần phụ khi bàn phím mở và hỗ trợ màn hình ngang/chữ lớn.
+
+Mây có ba nhóm gợi ý **Khám phá / Chuyện thường ngày / Chút vui**. `conversation.js` bổ sung phản hồi có biên tập và ngữ cảnh trong phiên cho tâm trạng, ăn uống, học tập/công việc, giao tiếp, chi tiêu, câu đố, đùa, giả tưởng, thơ và phép tính đơn giản. Có biến thể khi yêu cầu “kể tiếp”, nhớ lựa chọn ăn chay, thời lượng học và cách nói ngắn/nghiêm túc. Chuyện hư cấu có nhãn; câu hỏi bảo tàng tiếp tục dùng hồ sơ có nguồn. Chỉ sửa lời chào khi chưa có hội thoại, không xóa lịch sử khi đổi ngôn ngữ.
+
+Phần trò chuyện này chạy tại thiết bị bằng bộ nhận diện và kịch bản, không phải một mô hình tạo sinh được huấn luyện lại. Nội dung chat/nhớ ngữ cảnh không lưu vào storage; câu trò chuyện được xử lý cục bộ kể cả khi đã cấu hình backend bảo tàng. Câu chưa hiểu được hỏi lại; giá/thời tiết hiện hành không được đoán. Worker tạo sinh tùy chọn vẫn cần triển khai và credential riêng như trước.
+
+Kiểm thử: 25 nhóm trình duyệt cũ, 11 nhóm điện thoại/hội thoại mới, 73 kiểm thử Node và 19 kiểm thử Python. Các chiều rộng 320/360/375/390/430/768px và màn hình ngang 844×390px đã được kiểm tra bằng Chromium. Bàn phím được mô phỏng bằng thay đổi vùng nhìn; không thay cho kiểm tra Safari trên thiết bị thật.
+
 ## Bản cập nhật thư viện và Mây — 15/11/2026
 
 Thư viện hiện có **200 hồ sơ có ảnh thật lưu cùng website**: 57 hồ sơ Đà Nẵng, 6 hồ sơ Bảo tàng Lịch sử Quốc gia và 137 hồ sơ tham khảo từ Victoria and Albert Museum. Nhóm tham khảo ghi rõ bảo tàng nguồn, không dùng làm điểm tham quan hoặc vị trí trưng bày Đà Nẵng. Dữ liệu V&A giữ nguyên nơi sản xuất/nơi tìm thấy; có hiện vật làm tại Trung Quốc, tìm thấy ở Việt Nam. Hồ sơ mới giữ ngôn ngữ nguồn, không giả bản dịch.

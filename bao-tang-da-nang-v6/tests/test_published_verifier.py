@@ -44,12 +44,12 @@ def site(overrides=None, duplicates=False):
         (root/'app.js').write_text(app)
         (root/'media-map.js').write_text('window.MuseumMediaMap = '+json.dumps(mapping)+';')
         (root/'collection.js').write_text('globalThis.MuseumCollection = '+json.dumps({'legacyCount':9,'totalCount':10,'items':[{'id':'imported-1','image':'assets/9.png'}]})+';')
-        for name in ('library-ui.js','videos.js','object-videos.js'):
+        for name in ('library-ui.js','videos.js','object-videos.js','conversation.js','mobile.js'):
             (root/name).write_text('/* fixture static asset */\nvoid 0;')
         for name in V.REQUIRED_CSS:
             (root/name).write_text('body { color: #123; }')
-        scripts=['media-map.js','collection.js','object-videos.js','videos.js','library-ui.js','app.js']
-        (root/'index.html').write_text('<!doctype html><html><head>'+''.join(f'<link rel="stylesheet" href="{n}?v=6.5">' for n in V.REQUIRED_CSS)+'</head><body>'+''.join(f'<script src="{n}?v=6.5"></script>' for n in scripts)+'</body></html>')
+        scripts=['media-map.js','collection.js','object-videos.js','videos.js','library-ui.js','conversation.js','app.js','mobile.js']
+        (root/'index.html').write_text('<!doctype html><html><head>'+''.join(f'<link rel="stylesheet" href="{n}?v=6.7">' for n in V.REQUIRED_CSS)+'</head><body>'+''.join(f'<script src="{n}?v=6.7"></script>' for n in scripts)+'</body></html>')
         requests = []
         custom = overrides or {}
         class Handler(SimpleHTTPRequestHandler):
@@ -102,6 +102,21 @@ class PublishedVerifierTests(unittest.TestCase):
             self.assertFalse(result['deployment']['ready'])
             self.assertTrue(any('videos.js' in attempt['error'] for attempt in result['deployment']['attempts']))
             self.assertNotIn('photos',result)
+
+    def test_stale_phone_stylesheet_cannot_pass_publication_verification(self):
+        with site({'/mobile.css':('text/css',b'/* old phone layout */')}) as (root,base,_):
+            result = V.verify(args(root,base))
+            self.assertFalse(result['passed'])
+            self.assertTrue(any('mobile.css' in attempt['error'] for attempt in result['deployment']['attempts']))
+
+    def test_conversation_module_must_load_before_the_app(self):
+        with site() as (root,base,_):
+            html=(root/'index.html').read_text()
+            old='<script src="conversation.js?v=6.7"></script><script src="app.js?v=6.7"></script>'
+            self.assertIn(old,html)
+            html=html.replace(old,'<script src="app.js?v=6.7"></script><script src="conversation.js?v=6.7"></script>')
+            with self.assertRaisesRegex(ValueError,'conversation.js must precede app.js'):
+                V.checked_assets(html,'6.7')
 
     def test_http_200_with_html_masquerading_as_an_image_fails_decode(self):
         with site({'/assets/0.png':('image/png',b'<html>not an image</html>')}) as (root,base,_):

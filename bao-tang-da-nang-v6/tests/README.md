@@ -59,3 +59,12 @@ Luồng video thật trong thư viện (chặn request player ngoài; không ki�
 ```sh
 node bao-tang-da-nang-v6/tests/video-integration.cjs
 ```
+
+## Điện thoại và trò chuyện đời thường 6.7
+
+```sh
+node --test bao-tang-da-nang-v6/tests/conversation.test.mjs
+MUSEUM_TEST_REPORT=/tmp/mobile-check.json SCREENSHOT_DIR=/tmp/mobile-previews node bao-tang-da-nang-v6/tests/mobile-conversation.cjs
+```
+
+Suite kiểm tra 7 kích thước điện thoại/tablet/màn hình ngang, thay đổi chiều cao vùng nhìn để mô phỏng bàn phím, câu đời thường → đùa → giả tưởng → dữ liệu bảo tàng trong cùng cuộc trò chuyện, nguồn và hình ảnh thật, focus, bốn ngôn ngữ và desktop. Không gọi provider trong phần trò chuyện cục bộ; không giả bằng chứng bàn phím trên Safari thật.

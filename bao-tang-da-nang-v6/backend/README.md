@@ -2,6 +2,8 @@
 
 Mặc định V6 chạy bằng **Chế độ trợ lý dữ liệu**, không cần backend hay khóa API. Thư mục này cung cấp Cloudflare Worker để triển khai riêng khi cần câu trả lời tạo sinh. Chưa triển khai Worker, chưa gọi nhà cung cấp thật và chưa xác minh chất lượng câu trả lời từ mô hình thật trong lần bàn giao này.
 
+Phần trò chuyện đời thường 6.7 nằm trong `../conversation.js`, chạy cục bộ và không đi qua Worker này. API tiếp tục phục vụ câu hỏi có nguồn về bảo tàng; cập nhật này không triển khai hoặc đổi mô hình tạo sinh.
+
 ## Dữ liệu và giới hạn
 
 `corpus.mjs` là bản chụp 15 chủ đề và 9 hồ sơ hiện vật từ V5 tại commit `83b2d7fb0804965a274f502638bf16986c940cba`. Các URL nguồn được giữ nguyên. Một lỗi phân loại được làm rõ: “Vật dụng sinh hoạt” của Đôi bầu là loại đồ vật, không phải chất liệu; trường chất liệu được đặt `null` (chưa xác minh), đồng nhất với dữ liệu V6. Đây là dữ liệu kế thừa của dự án, **chưa được kiểm chứng độc lập lại**; cần đối chiếu với bảo tàng trước khi công bố là thông tin đã xác thực. Không suy ra tọa độ hiện vật từ chủ đề hoặc tầng. Không có bản vẽ mặt bằng chính thức. QR chỉ xác nhận mốc check-in; lộ trình là gợi ý chủ đề, thời lượng ước tính.

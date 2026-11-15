@@ -28,8 +28,8 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BASE = 'https://thaihoa121179-ux.github.io/tenweb.github.io/bao-tang-da-nang-v6/'
 MAX_BYTES = 12 * 1024 * 1024
-REQUIRED_JS = ('app.js', 'library-ui.js', 'videos.js')
-REQUIRED_CSS = ('library-ui.css', 'videos.css')
+REQUIRED_JS = ('app.js', 'library-ui.js', 'videos.js', 'conversation.js', 'mobile.js')
+REQUIRED_CSS = ('library-ui.css', 'videos.css', 'mobile.css')
 Image.MAX_IMAGE_PIXELS = 40_000_000
 
 
@@ -133,7 +133,8 @@ def checked_assets(index: str, version: str) -> dict[str, str]:
     positions = {urlsplit(value).path: i for i, value in enumerate(parsed.scripts)}
     for before, after in [('media-map.js', 'app.js'), ('collection.js', 'app.js'),
                           ('object-videos.js', 'app.js'), ('videos.js', 'library-ui.js'),
-                          ('library-ui.js', 'app.js')]:
+                          ('library-ui.js', 'app.js'), ('conversation.js', 'app.js'),
+                          ('app.js', 'mobile.js')]:
         if positions[before] >= positions[after]:
             raise ValueError(f'Bad script dependency order: {before} must precede {after}')
     return assets
@@ -300,7 +301,7 @@ def arguments(argv=None):
     parser.add_argument('--base-url', default=DEFAULT_BASE)
     parser.add_argument('--minimum-records', type=int, default=200)
     parser.add_argument('--minimum-dimension', type=int, default=128)
-    parser.add_argument('--asset-version', default='6.5')
+    parser.add_argument('--asset-version', default='6.7')
     parser.add_argument('--max-wait', type=float, default=180)
     parser.add_argument('--poll-interval', type=float, default=8)
     parser.add_argument('--workers', type=int, default=8)
