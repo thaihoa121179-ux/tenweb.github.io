@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/verify-published-v6.yml'
-      - 'bao-tang-da-nang-v6/scripts/verify_published_v6.py'
+      - 'bao-tang-da-nang-v6/**'
 permissions:
   contents: read
 concurrency:

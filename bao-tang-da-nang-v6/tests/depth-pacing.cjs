@@ -13,6 +13,7 @@ async function send(page,text){await page.locator('#chat-input').fill(text);awai
  }finally{await f.context.close()}});
  await test('deep and concise choices change the plan, retaining subject, duration and the excluded visit',async()=>{const f=await fixture(1366,900);try{
   await f.page.locator('#chat-speed').selectOption('instant');const deep=await send(f.page,'muốn học Toán k muốn đi bảo tàng, chỉ có 20 phút');assert.match(deep,/20 phút/);assert.match(deep,/dạng bài/);assert.match(deep,/không lên lịch/);
+  const short=await send(f.page,'Toán');assert.match(short,/Học Toán/);assert.match(short,/20 phút/);assert.match(short,/không lên lịch/);
   await f.page.locator('#chat-depth').click();assert.equal(await f.page.locator('#chat-depth').getAttribute('aria-checked'),'false');const simple=await send(f.page,'chỉ có 15 phút');assert.match(simple,/15 phút/);assert.match(simple,/Toán/);assert.ok(simple.length<deep.length);assert.doesNotMatch(simple,/sơ đồ|tầng [123]/);
   assert.equal((await f.page.locator('.assistant-row').last().locator('.assistant-source a').count()),0);
   await f.page.reload();await f.page.evaluate(()=>Museum.nav('guide'));assert.equal(await f.page.locator('#chat-depth').getAttribute('aria-checked'),'false');assert.equal(await f.page.locator('#chat-speed').inputValue(),'instant');assert.deepEqual(f.errors,[]);

@@ -7,7 +7,7 @@
 
 Chế độ kỹ cục bộ là phân tích mục tiêu/điều kiện và trình bày thêm, không phải đo suy nghĩ nội bộ của LLM. Tests Worker dùng response giả lập để kiểm tra model/effort/budget/timeout/citation. Chưa có API key/backend để gọi mô hình thật. Bộ đo 80 câu của phiên bản trước không được dùng làm bằng chứng cho khả năng suy luận mới.
 
-Báo cáo thực chạy: `docs/reports/depth-6.8.json`, `browser-6.8.json`, `mobile-6.8.json`; ảnh mẫu trong `docs/screenshots/depth-6.8/`. Bằng chứng Pages và 200 ảnh do workflow kiểm tra sau xuất bản, độc lập với báo cáo cục bộ.
+Báo cáo thực chạy: `docs/reports/depth-6.8.json`, `browser-6.8.json`, `mobile-6.8.json`; ảnh mẫu trong `docs/screenshots/depth-6.8/`. Câu trả lời môn học ngắn như “Toán”, “Văn”, “Hóa” chỉ nối vào kế hoạch khi đang có ngữ cảnh học. Bằng chứng Pages và 200 ảnh do workflow tự kiểm tra sau mỗi thay đổi V6, độc lập với báo cáo cục bộ.
 
 ---
 

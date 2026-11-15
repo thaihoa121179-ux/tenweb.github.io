@@ -55,12 +55,15 @@
     const timeValues = [...text.matchAll(/\b(\d{1,3})\s*(?:phut|minutes?|mins?)\b|(\d{1,3})\s*(?:분|分钟)/gu)]
       .filter(m => !negativeAt(text, m.index, 'duration', m.index + m[0].length))
       .map(m => Number(m[1] || m[2])).filter(n => n >= 5 && n <= 180);
-    const subject = /\b(?:mon toan|hoc toan|lam toan|dai so|hinh hoc|math)\b/.test(text) ? 'math'
+    // A short subject answer is meaningful after asking what the user studies.
+    // Keep it contextual so "toàn bộ" or an unrelated history request cannot become homework.
+    const shortSubject = previous?.domain === 'study' ? ({toan:'math',van:'literature',anh:'english',ly:'physics',hoa:'chemistry',su:'history',math:'math',literature:'literature',english:'english',physics:'physics',chemistry:'chemistry',history:'history'})[text.replace(/^(?:mon )?/u,'').replace(/[.!?]+$/u,'').trim()] : null;
+    const subject = shortSubject || (/\b(?:mon toan|hoc toan|lam toan|dai so|hinh hoc|math)\b/.test(text) ? 'math'
       : /\b(?:mon van|ngu van|hoc van|lam van|literature)\b/.test(text) ? 'literature'
       : /\b(?:tieng anh|english)\b/.test(text) ? 'english'
       : /\b(?:vat ly|mon ly|physics)\b/.test(text) ? 'physics'
       : /\b(?:hoa hoc|mon hoa|chemistry)\b/.test(text) ? 'chemistry'
-      : /\b(?:hoc lich su|mon su|history homework)\b/.test(text) ? 'history' : null;
+      : /\b(?:hoc lich su|mon su|history homework)\b/.test(text) ? 'history' : null);
     const explainEquation=!!previous?.exercise&&/\b(?:giai thich|chuyen ve|kiem tra|vi sao|explain|check)\b/.test(text)&&(!subject||subject==='math');
     if(!exercise&&explainEquation)exercise=previous.exercise;
     const realFact = namedArtifact && /\b(?:chat lieu|lam bang|nien dai|nam nao|kich thuoc|nguon goc|made of|when was|material)\b/.test(text);

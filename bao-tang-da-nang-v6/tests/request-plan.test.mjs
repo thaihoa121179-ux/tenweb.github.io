@@ -19,6 +19,8 @@ test('studying in a museum and visiting to learn history retain different purpos
 test('subject and time-only follow-ups retain the real goal without mutating previous analysis',()=>{
  const before=analyze('Muốn học bài k muốn đi bảo tàng, chỉ có 30 phút');const snapshot=JSON.stringify(before);
  const next=analyze('Tôi học Toán',{previous:before});assert.equal(next.subject,'math');assert.equal(next.minutes,30);assert.equal(next.museumExcluded,true);
+ for(const[text,subject]of[['Toán','math'],['Văn!','literature'],['Anh','english'],['Lý','physics'],['Hóa','chemistry'],['Sử','history']]){const short=analyze(text,{previous:before});assert.equal(short.domain,'study');assert.equal(short.subject,subject);assert.equal(short.minutes,30);assert.equal(short.museumExcluded,true);}
+ assert.equal(analyze('Toán').domain,null);assert.equal(analyze('toàn bộ',{previous:before}).subject,null);
  const last=analyze('chỉ có 15 phút',{previous:next});assert.equal(last.subject,'math');assert.equal(last.minutes,15);assert.equal(JSON.stringify(before),snapshot);
  assert.equal(analyze('Hôm nay tôi hơi buồn',{previous:last}).domain,null);
 });
