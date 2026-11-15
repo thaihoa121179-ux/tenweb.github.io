@@ -1,0 +1,1919 @@
+{
+  "capturedAt": "2026-11-15T01:18:04.231203+00:00",
+  "target": 200,
+  "originalRetained": 57,
+  "added": 40,
+  "total": 97,
+  "shortfall": 103,
+  "candidateUrls": 347,
+  "cataloguePages": [
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/bao-vat-quoc-gia",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/bao-vat-quoc-gia/Page2",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/bao-vat-quoc-gia/Page3",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/bao-vat-quoc-gia/Page4",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/bao-vat-quoc-gia/Page5",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/bao-vat-quoc-gia/Page6",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/bao-vat-quoc-gia/Page7",
+      "links": 4,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page2",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page3",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page4",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page5",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page6",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page7",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page8",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page9",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page10",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page11",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page12",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page13",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page14",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page15",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page16",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page17",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page18",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page19",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page20",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page21",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page22",
+      "links": 12,
+      "duplicatePage": false
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/hien-vat/Page23",
+      "links": 7,
+      "duplicatePage": false
+    }
+  ],
+  "skipped": [
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/76300/bao-vat-quoc-gia-so-vang-truong-nguyen-ai-quoc-1949-1950.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28546/bao-vat-quoc-gia-viet-nam-mo-thuyen-viet-khe.html",
+      "name": "Mộ thuyền Việt Khê",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28543/bao-vat-quoc-gia-tuong-nguoi-cong-nhau-thoi-khen.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28542/bao-vat-quoc-gia-o-cua-bien-lach-truong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28541/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-3-va-het.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28540/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-2.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28539/kham-pha-trong-djong-hoang-ha.html",
+      "name": "Khám phá Trống đồng Hoàng Hạ",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28538/bao-vat-quoc-gia-viet-nam-trong-djong-ngoc-lu.html",
+      "name": "Trống đồng Ngọc Lũ",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28536/thap-djong-djao-thinh.html",
+      "name": "Thạp Đồng Đào Thịnh",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28535/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28534/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28533/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28532/bao-tang-lich-su-quoc-gia-lua-chon-danh-muc-bao-vat-quoc-gia-djot-4-nam-2015.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28519/an-vang-sac-menh-chi-bao.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28518/tac-pham-nguc-trung-nhat-ky.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28517/an-vang-djai-viet-quoc-nguyen-chua-vinh-chan-chi-bao.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28354/but-tich-loi-keu-goi-toan-quoc-khang-chien.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28303/bia-vo-canh.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28291/bia-djien-nam-giao.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28177/an-mon-ha-sanh-an.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28174/chuong-van-ban.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28173/thong-gom-hoa-nau.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28124/quan-tai-viet-khe.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28121/cay-djen-hinh-nguoi-quy.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28118/tuong-hai-nguoi-cong-nhau-thoi-khen.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28056/thap-djao-thinh.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28054/trong-djong-hoang-ha.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28052/trong-djong-ngoc-lu.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28033/trong-djong-canh-thinh.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19918/bao-vat-quoc-gia-viet-nam-mo-thuyen-viet-khe.html",
+      "name": "Mộ thuyền Việt Khê",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19913/bao-vat-quoc-gia-qua-chuong-chua-van-ban.html",
+      "name": "Quả chuông chùa Vân Bản",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19863/bao-vat-quoc-gia-an-sanh-mon-ha.html",
+      "name": "Ấn Sảnh Môn Hạ",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19829/bao-vat-quoc-gia-binh-gom-hoa-lam-ve-thien-nga.html",
+      "name": "Bình gốm hoa lam vẽ thiên nga",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19817/bao-vat-quoc-gia-an-vang-truyen-quoc-cua-chua-nguyen-phuc-chu-nam-1709.html",
+      "name": "Ấn vàng truyền quốc của chúa Nguyễn Phúc Chu năm 1709",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19798/trong-djong-canh-thinh-tieng-vong-ngan-nam.html",
+      "name": "Trống đồng Cảnh Thịnh - tiếng vọng ngàn năm.",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19790/bao-vat-quoc-gia-tuong-nguoi-cong-nhau-thoi-khen.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19758/bao-vat-quoc-gia-o-cua-bien-lach-truong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19720/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-3-va-het.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19718/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-2.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19714/kham-pha-trong-djong-hoang-ha.html",
+      "name": "Khám phá Trống đồng Hoàng Hạ",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19707/bao-vat-quoc-gia-viet-nam-trong-djong-ngoc-lu.html",
+      "name": "Trống đồng Ngọc Lũ",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19692/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh.html",
+      "name": "Cuốn Đường Kách Mệnh của Nguyễn Ái Quốc: Sự xuất hiện và hành trình",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19667/thap-djong-djao-thinh.html",
+      "name": "Thạp Đồng Đào Thịnh",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19365/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19346/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/19341/bao-vat-quoc-gia-djuoc-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/18674/bao-tang-lich-su-quoc-gia-lua-chon-danh-muc-bao-vat-quoc-gia-djot-4-nam-2015.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13640/gioi-thieu-bao-vat-quoc-gia-10-ban-thao-loi-keu-goi-toan-quoc-khang-chien.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13639/gioi-thieu-bao-vat-quoc-gia-9-djuong-kach-menh-anh-sang-cho-con-djuong-cach-mang-viet-nam.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13638/gioi-thieu-bao-vat-quoc-gia-8-trong-djong-canh-thinh-bau-vat-thoi-tay-son.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13637/gioi-thieu-bao-vat-quoc-gia-7-thien-nga-mang-hon-viet-tren-binh-gom-hoa-lam.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13636/gioi-thieu-bao-vat-quoc-gia-6-mon-ha-sanh-an-an-cua-sanh-mon-ha.html",
+      "name": "Giới thiệu Bảo vật Quốc gia. 6. Môn hạ sảnh ấn (Ấn của sảnh Môn hạ)",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+      "name": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13607/gioi-thieu-bao-vat-quoc-gia-2-trong-djong-hoang-ha-a-hau-trong-djong-djong-son.html",
+      "name": "Giới thiệu Bảo vật quốc gia. 2. Trống đồng Hoàng Hạ - “Á hậu” trống đồng Đông Sơn",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13602/gioi-thieu-bao-vat-quoc-gia-1-trong-djong-ngoc-lu-hien-vat-tieu-bieu-nhat-cua-nen-van-hoa-djong-son.html",
+      "name": "Giới thiệu bảo vật quốc gia. 1. Trống đồng Ngọc Lũ - hiện vật tiêu biểu nhất của nền văn hóa Đông Sơn",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/76613/nhung-ky-vat-thieng-lieng-ve-thuong-binh-liet-si-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/76600/hai-ky-vat-ke-chuyen-ve-anh-hung-liet-si-le-thi-rieng.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/76209/mot-so-djo-dung-sinh-hoat-cua-lanh-tu-nguyen-ai-quoc-tai-pac-bo-cao-bang-trong-trung-bay-chuyen-dje-mua-xuan-khoi-nguon-thang-loi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/75288/ky-vat-ke-chuyen-long-dan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/74212/suu-tap-hien-vat-ve-tong-bi-thu-truong-chinh-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/73926/tac-pham-lich-su-nuoc-ta-nam-1942-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/73335/suu-tap-hien-vat-ve-cach-mang-thang-tam-nam-1945-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/72196/tuyen-ngon-cua-uy-ban-dan-toc-giai-phong-viet-nam.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/70876/ve-bon-so-bao-than-ai-do-chu-tich-ho-chi-minh-sang-lap-tai-thai-lan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28563/djoi-net-ve-nhung-tympan-cam-mit-djang-djuoc-trung-bay-phat-huy-gia-tri-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28560/ao-ba-nguyen-thi-tao-phu-tho.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28557/djen-hoc-sinh-truong-han-thuyen-bac-ninh.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28554/vo-hoc-bang-mo-tre.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28553/trong-djong-canh-thinh-tieng-vong-ngan-nam.html",
+      "name": "Trống đồng Cảnh Thịnh - tiếng vọng ngàn năm.",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28545/anh-sang-tu-djuong-kach-menh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28544/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh-phan-3-va-het.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28530/tim-hieu-ve-cac-loai-gach-in-chu-djang-trung-bay-o-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28527/chiec-am-sac-thuoc-cho-lanh-tu-ho-chi-minh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28526/chiec-hom-phieu-bau-cu-quoc-hoi-khoa-i.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28525/suu-tap-truyen-djon-cach-mang-truoc-thang-9-1945-hien-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28522/tap-chu-ky-ung-ho-viet-nam-chong-my-cuu-nuoc-cua-nhan-dan-bungari.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28521/chiec-djai-ban-dan-sony-xac-nhan-thong-tin-mien-nam-hoan-toan-giai-phong-djua-djen-quyet-djinh-giai-phong-con-djao-ngay-1-5-1975.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28514/xe-o-to.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28511/lu-su-tu.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28508/buc-theu.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28505/bo-djo-an-bang-bac.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28502/bo-djo-tra.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28499/tuong-phat-nhan-dan-an-djo-tang.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28498/che-bien-thuy-san-djong-lanh-xuat-khau.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28497/san-xuat-su-ve-sinh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28496/djap-tran-nha-may-thuy-djien-hoa-binh.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28495/djai-hoi-djai-bieu-toan-quoc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28492/quat-djien-thoi-ky-bao-cap.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28489/tem-phieu-mua-hang-thoi-ky-bao-cap.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28486/so-mua-luong-thuc-thoi-ky-bao-cap.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28485/xep-hang-mua-luong-thuc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28484/quoc-hoi-khoa-vi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28483/hoi-nghi-hiep-thuong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28482/nhan-dan-thu-djo-ha-noi-mit-tinh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28481/xe-tang.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28480/le-ky-hiep-djinh-djinh-chien.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28477/bang-khau-hieu.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28474/bang-da.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28471/mu-cua-hoi-cuu-chien-binh-my.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28468/trong-cua-djoan-phat-giao-nhat-ban.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28465/lich.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28462/xich-va-khoa.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28459/tranh-lam-bang-xac-may-bay-my.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28456/cao-co.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28453/ca-uong-nuoc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28450/huy-hieu-son-la-quyet-thang.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28449/djan-mangdjolin.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28448/anh-hung-liet-si-nguyen-van-troi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28447/co-dji-la-chien-thang-djanh-la-diet-gon.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28446/mo.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28445/cua.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28442/sung-go.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28439/sung-ngua-troi.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28436/phong-trao-djong-khoi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28433/mu-rom.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28430/djon-vi-phao-cao-xa.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28427/ham-tru-an.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28424/dung-cu-lam-djuong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28421/gau-tat-nuoc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28418/chu-tich-ho-chi-minh-tat-nuoc-chong-han.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28415/djua-nhac-truong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28412/chu-tich-ho-chi-minh-bat-nhip-bai-ket-djoan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28409/tau-khong-so.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28406/djuong-truong-son.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28403/cau-hien-luong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28402/thu-truong-bo-quoc-phong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28401/gan-huy-hieu.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28398/huy-hieu-chien-si-djien-bien.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28395/sung-djkz.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28392/mui-khoan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28389/may-vo-tuyen-djien.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28386/cuoc-chim.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28383/co-quyet-chien-quyet-thang.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28380/coc-toi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28379/chien-thang-lich-su-djien-bien-phu.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28378/xe-djap-tho.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28377/djoan-xe-djap-tho.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28376/hai-bo-phan-cua-djai-phat-thanh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28375/djai-phat-thanh-tieng-noi-nam-bo.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28374/lop-hoc-van-hoa.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28371/may-dap-thuoc-vien.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28370/djen.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28369/ao.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28366/hu-gao-nuoi-quan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28363/chien-si-quyet-tu.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28360/bom-ba-cang.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28357/tranh-chu-tich-ho-chi-minh-va-thieu-nhi-bac-trung-nam.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28353/chu-tich-ho-chi-minh-tai-ky-hop-thu-nhat-quoc-hoi-khoa-i.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28352/chinh-phu-lam-thoi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28351/ban-nhac-tien-quan-ca.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28350/tuong-djong-chu-tich-ho-chi-minh.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28349/le-djoc-lap-tai-quang-truong-ba-djinh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28347/gay-tam-vong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28344/mui-lao.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28341/ma-tau.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28338/kiem.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28335/dao-truong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28334/nhan-dan-ha-noi-djanh-chiem-phu-kham-sai.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28333/nhan-dan-sai-gon-mit-tinh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28332/co-djo-sao-vang.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28331/dje-an-nghi-quyet.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28330/la-ban.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28329/ao-vet-tong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28328/le-thanh-lap-djoi-viet-nam-tuyen-truyen-giai-phong-quan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28327/ban-dja-va-rulo.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28326/bao-viet-nam-djoc-lap.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28325/may-chem.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28324/tru-so-bao-tin-tuc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28323/bao-lao-djong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28322/bao-tin-hoc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28321/bao-dan-chung.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28318/djen-toa-djang.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28312/nguyen-ai-quoc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28309/tranh-ba-tang-ap-buc.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28306/bia-my-son-1.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28300/bien-chinh-djong-mon-tay-nam-mon.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28297/cay-huong-dja.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28294/cong-tam-quan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28288/tuong-ho.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28285/bia-chua-bao-an.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28282/cap-chan-djen.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28279/gia-djen-hinh-toa-cuu-long.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28276/tuong-ban-than-thieu-nu-ha-noi.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28273/tuong-nguoi-nong-dan-dji-cay.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28270/phu-djieu-su-tu.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28267/djai-tho-uroja.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28264/phu-djieu-than-siva.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28260/binh-kendi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28257/nhan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28254/tuong-phat.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28251/tuong-than-visnu.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28248/suu-tap-lu-huong-djinh-djong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28245/suu-tap-djo-go-kham-trai.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28242/suu-tap-djo-su-men-trang-ve-lam-va-djo-phap-lam.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28239/suu-tap-djo-go-son-son-thep-vang.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28236/suu-tap-gom-bat-trang.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28228/suu-tap-chuong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28225/bo-tranh-luc-bo.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28222/djoi-bat-tho.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28219/lenh-chi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28214/trong-djong-canh-thinh.html",
+      "name": "Trống đồng Cảnh Thịnh",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28212/suu-tap-gom-phu-lang.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28211/am-trang-tri-chu-tho.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28210/suu-tap-djo-djong-the-ki-15-18.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28209/suu-tap-tranh-tho.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28206/bo-tranh-thap-djien-diem-vuong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28203/tuong-phat-nhap-niet-ban.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28200/thuyen-tho.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28197/djoi-vet-tho.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28196/lu-huong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28192/djan-dja.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28189/djau-phuong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28186/coc-bach-djang.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28183/moc-bai-dja-boi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28178/an-mon-ha-sanh-an.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28172/suu-tap-gom-hoa-nau.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28171/suu-tap-vat-lieu-trang-tri-kien-truc-djat-nung.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28170/suu-tap-gom-ly-tran-the-ky-11-14.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28167/bia-linh-xung.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28164/tuong-djau-nguoi-minh-chim-djanh-trong-kinnari.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28161/be-ke-chan-cot.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28158/coc-djong-mong-thanh-hoa-lu.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28155/tuong-uyen-uong-trang-tri-kien-truc.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28151/gach-in-chu-djai-viet-quoc-quan-thanh-chuyen-gach-in-chu-giang-tay-quan.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28148/bia-truong-xuan.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28145/am-voi-hinh-djau-ga.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28142/khay.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28139/chau-trong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28136/trong-tan-long-loai-heger-ii.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28133/bo-phan-ket-cau-nha-san.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28132/chuoi-hat-ma-nao.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28131/khuyen-tai-hai-djau-thu-dja.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28129/chan-djen.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28128/noi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28127/hat-chuoi-thuy-tinh.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28117/tram-cai.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28116/vong-ong-tay-gan-luc-lac.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28115/vong-tay-thuy-tinh.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28112/dau-in-ban-dap-hoa-van.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28109/cong-cu-tra-lap-can.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28106/chuoi-hat.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28103/xeng.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28100/riu-bon.html",
+      "reason": "Insufficient object description"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28097/cuoc.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28094/suu-tap-vo-nhuyen-the.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28091/gom-djay-nhon.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28088/ban-mai-luoi-cong-cu-dau-bac-son.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28085/riu-tay.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28082/chay-va-ban-nghien-thuc-an.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28079/riu-ngan.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28076/bo-phan-ket-cau-nha-san.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28075/khuyen-tai-hai-djau-thu.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28072/mo-vo.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28071/noi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28070/khuyen-tai-ba-mau-bon-mau.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28067/mo-chum.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28066/ho-tam-phien.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28065/mui-ten.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28064/vu-khi-djong-son.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28063/luoi-hai.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28062/riu.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28057/thap-djao-thinh.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28055/trong-djong-hoang-ha.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28053/trong-djong-ngoc-lu.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28049/luoi-cau.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28046/chi-luoi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28043/tuong-bo-ga.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28040/doi-se-soi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28037/tuong-nguoi-djan-ong.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28034/rang-nguoi-vuon.html",
+      "reason": "Missing object title or article content"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/19424/chiec-am-sac-thuoc-cho-lanh-tu-ho-chi-minh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/18994/ve-tam-bia-djan-nam-giao-thoi-le-o-ha-noi.html",
+      "name": "Về tấm bia đàn Nam Giao thời Lê ở Hà Nội",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/18813/tim-hieu-ve-cac-loai-gach-in-chu-djang-trung-bay-o-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/18461/la-co-cua-viet-kieu-paris-phap-treo-mung-le-djoc-lap-2-9-1945.html",
+      "name": "Lá cờ của Việt kiều Paris (Pháp) treo mừng Lễ Độc lập 2-9-1945",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/18077/su-ra-djoi-buc-anh-bac-bat-nhip-bai-ca-ket-djoan.html",
+      "name": "Sự ra đời bức ảnh “Bác bắt nhịp bài ca Kết đoàn”",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/18072/chiec-djai-ban-dan-sony-xac-nhan-thong-tin-mien-nam-hoan-toan-giai-phong-djua-djen-quyet-djinh-giai-phong-con-djao-ngay-1-5-1975.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17954/tap-chu-ky-ung-ho-viet-nam-chong-my-cuu-nuoc-cua-nhan-dan-bungari.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17708/djoi-lo-luc-binh-giau-tai-lieu-bi-mat-cua-djang.html",
+      "name": "Đôi lọ lục bình giấu tài liệu bí mật của Đảng",
+      "reason": "Duplicate physical-object identity"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17653/suu-tap-truyen-djon-cach-mang-truoc-thang-9-1945-hien-luu-giu-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17555/chiec-hom-phieu-bau-cu-quoc-hoi-khoa-i.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17469/ky-vat-cua-djoi-truong-djoi-viet-nam-tuyen-truyen-giai-phong-quan-hoang-sam.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17222/nhung-ky-vat-cua-me-suot-nguoi-cheo-thuyen-tren-song-nhat-le.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17199/sac-mau-van-hoa-qua-suu-tap-tang-pham-cua-nhan-dan-viet-nam-nhan-dan-the-gioi-tang-chu-tich-ho-chi-minh-va-djang-cong-san-viet-nam-tai-btlsqg.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/17040/djo-gom-the-ky-1-3-sau-cong-nguyen-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/16966/cay-nhiet-djoi-vu-khi-trinh-sat-djien-tu-my-su-dung-trong-chien-tranh-viet-nam.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/16800/bao-hon-nuoc-cua-thanh-nien-cuu-quoc-khu-hoang-dieu-nam-1945.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/16374/thu-choi-co-ngoan-cua-nguoi-ha-noi-xua.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/16373/suu-tap-tranh-tuyen-truyen-co-djong-trong-khang-chien-chong-thuc-dan-phap-1946-1954.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/16155/chiec-va-li-may-cua-chu-tich-ho-chi-minh.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/15110/ve-mot-ky-vat-cua-anh-hung-liet-si-hoang-le-kha.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14834/mot-so-thong-tin-ve-tranh-tuong-dje-tai-chien-tranh-cach-mang-djang-trung-bay-tai-bao-tang-lich-su-quoc-gia-phan-cuoi.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14806/djo-gom-men-thoi-ly-tran-tim-djuoc-trong-khu-vuc-thanh-thang-long-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14788/mot-so-thong-tin-ve-tranh-tuong-dje-tai-chien-tranh-cach-mang-hien-djang-trung-bay-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14609/bom-ba-cang-quyet-tu-quan-thu-djo-dung-djanh-xe-tang-phap-trong-nhung-ngay-djau-toan-quoc-khang-chien-12-1946.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14549/ky-niem-88-nam-ngay-bao-chi-cach-mang-viet-nam-21-6-1925-21-6-2013-mot-so-bao-chi-cach-mang-thoi-ky-1936-1939-hien-bao-tang-lich-su-quoc-gia-luu-giu-djuoc-dju-so.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14493/suu-tap-bao-chi-cach-mang-viet-nam-truoc-nam-1945-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14449/suu-tap-bao-cua-trung-uong-djang-cong-san-viet-nam-xuat-ban-truoc-thang-12-1945-hien-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14349/noi-dung-bai-ky-khac-tren-bia-chua-bao-an-hien-vat-bao-tang-lich-su-quoc-gia.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14326/200-luong-vang-mua-ao-len-cua-ho-chu-tich.html",
+      "reason": "No source object photograph in article body"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14283/bang-khen-cua-tong-bo-viet-minh-truy-tang-anh-kim-djong-nguoi-djoi-truong-djau-tien-cua-djoi-tntp-hcm.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14278/suu-tap-bao-co-giai-phong-1943-1945-cua-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14270/suu-tap-bao-dan-chung-1938-1939-cua-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14262/suu-tap-bao-viet-nam-djoc-lap-1941-1945-cua-bao-tang-lich-su-quoc-gia.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/13832/djia-ban-djoi-du-kich-ba-to-tinh-quang-ngai-thu-djuoc-cua-phat-xit-nhat-nam-1945.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/13728/chiec-djai-ban-dan-sony-dung-nghe-tin-mien-nam-hoan-toan-giai-phong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/13678/nu-anh-hung-ngo-thi-tuyen-trong-tran-chien-cau-ham-rong.html",
+      "reason": "Not a specific physical-object title"
+    },
+    {
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/12914/tac-pham-sua-djoi-loi-lam-viec-cua-chu-tich-ho-chi-minh-ky-niem-65-nam-ngay-tac-pham-ra-djoi.html",
+      "reason": "Not a specific physical-object title"
+    }
+  ],
+  "records": [
+    {
+      "id": "ref-nh-084aab922c8d",
+      "name": "Mộ thuyền Việt Khê",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/75069/bao-vat-quoc-gia-mo-thuyen-viet-khe.html",
+      "accessionNumber": "LSb. 38456",
+      "objectIdentity": "mo thuyen viet khe",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2024/12/News/Tieng%20Viet/2.12.2024/Bao%20vat%20QG%20mo%20thuyen%20Viet%20Khe/Mo%20thuyen%20Viet%20Khe.JPG",
+      "sourceImageSha256": "112b6629bcc16fdc510217b09e06a3bca4d971bf155c1bf6e729aee4037b8d6f",
+      "metadataUnknown": []
+    },
+    {
+      "id": "ref-nh-375856a07513",
+      "name": "Thạp Đào Thịnh",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/73800/bao-vat-quoc-gia-thap-djao-thinh.html",
+      "accessionNumber": "LSb. 32967",
+      "objectIdentity": "thap dao thinh",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2023/03/News/Ti%E1%BA%BFng%20Vi%E1%BB%87t/27.3.2023/Bao%20vat%20quoc%20gia%20-%20Thap%20Dao%20Thinh/Thap%20dong%20Dao%20Thinh%201.jpg",
+      "sourceImageSha256": "92b5d13be0dc332eec1c56a7ba37fb8a65d5e55128235afe8429c288eef3d2fa",
+      "metadataUnknown": []
+    },
+    {
+      "id": "ref-nh-71c21cd4c08a",
+      "name": "Trống Hoàng Hạ",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/73731/bao-vat-quoc-gia-trong-hoang-ha.html",
+      "accessionNumber": "LSb. 5723",
+      "objectIdentity": "trong hoang ha",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2023/02/News/Ti%E1%BA%BFng%20Vi%E1%BB%87t/20.2.2023/Bao%20vat%20quoc%20gia%20Trong%20Hoang%20Ha/Trong%20Hoang%20Ha%202.jpg",
+      "sourceImageSha256": "ff43901b6802a5ca9e46fbe281cd2c044ad3df111a1bb8ccf998bb80e156b57e",
+      "metadataUnknown": []
+    },
+    {
+      "id": "ref-nh-a638dbcae954",
+      "name": "Tượng \"Chân dung Chủ tịch Hồ Chí Minh\" - năm 1946, bảo vật quốc gia tại Bảo tàng Lịch sử quốc gia",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/73683/tuong-chan-dung-chu-tich-ho-chi-minh-nam-1946-bao-vat-quoc-gia-tai-bao-tang-lich-su-quoc-gia.html",
+      "accessionNumber": "",
+      "objectIdentity": "tuong chan dung chu tich ho chi minh nam 1946",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2023/02/News/Ti%E1%BA%BFng%20Vi%E1%BB%87t/2.2.2023/Bao%20vat%20quoc%20gia%20Tuong%20chan%20dung%20CTHCM/1.jpg",
+      "sourceImageSha256": "2f108853e6719d1c71da42ecf8a3fe20e55ebaf8cc4ef32ff1532907d0bea98a",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-283e05443462",
+      "name": "Trống Ngọc Lũ",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/73637/bao-vat-quoc-gia-trong-ngoc-lu.html",
+      "accessionNumber": "LSb. 5722",
+      "objectIdentity": "trong ngoc lu",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2023/01/News/Tieng%20Viet/3.1.2023/Bao%20vat%20Qg%20Trong%20dong%20Ngoc%20Lu/Trong%20Ngoc%20Lu%202.jpg",
+      "sourceImageSha256": "82c0acf05a8ed39ca3968a0a003128326ad85dac8411f1e5a4c753d14d537c6e",
+      "metadataUnknown": []
+    },
+    {
+      "id": "ref-nh-6eec9cab03f3",
+      "name": "Ấn Hoàng đế tôn thân chi bảo",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/73490/bao-vat-quoc-gia-an-hoang-dje-ton-than-chi-bao.html",
+      "accessionNumber": "LSb. 34955",
+      "objectIdentity": "an hoang de ton than chi bao",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2022/10/News/Tieng%20Viet/21.10.2022/Bao%20vat%20QG%20An%20Hoang%20de%20Ton%20than%20chi%20bao/1.jpg",
+      "sourceImageSha256": "1caad5f6c731076cd997215c6268e1c4e774d2eff22ecaccc1dcb248423e7192",
+      "metadataUnknown": []
+    },
+    {
+      "id": "ref-nh-50cc4e937579",
+      "name": "Cây hương chùa Tứ Kỳ",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/73413/bao-vat-quoc-gia-cay-huong-chua-tu-ky.html",
+      "accessionNumber": "LSb.32856",
+      "objectIdentity": "cay huong chua tu ky",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2022/09/News/Ti%E1%BA%BFng%20Vi%E1%BB%87t/22.9.2022/Bao%20vat%20quoc%20gia%20Cay%20huong%20chua%20Tu%20Ky/1.jpg",
+      "sourceImageSha256": "ff47c5fc36e1afc73f9180713ad673138c9be09fa13b0d98631f27fc325c2657",
+      "metadataUnknown": []
+    },
+    {
+      "id": "ref-nh-f8ec1736d226",
+      "name": "Ấn ngọc Đại Nam thụ thiên vĩnh mệnh truyền quốc tỷ",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28564/bao-vat-quoc-gia-an-ngoc-djai-nam-thu-thien-vinh-menh-truyen-quoc-ty.html",
+      "accessionNumber": "",
+      "objectIdentity": "an ngoc dai nam thu thien vinh menh truyen quoc ty",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/data_hung_/thang_1_nam_2018/an_ngoc_dai_nam_thu/1.jpg",
+      "sourceImageSha256": "572ea6c895bc783df3a8af6e77c9ca133bb8f01bb7ce0e40ea64b7032912af17",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-72c2a5fb7bb3",
+      "name": "Ấn vàng truyền quốc của chúa Nguyễn Phúc Chu năm 1709",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28552/bao-vat-quoc-gia-an-vang-truyen-quoc-cua-chua-nguyen-phuc-chu-nam-1709.html",
+      "accessionNumber": "",
+      "objectIdentity": "an nguyen phuc chu",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/bao-vat-quoc-gia/1_10.jpg",
+      "sourceImageSha256": "f5e0812db2afff87f11e16b601c78a060bd090487ae16058dd117e9c6d0f14e8",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-5fa66f33ac4f",
+      "name": "Bình gốm hoa lam vẽ thiên nga",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28550/bao-vat-quoc-gia-binh-gom-hoa-lam-ve-thien-nga.html",
+      "accessionNumber": "",
+      "objectIdentity": "binh gom hoa lam ve thien nga",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/bao-vat-quoc-gia/1_9.jpg",
+      "sourceImageSha256": "d2add28401bfedb74d414c51634beccaec4cab708c39d7180ec95ae3eff80a82",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-03c39f3adf38",
+      "name": "Ấn Sảnh Môn Hạ",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28549/bao-vat-quoc-gia-an-sanh-mon-ha.html",
+      "accessionNumber": "",
+      "objectIdentity": "an mon ha",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/bao-vat-quoc-gia/1_8.jpg",
+      "sourceImageSha256": "564051e470fa6fdb6fed17884d89eb80cec1125a892846b54c61c4fe1891b938",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-62f8de21f0cf",
+      "name": "Quả chuông chùa Vân Bản",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28547/bao-vat-quoc-gia-qua-chuong-chua-van-ban.html",
+      "accessionNumber": "",
+      "objectIdentity": "chuong van ban",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/bao-vat-quoc-gia/1_7.jpg",
+      "sourceImageSha256": "6501a1a268134d235e89ad4de8330724705dea1b3f7828ff1f5719fbeb254392",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-d7c0214d5d82",
+      "name": "Cuốn Đường Kách Mệnh của Nguyễn Ái Quốc: Sự xuất hiện và hành trình",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28537/cuon-djuong-kach-menh-cua-nguyen-ai-quoc-su-xuat-hien-va-hanh-trinh.html",
+      "accessionNumber": "",
+      "objectIdentity": "duong kach menh cua nguyen ai quoc su xuat hien va hanh trinh",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/bao-vat-quoc-gia/1_5.jpg",
+      "sourceImageSha256": "bf49c9803f4bacb12ed555463eb410bb8fa7c0ff2dab63184092e71ca21ab0d0",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-cfbee6c50e82",
+      "name": "Sách \"Đường Kách Mệnh\"",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28315/sach-djuong-kach-menh.html",
+      "accessionNumber": "",
+      "objectIdentity": "sach duong kach menh",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/1h.jpg",
+      "sourceImageSha256": "0c1e44848dde0fafbafee97e27060537393d84cbfb33019c2c3f4835e980c002",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-d11353b7807a",
+      "name": "Trống đồng Cảnh Thịnh",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28213/trong-djong-canh-thinh.html",
+      "accessionNumber": "",
+      "objectIdentity": "trong canh thinh",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/trg1.jpg",
+      "sourceImageSha256": "af13839d742c5a9a68f24990559c5a94f81bfa5535cefbe02e9280f2977f125b",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-215833878b6d",
+      "name": "Bình vẽ thiên nga",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/28195/binh-ve-thien-nga.html",
+      "accessionNumber": "",
+      "objectIdentity": "binh ve thien nga",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/bg.jpg",
+      "sourceImageSha256": "7b4c710bd59ec185c39f7fb0e18f7c7c6e185c283ba966c5215aad9e70a73d7e",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-89b601749748",
+      "name": "Giới thiệu bảo vật quốc gia. Ngôi Mộ cổ Việt Khê",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/15982/gioi-thieu-bao-vat-quoc-gia-ngoi-mo-co-viet-khe.html",
+      "accessionNumber": "",
+      "objectIdentity": "viet khe",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/data%20Hung/thang%203%20nam%202014/mo%20thuyen%20viet%20khe/1.jpg",
+      "sourceImageSha256": "9f3e22f99fe5351a7367c368220f16bc6f505342763a31caed85481391e48397",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-e22493374849",
+      "name": "Giới thiệu Bảo vật quốc gia - Bia Võ Cạnh, những ẩn số chưa được giải đáp.",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/15662/gioi-thieu-bao-vat-quoc-gia-bia-vo-canh-nhung-an-so-chua-djuoc-giai-djap.html",
+      "accessionNumber": "",
+      "objectIdentity": "gioi thieu bao vat quoc gia bia vo canh nhung an so chua duoc giai dap",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/data%20Hung/thang%201%20nam%202014/bia%20vo%20canh/1.jpg",
+      "sourceImageSha256": "7156d14907f8ccdb49434e804ae871cf2104ecee377880d115eb3008afd6bd19",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-c8e7513cbfd3",
+      "name": "Giới thiệu Bảo vật Quốc gia. 11. Ngục trung nhật ký (Nhật ký trong tù)",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13644/gioi-thieu-bao-vat-quoc-gia-11-nguc-trung-nhat-ky-nhat-ky-trong-tu.html",
+      "accessionNumber": "",
+      "objectIdentity": "gioi thieu bao vat quoc gia 11 nguc trung nhat ky nhat ky trong tu",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/Trang-bia.gif",
+      "sourceImageSha256": "5e64b303ed7606c0ed55b2de1699032ebe80fadac0ab3e63f336cfa35a3c000a",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-674f0e8410f7",
+      "name": "Giới thiệu Bảo vật Quốc gia. 5. Ánh hào quang bí ẩn từ cây đèn hình người quỳ",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13635/gioi-thieu-bao-vat-quoc-gia-5-anh-hao-quang-bi-an-tu-cay-djen-hinh-nguoi-quy.html",
+      "accessionNumber": "",
+      "objectIdentity": "gioi thieu bao vat quoc gia 5 anh hao quang bi an tu cay den hinh nguoi quy",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/cay-den.gif",
+      "sourceImageSha256": "f62aeb234f6a72e828c2e70d2392a0f1cb6bbd1fb008f22b957d50a8e4321d88",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-8e2ad2c7a005",
+      "name": "Giới thiệu Bảo vật Quốc gia. 4. Tượng hai người cõng nhau thổi khèn",
+      "url": "https://baotanglichsu.vn/vi/Articles/1001/13634/gioi-thieu-bao-vat-quoc-gia-4-tuong-hai-nguoi-cong-nhau-thoi-khen.html",
+      "accessionNumber": "",
+      "objectIdentity": "gioi thieu bao vat quoc gia 4 tuong hai nguoi cong nhau thoi khen",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/Tuong-nguoi-cong-nhau-thoi-.gif",
+      "sourceImageSha256": "54caa740a27bcdf0245ff5b5bde4d668e364a03840050e031b31a6b043679040",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-e59788a3082b",
+      "name": "Chiếc lược đồi mồi và hành trình của một kỷ vật đặc biệt",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/76732/chiec-luoc-djoi-moi-va-hanh-trinh-cua-mot-ky-vat-djac-biet.html",
+      "accessionNumber": "",
+      "objectIdentity": "luoc doi moi va hanh trinh cua mot",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2026/09/News/Tieng%20Viet/16.9.2026/Chiec%20luoc%20doi%20moi%20va%20hanh%20trinh%20cua%20mot%20ky%20vat%20dac%20biet/1.JPG",
+      "sourceImageSha256": "0bce0e5d453765b4d2a2cb3721aa18c5cbd0a27feadbdcb2be4733b22850fdb7",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-6b5fd3a4b3f6",
+      "name": "Huy hiệu Bình dân học vụ – Biểu tượng của ánh sáng tri thức giữa ngục tù Côn Đảo",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/75963/huy-hieu-binh-dan-hoc-vu-bieu-tuong-cua-anh-sang-tri-thuc-giua-nguc-tu-con-djao.html",
+      "accessionNumber": "",
+      "objectIdentity": "huy hieu binh dan hoc vu bieu tuong cua anh sang tri thuc giua nguc tu con dao",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2025/11/News/Tieng%20Viet/11.11.2025/Huy%20hieu%20BDHV%20Bieu%20tuong%20cua%20anh%20sang%20tri%20thuc%20giua%20nguc%20tu%20Con%20Dao/1.png",
+      "sourceImageSha256": "b2688cfab7cf8012e06973a2cdceeec815bc682133b9312cdcdfcc75dd77be94",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-af851a988593",
+      "name": "Cuốn sổ tay của dân công tỉnh Phú Thọ trong chiến dịch Điện Biên Phủ, năm 1954",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/74906/cuon-so-tay-cua-dan-cong-tinh-phu-tho-trong-chien-dich-djien-bien-phu-nam-1954.html",
+      "accessionNumber": "",
+      "objectIdentity": "so tay cua dan cong tinh phu tho trong chien dich dien bien phu nam 1954",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2024/09/News/Tieng%20Viet/6.9.2024/Cuon%20so%20tay%20cua%20dan%20cong%20tinh%20Phu%20Tho%20trong%20chien%20dich%20Dien%20Bien%20phu/1.jpg",
+      "sourceImageSha256": "5cab8ee31ccfa3e00d321b70efd61e20f854d5950196c08421c8c067acedb880",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-290bdd2d6147",
+      "name": "Sách “Bản án chế độ Thực dân Pháp” (Le Procès de la Colonisation Francaise) lưu giữ tại Bảo tàng lịch sử quốc gia",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/73331/sach-ban-an-che-djo-thuc-dan-phap-le-proces-de-la-colonisation-francaise-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+      "accessionNumber": "",
+      "objectIdentity": "sach an che do thuc dan phap le proces de la colonisation francaise",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2022/08/News/Tieng%20Viet/16.8.2022/Sach%20Ban%20an%20che%20do%20thuc%20dan%20phap%20luu%20giu%20tai%20BTLSQG/1.jpg",
+      "sourceImageSha256": "d2fe4591c802b624e876241ee6f2a87c3a8b29e7d4682836a80c2432349d4e58",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-8d5e0cea2455",
+      "name": "Vở học bằng mo tre lưu giữ tại BTLSQG",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/73158/vo-hoc-bang-mo-tre-luu-giu-tai-btlsqg.html",
+      "accessionNumber": "",
+      "objectIdentity": "vo hoc bang mo tre",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2022/06/News/Tieng%20Viet/2.6.2022/Vo%20hoc%20bang%20mo%20tre%20luu%20giu%20tai%20BTLSQG/1.jpg",
+      "sourceImageSha256": "3058f69466e7a4ae681b14c5598dcf9385bf51aa1c17c634e749c97fa5fdeb0a",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-40296b8aeddf",
+      "name": "Chiếc gầu Chủ tịch Hồ Chí Minh dùng để tát nước chống hạn lưu giữ tại BTLSQG",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/70864/chiec-gau-chu-tich-ho-chi-minh-dung-dje-tat-nuoc-chong-han-luu-giu-tai-btlsqg.html",
+      "accessionNumber": "",
+      "objectIdentity": "gau chu tich ho chi minh dung de tat nuoc chong han",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/2019/06/News/TIN%20BAI%201-6%20HUNG/chiec%20gau%20chu%20tich%20ho%20chi%20minh%20dung%20de%20muc%20nuoc%20luu%20giu%20tai%20btlsqg/1.jpg",
+      "sourceImageSha256": "f4ddd0cfd38610beca58d95808e4deb98c893794701c4b07d513f722dbcb068c",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-f5aa837be0b9",
+      "name": "Lá cờ của Việt kiều Paris (Pháp) treo mừng Lễ Độc lập 2-9-1945",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28531/la-co-cua-viet-kieu-paris-phap-treo-mung-le-djoc-lap-2-9-1945.html",
+      "accessionNumber": "",
+      "objectIdentity": "la cua viet kieu paris phap treo mung le doc lap 2 9 1945",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/1_9.jpg",
+      "sourceImageSha256": "88fe3b1f45578342548da6bcd6676d1bcdaf2646a4985fe76a2a774492973887",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-7cca2174c978",
+      "name": "Về tấm bia đàn Nam Giao thời Lê ở Hà Nội",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28529/ve-tam-bia-djan-nam-giao-thoi-le-o-ha-noi.html",
+      "accessionNumber": "",
+      "objectIdentity": "tam bia dan nam giao thoi le o ha noi",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/1_7_1.jpg",
+      "sourceImageSha256": "625d71c2051815d2e451b4fc42539d980b3cec2674a51d93d0302980428074ce",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-8a8c852c04ec",
+      "name": "Đôi lọ lục bình giấu tài liệu bí mật của Đảng",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28523/djoi-lo-luc-binh-giau-tai-lieu-bi-mat-cua-djang.html",
+      "accessionNumber": "",
+      "objectIdentity": "doi lo luc binh giau tai lieu bi mat cua dang",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/1_3_1.jpg",
+      "sourceImageSha256": "e910a0c8399b5290759a81125740607cfb941c81d6c7a09b7969571855cc6042",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-bcca31482606",
+      "name": "Sự ra đời bức ảnh “Bác bắt nhịp bài ca Kết đoàn”",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28520/su-ra-djoi-buc-anh-bac-bat-nhip-bai-ca-ket-djoan.html",
+      "accessionNumber": "",
+      "objectIdentity": "su ra doi anh bac bat nhip bai ca ket doan",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/1_2_1.jpg",
+      "sourceImageSha256": "9b1e0dc81d9d6e86fd2b82b99e55fbb7bb5b08206c095073ccac0e8a69c1dea0",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-fb0770daef40",
+      "name": "Sưu tập tiền kim loại",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28263/suu-tap-tien-kim-loai.html",
+      "accessionNumber": "",
+      "objectIdentity": "suu tap tien kim loai",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/t5.jpg",
+      "sourceImageSha256": "c18517e888e00a3e2e68f5eed57a22a8dbb91dd9e1a326ad93137b7f3e04c417",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-91b29f1bd033",
+      "name": "Hộp đựng sách, nghiên mài mực",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28233/hop-djung-sach-nghien-mai-muc.html",
+      "accessionNumber": "",
+      "objectIdentity": "hop dung sach nghien mai muc",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/a_2.jpg",
+      "sourceImageSha256": "dcd46be5a0cbb8e0e19b4956c47ac185a98e39b708dae75615392a41fc608751",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-c099cac49981",
+      "name": "Thước gỗ, quả cân đồng, đấu đong",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/28230/thuoc-go-qua-can-djong-djau-djong.html",
+      "accessionNumber": "",
+      "objectIdentity": "thuoc go qua can dong dau dong",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/asset/upload/hien-vat-va-tu-lieu/4.jpg",
+      "sourceImageSha256": "1b82e3e15ca65f94b3739353627f26af35f3da4a3f6871de8386f49d0d14e640",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-262ac54dcb46",
+      "name": "Cờ bình dân học vụ của lớp Sơ cấp Thị trấn Gia Rai tặng Hồ Chí Minh",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/16900/co-binh-dan-hoc-vu-cua-lop-so-cap-thi-tran-gia-rai-tang-ho-chi-minh.html",
+      "accessionNumber": "",
+      "objectIdentity": "binh dan hoc vu cua lop so cap thi tran gia rai tang ho chi minh",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/DATA%20NHUAN/NAM%202014/THANG%208/TIENG%20VIET/co%20binh%20dan%20hoc%20vu%20lop%20so%20cap%20Thi%20tran%20Gia%20Rai%20tang%20Ho%20Chi%20Minh/89.jpg",
+      "sourceImageSha256": "87a7b0fff01e95279a3018bb042532d6f658b474e692e35db96059ed1d71c08c",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-08558d2712ae",
+      "name": "Bia Cấm tệ sách nhiễu dân (Thân cấm khử tệ)",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14648/bia-cam-te-sach-nhieu-dan-than-cam-khu-te.html",
+      "accessionNumber": "",
+      "objectIdentity": "bia cam te sach nhieu dan than cam khu te",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/alo/nh.jpg",
+      "sourceImageSha256": "872d3cb7597086254823abdc9f2c8edd1466d261f1985b36828238773fe5deec",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-6bf26faf2813",
+      "name": "Bức tranh “Bác Hồ với ba cháu thiếu nhi Trung Nam Bắc” được vẽ bằng máu của họa sĩ Diệp Minh Châu.",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14507/buc-tranh-bac-ho-voi-ba-chau-thieu-nhi-trung-nam-bac-djuoc-ve-bang-mau-cua-hoa-si-diep-minh-chau.html",
+      "accessionNumber": "",
+      "objectIdentity": "tranh bac ho voi ba chau thieu nhi trung nam bac duoc ve bang mau cua hoa si diep minh chau",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/diep%20minh%20chau%201.jpg",
+      "sourceImageSha256": "170141776f852aa5c9f0688d7f041a0a0427ad24aaa6276e195df6d89e12e55a",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-0da4be81ff11",
+      "name": "Anh hùng liệt sĩ Bế Văn Đàn (1931-1954)",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/14491/anh-hung-liet-si-be-van-djan-1931-1954.html",
+      "accessionNumber": "",
+      "objectIdentity": "anh hung liet si be van dan 1931 1954",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/be%20van%20dan%201.jpg",
+      "sourceImageSha256": "ae0b63dc3c7517e2ef56aef3022fd2515557d49bcf519afe24e88e93fc3b98a4",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-8521e002140e",
+      "name": "Súng trường do Cao Thắng chế tạo trong cuộc khởi nghĩa Hương Khê (1885-1896)",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/13780/sung-truong-do-cao-thang-che-tao-trong-cuoc-khoi-nghia-huong-khe-1885-1896.html",
+      "accessionNumber": "",
+      "objectIdentity": "sung truong do cao thang che tao trong cuoc khoi nghia huong khe 1885 1896",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/chihoi1C.gif",
+      "sourceImageSha256": "cb99532a4e8ed484ced04a466562012589a3bc2fff18289304600d53db00bdd3",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    },
+    {
+      "id": "ref-nh-c57cf7bf9042",
+      "name": "Cuốn sổ ghi cảm tưởng của quân dân Âu - Phi mừng thọ Bác Hồ",
+      "url": "https://baotanglichsu.vn/vi/Articles/1002/13322/cuon-so-ghi-cam-tuong-cua-quan-dan-au-phi-mung-tho-bac-ho.html",
+      "accessionNumber": "",
+      "objectIdentity": "so ghi cam tuong cua quan dan au phi mung tho bac ho",
+      "sourceImage": "https://baotanglichsu.vn/DataFiles/Uploaded/image/auphi-bia.gif",
+      "sourceImageSha256": "a483b2a0811772d833f9a05a3a8bfd6e340210d3524ca42f1d1d4a759aa84b4f",
+      "metadataUnknown": [
+        "era",
+        "material"
+      ]
+    }
+  ]
+}
