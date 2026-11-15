@@ -1,0 +1,2260 @@
+[
+  {
+    "url": "https://api.vam.ac.uk/v2/objects/search?q=Vietnam&page_size=3&images_exist=1",
+    "status": 200,
+    "data": {
+      "info": {
+        "version": "2.0",
+        "record_count": 595,
+        "record_count_exact": true,
+        "parameters": {},
+        "page_size": 3,
+        "pages": 199,
+        "page": 1,
+        "image_count": 908
+      },
+      "records": [
+        {
+          "systemNumber": "O89704",
+          "accessionNumber": "E.65-2003",
+          "objectType": "Photograph",
+          "availableToBook": false,
+          "_currentLocation": {
+            "id": "THES49654",
+            "displayName": "Prints & Drawings Study Room, level H",
+            "type": "request to view",
+            "site": "VA",
+            "onDisplay": false,
+            "detail": {
+              "free": "",
+              "case": "",
+              "shelf": "",
+              "box": ""
+            }
+          },
+          "_primaryTitle": "China. Demonstration to protest against the US military intervention in North Vietnam",
+          "_primaryMaker": {
+            "name": "Marc Riboud",
+            "association": "maker"
+          },
+          "_primaryImageId": "2006BB5820",
+          "_primaryDate": "1965",
+          "_primaryPlace": "Beijing",
+          "_warningTypes": [],
+          "_images": {
+            "_primary_thumbnail": "https://framemark.vam.ac.uk/collections/2006BB5820/full/!100,100/0/default.jpg",
+            "_iiif_image_base_url": "https://framemark.vam.ac.uk/collections/2006BB5820/",
+            "_iiif_presentation_url": null,
+            "imageResolution": "low"
+          }
+        },
+        {
+          "systemNumber": "O123216",
+          "accessionNumber": "E.15-2006",
+          "objectType": "Photograph",
+          "availableToBook": false,
+          "_currentLocation": {
+            "id": "THES49656",
+            "displayName": "Prints & Drawings Study Room, level F",
+            "type": "request to view",
+            "site": "VA",
+            "onDisplay": false,
+            "detail": {
+              "free": "",
+              "case": "",
+              "shelf": "",
+              "box": ""
+            }
+          },
+          "_primaryTitle": "Ossie Clark Vietnam 1969",
+          "_primaryMaker": {
+            "name": "Lee, Jim",
+            "association": "photographer"
+          },
+          "_primaryImageId": "2015HU2733",
+          "_primaryDate": "1969",
+          "_primaryPlace": "London",
+          "_warningTypes": [],
+          "_images": {
+            "_primary_thumbnail": "https://framemark.vam.ac.uk/collections/2015HU2733/full/!100,100/0/default.jpg",
+            "_iiif_image_base_url": "https://framemark.vam.ac.uk/collections/2015HU2733/",
+            "_iiif_presentation_url": null,
+            "imageResolution": "low"
+          }
+        },
+        {
+          "systemNumber": "O102305",
+          "accessionNumber": "E.801-2004",
+          "objectType": "Poster",
+          "availableToBook": false,
+          "_currentLocation": {
+            "id": "THES49171",
+            "displayName": "Prints & Drawings Study Room, level C",
+            "type": "request to view",
+            "site": "VA",
+            "onDisplay": false,
+            "detail": {
+              "free": "",
+              "case": "",
+              "shelf": "",
+              "box": ""
+            }
+          },
+          "_primaryTitle": "International week of solidarity with Vietnam",
+          "_primaryMaker": {
+            "name": "Forjans, Jesus",
+            "association": "artist"
+          },
+          "_primaryImageId": "2015HJ5215",
+          "_primaryDate": "1969",
+          "_primaryPlace": "Cuba",
+          "_warningTypes": [],
+          "_images": {
+            "_primary_thumbnail": "https://framemark.vam.ac.uk/collections/2015HJ5215/full/!100,100/0/default.jpg",
+            "_iiif_image_base_url": "https://framemark.vam.ac.uk/collections/2015HJ5215/",
+            "_iiif_presentation_url": null,
+            "imageResolution": "low"
+          }
+        }
+      ],
+      "clusters": {
+        "venue": {
+          "other_terms_record_count": 0,
+          "terms": [
+            {
+              "id": "VA",
+              "value": "V&A South Kensington",
+              "count": 0,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "ES",
+              "value": "V&A East Storehouse",
+              "count": 0,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "EM",
+              "value": "V&A East Museum",
+              "count": 0,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "WED",
+              "value": "V&A Wedgwood Collection",
+              "count": 0,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "YVA",
+              "value": "Young V&A",
+              "count": 0,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "dundee",
+              "value": "V&A Dundee",
+              "count": 0,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "gallery": {
+          "other_terms_record_count": 47,
+          "terms": [
+            {
+              "id": "VA",
+              "value": "V&A South Kensington",
+              "count": 0,
+              "depth": 0,
+              "count_max_error": 0,
+              "childTerms": [
+                {
+                  "id": "THES49865",
+                  "value": "Ceramics, Room 145",
+                  "count": 324,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES49171",
+                  "value": "Prints & Drawings Study Room, level C",
+                  "count": 57,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES49876",
+                  "value": "Ceramics, Room 137, The Curtain Foundation Gallery",
+                  "count": 28,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES263054",
+                  "value": "Europe 1600-1815, Room 7, The Sheikha Amna Bint Mohammed Al Thani Gallery",
+                  "count": 18,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES49656",
+                  "value": "Prints & Drawings Study Room, level F",
+                  "count": 13,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES49654",
+                  "value": "Prints & Drawings Study Room, level H",
+                  "count": 9,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES392739",
+                  "value": "SR002",
+                  "count": 5,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES49657",
+                  "value": "Prints & Drawings Study Room, level E",
+                  "count": 2,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                },
+                {
+                  "id": "THES49934",
+                  "value": "Photography Centre, Room 100, The Bern and Ronny Schwartz Gallery",
+                  "count": 2,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                }
+              ]
+            },
+            {
+              "id": "ES",
+              "value": "V&A East Storehouse",
+              "count": 0,
+              "depth": 0,
+              "count_max_error": 0,
+              "childTerms": [
+                {
+                  "id": "THES344663",
+                  "value": "Storage Displays, Level 3",
+                  "count": 6,
+                  "depth": 1,
+                  "count_max_error": 0,
+                  "childTerms": []
+                }
+              ]
+            }
+          ]
+        },
+        "category": {
+          "other_terms_record_count": 65,
+          "terms": [
+            {
+              "id": "THES48982",
+              "value": "Ceramics",
+              "count": 379,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES252963",
+              "value": "Posters",
+              "count": 68,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48903",
+              "value": "Prints",
+              "count": 54,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48957",
+              "value": "Fashion",
+              "count": 39,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48959",
+              "value": "Entertainment & Leisure",
+              "count": 38,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48902",
+              "value": "Propaganda",
+              "count": 27,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48910",
+              "value": "Photographs",
+              "count": 24,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES49001",
+              "value": "Advertising",
+              "count": 24,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES250537",
+              "value": "Theatre",
+              "count": 23,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES257202",
+              "value": "War",
+              "count": 20,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48890",
+              "value": "Stoneware",
+              "count": 17,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES266219",
+              "value": "Puppetry",
+              "count": 16,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48907",
+              "value": "Porcelain",
+              "count": 15,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48908",
+              "value": "Politics",
+              "count": 14,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48885",
+              "value": "Textiles",
+              "count": 12,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48951",
+              "value": "Footwear",
+              "count": 12,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES281081",
+              "value": "The Royal Photographic Society",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48906",
+              "value": "Portraits",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES394093",
+              "value": "David Bowie Archive",
+              "count": 8,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48959",
+              "value": "Entertainment and leisure",
+              "count": 8,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "object_type": {
+          "other_terms_record_count": 29,
+          "terms": [
+            {
+              "id": "Saucer",
+              "value": "Saucer",
+              "count": 160,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Teabowl",
+              "value": "Teabowl",
+              "count": 159,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Poster",
+              "value": "Poster",
+              "count": 86,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Photograph",
+              "value": "Photograph",
+              "count": 30,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Badge",
+              "value": "Badge",
+              "count": 18,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Wine cup",
+              "value": "Wine cup",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Bowl",
+              "value": "Bowl",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Jar",
+              "value": "Jar",
+              "count": 8,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Figure",
+              "value": "Figure",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Pair of sneakers",
+              "value": "Pair of sneakers",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Print",
+              "value": "Print",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Spoon",
+              "value": "Spoon",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Soft toy",
+              "value": "Soft toy",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Trainers",
+              "value": "Trainers",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Box and lid",
+              "value": "Box and lid",
+              "count": 4,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Painting",
+              "value": "Painting",
+              "count": 4,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Bottle",
+              "value": "Bottle",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Cup",
+              "value": "Cup",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Dish",
+              "value": "Dish",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "Jacket",
+              "value": "Jacket",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "collection": {
+          "other_terms_record_count": 0,
+          "terms": [
+            {
+              "id": "THES48596",
+              "value": "East Asia Collection",
+              "count": 388,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48595",
+              "value": "Prints, Drawings & Paintings Collection",
+              "count": 82,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48602",
+              "value": "Theatre and Performance Collection",
+              "count": 46,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48601",
+              "value": "Textiles and Fashion Collection",
+              "count": 26,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48598",
+              "value": "South & South East Asia Collection",
+              "count": 19,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48593",
+              "value": "Young V&A Collection",
+              "count": 16,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES291628",
+              "value": "Department of Photography",
+              "count": 11,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES260586",
+              "value": "Design, Architecture and Digital Collection",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48594",
+              "value": "Ceramics Collection",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48597",
+              "value": "Furniture and Woodwork Collection",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48599",
+              "value": "Metalwork Collection",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES48605",
+              "value": "National Art Library",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "place": {
+          "other_terms_record_count": 22,
+          "terms": [
+            {
+              "id": "x30019",
+              "value": "Vietnam",
+              "count": 429,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29398",
+              "value": "China",
+              "count": 340,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29333",
+              "value": "United States",
+              "count": 39,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x32019",
+              "value": "Great Britain",
+              "count": 20,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29030",
+              "value": "New York",
+              "count": 15,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x28980",
+              "value": "London",
+              "count": 14,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x28826",
+              "value": "England",
+              "count": 11,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x32230",
+              "value": "Jingdezhen",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30039",
+              "value": "Cuba",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES269100",
+              "value": "Glover",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30825",
+              "value": "Bengal",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x36594",
+              "value": "Salford",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x28779",
+              "value": "California",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29198",
+              "value": "Sweden",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29333",
+              "value": "USA",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x32036",
+              "value": "San Francisco",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29336",
+              "value": "United Kingdom",
+              "count": 4,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x28849",
+              "value": "France",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29244",
+              "value": "Vermont",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES250450",
+              "value": "Hanoi (capital of Vietnam)",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "style": {
+          "other_terms_record_count": 0,
+          "terms": [
+            {
+              "id": "AAT18478",
+              "value": "Qing",
+              "count": 345,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT18484",
+              "value": "Yongzheng",
+              "count": 333,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x43841",
+              "value": "Blue and white",
+              "count": 12,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT18482",
+              "value": "Kangxi",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT107024",
+              "value": "french colonial",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT107024",
+              "value": "French Colonial",
+              "count": 4,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT112743",
+              "value": "Psychedelic",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT18322",
+              "value": "Chinese",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x43845",
+              "value": "Celadon",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x44295",
+              "value": "20th century second half",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT18438",
+              "value": "Ming",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x44562",
+              "value": "Longquan",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT107228",
+              "value": "Trân",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT181199",
+              "value": "photography",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT19106",
+              "value": "Pre-Angkorean",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT19215",
+              "value": "Khmer",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT21167",
+              "value": "Chinoiserie",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x32281",
+              "value": "Pre-Angkorian",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x34888",
+              "value": "Funan style, Pre-Angkorian period",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x35903",
+              "value": "Pop art",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "material": {
+          "other_terms_record_count": 62,
+          "terms": [
+            {
+              "id": "AAT15091",
+              "value": "glaze",
+              "count": 342,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT221155",
+              "value": "cobalt",
+              "count": 331,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT235507",
+              "value": "ceramic",
+              "count": 193,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT10662",
+              "value": "porcelain",
+              "count": 165,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30308",
+              "value": "paper",
+              "count": 77,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT15012",
+              "value": "ink",
+              "count": 68,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT10900",
+              "value": "metal",
+              "count": 25,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT187371",
+              "value": "printing ink",
+              "count": 22,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT11845",
+              "value": "leather",
+              "count": 16,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT14109",
+              "value": "paper (fiber product)",
+              "count": 16,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT14570",
+              "value": "plastic",
+              "count": 14,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT14579",
+              "value": "laminate",
+              "count": 14,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT12941",
+              "value": "rubber",
+              "count": 12,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT14190",
+              "value": "photographic paper",
+              "count": 12,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT14250",
+              "value": "thread",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30197",
+              "value": "Stoneware",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT14109",
+              "value": "paper",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT15100",
+              "value": "celadon",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30197",
+              "value": "stoneware",
+              "count": 8,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT14224",
+              "value": "cardboard",
+              "count": 7,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "technique": {
+          "other_terms_record_count": 58,
+          "terms": [
+            {
+              "id": "x30138",
+              "value": "painted",
+              "count": 331,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53914",
+              "value": "glazed",
+              "count": 252,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53887",
+              "value": "fired",
+              "count": 249,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53914",
+              "value": "glazing (coating)",
+              "count": 106,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53887",
+              "value": "firing (heating)",
+              "count": 94,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53319",
+              "value": "printing",
+              "count": 49,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT54225",
+              "value": "photography",
+              "count": 20,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53022",
+              "value": "laminating",
+              "count": 12,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30076",
+              "value": "moulded",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30598",
+              "value": "Painting",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53271",
+              "value": "lithography",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53658",
+              "value": "sewing",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x30598",
+              "value": "painting",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x29587",
+              "value": "machine stitching",
+              "count": 8,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT257463",
+              "value": "machine sewing",
+              "count": 7,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "THES258425",
+              "value": "c-type",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT192900",
+              "value": "offset lithography",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT53010",
+              "value": "adhesion",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AAT54216",
+              "value": "painting (image-making)",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "x46876",
+              "value": "moulding",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "person": {
+          "other_terms_record_count": 79,
+          "terms": [
+            {
+              "id": "A1848",
+              "value": "Unknown",
+              "count": 394,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH340391",
+              "value": "Katharine Hamnett",
+              "count": 7,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A7076",
+              "value": "Hore, Somnath",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH338453",
+              "value": "Harrison, Chris",
+              "count": 6,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH379029",
+              "value": "Burrows, Larry",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "N15406",
+              "value": "Country Joe and the Fish",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "N13641",
+              "value": "Glitter, Gary",
+              "count": 4,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13834",
+              "value": "Singer, David",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A14827",
+              "value": "Rostgaard, Alfredo",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A21869",
+              "value": "Csuri, Charles ",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A21870",
+              "value": "Shaffer, James",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A27835",
+              "value": "Do Nhu Diem",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A5692",
+              "value": "Barber, Craig J.",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A8914",
+              "value": "Thomson, John",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH352342",
+              "value": "Nguyen, LanVy",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH353796",
+              "value": "Do, Van Thanh",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH353797",
+              "value": "Tran, Xuan Mihn",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH360015",
+              "value": "Ngyuen, Son",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH375485",
+              "value": "Fairbairn, Marcia",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "N12971",
+              "value": "Ho Chi Minh",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        },
+        "organisation": {
+          "other_terms_record_count": 10,
+          "terms": [
+            {
+              "id": "AUTH330916",
+              "value": "Button Up",
+              "count": 14,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH337054",
+              "value": "Bread and Puppet Theatre Company",
+              "count": 14,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH383461",
+              "value": "Vans",
+              "count": 10,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH317916",
+              "value": "Unknown",
+              "count": 9,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13223",
+              "value": "OSPAAAL (the Organization in Solidarity with the People of Africa, Asia and Latin America)",
+              "count": 7,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A4721",
+              "value": "IKEA",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH379415",
+              "value": "Life Magazine",
+              "count": 5,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "AUTH348318",
+              "value": "Fashion4Freedom",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "C7862",
+              "value": "Converse",
+              "count": 3,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13315",
+              "value": "Student Mobilization Committee to End the War in Vietnam",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A1859",
+              "value": "Hasbro, Inc",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A23422",
+              "value": "Motif Editions",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A4685",
+              "value": "Bermans & Nathans Ltd",
+              "count": 2,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A10026",
+              "value": "AKA",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13082",
+              "value": "Students For A Democratic Society",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13082",
+              "value": "Students for a Democratic Society (SDS)",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13231",
+              "value": "Another Mother for Peace, Inc.",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13266",
+              "value": "Martin Jaffe Design, Inc.",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13267",
+              "value": "Friendshipment, New York",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            },
+            {
+              "id": "A13316",
+              "value": "National Mobilization Committee",
+              "count": 1,
+              "count_max_error": 0,
+              "childTerms": []
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "url": "https://api.vam.ac.uk/v2/museumobject/O89704",
+    "status": 200,
+    "data": {
+      "meta": {
+        "version": "2.1",
+        "_links": {
+          "self": {
+            "href": "https://api.vam.ac.uk/v2/object/O89704"
+          },
+          "collection_page": {
+            "href": "https://collections.vam.ac.uk/item/O89704/"
+          }
+        },
+        "images": {
+          "_primary_thumbnail": "https://framemark.vam.ac.uk/collections/2006BB5820/full/!100,100/0/default.jpg",
+          "_iiif_image": "https://framemark.vam.ac.uk/collections/2006BB5820/",
+          "_alt_iiif_image": [],
+          "imageResolution": "low",
+          "_images_meta": [
+            {
+              "assetRef": "2006BB5820",
+              "copyright": "© Victoria and Albert Museum, London",
+              "sensitiveImage": false
+            },
+            {
+              "assetRef": "2018KW3112",
+              "copyright": "© Victoria and Albert Museum, London",
+              "sensitiveImage": false
+            }
+          ]
+        },
+        "see_also": null
+      },
+      "record": {
+        "systemNumber": "O89704",
+        "accessionNumber": "E.65-2003",
+        "objectType": "Photograph",
+        "titles": [
+          {
+            "title": "China. Demonstration to protest against the US military intervention in North Vietnam",
+            "type": "generic title"
+          }
+        ],
+        "summaryDescription": "",
+        "physicalDescription": "A black and white of an young Asian man with his fist in the air and his mouth open in exclamation.  Also in the foreground an Asian man in profile wearing a flat cap.  In the background, are a group of protestors holding posters of Mao and Ho Chi Minh.",
+        "artistMakerPerson": [
+          {
+            "name": {
+              "text": "Marc Riboud",
+              "id": "AUTH319248"
+            },
+            "association": {
+              "text": "maker",
+              "id": "AAT251917"
+            },
+            "note": "Originally mis-catalogued as a photograph by Brian Brake with the title 'China 1959, Peking October Parade, 10th Anniversary'"
+          }
+        ],
+        "artistMakerOrganisations": [
+          {
+            "name": {
+              "text": "Magnum Photos",
+              "id": "AUTH318165"
+            },
+            "association": {
+              "text": "",
+              "id": ""
+            },
+            "note": ""
+          }
+        ],
+        "artistMakerPeople": [],
+        "materials": [],
+        "techniques": [],
+        "materialsAndTechniques": "Gelatin-silver print",
+        "categories": [
+          {
+            "text": "Photographs",
+            "id": "THES48910"
+          }
+        ],
+        "styles": [
+          {
+            "text": "photojournalism",
+            "id": "x37344"
+          }
+        ],
+        "collectionCode": {
+          "text": "PDP",
+          "id": "THES48595"
+        },
+        "images": [
+          "2006BB5820",
+          "2018KW3112"
+        ],
+        "imageResolution": "low",
+        "galleryLocations": [
+          {
+            "current": {
+              "text": "LVLH",
+              "id": "THES49654"
+            },
+            "free": "",
+            "case": "DELTA",
+            "shelf": "5",
+            "box": ""
+          }
+        ],
+        "partTypes": [
+          [
+            {
+              "text": "photograph",
+              "id": "AAT46300"
+            }
+          ]
+        ],
+        "contentWarnings": [
+          {
+            "apprise": "",
+            "note": ""
+          }
+        ],
+        "placesOfOrigin": [
+          {
+            "place": {
+              "text": "Beijing",
+              "id": "x32780"
+            },
+            "association": {
+              "text": "photographed",
+              "id": "x30151"
+            },
+            "note": ""
+          }
+        ],
+        "productionDates": [
+          {
+            "date": {
+              "text": "1965",
+              "earliest": "1965-01-01",
+              "latest": "1965-12-31"
+            },
+            "association": {
+              "text": "photographed",
+              "id": "x30151"
+            },
+            "note": "Originally mis-catalogued as photographed in 1959"
+          }
+        ],
+        "associatedObjects": [],
+        "creditLine": "Given by John and Judith Hillelson",
+        "dimensions": [
+          {
+            "dimension": "Height",
+            "value": "20.2",
+            "unit": "cm",
+            "qualifier": "",
+            "date": {
+              "text": "",
+              "earliest": null,
+              "latest": null
+            },
+            "part": "",
+            "note": ""
+          },
+          {
+            "dimension": "Width",
+            "value": "29.7",
+            "unit": "cm",
+            "qualifier": "",
+            "date": {
+              "text": "",
+              "earliest": null,
+              "latest": null
+            },
+            "part": "",
+            "note": ""
+          }
+        ],
+        "dimensionsNote": "",
+        "marksAndInscriptions": [],
+        "objectHistory": "",
+        "historicalContext": "",
+        "briefDescription": "Black and white photograph, Marc Riboud, 'China. Demonstration to protest against the US military intervention in North Vietnam,' gelatin silver print, 1965 ",
+        "bibliographicReferences": [],
+        "production": "",
+        "productionType": {
+          "text": "",
+          "id": ""
+        },
+        "contentDescription": "",
+        "contentPlaces": [
+          {
+            "text": "Beijing (City)",
+            "id": "x32780"
+          }
+        ],
+        "associatedPlaces": [
+          {
+            "text": "Vietnam",
+            "id": "x30019"
+          }
+        ],
+        "contentPerson": [
+          {
+            "text": "Mao, Tse-tung (Chairman)",
+            "id": "N1493"
+          },
+          {
+            "text": "Ho Chi Minh",
+            "id": "N12971"
+          }
+        ],
+        "associatedPerson": [],
+        "contentOrganisations": [
+          {
+            "text": "Magnum Photos",
+            "id": "AUTH318165"
+          }
+        ],
+        "associatedOrganisations": [],
+        "contentPeople": [],
+        "associatedPeople": [],
+        "contentEvents": [
+          {
+            "text": "Vietnam War",
+            "id": "V177"
+          }
+        ],
+        "associatedEvents": [
+          {
+            "text": "Vietnam War",
+            "id": "V177"
+          }
+        ],
+        "contentOthers": [
+          {
+            "text": "demonstrators",
+            "id": "THES251870"
+          }
+        ],
+        "contentConcepts": [],
+        "contentLiteraryRefs": [],
+        "galleryLabels": [
+          {
+            "text": "<b>Photography Centre, 2018-20:</b>\r\n\r\nCollection in Focus: John and Judith Hillelson\r\n1930s–1970s\r\n\r\nThe Hillelson collection includes some of the most significant works of photojournalism from  the 20th century. John Hillelson (1923–2012) founded the John Hillelson Agency in London’s  Fleet Street in 1958. He was also the London agent for Magnum Photos, a cooperative that  brings together photojournalists from across the world. His wife Judith (1930–2010) ran the  agency's extensive picture library, from which this collection is drawn. \r\n\r\nThe agency collaborated with weekly magazine editors to publish photo-reportage, a genre that flourished in the 1930s with the invention of smaller, more portable cameras and new printing technology. The Hillelsons gained a reputation for presenting lesser-known work such as the pictures of apartheid, smuggled out of South Africa by Ernest Cole in 1966 and 1967. The Hillelson collection comprises key images from the agency’s library and reflects their position as leading advocates of human interest photography.\n\n9. Marc Riboud (1923–2016)\r\nDemonstration to protest against the US military\r\nintervention in North Vietnam, China\r\n1965\r\nGelatin silver print\r\nMuseum no. E.65-2003\n\n\n",
+            "date": {
+              "text": "10/2018",
+              "earliest": "2018-10-01",
+              "latest": "2018-10-31"
+            }
+          }
+        ],
+        "partNumbers": [
+          "E.65-2003"
+        ],
+        "accessionNumberNum": "65",
+        "accessionNumberPrefix": "E",
+        "accessionYear": 2003,
+        "otherNumbers": [],
+        "copyNumber": "",
+        "aspects": [
+          "WHOLE"
+        ],
+        "assets": [],
+        "recordModificationDate": "2025-07-31",
+        "recordCreationDate": "2004-01-19",
+        "availableToBook": false
+      }
+    }
+  },
+  {
+    "url": "https://openaccess-api.clevelandart.org/api/artworks/?q=Vietnam&has_image=1&limit=2",
+    "status": 200,
+    "data": {
+      "info": {
+        "total": 15,
+        "parameters": {
+          "skip": 0,
+          "limit": 2,
+          "q": "Vietnam",
+          "has_image": "1",
+          "select": "accession_number,accession_number_sortable,cover_accession_number,department,department,collection,gallery,classification_type",
+          "search": "Vietnam"
+        }
+      },
+      "data": [
+        {
+          "id": 150722,
+          "accession_number": "1982.146",
+          "share_license_status": "CC0",
+          "tombstone": "Heraldic Lion, 900s. Vietnam (Champa). Beige sandstone; overall: 76.2 cm (30 in.). The Cleveland Museum of Art, Leonard C. Hanna Jr. Fund, 1982.146",
+          "current_location": null,
+          "title": "Heraldic Lion",
+          "creation_date": "900s",
+          "creation_date_earliest": 900,
+          "creation_date_latest": 999,
+          "artists_tags": [],
+          "culture": [
+            "Vietnam (Champa)"
+          ],
+          "technique": "Beige sandstone",
+          "support_materials": [],
+          "department": "Indian and Southeast Asian Art",
+          "collection": "Southeast Asian",
+          "type": "Sculpture",
+          "measurements": "Overall: 76.2 cm (30 in.)",
+          "dimensions": {
+            "overall": {
+              "height": 0.762,
+              "height_inch": 30,
+              "height_inch_fraction": 0.0
+            }
+          },
+          "state_of_the_work": null,
+          "edition_of_the_work": null,
+          "copyright": null,
+          "inscriptions": [],
+          "exhibitions": {
+            "current": [
+              {
+                "id": 309644,
+                "title": "The Year in Review for 1982",
+                "description": "<i>The Year in Review for 1982</i>. The Cleveland Museum of Art, Cleveland, OH (organizer) (January 5-February 6, 1983).",
+                "opening_date": "1983-01-05T05:00:00"
+              }
+            ],
+            "legacy": [
+              {
+                "description": "<em>The Sensuous Immortals</em>. Los Angeles County Museum of Art, Los Angeles, CA (October 25, 1977–January 15, 1978); Seattle Art Museum, Seattle, WA (March 9–April 1978); Denver Art Museum, Denver, CO (May 26–July 30, 1978); Nelson Atkins Gallery, Kansas City, MO (September 15–October 29, 1978).",
+                "opening_date": "1977-10-25T04:00:00Z"
+              }
+            ]
+          },
+          "provenance": [
+            {
+              "description": "The Pan-Asian Collection, New York, NY",
+              "citations": [],
+              "footnotes": [],
+              "date": null,
+              "sortorder": 1
+            },
+            {
+              "description": "(Robert Ellsworth [1929–2014], New York, NY, sold to the Cleveland Museum of Art)",
+              "citations": [],
+              "footnotes": [],
+              "date": "?-1982",
+              "sortorder": 2
+            },
+            {
+              "description": "The Cleveland Museum of Art, Cleveland, OH",
+              "citations": [],
+              "footnotes": [],
+              "date": "1982-",
+              "sortorder": 3
+            }
+          ],
+          "find_spot": null,
+          "related_works": [],
+          "former_accession_numbers": [],
+          "did_you_know": "The Champa kingdom occupied the central and south regions of present-day Vietnam. It was a powerful rival of the Khmer in Cambodia and the Viet of northern Vietnam.",
+          "early_education_description": null,
+          "artlens_description": null,
+          "description": "The Cham adopted Indian Buddhist and Hindu religious systems, languages, and the practice of building stone temples and monasteries. The lion, which is ubiquitous on Indian monuments, was also incorporated as a protector at Cham sacred sites. In Champa, however, the roaring and rearing lion imagery is semihuman and distinctively aggressive and extroverted. <br><br>This powerful figure rearing in a combative pose was formerly in the renowned Pan-Asian Collection of Southeast Asian art assembled during the 1960s and 1970s by one major collector, Christian Humann of the renowned Rothschild banking family.",
+          "external_resources": {
+            "wikidata": [
+              "https://www.wikidata.org/wiki/Q60756480"
+            ],
+            "internet_archive": [
+              "https://archive.org/details/clevelandart-1982.146-heraldic-lion"
+            ]
+          },
+          "citations": [
+            {
+              "citation": "Pal, Pratapaditya.<em> The Sensuous Immortals: A Selection of Sculptures from the Pan-Asian Collection.</em> Los Angeles: Los Angeles County Museum of Art, 1977.",
+              "page_number": "Mentioned and Reproduced: cat. no. 157",
+              "url": ""
+            },
+            {
+              "citation": "Lee, Sherman E. “Year in Review for 1982.” <em>The Bulletin of the Cleveland Museum of Art</em> 70, no. 1 (January 1983): 3–55.",
+              "page_number": "Reproduced: p. 34; Mentioned: p. 54, no. 109",
+              "url": "http://www.jstor.org/stable/25159799"
+            },
+            {
+              "citation": "Eilenberg, Natasha and Robert L. Brown. \"The Sculptures.\" <em>Société des Amis du Champa Ancien</em>, no. 6, December 1999.",
+              "page_number": "Mentioned and Reproduced: p. 8, no. 11",
+              "url": ""
+            }
+          ],
+          "url": "https://clevelandart.org/art/1982.146",
+          "images": {
+            "annotation": null,
+            "web": {
+              "url": "https://openaccess-cdn.clevelandart.org/1982.146/1982.146_web.jpg",
+              "width": "557",
+              "height": "893",
+              "filesize": "94412",
+              "filename": "1982.146_web.jpg"
+            },
+            "print": {
+              "url": "https://openaccess-cdn.clevelandart.org/1982.146/1982.146_print.jpg",
+              "width": "2119",
+              "height": "3400",
+              "filesize": "1418885",
+              "filename": "1982.146_print.jpg"
+            },
+            "full": {
+              "url": "https://openaccess-cdn.clevelandart.org/1982.146/1982.146_full.tif",
+              "width": "4714",
+              "height": "7561",
+              "filesize": "106954344",
+              "filename": "1982.146_full.tif"
+            }
+          },
+          "alternate_images": [
+            {
+              "web": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.146/1982.146_alt0_web.jpg",
+                "width": "605",
+                "height": "893",
+                "filesize": "103993"
+              },
+              "print": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.146/1982.146_alt0_print.jpg",
+                "width": "2303",
+                "height": "3400",
+                "filesize": "1557329"
+              },
+              "full": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.146/1982.146_alt0_full.tif",
+                "width": "4875",
+                "height": "7197",
+                "filesize": "105281360"
+              },
+              "date_created": "2012-09-26T17:07:48",
+              "annotation": ""
+            }
+          ],
+          "creditline": "Leonard C. Hanna Jr. Fund",
+          "image_credit": null,
+          "sketchfab_id": null,
+          "sketchfab_url": null,
+          "gallery_donor_text": null,
+          "athena_id": 150722,
+          "creators": [],
+          "legal_status": "accessioned",
+          "accession_date": "1982-11-16T00:00:00",
+          "sortable_date": 900,
+          "date_added_to_oa": null,
+          "date_text": "900s",
+          "collapse_artists": false,
+          "on_loan": false,
+          "recently_acquired": false,
+          "record_type": "object",
+          "conservation_statement": null,
+          "has_conservation_images": false,
+          "cover_accession_number": null,
+          "is_nazi_era_provenance": false,
+          "impression": null,
+          "alternate_titles": [],
+          "is_highlight": false,
+          "updated_at": "2026-05-29 07:46:40.277000"
+        },
+        {
+          "id": 150549,
+          "accession_number": "1982.10",
+          "share_license_status": "CC0",
+          "tombstone": "Elephant, 900–950. Vietnam, Tra-Kieu, 1st half of 10th Century. Sandstone; overall: 58 x 49 cm (22 13/16 x 19 5/16 in.). The Cleveland Museum of Art, Purchase from the J. H. Wade Fund, 1982.10",
+          "current_location": "243 Indian and Southeast Asian",
+          "title": "Elephant",
+          "creation_date": "900–950",
+          "creation_date_earliest": 900,
+          "creation_date_latest": 950,
+          "artists_tags": [],
+          "culture": [
+            "Vietnam, Tra-Kieu, 1st half of 10th Century"
+          ],
+          "technique": "sandstone",
+          "support_materials": [],
+          "department": "Indian and Southeast Asian Art",
+          "collection": "Southeast Asian",
+          "type": "Sculpture",
+          "measurements": "Overall: 58 x 49 cm (22 13/16 x 19 5/16 in.)",
+          "dimensions": {
+            "overall": {
+              "height": 0.58,
+              "height_inch": 22,
+              "height_inch_fraction": 0.8125,
+              "width": 0.49,
+              "width_inch": 19,
+              "width_inch_fraction": 0.3125
+            }
+          },
+          "state_of_the_work": null,
+          "edition_of_the_work": null,
+          "copyright": null,
+          "inscriptions": [],
+          "exhibitions": {
+            "current": [
+              {
+                "id": 309644,
+                "title": "The Year in Review for 1982",
+                "description": "<i>The Year in Review for 1982</i>. The Cleveland Museum of Art, Cleveland, OH (organizer) (January 5-February 6, 1983).",
+                "opening_date": "1983-01-05T05:00:00"
+              }
+            ],
+            "legacy": []
+          },
+          "provenance": [
+            {
+              "description": "(William H. Wolff [1906–1991], New York, NY, sold to the Cleveland Museum of Art)",
+              "citations": [],
+              "footnotes": null,
+              "date": "?–1982",
+              "sortorder": 1
+            },
+            {
+              "description": "The Cleveland Museum of Art, Cleveland, OH",
+              "citations": [],
+              "footnotes": null,
+              "date": "1982–",
+              "sortorder": 2
+            }
+          ],
+          "find_spot": null,
+          "related_works": [],
+          "former_accession_numbers": [],
+          "did_you_know": "The elephant's features are worn and softened due to weathering.",
+          "early_education_description": null,
+          "artlens_description": null,
+          "description": "The Cham kingdom was located in present-day central Vietnam and was a powerful rival of the Khmer in Cambodia. During the time when this charming, naturalistic elephant sculpture was made, the Cham were actively absorbing stylistic elements from India.",
+          "external_resources": {
+            "wikidata": [
+              "https://www.wikidata.org/wiki/Q60754375"
+            ],
+            "internet_archive": [
+              "https://archive.org/details/clevelandart-1982.10-elephant"
+            ]
+          },
+          "citations": [
+            {
+              "citation": "Lee, Sherman E. “Year in Review for 1982.” <em>The Bulletin of the Cleveland Museum of Art</em> 70, no. 1 (1983): 3–55.",
+              "page_number": "Mentioned: no. 101, p. 54; Reproduced: no. 101, p. 35",
+              "url": "https://www.jstor.org/stable/25159799"
+            },
+            {
+              "citation": "Eilenberg, Natasha and Robert L. Brown. \"The Sculptures.\" <em>Société des Amis du Champa Ancien</em>, no. 6, December 1999.",
+              "page_number": "Mentioned and Reproduced: no. 12, p. 9",
+              "url": ""
+            }
+          ],
+          "url": "https://clevelandart.org/art/1982.10",
+          "images": {
+            "annotation": null,
+            "web": {
+              "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_web.jpg",
+              "width": "1116",
+              "height": "893",
+              "filesize": "548819",
+              "filename": "1982.10_web.jpg"
+            },
+            "print": {
+              "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_print.jpg",
+              "width": "3400",
+              "height": "2720",
+              "filesize": "4922086",
+              "filename": "1982.10_print.jpg"
+            },
+            "full": {
+              "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_full.tif",
+              "width": "4609",
+              "height": "3687",
+              "filesize": "51009900",
+              "filename": "1982.10_full.tif"
+            }
+          },
+          "alternate_images": [
+            {
+              "web": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt0_web.jpg",
+                "width": "1247",
+                "height": "893",
+                "filesize": "506438"
+              },
+              "print": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt0_print.jpg",
+                "width": "3400",
+                "height": "2434",
+                "filesize": "3722819"
+              },
+              "full": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt0_full.tif",
+                "width": "5000",
+                "height": "3580",
+                "filesize": "53719196"
+              },
+              "date_created": "2006-06-06T18:30:33",
+              "annotation": ""
+            },
+            {
+              "web": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt1_web.jpg",
+                "width": "1245",
+                "height": "893",
+                "filesize": "494177"
+              },
+              "print": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt1_print.jpg",
+                "width": "3400",
+                "height": "2438",
+                "filesize": "3646931"
+              },
+              "full": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt1_full.tif",
+                "width": "5000",
+                "height": "3585",
+                "filesize": "53794148"
+              },
+              "date_created": "2006-06-06T18:35:22",
+              "annotation": ""
+            },
+            {
+              "web": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt2_web.jpg",
+                "width": "1116",
+                "height": "893",
+                "filesize": "528134"
+              },
+              "print": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt2_print.jpg",
+                "width": "3400",
+                "height": "2720",
+                "filesize": "4747328"
+              },
+              "full": {
+                "url": "https://openaccess-cdn.clevelandart.org/1982.10/1982.10_alt2_full.tif",
+                "width": "4686",
+                "height": "3749",
+                "filesize": "52733140"
+              },
+              "date_created": "2006-05-15T16:32:32",
+              "annotation": ""
+            }
+          ],
+          "creditline": "Purchase from the J. H. Wade Fund",
+          "image_credit": null,
+          "sketchfab_id": null,
+          "sketchfab_url": null,
+          "gallery_donor_text": null,
+          "athena_id": 150549,
+          "creators": [],
+          "legal_status": "accessioned",
+          "accession_date": "1982-03-08T00:00:00",
+          "sortable_date": 900,
+          "date_added_to_oa": null,
+          "date_text": "900–950",
+          "collapse_artists": false,
+          "on_loan": false,
+          "recently_acquired": false,
+          "record_type": "object",
+          "conservation_statement": null,
+          "has_conservation_images": false,
+          "cover_accession_number": null,
+          "is_nazi_era_provenance": false,
+          "impression": null,
+          "alternate_titles": [],
+          "is_highlight": false,
+          "updated_at": "2026-05-29 07:46:19.579000"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://api.artic.edu/api/v1/artworks/search?q=Vietnam&limit=3&fields=id,title,image_id,date_display,place_of_origin,medium_display,description,dimensions,credit_line",
+    "status": 200,
+    "data": {
+      "preference": null,
+      "pagination": {
+        "total": 133287,
+        "limit": 3,
+        "offset": 0,
+        "total_pages": 44429,
+        "current_page": 1
+      },
+      "data": [
+        {
+          "_score": 44.977207,
+          "id": 221646,
+          "title": "First Anti-Vietnam War March",
+          "date_display": "1967",
+          "place_of_origin": "United States",
+          "description": "<p>After early studies in fine art, LeRoy Henderson turned to photojournalism in the 1960s, eventually contributing to magazines such as Black Enterprise, Essence, Jet, Newsweek, and New York. He shot this photograph at an antiwar protest organized by the Black United Action Front in which participants, led by civil rights activists Stokely Carmichael and Floyd McKissick, marched from Harlem to Central Park. In printed and shouted slogans such as the one seen here, marchers linked the war in Vietnam to struggles for justice at home.</p>\n",
+          "dimensions": "Image: 20.6 × 30.5 cm (8 1/8 × 12 1/16 in.); Paper: 27.8 × 36 cm (11 × 14 3/16 in.)",
+          "medium_display": "Gelatin silver print",
+          "credit_line": "Purchased with funds provided by Artworkers Retirement Society",
+          "image_id": "a18781f8-b74c-0cfc-b92c-df5c67922235"
+        },
+        {
+          "_score": 39.797203,
+          "id": 152836,
+          "title": "A Goddess",
+          "date_display": "Champa period,  9th–10th century",
+          "place_of_origin": "Vietnam",
+          "dimensions": "74.7 × 23.5 × 23.5 cm (29 3/8 × 9 1/4 × 9 1/4 in.)",
+          "medium_display": "Bronze",
+          "credit_line": "Kate S. Buckingham Fund",
+          "image_id": "bc4012ab-b53a-4832-3bff-c23a838ffd43",
+          "description": null
+        },
+        {
+          "_score": 38.178123,
+          "id": 71728,
+          "title": "Vietnam Veterans Day Parade",
+          "date_display": "1986",
+          "place_of_origin": "United States",
+          "dimensions": "Image: 37 × 55 cm (14 5/8 × 21 11/16 in.); Paper: 50.8 × 60.6 cm (20 × 23 7/8 in.)",
+          "medium_display": "Gelatin silver print",
+          "credit_line": "Focus/Infinity Fund",
+          "image_id": "4ec3096f-4324-8bb8-4142-0d0ee45d64fd",
+          "description": null
+        }
+      ],
+      "info": {
+        "license_text": "The `description` field in this response is licensed under a Creative Commons Attribution 4.0 Generic License (CC-By) and the Terms and Conditions of artic.edu. All other data in this response is licensed under a Creative Commons Zero (CC0) 1.0 designation and the Terms and Conditions of artic.edu.",
+        "license_links": [
+          "https://creativecommons.org/publicdomain/zero/1.0/",
+          "https://www.artic.edu/terms"
+        ],
+        "version": "1.16"
+      },
+      "config": {
+        "iiif_url": "https://www.artic.edu/iiif/2",
+        "website_url": "https://www.artic.edu"
+      }
+    }
+  }
+]
