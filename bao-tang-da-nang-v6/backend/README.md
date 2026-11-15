@@ -4,6 +4,17 @@ Mặc định V6 chạy bằng **Chế độ trợ lý dữ liệu**, không c�
 
 Phần trò chuyện đời thường 6.7 nằm trong `../conversation.js`, chạy cục bộ và không đi qua Worker này. API tiếp tục phục vụ câu hỏi có nguồn về bảo tàng; cập nhật này không triển khai hoặc đổi mô hình tạo sinh.
 
+## Mức trả lời kỹ và cấu hình reasoning 6.8
+
+POST `/chat` có thể gửi `depth: "standard" | "deep"`; thiếu trường dùng standard, giá trị khác bị từ chối. Deep kiểm tra lại mục tiêu, phủ định, điều kiện và nguồn, yêu cầu kết luận cùng giải thích ngắn công khai; không yêu cầu hay xuất chuỗi suy nghĩ riêng.
+
+- Nếu không đặt `OPENAI_REASONING_MODEL`, giữ model hiện có, không gửi `reasoning_effort` không được hỗ trợ; nâng giới hạn completion lên 1.800 token và vẫn giữ giới hạn ký tự/citation.
+- Nếu người vận hành đặt `OPENAI_REASONING_MODEL` tại máy chủ, deep dùng model đó với `reasoning_effort: "high"`, tối đa 6.000 completion token (bao gồm ngân sách reasoning của provider). Model được chọn phải hỗ trợ schema JSON và các tham số này. Phản hồi mô tả `reasoningMode: "model"` chỉ khi đã dùng cấu hình đó.
+- Timeout sâu tối đa 40 giây mặc định (giới hạn cấu hình test 45s), client 50s; lỗi/thiếu citation tiếp tục fail closed. Không in nội dung upstream hoặc khóa.
+- Yêu cầu ưu tiên học nhưng không muốn đi bảo tàng được nhận ra ở máy chủ và trả kế hoạch cục bộ `mode: data`, `analysis: local`, không gọi provider. Frontend vẫn xử lý các lượt học này tại thiết bị, không gửi trong lịch sử API.
+
+Chưa triển khai reasoning backend và chưa gọi mô hình thật trong cập nhật này. Tests chỉ chứng minh định tuyến/tham số/giới hạn, không chứng minh chất lượng của một model hoặc thay đổi trọng số. Không đưa API key vào frontend hay cuộc trò chuyện.
+
 ## Dữ liệu và giới hạn
 
 `corpus.mjs` là bản chụp 15 chủ đề và 9 hồ sơ hiện vật từ V5 tại commit `83b2d7fb0804965a274f502638bf16986c940cba`. Các URL nguồn được giữ nguyên. Một lỗi phân loại được làm rõ: “Vật dụng sinh hoạt” của Đôi bầu là loại đồ vật, không phải chất liệu; trường chất liệu được đặt `null` (chưa xác minh), đồng nhất với dữ liệu V6. Đây là dữ liệu kế thừa của dự án, **chưa được kiểm chứng độc lập lại**; cần đối chiếu với bảo tàng trước khi công bố là thông tin đã xác thực. Không suy ra tọa độ hiện vật từ chủ đề hoặc tầng. Không có bản vẽ mặt bằng chính thức. QR chỉ xác nhận mốc check-in; lộ trình là gợi ý chủ đề, thời lượng ước tính.

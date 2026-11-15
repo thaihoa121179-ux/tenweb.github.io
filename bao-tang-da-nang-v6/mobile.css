@@ -143,3 +143,37 @@
  #page-guide .heading h1{font-size:18px}
  .keyboard-open .top{height:44px;min-height:44px}
 }
+/* Reply depth and presentation speed are separate choices. */
+.chat-preferences{grid-column:2;grid-row:5;min-width:0;padding:0 2px;color:#526c5b}
+.reply-options{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#chat-depth{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:7px 13px;border:1px solid #d4e0d0;border-radius:13px;font-size:12px;background:#fffefa;color:#55705d}
+#chat-depth[aria-checked=true]{background:#e1eddc;border-color:#bdd0b7;color:#25533b;font-weight:600}
+.reply-speed{display:flex;align-items:center;gap:7px;font-size:11px;min-width:0}
+#chat-speed{font:inherit;min-height:38px;max-width:142px;padding:6px 9px;border:1px solid #d4e0d0;border-radius:12px;color:#335d43;background:#fffefa}
+#chat-depth-note{font-size:10px;line-height:1.45;margin:5px 0 0;color:#6a7d6d}
+.chat-preparing{font-size:12px;line-height:1.5;color:#5f7767;padding:12px 13px;margin-left:38px;border-left:2px solid #b8ccad;background:#edf2e8;border-radius:0 12px 12px 0}
+@media(min-width:801px){
+ #page-guide.active{grid-template-rows:auto auto minmax(0,1fr) auto auto auto}
+ #page-guide #chat-form{grid-row:6}
+ #page-guide .assistant-hero{grid-row:3/7}
+}
+@media(max-width:800px),(max-width:1024px) and (max-height:500px){
+ #page-guide #chat-preferences{order:5;flex:none;padding:0 2px}
+ #page-guide #guide-chips{order:6}
+ #page-guide #chat-form{order:7}
+ #chat-depth,#chat-speed{min-height:36px;font-size:11px}
+ #chat-depth-note{font-size:9px;margin-top:3px}
+ .keyboard-open #chat-preferences{display:none}
+ #page-guide .messages .chat-preparing{font-size:11px}
+}
+@media(max-width:1024px) and (max-height:500px){#chat-depth-note{display:none}}
+@media(max-width:1024px) and (max-height:500px){
+ .top{height:46px;min-height:46px;padding-block:1px}
+ #page-guide.active{gap:4px}
+}
+@media(max-width:1024px) and (max-height:500px){
+ .nav button{padding:3px 2px}
+ .nav button[data-go=guide] .ico{width:20px;height:20px;padding:4px}
+ #page-guide #chat-topics{padding:2px}
+ #page-guide .messages{padding-block:8px}
+}

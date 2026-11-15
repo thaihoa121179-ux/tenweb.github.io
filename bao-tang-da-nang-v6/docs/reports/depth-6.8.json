@@ -1,0 +1,26 @@
+{
+  "base": "http://127.0.0.1:8000/bao-tang-da-nang-v6/",
+  "scope": "Local interpretation, public answer detail and presentation pacing; not a live reasoning-model test",
+  "results": [
+    {
+      "name": "default slow presentation remains gradual, even with reduced motion, and can be finished immediately",
+      "passed": true
+    },
+    {
+      "name": "deep and concise choices change the plan, retaining subject, duration and the excluded visit",
+      "passed": true
+    },
+    {
+      "name": "the inverse request gets museum recommendations and actual artifact facts remain sourced",
+      "passed": true
+    },
+    {
+      "name": "a real linear exercise and follow-up explanation use the actual values rather than a generic study script",
+      "passed": true
+    },
+    {
+      "name": "reading controls and input remain visible at narrow and landscape sizes, and history skips local study text",
+      "passed": true
+    }
+  ]
+}

@@ -128,9 +128,11 @@
       const dish=vegetarian?'cơm với đậu hũ, nấm và rau, hoặc một tô bún chay':'cơm trứng với rau, bánh mì trứng, hoặc bún với món đạm bạn thích';
       return response('food',lang,{text:(budget?'Nếu muốn tiết kiệm, mình ưu tiên món đơn giản; giá thực tế còn tùy chỗ bán. ':'')+'Mây gợi ý '+dish+'. '+(vegetarian?'Mình đang giữ lựa chọn ăn chay của bạn. ':'')+'Bạn muốn tự nấu hay mua nhanh bên ngoài?',questions:['Tôi ăn chay','Món nào nấu nhanh?']});
     }
-    function respond(message,{language='vi',museum=false,openConversation=false,artifactName=''}={}) {
+    function respond(message,{language='vi',museum=false,openConversation=false,artifactName='',plan=null,deep=false}={}) {
       const lang=copy[language]?language:'vi', raw=String(message||'').trim().slice(0,700), q=normalize(raw);
       if(!q)return null;
+      if(plan?.domain==='study'){last='study';return root.MuseumRequestPlan.studyAnswer(plan,{language:lang,deep});}
+      if(plan?.clarification || plan?.domain==='conversation'&&plan.avoids?.length)return root.MuseumRequestPlan.clarification(plan,lang);
       const laughingIdiom=has(q,/\bcuoi (?:muon chet|chet mat|xiu|be bung)\b/);
       if(has(q,/\b(?:tu tu|tu sat|tu lam hai ban than|khong muon song)\b|kill myself|自杀|不想活|죽고 싶/) || !laughingIdiom&&has(q,/\bmuon chet\b|want to die/))return response('crisis',lang);
       if(laughingIdiom)return response('joke',lang);

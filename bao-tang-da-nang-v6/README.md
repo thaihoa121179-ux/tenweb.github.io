@@ -2,6 +2,14 @@
 
 Bản nâng cấp độc lập từ V5, dành cho trình diễn công nghệ. Không phải website chính thức của Bảo tàng Đà Nẵng. V1–V5 và website gốc được giữ nguyên.
 
+## Phân tích yêu cầu và nhịp đọc — bản 6.8, 15/11/2026
+
+Mặc định bật **Suy nghĩ kỹ** và **Chữ: Chậm**. Câu “muốn học bài k muốn đi bảo tàng” được tách thành mục tiêu học và điều kiện không đi bảo tàng, thay vì bị chuyển sang tra cứu hiện vật. Bộ phân tích trong `request-plan.js` nhận mục tiêu có/không muốn, hỏi lại khi có hai lựa chọn chưa rõ ưu tiên, giữ môn học/thời lượng trong câu nối tiếp và lập kế hoạch có tổng thời gian khớp nhau. Chế độ kỹ trình bày mục tiêu, bước làm và phần kiểm tra; chế độ gọn giữ các điểm chính. Bộ giải cục bộ hỗ trợ phương trình bậc nhất một ẩn, kiểm lại nghiệm và từ chối biểu thức không thuộc dạng hỗ trợ, không dùng `eval`.
+
+Chữ Chậm hiện từng cụm ký tự hoàn chỉnh khoảng 42ms/cụm và ngắt thêm ở dấu câu; không tăng tốc vì câu trả lời dài và không dồn ký tự khi một frame bị chậm. Có Vừa, Hiện ngay và Theo thiết bị; thay tốc độ áp dụng cho cả phản hồi đang hiện. Theo thiết bị tôn trọng reduced motion; lựa chọn Chậm/Vừa là yêu cầu hiển thị chủ động. Nút Hiện ngay, chuyển trang, đổi ngôn ngữ hoặc ẩn tab giải phóng tiến trình hiển thị. Nhịp đọc không được mô tả là thời gian mô hình suy nghĩ.
+
+**Phân tích hiện tại chạy trên thiết bị.** Giao diện ghi rõ phạm vi này. Các giai đoạn chuẩn bị tương ứng thao tác thật, không thêm bộ đếm “suy nghĩ” giả. Worker tùy chọn nhận `depth: deep`: yêu cầu trả lời kỹ bằng model thường, hoặc gửi `reasoning_effort: high` nếu người vận hành cấu hình `OPENAI_REASONING_MODEL` phù hợp ở máy chủ. Lần cập nhật này không có credential/backend để triển khai hoặc kiểm thử một mô hình thật; không tuyên bố đã kích hoạt suy luận LLM cho bản Pages tĩnh.
+
 ## Giao diện điện thoại và trò chuyện đời thường — 15/11/2026
 
 Bản 6.7 sắp lại trang chủ, thẻ hiện vật, thanh điều hướng và màn hình Mây cho điện thoại. Banner gọn hơn, hai thẻ chức năng xuất hiện sớm hơn; bộ lọc thư viện nằm trên một hàng, ảnh hiện vật lớn hơn. Ô nhập chữ 16px, xử lý chiều cao `visualViewport`, thu gọn thành phần phụ khi bàn phím mở và hỗ trợ màn hình ngang/chữ lớn.

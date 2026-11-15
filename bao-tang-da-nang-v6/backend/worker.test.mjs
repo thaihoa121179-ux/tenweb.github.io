@@ -344,3 +344,24 @@ test('provider timeout aborts the request and returns a redacted retryable failu
   assert.equal(res.status, 502);
   assert.deepEqual(await res.json(), { error: 'provider_timeout' });
 });
+
+test('deep responses use an explicitly configured reasoning model and a bounded high-effort request', async()=>{
+ let sent;const handle=createHandler(async(url,options)=>{sent=JSON.parse(options.body);return answerResponse();});
+ const res=await handle(request({...goodInput,depth:'deep'}),env({OPENAI_REASONING_MODEL:'configured-reasoning-model'}));
+ const output=await res.json();assert.equal(output.mode,'generative');assert.equal(output.responseDepth,'deep');assert.equal(output.reasoningMode,'model');assert.equal(sent.model,'configured-reasoning-model');assert.equal(sent.reasoning_effort,'high');assert.equal(sent.max_completion_tokens,6000);assert.match(sent.messages[0].content,/negations, constraints/);assert.equal(sent.store,false);
+});
+test('deep wording on an ordinary model never invents a reasoning-effort capability', async()=>{
+ let sent;const handle=createHandler(async(url,options)=>{sent=JSON.parse(options.body);return answerResponse();});
+ const res=await handle(request({...goodInput,depth:'deep'}),env({OPENAI_MODEL:'ordinary-configured-model'}));const output=await res.json();assert.equal(sent.model,'ordinary-configured-model');assert.equal(sent.reasoning_effort,undefined);assert.equal(sent.max_completion_tokens,1800);assert.equal(output.reasoningMode,'none');
+});
+test('the compound screenshot study request gets a local plan instead of an unrelated museum provider call',async()=>{
+ const res=await createHandler(mustNotCall)(request({...goodInput,message:'muốn học bài k muốn đi bảo tàng, có 20 phút',depth:'deep'}),env());const output=await res.json();assert.equal(output.mode,'data');assert.equal(output.analysis,'local');assert.deepEqual(output.sources,[]);assert.match(output.answer,/học bài/);assert.match(output.answer,/20 phút/);assert.doesNotMatch(output.answer,/tầng [123]/i);
+});
+test('deep mode cannot bypass unsupported facts or citation validation',async()=>{
+ const missing=await createHandler(mustNotCall)(request({...goodInput,message:'Súng thần công nặng bao nhiêu?',depth:'deep'}),env());assert.equal((await missing.json()).mode,'data');
+ const uncited=await createHandler(async()=>answerResponse([]))(request({...goodInput,depth:'deep'}),env({OPENAI_REASONING_MODEL:'configured-reasoning-model'}));assert.equal((await uncited.json()).mode,'data');
+ const invalid=await createHandler(mustNotCall)(request({...goodInput,depth:'unbounded'}),env());assert.equal(invalid.status,400);
+});
+test('reasoning requests have a distinct abortable timeout and never surface upstream errors',async()=>{
+ const handle=createHandler((url,options)=>new Promise((resolve,reject)=>{options.signal.addEventListener('abort',()=>reject(Error('private details')))}),{deepTimeoutMs:5});const res=await handle(request({...goodInput,depth:'deep'}),env({OPENAI_REASONING_MODEL:'configured-reasoning-model'}));assert.equal(res.status,502);assert.deepEqual(await res.json(),{error:'provider_timeout'});
+});

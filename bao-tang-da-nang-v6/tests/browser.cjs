@@ -17,6 +17,7 @@ let browser;
 
 async function fixture(options = {}) {
   const context = await browser.newContext({ viewport: {width:390,height:844}, locale:'vi-VN', reducedMotion:'reduce', ...options });
+  if(options.reducedMotion!=='no-preference')await context.addInitScript(()=>localStorage.setItem('museum_v6:museum_reveal_speed','instant'));
   // Image checks use actual cached assets. No external-photo fixture substitutes.
   const page = await context.newPage();
   const errors = [], external = [];

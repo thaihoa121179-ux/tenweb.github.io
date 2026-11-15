@@ -479,9 +479,11 @@
       el.inert = open;
     if (open) {
       languageFocus = document.activeElement;
-      requestAnimationFrame(() =>
-        overlay.querySelector('[data-lang="' + M.state.lang + '"]')?.focus(),
-      );
+      requestAnimationFrame(() => {
+        // A keyboard user may already have chosen a dialog control before this frame.
+        if (!overlay.classList.contains("hidden") && !overlay.contains(document.activeElement))
+          overlay.querySelector('[data-lang="' + M.state.lang + '"]')?.focus();
+      });
     } else if (languageFocus?.isConnected) languageFocus.focus();
   }
   new MutationObserver(dialogState).observe(overlay, {

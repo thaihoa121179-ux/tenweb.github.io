@@ -9,6 +9,7 @@ const reports=[];
 let browser;
 async function fixture(width=390,height=844){
  const context=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce',locale:'en-US'});
+ await context.addInitScript(()=>localStorage.setItem('museum_v6:museum_reveal_speed','instant'));
  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(BASE);await page.locator('[data-lang=vi]').click();await page.locator('#language-start').click();await page.evaluate(()=>document.fonts.ready);
  return {page,context,errors};
@@ -49,7 +50,7 @@ async function test(name,work){try{await work();reports.push({name,passed:true})
   });
   await test('local small talk does not claim or call an AI provider',async()=>{
    const f=await fixture();try{let calls=0;let sent;await f.page.route('https://example.org/companion',r=>{calls++;sent=r.request().postDataJSON();return r.fulfill({status:500,body:'unavailable'})});await f.page.evaluate(()=>{Museum.persist('museum_ai_endpoint','https://example.org/companion');Museum.nav('guide')});
-    assert.match(await send(f.page,'Tôi đang ôn thi'),/20 phút/);assert.match(await send(f.page,'tôi chỉ có 10 phút'),/10 phút/);assert.equal(calls,0);assert.match(await f.page.locator('#guide-status').innerText(),/Chế độ trợ lý dữ liệu/);await send(f.page,'Súng thần công làm bằng gì?');assert.equal(calls,1);assert.deepEqual(sent.history,[],'Everyday conversation is excluded from later museum API history');assert.deepEqual(f.errors,[]);
+    assert.match(await send(f.page,'Tôi đang ôn thi'),/25 phút/);assert.match(await send(f.page,'tôi chỉ có 10 phút'),/10 phút/);assert.equal(calls,0);assert.match(await f.page.locator('#guide-status').innerText(),/Chế độ trợ lý dữ liệu/);await send(f.page,'Súng thần công làm bằng gì?');assert.equal(calls,1);assert.deepEqual(sent.history,[],'Everyday conversation is excluded from later museum API history');assert.deepEqual(f.errors,[]);
    }finally{await f.context.close()}
   });
   await test('larger text, four languages, all carousel slides and desktop layout stay usable',async()=>{

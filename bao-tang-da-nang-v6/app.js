@@ -1333,6 +1333,8 @@
     pace: "relaxed",
     route: null,
     guideMode: "offline",
+    replyDepth: sv("museum_reply_depth", "deep") === "deep" ? "deep" : "standard",
+    revealSpeed: ["slow","normal","instant","auto"].includes(sv("museum_reveal_speed")) ? sv("museum_reveal_speed") : "slow",
     currentZone: restoreZone(),
     artifact: "ma-nao",
     speech: null,
@@ -2281,6 +2283,28 @@
     $("guide-chips").innerHTML = suggestions
       .map((q) => `<button data-chat-question="${esc(q)}">${esc(q)}</button>`)
       .join("");
+    renderReplyPreferences();
+  }
+  function renderReplyPreferences() {
+    let bar=$("chat-preferences");
+    if(!bar){
+      bar=document.createElement('div');bar.id='chat-preferences';bar.className='chat-preferences';
+      bar.innerHTML='<div class="reply-options"><button id="chat-depth" type="button" role="switch" aria-describedby="chat-depth-note"></button><label class="reply-speed"><span id="chat-speed-label"></span><select id="chat-speed"></select></label></div><p id="chat-depth-note"></p>';
+      $('chat-form').before(bar);
+      $('chat-depth').addEventListener('click',()=>{state.replyDepth=state.replyDepth==='deep'?'standard':'deep';persist('museum_reply_depth',state.replyDepth);renderReplyPreferences();});
+      $('chat-speed').addEventListener('change',()=>{state.revealSpeed=$('chat-speed').value;persist('museum_reveal_speed',state.revealSpeed);window.MuseumChatText.setSpeed(state.revealSpeed);});
+    }
+    const deep=state.replyDepth==='deep';
+    $('chat-depth').textContent=(deep?'✦ ':'◇ ')+human('Suy nghĩ kỹ','Think carefully','자세히 생각','仔细思考');
+    $('chat-depth').setAttribute('aria-checked',String(deep));
+    $('chat-depth').disabled=$('messages').getAttribute('aria-busy')==='true';
+    $('chat-speed-label').textContent=human('Chữ','Text','글자','文字');
+    $('chat-speed').setAttribute('aria-label',human('Tốc độ hiện chữ','Text reveal speed','글자 표시 속도','文字显示速度'));
+    const speeds={slow:human('Chậm','Slow','천천히','慢速'),normal:human('Vừa','Normal','보통','正常'),instant:human('Hiện ngay','Instant','즉시','立即显示'),auto:human('Theo thiết bị','Device setting','기기 설정','设备设置')};
+    $('chat-speed').replaceChildren(...Object.entries(speeds).map(([value,label])=>{const option=document.createElement('option');option.value=value;option.textContent=label;return option;}));
+    $('chat-speed').value=state.revealSpeed;
+    $('chat-depth-note').textContent=deep&&state.guideMode==='generative'?human('AI máy chủ · yêu cầu trả lời kỹ.','AI server · detailed response requested.','AI 서버 · 자세한 답변 요청.','AI服务器 · 已请求详细回答。'):deep?human('Phân tích mục tiêu và điều kiện trên thiết bị.','Goal and constraint analysis on this device.','기기에서 목표와 조건을 분석합니다.','在本设备分析目标与条件。'):human('Trả lời gọn, tập trung vào bước tiếp theo.','A concise answer focused on the next step.','다음 단계에 집중한 간단한 답변.','简洁回答，侧重下一步。');
+    $('chat-depth').title=human('Phân tích tại thiết bị; suy luận bằng mô hình cần máy chủ AI được cấu hình.','Local analysis; model reasoning requires a configured AI server.','로컬 분석입니다. AI 추론에는 서버 설정이 필요합니다.','本地分析；模型推理需要已配置的AI服务器。');
   }
   function addBubble(
     text,
@@ -2407,6 +2431,7 @@
     }
     box.reveal = window.MuseumChatText.reveal(box, text, {
       animate: !!options.animate,
+      speed: state.revealSpeed,
       onProgress: () => scrollChat(),
       onFinish: () => {
         skip.hidden = true;
@@ -2436,6 +2461,7 @@
   }
   function resetGuide() {
     companion?.reset();
+    guideContext.requestPlan=null;
     guideContext.artifact = null;
     guideContext.topic = null;
     guideContext.floor = null;
@@ -2609,6 +2635,12 @@
       text=name+'\n'+(a.referenceOnly?institution+'\n':'')+(hasThematicFloor?human('Chủ đề tham chiếu: ','Related theme: ','관련 주제: ','相关主题：')+nm(d)+' · '+label(d.floor)+'\n':'')+human('Hồ sơ chưa xác nhận tầng, phòng hoặc tủ trưng bày thực tế. Sơ đồ chủ đề cơ sở 1 không xác định vị trí của hiện vật này.','The record does not verify a physical floor, room or case. The Site 1 thematic diagram does not locate this object.','실제 층, 전시실 또는 진열장 위치가 확인되지 않았습니다. 제1관 주제 안내도로 이 유물의 실제 위치를 알 수 없습니다.','档案未核实实际楼层、展厅或展柜。第一馆主题示意图不能确定本件文物的实际位置。');
     }else if(field==='photo')text=name+'\n'+human('Mây gửi ảnh hiện vật bên dưới. Mở hồ sơ để xem ảnh lớn, niên đại và thông tin nguồn.','Here is the artifact photo. Open its record for a larger image, date and source information.','아래 유물 사진을 확인하세요. 기록을 열면 큰 사진, 연대와 출처를 볼 수 있습니다.','下方是文物照片。打开档案可查看大图、年代与来源资料。');
     else text+='\n\n'+human('Niên đại: ','Date: ','연대: ','年代：')+meta.era+' · '+human('Chất liệu: ','Material: ','재질: ','材质：')+meta.material;
+    if(state.replyDepth==='deep'&&['summary','more'].includes(intent)&&a.description){
+      const details=[a.origin,a.dimensions].filter(value=>typeof value==='string'&&value.trim()&&!text.includes(value));
+      const excerpt=Array.from(a.description).slice(0,900).join('');
+      if(excerpt&&!text.includes(excerpt))details.push(excerpt+(Array.from(a.description).length>900?'…':''));
+      if(details.length)text+='\n\n'+human('Thông tin thêm từ hồ sơ nguồn','More from the source record','원문 기록의 추가 정보','原始档案的更多信息')+'\n'+details.join('\n\n');
+    }
     return {text:prefix+text,mood:field==='location'?'🧭':field==='summary'?'📚':'🤩',source:a.url,action:'artifact',artifact:a.id,cards:['summary','photo','more'].includes(intent)?[a.id]:[],floor:hasThematicFloor?d.floor:null,hints:hasThematicFloor?['artifact:'+a.id,'map:'+d.floor]:['artifact:'+a.id]};
   }
   function answerForTopic(d, intent) {
@@ -3067,14 +3099,18 @@
       s = norm(query),
       say = (...a) => a.some((k) => s.includes(norm(k)));
     const named = findMuseumEntity(query);
-    const museumQuery = !!named || /bao tang|hien vat|than cong|ma nao|sac phong|ghe bau|lich su|van hoa|co vat|tham quan|lo trinh|so do|tang [0-9]|tang nao|gia ve|gio mo cua|di bo|khong muon xem|nien dai|chat lieu|lam bang|made of|which floor|museum|artifact|material|history|route|low walking|박물관|유물|대포|博物馆|文物|古炮/.test(s)
-      || ((guideContext.artifact || guideContext.recommended?.length) && /^(no |cai |hien vat do|what is|when was|where is|the second|thu hai|thu nhat)/.test(s));
-    const social = companion?.respond(query,{language:state.lang,museum:museumQuery,openConversation:['life','playful'].includes(state.chatTopic),artifactName:named?.type==='artifact'?aname(named.item):''});
+    const requestPlan = window.MuseumRequestPlan?.analyze(query,{previous:guideContext.requestPlan,namedArtifact:named?.type==='artifact'});
+    const museumQuery = requestPlan?.domain !== 'study' && !requestPlan?.clarification && requestPlan?.domain !== 'conversation' && (!!named || /bao tang|hien vat|than cong|ma nao|sac phong|ghe bau|lich su|van hoa|co vat|tham quan|lo trinh|so do|tang [0-9]|tang nao|gia ve|gio mo cua|di bo|khong muon xem|nien dai|chat lieu|lam bang|made of|which floor|museum|artifact|material|history|route|low walking|박물관|유물|대포|博物馆|文物|古炮/.test(s)
+      || ((guideContext.artifact || guideContext.recommended?.length) && /^(no |cai |hien vat do|what is|when was|where is|the second|thu hai|thu nhat)/.test(s)));
+    const social = companion?.respond(query,{language:state.lang,plan:requestPlan,deep:state.replyDepth==='deep',museum:museumQuery,openConversation:['life','playful'].includes(state.chatTopic),artifactName:named?.type==='artifact'?aname(named.item):''});
     if (social) {
+      guideContext.requestPlan=social.requestPlan || null;
       guideContext.activeIntent='conversation'; guideContext.artifact=null; guideContext.topic=null; guideContext.recommended=[];
       state.chatTopic=social.fiction||['joke','cat','riddle','riddleAnswer'].includes(social.conversationTopic)?'playful':'life';
       return social;
     }
+    guideContext.requestPlan = null;
+    if(requestPlan?.domain==='museum' && requestPlan.avoids.includes('study') && !named) return visitorConversation(human('Hiện vật nào đáng xem nhất?','What are the highlights?','추천 유물은 무엇인가요?','有什么必看文物？'));
     const timeAsk = say(
       "bao gio",
       "nam nao",
@@ -3610,8 +3646,14 @@
     if (submit) submit.disabled = true;
     $("messages").setAttribute("aria-busy", "true");
     const language = state.lang;
+    let preparation;
+    renderReplyPreferences();
     try {
       addBubble(q, true);
+      preparation=document.createElement('div');preparation.className='chat-preparing';preparation.setAttribute('role','status');
+      preparation.textContent=state.replyDepth==='deep'?human('Đang phân tích mục tiêu và điều kiện…','Analyzing the goal and constraints…','목표와 조건을 분석하고 있어요…','正在分析目标与条件……'):human('Đang chuẩn bị câu trả lời…','Preparing a reply…','답변을 준비하고 있어요…','正在准备回答……');
+      $('messages').appendChild(preparation);scrollChat();
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
       $("chat-input").value = "";
       const history = guideContext.turns
         .filter((turn) => turn.scope !== "conversation")
@@ -3622,12 +3664,13 @@
       guideContext.turns = guideContext.turns.slice(-10);
       const localAnswer = replyKnowledge(q);
       currentTurn.scope = localAnswer.kind === "conversation" ? "conversation" : "museum";
+      preparation.remove();
       const endpoint = safeEndpoint(sv("museum_ai_endpoint"));
       if (endpoint && !localAnswer.applicationOnly) {
-        const typing = addBubble(t("loading"), false, "", "🤔");
+        const typing = addBubble(human("Đang chờ AI máy chủ phản hồi…", "Waiting for the AI server…", "AI 서버의 응답을 기다리고 있어요…", "正在等待AI服务器回复……"), false, "", "🤔");
         try {
           const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 14000);
+          const timeout = setTimeout(() => controller.abort(), state.replyDepth==='deep'?50000:14000);
           let response;
           try {
             response = await fetch(endpoint, {
@@ -3646,6 +3689,7 @@
                   zone: safeCurrentZone(),
                 },
                 version: "v6",
+                depth: state.replyDepth,
               }),
             });
           } finally {
@@ -3722,9 +3766,11 @@
       guideContext.turns.push({ role: "assistant", content: answer.text, scope: answer.kind === "conversation" ? "conversation" : "museum" });
       guideContext.turns = guideContext.turns.slice(-10);
     } finally {
+      preparation?.remove();
       chatBusy = false;
       if (submit) submit.disabled = false;
       $("messages").setAttribute("aria-busy", "false");
+      renderReplyPreferences();
     }
   }
 

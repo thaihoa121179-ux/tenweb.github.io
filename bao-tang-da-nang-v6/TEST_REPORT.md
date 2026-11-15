@@ -1,3 +1,18 @@
+# Phân tích yêu cầu và chữ chậm — 6.8, 15/11/2026
+
+- **92/92 kiểm thử Node**: giữ toàn bộ kiểm thử dữ liệu/nhận diện trước, thêm tách ý và phủ định, kế hoạch theo môn/thời gian, phương trình bậc nhất có kiểm nghiệm, bộ đếm frame cho nhịp chữ và tham số suy luận Worker. Không gọi provider thật.
+- **25/25 nhóm trình duyệt hồi quy**, **11/11 nhóm điện thoại/hội thoại** đạt, gồm 200 ảnh thật, nguồn, QR, kế hoạch, hồ sơ và các kích thước 320–844px. Chỉnh riêng hàng điều khiển cho màn hình ngang; sửa autofocus trễ không giành focus đang nằm trong hộp thoại ngôn ngữ.
+- **5/5 nhóm nhịp đọc/chế độ kỹ**: kiểm tra chữ đang hiện thực sự dài dần, mặc định Chậm ngay cả khi hệ điều hành báo reduced motion; đổi Hiện ngay giải phóng submit; chế độ kỹ/gọn thay nội dung; đúng câu trong ảnh, câu có ý ngược lại, môn/thời gian nối tiếp và bài toán `2x+3=7` → giải thích chuyển vế. Giữ lịch sử học cục bộ ngoài các lượt gửi API bảo tàng.
+- **19/19 Python** đạt về parser nguồn và verifier xuất bản; verifier nay so khớp `request-plan.js`, `chat-text.js`, `v6.js` và thứ tự phụ thuộc.
+
+Chế độ kỹ cục bộ là phân tích mục tiêu/điều kiện và trình bày thêm, không phải đo suy nghĩ nội bộ của LLM. Tests Worker dùng response giả lập để kiểm tra model/effort/budget/timeout/citation. Chưa có API key/backend để gọi mô hình thật. Bộ đo 80 câu của phiên bản trước không được dùng làm bằng chứng cho khả năng suy luận mới.
+
+Báo cáo thực chạy: `docs/reports/depth-6.8.json`, `browser-6.8.json`, `mobile-6.8.json`; ảnh mẫu trong `docs/screenshots/depth-6.8/`. Bằng chứng Pages và 200 ảnh do workflow kiểm tra sau xuất bản, độc lập với báo cáo cục bộ.
+
+---
+
+## Biên bản phiên bản trước
+
 # Điện thoại và hội thoại đời thường — bản 6.7, 15/11/2026
 
 - **25/25 nhóm trình duyệt hồi quy** đạt: giữ 200 hồ sơ/ảnh thật, tìm kiếm, QR, lộ trình, quiz, nhật ký, bốn ngôn ngữ, trường hợp lỗi backend, câu hỏi nối tiếp và nguồn tham khảo. Các lượt đời thường không lọt vào lịch sử gửi API ở câu hỏi bảo tàng tiếp theo.

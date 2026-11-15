@@ -68,3 +68,12 @@ MUSEUM_TEST_REPORT=/tmp/mobile-check.json SCREENSHOT_DIR=/tmp/mobile-previews no
 ```
 
 Suite kiểm tra 7 kích thước điện thoại/tablet/màn hình ngang, thay đổi chiều cao vùng nhìn để mô phỏng bàn phím, câu đời thường → đùa → giả tưởng → dữ liệu bảo tàng trong cùng cuộc trò chuyện, nguồn và hình ảnh thật, focus, bốn ngôn ngữ và desktop. Không gọi provider trong phần trò chuyện cục bộ; không giả bằng chứng bàn phím trên Safari thật.
+
+## Phân tích, suy nghĩ kỹ và nhịp chữ 6.8
+
+```sh
+node --test bao-tang-da-nang-v6/tests/request-plan.test.mjs bao-tang-da-nang-v6/tests/chat-text.test.mjs
+MUSEUM_TEST_REPORT=/tmp/depth-check.json node bao-tang-da-nang-v6/tests/depth-pacing.cjs
+```
+
+Các suite chức năng đặt tốc độ Hiện ngay trong fixture để không phải chờ hiệu ứng. `depth-pacing.cjs` giữ mặc định Chậm, đo số ký tự tăng theo thời gian trên DOM thật rồi đổi tốc độ/Hiện ngay; kiểm thử đồng hồ giả lập riêng chứng minh không tự tăng tốc ở đoạn dài hoặc khi frame bị chậm. Hiệu ứng hiển thị không được gọi là token streaming hoặc thời gian suy luận.

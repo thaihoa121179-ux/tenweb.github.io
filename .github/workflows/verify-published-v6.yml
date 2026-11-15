@@ -31,7 +31,7 @@ jobs:
         run: >-
           python3 bao-tang-da-nang-v6/scripts/verify_published_v6.py
           --minimum-records 200 --minimum-dimension 128
-          --asset-version 6.7 --max-wait 180 --workers 8
+          --asset-version 6.8 --max-wait 180 --workers 8
       - name: Retain the actual publication evidence, including failures
         if: always()
         uses: actions/upload-artifact@v4
