@@ -11,7 +11,7 @@ async function fixture(width=390,height=844){
  const context=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce',locale:'en-US'});
  await context.addInitScript(()=>localStorage.setItem('museum_v6:museum_reveal_speed','instant'));
  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(BASE);await page.locator('[data-lang=vi]').click();await page.locator('#language-start').click();await page.evaluate(()=>document.fonts.ready);
+ await page.goto(BASE);await page.locator('[data-lang=vi]').click();await page.locator('#visitor-name').fill('Bạn kiểm thử');await page.locator('#language-start').click();await page.evaluate(()=>document.fonts.ready);
  return {page,context,errors};
 }
 async function send(page,text){await page.locator('#chat-input').fill(text);await page.locator('#chat-form button[type=submit]').click();await page.waitForFunction(()=>document.querySelector('#messages').getAttribute('aria-busy')!=='true');return page.locator('.assistant-row .bubble').last().innerText();}

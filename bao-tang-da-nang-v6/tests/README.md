@@ -77,3 +77,12 @@ MUSEUM_TEST_REPORT=/tmp/depth-check.json node bao-tang-da-nang-v6/tests/depth-pa
 ```
 
 Các suite chức năng đặt tốc độ Hiện ngay trong fixture để không phải chờ hiệu ứng. `depth-pacing.cjs` giữ mặc định Chậm, đo số ký tự tăng theo thời gian trên DOM thật rồi đổi tốc độ/Hiện ngay; kiểm thử đồng hồ giả lập riêng chứng minh không tự tăng tốc ở đoạn dài hoặc khi frame bị chậm. Hiệu ứng hiển thị không được gọi là token streaming hoặc thời gian suy luận.
+
+## Tên, GPS và hướng nhìn 6.9
+
+```sh
+node --test bao-tang-da-nang-v6/tests/visitor.test.mjs bao-tang-da-nang-v6/tests/location-engine.test.mjs
+MUSEUM_TEST_URL=http://127.0.0.1:8765/bao-tang-da-nang-v6/ MUSEUM_TEST_REPORT=/tmp/visitor-location.json node bao-tang-da-nang-v6/tests/visitor-location.cjs
+```
+
+Suite mới mặc định dùng cổng 8765. Có 8 nhóm kiểm tra: nhập/đổi/khôi phục tên và Khách; nâng cấp người dùng cũ/deep link/storage bị chặn; tên được dựng bằng text và 5 kích thước màn hình; geolocation API Chromium với quyền cấp trong context; xin quyền cảm biến trong thao tác người dùng, quay tia tại tọa độ cố định và giữ mốc QR; từ chối/thiếu phần cứng/quyền iOS giải quyết sau khi chuyển trang; dừng/ẩn tab/đổi trang không rò tên hoặc GPS vào request AI; tọa độ/hướng cũ và cập nhật mới. Nền OSM được chủ động làm lỗi để xác nhận fallback. Không xác nhận tile công khai tải thật, độ chính xác GPS trong bảo tàng hoặc cảm biến thiết bị vật lý.

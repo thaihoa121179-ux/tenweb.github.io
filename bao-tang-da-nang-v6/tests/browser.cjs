@@ -31,6 +31,7 @@ async function open(page, query = '', lang = 'vi') {
   await page.waitForFunction(() => !!window.Museum && !!window.MuseumProfile);
   if (await page.locator('#lang-overlay:not(.hidden)').count()) {
     await page.locator(`[data-lang="${lang}"]`).click();
+    await page.locator('#visitor-name').fill('Bạn kiểm thử');
     await page.locator('#language-start').click();
   }
   await page.locator('#lang-overlay').waitFor({state:'hidden'});

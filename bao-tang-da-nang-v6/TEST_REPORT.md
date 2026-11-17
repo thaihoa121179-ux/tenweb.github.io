@@ -1,3 +1,16 @@
+# Tên, GPS và hướng nhìn — bản 6.9
+
+- **98/98 Node** đạt, gồm xử lý tên Unicode/emoji và storage bị chặn; hướng Bắc, bù góc màn hình, Safari, từ chối góc tương đối, quay qua 359°/0° và kiểm tra bản cập nhật GPS.
+- **8/8 nhóm trình duyệt mới** đạt: tên/Khách/đổi tên/khôi phục, deep link và người dùng cũ; không dựng tên thành HTML; 320/390/768/1366px và 844×390px; GPS chỉ bật sau thao tác; quyền cảm biến trong gesture, hướng điện thoại độc lập hướng di chuyển; từ chối/thiếu cảm biến/quyền trả về trễ; dừng/ẩn tab/đổi trang; không gửi tên hoặc tọa độ vào AI; đánh dấu dữ liệu cũ và khôi phục khi có cập nhật mới.
+- **25/25 nhóm hồi quy**, **11/11 nhóm điện thoại/hội thoại**, **5/5 nhóm nhịp đọc** đạt. Đủ 200 ảnh thật được giải mã; QR, nguồn, hồ sơ, quiz, nhật ký, hội thoại và tốc độ chữ tiếp tục hoạt động. Các fixture đầu vào nay nhập biệt danh để đi qua bước chào mới.
+- **19/19 Python** đạt. Trình kiểm tra xuất bản so khớp thêm `visitor.js`, `location-engine.js`, `location.js`, hai CSS và Leaflet được lưu cùng website; kiểm tra thứ tự phụ thuộc. Fixture readiness tăng từ 0,5 lên 2 giây để tải đủ số asset mới, vẫn so khớp byte và phát hiện bản cũ.
+
+Bằng chứng: `docs/reports/visitor-location-6.9.json`, `browser-6.9.json`, `mobile-6.9.json`, `depth-6.9.json`. Ảnh trong `docs/screenshots/location-6.9/`; ảnh GPS ghi rõ mô phỏng cảm biến, nền tile bị chặn.
+
+**Phạm vi kiểm chứng:** API GPS Chromium dùng tọa độ do bộ kiểm thử cung cấp; quyền iOS và sự kiện la bàn được giả lập; OSM tile được làm lỗi có chủ đích. Chưa kiểm tra cảm biến điện thoại thật, GPS trong nhà hoặc tile OSM công khai. Bộ kiểm tra Pages xác nhận mã đã triển khai và ảnh, không xác minh phần cứng cảm biến. GPS không được chiếu vào sơ đồ tầng mô phỏng; tọa độ chỉ ở bộ nhớ phiên.
+
+---
+
 # Phân tích yêu cầu và chữ chậm — 6.8, 15/11/2026
 
 - **92/92 kiểm thử Node**: giữ toàn bộ kiểm thử dữ liệu/nhận diện trước, thêm tách ý và phủ định, kế hoạch theo môn/thời gian, phương trình bậc nhất có kiểm nghiệm, bộ đếm frame cho nhịp chữ và tham số suy luận Worker. Không gọi provider thật.

@@ -1,0 +1,50 @@
+{
+  "base": "http://127.0.0.1:8765/bao-tang-da-nang-v6/",
+  "scope": "Chromium device emulation and simulated viewport resizing; not a physical device test",
+  "reports": [
+    {
+      "name": "mobile layout 320×568",
+      "passed": true
+    },
+    {
+      "name": "mobile layout 360×740",
+      "passed": true
+    },
+    {
+      "name": "mobile layout 375×812",
+      "passed": true
+    },
+    {
+      "name": "mobile layout 390×844",
+      "passed": true
+    },
+    {
+      "name": "mobile layout 430×932",
+      "passed": true
+    },
+    {
+      "name": "mobile layout 768×1024",
+      "passed": true
+    },
+    {
+      "name": "mobile layout 844×390",
+      "passed": true
+    },
+    {
+      "name": "keyboard resize keeps the composer and latest conversation visible",
+      "passed": true
+    },
+    {
+      "name": "life, humor, imagination and museum facts can share one conversation",
+      "passed": true
+    },
+    {
+      "name": "local small talk does not claim or call an AI provider",
+      "passed": true
+    },
+    {
+      "name": "larger text, four languages, all carousel slides and desktop layout stay usable",
+      "passed": true
+    }
+  ]
+}

@@ -2,6 +2,16 @@
 
 Bản nâng cấp độc lập từ V5, dành cho trình diễn công nghệ. Không phải website chính thức của Bảo tàng Đà Nẵng. V1–V5 và website gốc được giữ nguyên.
 
+## Đặt tên, GPS và hướng nhìn — bản 6.9
+
+Màn hình chào có tên/biệt danh (tối đa 30 ký tự hoàn chỉnh) và lựa chọn **Tiếp tục với tên Khách**. Tên lưu tại thiết bị, dùng trong lời chào trang chủ và Mây; có thể đổi hoặc xóa trong **Cá nhân**. Không tạo tài khoản, không gắn tên vào URL hay request AI. Nếu storage bị chặn, tên chỉ giữ trong phiên. Người đã chọn ngôn ngữ ở phiên bản cũ được mời đặt tên một lần; deep link QR tiếp tục sau bước này.
+
+Trong **Bản đồ & hướng nhìn**, bấm **Vị trí của tôi** để xin quyền GPS và hiện chấm xanh, vòng sai số theo mét, tọa độ và tuổi của bản cập nhật. Bấm **Bật hướng nhìn** để xin quyền la bàn (iOS) và hiện tia xanh xoay theo điện thoại. Nền bản đồ luôn hướng Bắc lên trên; màn hình ngang được bù góc. Cầm điện thoại gần nằm ngang, tránh kim loại để đọc la bàn tốt hơn. Dữ liệu `heading` của GPS chỉ hướng di chuyển nên không được dùng thay hướng điện thoại; cảm biến chỉ có góc tương đối không được coi là hướng Bắc.
+
+GPS là bản đồ địa lý riêng, không được đặt vào sơ đồ tầng mô phỏng. GPS trong nhà có thể lệch và không xác định phòng/tầng; mốc QR/thủ công tiếp tục hoạt động độc lập. Trình duyệt thiếu quyền, cảm biến hoặc HTTPS có thông báo và có thể thử lại. Nút Dừng, chuyển trang, ẩn tab và `pagehide` giải phóng GPS/cảm biến; dữ liệu cũ được đánh dấu thay vì giả vị trí trực tiếp. Tọa độ không lưu vào storage, nhật ký hoặc request AI.
+
+Leaflet 1.9.4 được lưu cùng website tại `vendor/leaflet-1.9.4/`, kèm giấy phép. Tile OpenStreetMap chỉ tải sau khi chủ động bật GPS, có ghi công trên bản đồ, cần kết nối mạng. Khi tile không tải được vẫn hiện tọa độ, vòng sai số và la bàn trên nền lưới. Không cần API key bản đồ. Kiểm thử dùng GPS/cảm biến giả lập của Chromium, không thay cho kiểm tra la bàn Safari/Android trên điện thoại thật.
+
 ## Phân tích yêu cầu và nhịp đọc — bản 6.8, 15/11/2026
 
 Mặc định bật **Suy nghĩ kỹ** và **Chữ: Chậm**. Câu “muốn học bài k muốn đi bảo tàng” được tách thành mục tiêu học và điều kiện không đi bảo tàng, thay vì bị chuyển sang tra cứu hiện vật. Bộ phân tích trong `request-plan.js` nhận mục tiêu có/không muốn, hỏi lại khi có hai lựa chọn chưa rõ ưu tiên, giữ môn học/thời lượng trong câu nối tiếp và lập kế hoạch có tổng thời gian khớp nhau. Chế độ kỹ trình bày mục tiêu, bước làm và phần kiểm tra; chế độ gọn giữ các điểm chính. Bộ giải cục bộ hỗ trợ phương trình bậc nhất một ẩn, kiểm lại nghiệm và từ chối biểu thức không thuộc dạng hỗ trợ, không dùng `eval`.

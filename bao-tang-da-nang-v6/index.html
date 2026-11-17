@@ -14,10 +14,13 @@
     <title>Di sản Đà Nẵng • Museum Companion V6</title>
     <link rel="stylesheet" href="base.css?v=6.2" />
     <link rel="stylesheet" href="v6.css?v=6.4" />
-    <link rel="stylesheet" href="videos.css?v=6.8" />
-    <link rel="stylesheet" href="library-ui.css?v=6.8" />
+    <link rel="stylesheet" href="videos.css?v=6.9" />
+    <link rel="stylesheet" href="library-ui.css?v=6.9" />
     <link rel="stylesheet" href="profile.css?v=6.2" />
-    <link rel="stylesheet" href="mobile.css?v=6.8" />
+    <link rel="stylesheet" href="mobile.css?v=6.9" />
+    <link rel="stylesheet" href="vendor/leaflet-1.9.4/leaflet.css?v=1.9.4" />
+    <link rel="stylesheet" href="visitor.css?v=6.9" />
+    <link rel="stylesheet" href="location.css?v=6.9" />
   </head>
   <body>
     <a class="skip-link" href="#main-content" data-v6="skip"
@@ -794,6 +797,13 @@
           ><button data-lang="zh">🇨🇳 简体中文</button>
         </div>
         <div class="lang-suggest" id="language-detected"></div>
+        <div class="visitor-entry">
+          <label id="visitor-name-label" for="visitor-name">Mây gọi bạn là gì?</label>
+          <input id="visitor-name" autocomplete="nickname" maxlength="120" placeholder="Tên hoặc biệt danh của bạn" aria-describedby="visitor-name-note visitor-name-error" />
+          <p id="visitor-name-note">Chỉ lưu trên thiết bị này. Bạn có thể đổi tên trong Cá nhân.</p>
+          <p id="visitor-name-error" class="visitor-error" role="status"></p>
+        </div>
+        <button id="visitor-guest" type="button">Tiếp tục với tên Khách</button>
         <button class="primary" id="language-start">Bắt đầu tham quan →</button>
         <div class="legal" data-v6="independent"></div>
       </div>
@@ -802,18 +812,22 @@
     <script src="qr-decoder.js"></script>
     <script src="qr-generator.js"></script>
     <script src="data-v6.js"></script>
-    <script src="guide-engine.js?v=6.8"></script>
-    <script src="chat-text.js?v=6.8"></script>
+    <script src="guide-engine.js?v=6.9"></script>
+    <script src="chat-text.js?v=6.9"></script>
     <script src="media-map.js?v=1a6c73226057"></script>
     <script src="collection.js?v=1868b09660c2"></script>
-    <script src="object-videos.js?v=6.8"></script>
-    <script src="videos.js?v=6.8"></script>
-    <script src="library-ui.js?v=6.8"></script>
-    <script src="request-plan.js?v=6.8"></script>
-    <script src="conversation.js?v=6.8"></script>
-    <script src="app.js?v=6.8"></script>
-    <script src="v6.js?v=6.8"></script>
+    <script src="object-videos.js?v=6.9"></script>
+    <script src="videos.js?v=6.9"></script>
+    <script src="library-ui.js?v=6.9"></script>
+    <script src="request-plan.js?v=6.9"></script>
+    <script src="conversation.js?v=6.9"></script>
+    <script src="visitor.js?v=6.9"></script>
+    <script src="app.js?v=6.9"></script>
+    <script src="v6.js?v=6.9"></script>
     <script src="profile.js?v=6.3"></script>
-    <script src="mobile.js?v=6.8"></script>
+    <script src="mobile.js?v=6.9"></script>
+    <script src="location-engine.js?v=6.9"></script>
+    <script src="vendor/leaflet-1.9.4/leaflet.js?v=1.9.4"></script>
+    <script src="location.js?v=6.9"></script>
   </body>
 </html>

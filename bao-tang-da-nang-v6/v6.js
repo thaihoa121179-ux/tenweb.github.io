@@ -26,8 +26,8 @@
       meetMay: "Tìm hiểu cùng Mây ↗",
       catalog: "Thư viện hiện vật",
       catalogSub: "9 hồ sơ · 15 chủ đề",
-      map: "Sơ đồ chủ đề",
-      mapSub: "Khám phá 3 tầng · mô phỏng",
+      map: "Bản đồ & hướng nhìn",
+      mapSub: "GPS · la bàn · sơ đồ tầng",
       plan: "Hành trình của bạn",
       planSub: "Theo thời gian và sở thích",
       quiz: "Thử tài di sản",
@@ -90,8 +90,8 @@
       meetMay: "Explore with Mây ↗",
       catalog: "Artifact library",
       catalogSub: "9 records · 15 themes",
-      map: "Thematic map",
-      mapSub: "Explore 3 floors · simulation",
+      map: "Map & facing direction",
+      mapSub: "GPS · compass · floor themes",
       plan: "Your journey",
       planSub: "By time and interests",
       quiz: "Heritage challenge",
@@ -154,8 +154,8 @@
       meetMay: "마이와 함께 탐험하기 ↗",
       catalog: "유물 자료실",
       catalogSub: "유물 9개 · 주제 15개",
-      map: "주제별 안내도",
-      mapSub: "3개 층 탐색 · 모의 안내도",
+      map: "지도와 바라보는 방향",
+      mapSub: "GPS · 나침반 · 층별 주제",
       plan: "나의 관람 코스",
       planSub: "시간과 관심사에 맞춘 추천",
       quiz: "문화유산 퀴즈",
@@ -217,8 +217,8 @@
       meetMay: "与小云一起探索 ↗",
       catalog: "文物资料库",
       catalogSub: "9件文物 · 15个主题",
-      map: "主题导览图",
-      mapSub: "探索3层 · 模拟示意",
+      map: "地图与朝向",
+      mapSub: "GPS · 指南针 · 楼层主题",
       plan: "您的参观路线",
       planSub: "按时间与兴趣推荐",
       quiz: "文化遗产挑战",
@@ -491,7 +491,7 @@
     attributeFilter: ["class"],
   });
   overlay.addEventListener("keydown", (e) => {
-    const focusable = [...overlay.querySelectorAll("button:not(:disabled)")];
+    const focusable = [...overlay.querySelectorAll("button:not(:disabled),input:not(:disabled)")];
     const first = focusable[0],
       last = focusable.at(-1);
     if (e.key === "Tab") {

@@ -37,7 +37,7 @@
       verifiedNote:
         "Nội dung theo nguồn chính thức. Vị trí trên sơ đồ là mô phỏng, không phải vị trí hiện vật thật.",
       floorOverview: "KHÔNG GIAN TRƯNG BÀY",
-      interactiveMap: "Sơ đồ tương tác",
+      interactiveMap: "Bản đồ & hướng nhìn",
       illustration: "SƠ ĐỒ MÔ PHỎNG",
       mapCaveat:
         "⚠ Sơ đồ chỉ minh họa các nhóm chủ đề. Chưa thể dẫn đường tới vị trí hiện vật chính xác nếu không có bản vẽ mặt bằng được bảo tàng xác nhận.",
@@ -217,7 +217,7 @@
       verifiedNote:
         "Based on official museum information. The diagram is illustrative, not the actual location of artifacts.",
       floorOverview: "EXHIBITION SPACE",
-      interactiveMap: "Interactive floor map",
+      interactiveMap: "Map & facing direction",
       illustration: "ILLUSTRATIVE MAP",
       mapCaveat:
         "⚠ Illustrative topic zones only. Accurate indoor directions require official floor plans and verified exhibit positions.",
@@ -396,7 +396,7 @@
       verifiedNote:
         "공식 자료 기반 콘텐츠입니다. 안내도는 실제 유물 위치가 아닌 예시입니다.",
       floorOverview: "전시 공간",
-      interactiveMap: "인터랙티브 안내도",
+      interactiveMap: "지도와 바라보는 방향",
       illustration: "예시 안내도",
       mapCaveat:
         "⚠ 주제별 구역을 표현한 예시입니다. 정확한 실내 길 안내에는 박물관에서 확인한 도면이 필요합니다.",
@@ -564,7 +564,7 @@
       source: "博物馆资料来源 ↗",
       verifiedNote: "内容依据官方资料。导览图仅为示意，并非文物真实位置。",
       floorOverview: "展览空间",
-      interactiveMap: "互动楼层图",
+      interactiveMap: "地图与朝向",
       illustration: "示意图",
       mapCaveat:
         "⚠ 本图仅展示主题分区示意。准确的室内导航需要博物馆核实的平面图。",
@@ -1322,7 +1322,8 @@
       : langs.includes(sv("museum_language"))
         ? sv("museum_language")
         : browser,
-    confirmed: sv("museum_language_confirmed") === "yes",
+    confirmed: sv("museum_language_confirmed") === "yes" && (window.MuseumVisitor?.isReady() ?? true),
+    visitorName: window.MuseumVisitor?.getName() || "",
     page: "home",
     stack: [],
     floor: 1,
@@ -1411,6 +1412,7 @@
     emit("language", { language: state.lang });
   }
   function enterLanguage() {
+    if(window.MuseumVisitor && !window.MuseumVisitor.commitInput()) return;
     const first = !state.confirmed;
     persist("museum_language", state.lang);
     persist("museum_language_confirmed", "yes");
@@ -2470,7 +2472,8 @@
     guideContext.recommended = [];
     guideContext.activeIntent = null;
     $("messages").replaceChildren();
-    addBubble(cu("welcome"), false, "", "🤖");
+    const name=window.MuseumVisitor?.getName();
+    addBubble((name?human(`Chào ${name}! `,`Hello ${name}! `,`${name}님, 안녕하세요! `,`${name}，你好！ `):'')+cu("welcome"), false, "", "🤖");
   }
   function levenshtein1(a, b) {
     if (a === b) return 0;

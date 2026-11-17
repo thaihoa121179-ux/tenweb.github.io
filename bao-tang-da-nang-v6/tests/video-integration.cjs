@@ -8,7 +8,7 @@ const {chromium}=require('playwright');
   await page.route('https://www.youtube-nocookie.com/**',route=>{players++;return route.abort();});
   await page.addInitScript(()=>localStorage.setItem('museum_v6:museum_reveal_speed','instant'));
   await page.goto(process.env.MUSEUM_TEST_URL||'http://127.0.0.1:8000/bao-tang-da-nang-v6/');
-  await page.locator('[data-lang="vi"]').click();await page.locator('#language-start').click();
+  await page.locator('[data-lang="vi"]').click();await page.locator('#visitor-name').fill('Bạn kiểm thử');await page.locator('#language-start').click();
   assert.equal(await page.evaluate(()=>Museum.A.length),200);
   assert.equal(await page.evaluate(()=>Museum.A.filter(a=>MuseumVideos.items(a).length).length),4);
   await page.evaluate(()=>Museum.nav('guide'));

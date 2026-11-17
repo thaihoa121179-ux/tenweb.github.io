@@ -44,12 +44,17 @@ def site(overrides=None, duplicates=False):
         (root/'app.js').write_text(app)
         (root/'media-map.js').write_text('window.MuseumMediaMap = '+json.dumps(mapping)+';')
         (root/'collection.js').write_text('globalThis.MuseumCollection = '+json.dumps({'legacyCount':9,'totalCount':10,'items':[{'id':'imported-1','image':'assets/9.png'}]})+';')
-        for name in ('library-ui.js','videos.js','object-videos.js','conversation.js','mobile.js','request-plan.js','chat-text.js','v6.js'):
+        for name in (*V.REQUIRED_JS, 'object-videos.js'):
+            if name == 'app.js': continue
             (root/name).write_text('/* fixture static asset */\nvoid 0;')
         for name in V.REQUIRED_CSS:
             (root/name).write_text('body { color: #123; }')
-        scripts=['media-map.js','collection.js','object-videos.js','videos.js','library-ui.js','request-plan.js','chat-text.js','conversation.js','app.js','v6.js','mobile.js']
-        (root/'index.html').write_text('<!doctype html><html><head>'+''.join(f'<link rel="stylesheet" href="{n}?v=6.8">' for n in V.REQUIRED_CSS)+'</head><body>'+''.join(f'<script src="{n}?v=6.8"></script>' for n in scripts)+'</body></html>')
+        scripts=['media-map.js','collection.js','object-videos.js','videos.js','library-ui.js','request-plan.js','chat-text.js','visitor.js','conversation.js','app.js','v6.js','mobile.js','location-engine.js','vendor/leaflet-1.9.4/leaflet.js','location.js']
+        vendor=root/'vendor/leaflet-1.9.4'
+        vendor.mkdir(parents=True)
+        (vendor/'leaflet.js').write_text('void 0;')
+        (vendor/'leaflet.css').write_text('/* local map */')
+        (root/'index.html').write_text('<!doctype html><html><head>'+''.join(f'<link rel="stylesheet" href="{n}?v=6.9">' for n in V.REQUIRED_CSS)+'<link rel="stylesheet" href="vendor/leaflet-1.9.4/leaflet.css?v=1.9.4">'+'</head><body>'+''.join(f'<script src="{n}?v={"1.9.4" if n.startswith("vendor/") else "6.9"}"></script>' for n in scripts)+'</body></html>')
         requests = []
         custom = overrides or {}
         class Handler(SimpleHTTPRequestHandler):
@@ -73,7 +78,7 @@ def site(overrides=None, duplicates=False):
 
 
 def args(root,base):
-    return V.arguments(['--root',str(root),'--base-url',base,'--minimum-records','10','--max-wait','0.5','--poll-interval','0.05','--workers','3'])
+    return V.arguments(['--root',str(root),'--base-url',base,'--minimum-records','10','--max-wait','2','--poll-interval','0.05','--workers','3'])
 
 
 class PublishedVerifierTests(unittest.TestCase):
@@ -112,11 +117,11 @@ class PublishedVerifierTests(unittest.TestCase):
     def test_conversation_module_must_load_before_the_app(self):
         with site() as (root,base,_):
             html=(root/'index.html').read_text()
-            old='<script src="conversation.js?v=6.8"></script><script src="app.js?v=6.8"></script>'
+            old='<script src="conversation.js?v=6.9"></script><script src="app.js?v=6.9"></script>'
             self.assertIn(old,html)
-            html=html.replace(old,'<script src="app.js?v=6.8"></script><script src="conversation.js?v=6.8"></script>')
+            html=html.replace(old,'<script src="app.js?v=6.9"></script><script src="conversation.js?v=6.9"></script>')
             with self.assertRaisesRegex(ValueError,'conversation.js must precede app.js'):
-                V.checked_assets(html,'6.8')
+                V.checked_assets(html,'6.9')
 
     def test_http_200_with_html_masquerading_as_an_image_fails_decode(self):
         with site({'/assets/0.png':('image/png',b'<html>not an image</html>')}) as (root,base,_):

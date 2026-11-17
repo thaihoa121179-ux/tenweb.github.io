@@ -1,0 +1,38 @@
+{
+  "base": "http://127.0.0.1:8765/bao-tang-da-nang-v6/",
+  "scope": "Chromium API/sensor simulation; no physical device, indoor GPS or live OSM-tile verification",
+  "results": [
+    {
+      "name": "first entry asks for a nickname, preserves a draft on language changes and supports rename/reload/guest",
+      "passed": true
+    },
+    {
+      "name": "guest and existing-language visitors complete onboarding, including a first-visit QR deep link and blocked storage",
+      "passed": true
+    },
+    {
+      "name": "names are rendered as text and new controls fit narrow, landscape, tablet and desktop viewports",
+      "passed": true
+    },
+    {
+      "name": "Chromium GPS permission supplies a real browser fix only after opt-in, without inferring facing direction",
+      "passed": true
+    },
+    {
+      "name": "phone direction rotates a beam on a stationary GPS dot, uses a gesture permission and ignores relative sensors",
+      "passed": true
+    },
+    {
+      "name": "GPS and compass denial, missing hardware and delayed iOS permission remain recoverable",
+      "passed": true
+    },
+    {
+      "name": "stop, background and navigation clear watches; stale callbacks cannot restart tracking or leak location/name to AI",
+      "passed": true
+    },
+    {
+      "name": "old fixes and old compass readings become visibly stale, and a fresh GPS fix restores tracking",
+      "passed": true
+    }
+  ]
+}
