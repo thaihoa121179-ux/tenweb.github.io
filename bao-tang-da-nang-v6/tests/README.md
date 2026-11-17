@@ -1,3 +1,11 @@
+# Kiểm thử bản 7 hiện tại
+
+Từ thư mục ứng dụng: `npm test` chạy các kiểm thử Node cho dữ liệu, retrieval, quiz, narration, corpus và Worker. Bộ acceptance giao diện hiện tại là `upgrade.cjs`, cần Playwright và Chromium; đặt `MUSEUM_TEST_URL` trỏ tới server tĩnh đang chạy. Xem `../docs/TEST-7.md` để kiểm thử điện thoại thật và `../docs/release-7/VALIDATION.md` để biết phạm vi đã đo.
+
+Các bộ browser/depth/mobile/visitor cũ ở dưới kiểm tra hợp đồng giao diện 6.7–6.9 (ba tab đời thường, GPS/compass, nav trong chat, phân trang). Những màn đó đã được thay theo yêu cầu mới; chúng là tư liệu hồi quy cho bản cũ, không dùng làm acceptance cho bản 7. Các unit test module cũ vẫn chạy để giữ khả năng đọc dữ liệu/lịch sử.
+
+---
+
 # Kiểm thử trình duyệt V6
 
 Từ thư mục gốc repository, chạy máy chủ tĩnh trong một terminal:

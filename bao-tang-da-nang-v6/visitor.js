@@ -1,24 +1,28 @@
 /* Local nickname only; never appended to AI requests, URLs or geolocation data. */
 ((root) => {
   'use strict';
+  function formatName(value){return value===value.toLocaleLowerCase()&&/\p{Script=Latin}/u.test(value)?value.replace(/\p{L}/u,c=>c.toLocaleUpperCase()):value;}
+  let initialized=false;
   const prefix='museum_v6:', memory=new Map();
   let guestRequested=false;
   const read=key=>{try{return root.localStorage.getItem(prefix+key)||memory.get(key)||'';}catch{return memory.get(key)||'';}};
   function write(key,value){memory.set(key,value);try{root.localStorage.setItem(prefix+key,value);return true;}catch{return false;}}
   const units=value=>typeof Intl.Segmenter==='function'?[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(value)].map(x=>x.segment):Array.from(value);
-  const clean=value=>String(value||'').normalize('NFC').replace(/[\u0000-\u001f\u007f-\u009f\u202a-\u202e\u2066-\u2069]/g,'').replace(/\s+/gu,' ').trim();
-  const getName=()=>units(clean(read('museum_visitor_name'))).slice(0,30).join('');
+  const clean=value=>formatName(String(value||'')).normalize('NFC').replace(/[\u0000-\u001f\u007f-\u009f\u202a-\u202e\u2066-\u2069]/g,'').replace(/\s+/gu,' ').trim();
+  const getName=()=>{const name=clean(read('museum_visitor_name'));return ['khách','guest','게스트','访客'].includes(name.toLocaleLowerCase())?'':units(name).slice(0,30).join('');};
   const isReady=()=>read('museum_visitor_ready')==='yes';
   const M=()=>root.Museum;
   const text=(vi,en,ko,zh)=>M()?.human(vi,en,ko,zh)||vi;
   function validate(value){const name=clean(value);return !name?'empty':units(name).length>30?'long':'';}
   function errorText(error){return error==='long'?text('Tên tối đa 30 ký tự nhé.','Use up to 30 characters.','이름은 30자 이내로 입력해 주세요.','名字最多30个字符。'):text('Nhập tên hoặc chọn “Tiếp tục với tên Khách”.','Enter a name or choose “Continue as Guest”.','이름을 입력하거나 게스트로 계속하세요.','请输入名字，或选择以访客身份继续。');}
-  function save(value){const saved=write('museum_visitor_name',clean(value));write('museum_visitor_ready','yes');if(M())M().state.visitorName=getName();if(root.document?.getElementById('visitor-name'))document.getElementById('visitor-name').value=getName();return saved;}
+  const guest=value=>["khách","guest","게스트","访客"].includes(String(value||"").trim().toLocaleLowerCase());
+  function save(value){value=guest(value)?"":value;const saved=write('museum_visitor_name',clean(value));write('museum_visitor_ready','yes');if(M())M().state.visitorName=getName();if(root.document?.getElementById('visitor-name'))document.getElementById('visitor-name').value=getName();return saved;}
   function showError(input,output,error){input.setAttribute('aria-invalid',String(!!error));output.textContent=error?errorText(error):'';if(error)input.focus();}
   function commitInput(){
     const input=document.getElementById('visitor-name'),output=document.getElementById('visitor-name-error');
     if(!input)return true;
     if(guestRequested || isReady()&&!getName()&&!clean(input.value)){guestRequested=false;save('');showError(input,output,'');return true;}
+    if(guest(input.value)){save("");showError(input,output,"");return true;}
     const error=validate(input.value);showError(input,output,error);if(error)return false;
     save(input.value);input.value=getName();return true;
   }
@@ -27,14 +31,14 @@
     const host=document.querySelector('#page-profile .personal-scroll');if(!host||host.querySelector('#visitor-card'))return;
     const card=document.createElement('section');card.id='visitor-card';card.className='card visitor-card';
     card.innerHTML='<div class="visitor-avatar" aria-hidden="true"></div><div class="visitor-card-copy"><h2></h2><p></p><form id="visitor-edit-form"><label for="visitor-edit-name"></label><div class="visitor-edit-row"><input id="visitor-edit-name" autocomplete="nickname" maxlength="120" aria-describedby="visitor-edit-error"><button class="primary" type="submit"></button></div><p id="visitor-edit-error" class="visitor-error" role="status"></p><button class="visitor-guest-reset" type="button"></button></form></div>';
-    card.querySelector('.visitor-avatar').textContent=units(getName())[0]||'✳';
+    card.querySelector('.visitor-avatar').textContent=(units(getName())[0]||'M').toLocaleUpperCase();
     card.querySelector('h2').textContent=greeting();
     card.querySelector('.visitor-card-copy>p').textContent=text('Tên chỉ lưu trên thiết bị này.','Your name stays on this device.','이름은 이 기기에만 저장됩니다.','名字仅保存在此设备。');
     card.querySelector('label').textContent=text('Tên hoặc biệt danh','Name or nickname','이름 또는 별명','名字或昵称');
     card.querySelector('input').value=getName();
     card.querySelector('[type=submit]').textContent=text('Lưu tên','Save name','이름 저장','保存名字');
     card.querySelector('.visitor-guest-reset').textContent=text('Dùng tên Khách','Use Guest','게스트로 사용','使用访客身份');
-    host.prepend(card);
+    const form=card.querySelector("form"),details=document.createElement("details"),summary=document.createElement("summary");summary.textContent=text("Đổi tên","Edit name","이름 변경","修改名字");form.before(details);details.append(summary,form);host.prepend(card);
   }
   function update(){
     const input=document.getElementById('visitor-name');
@@ -47,6 +51,7 @@
     document.getElementById('visitor-card')?.remove();renderProfile();
   }
   function init(){
+    if(initialized)return;initialized=true;
     document.getElementById('visitor-name').value=getName();
     document.getElementById('visitor-guest').addEventListener('click',()=>{guestRequested=true;document.getElementById('language-start').click();});
     document.getElementById('visitor-name').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();document.getElementById('language-start').click();}});
@@ -62,6 +67,6 @@
     new MutationObserver(renderProfile).observe(document.getElementById('page-profile'),{childList:true});
     update();
   }
-  root.MuseumVisitor=Object.freeze({getName,isReady,validate,clean,save,commitInput,greeting});
-  if(root.document)document.addEventListener('DOMContentLoaded',init,{once:true});
+  root.MuseumVisitor=Object.freeze({getName,isReady,validate,clean,save,commitInput,greeting,start:init});
+
 })(globalThis);

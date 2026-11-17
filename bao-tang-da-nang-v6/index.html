@@ -1,28 +1,31 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" class="booting">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content"
     />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#103e35" />
     <meta
       name="description"
       content="Trợ lý tham quan Bảo tàng Đà Nẵng: chọn ngôn ngữ, quét QR, khám phá sơ đồ tầng và lộ trình theo sở thích."
     />
     <title>Di sản Đà Nẵng • Museum Companion V6</title>
-    <link rel="stylesheet" href="base.css?v=6.2" />
-    <link rel="stylesheet" href="v6.css?v=6.4" />
-    <link rel="stylesheet" href="videos.css?v=6.9" />
-    <link rel="stylesheet" href="library-ui.css?v=6.9" />
-    <link rel="stylesheet" href="profile.css?v=6.2" />
-    <link rel="stylesheet" href="mobile.css?v=6.9" />
-    <link rel="stylesheet" href="vendor/leaflet-1.9.4/leaflet.css?v=1.9.4" />
-    <link rel="stylesheet" href="visitor.css?v=6.9" />
-    <link rel="stylesheet" href="location.css?v=6.9" />
+    <link rel="preload" href="app-foundation.js?v=7.0.0" as="script" />
+    <link rel="preload" href="app-core.js?v=7.0.0" as="script" />
+    <link rel="preload" href="app-runtime.js?v=7.0.0" as="script" />
+    <link rel="preload" href="data/museum-content.json.gz?v=7.0.0" as="fetch" crossorigin="anonymous" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <style>html,body{margin:0;background:#f6f5f0}.booting .app{visibility:hidden}#boot-cover{position:fixed;inset:0;z-index:200;display:grid;place-content:center;justify-items:center;gap:16px;background:#f6f5f0;color:#205849;font:16px system-ui,sans-serif;text-align:center}#boot-cover img{border-radius:26px}#boot-cover p{margin:0}#boot-cover b{font-size:24px}</style>
+    <link data-app-style rel="stylesheet" href="app-styles.css?v=7.0.0" media="print" onload="this.media='all'" />
   </head>
   <body>
+    <div id="boot-cover" role="status"><img src="ai-robot.webp" width="88" height="88" alt="Mây"><b>Mây · Museum Companion</b><p>Đang mở những câu chuyện…<br>Loading museum stories…</p></div>
+    <noscript>Vui lòng bật JavaScript để mở hồ sơ bảo tàng. / Please enable JavaScript.</noscript>
     <a class="skip-link" href="#main-content" data-v6="skip"
       >Bỏ qua đến nội dung</a
     >
@@ -463,7 +466,7 @@
                 id="floor-svg"
                 class="plan-svg"
                 viewBox="0 0 340 260"
-                role="img"
+                role="group"
                 aria-label="Illustrative floor diagram"
               ></svg>
               <div class="map-bottom" id="map-selected"></div>
@@ -809,25 +812,6 @@
       </div>
       <div id="toast" class="toast hidden" role="status"></div>
     </div>
-    <script src="qr-decoder.js"></script>
-    <script src="qr-generator.js"></script>
-    <script src="data-v6.js"></script>
-    <script src="guide-engine.js?v=6.9"></script>
-    <script src="chat-text.js?v=6.9"></script>
-    <script src="media-map.js?v=1a6c73226057"></script>
-    <script src="collection.js?v=1868b09660c2"></script>
-    <script src="object-videos.js?v=6.9"></script>
-    <script src="videos.js?v=6.9"></script>
-    <script src="library-ui.js?v=6.9"></script>
-    <script src="request-plan.js?v=6.9"></script>
-    <script src="conversation.js?v=6.9"></script>
-    <script src="visitor.js?v=6.9"></script>
-    <script src="app.js?v=6.9"></script>
-    <script src="v6.js?v=6.9"></script>
-    <script src="profile.js?v=6.3"></script>
-    <script src="mobile.js?v=6.9"></script>
-    <script src="location-engine.js?v=6.9"></script>
-    <script src="vendor/leaflet-1.9.4/leaflet.js?v=1.9.4"></script>
-    <script src="location.js?v=6.9"></script>
+    <script src="bootstrap.js?v=7.0.0"></script>
   </body>
 </html>

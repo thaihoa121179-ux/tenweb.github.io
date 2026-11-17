@@ -769,283 +769,7 @@
     f2: "https://www.baotangdanang.vn/khong-gian-trung-bay-tang-2",
     main: "https://baotangdanang.vn/",
   };
-  const D = [
-    [
-      "co-vat",
-      1,
-      "🏺",
-      ["antique", "history"],
-      [
-        "Sưu tập cổ vật",
-        "Antiquities collection",
-        "고대 유물 컬렉션",
-        "古物收藏",
-      ],
-      [
-        "Các sưu tập cổ vật giới thiệu dấu ấn vật chất và đời sống qua nhiều thời kỳ ở vùng đất Đà Nẵng và miền Trung.",
-        "Antiquities collections present material heritage and traces of everyday life from different historical periods in central Vietnam.",
-        "고대 유물 컬렉션을 통해 베트남 중부 지역의 여러 시대 생활과 물질문화를 살펴볼 수 있습니다.",
-        "古物收藏展示越南中部不同时代的物质文化与生活遗迹。",
-      ],
-      "gom co chu dau binh voi antiquities ceramics pottery",
-    ],
-    [
-      "thieu-nhi",
-      1,
-      "🧒",
-      ["family", "culture"],
-      [
-        "Khu trưng bày thiếu nhi",
-        "Children’s exhibition area",
-        "어린이 전시 공간",
-        "儿童展区",
-      ],
-      [
-        "Không gian dành cho các hoạt động khám phá và giáo dục di sản phù hợp với trẻ em.",
-        "A space for children to discover heritage through age-appropriate activities and learning.",
-        "어린이가 체험과 배움을 통해 지역 문화유산을 알아보는 공간입니다.",
-        "面向儿童的文化遗产探索与教育空间。",
-      ],
-      "tre em gia dinh kids family",
-    ],
-    [
-      "trien-lam",
-      1,
-      "🖼️",
-      ["modern", "culture"],
-      [
-        "Trưng bày định kỳ",
-        "Temporary exhibitions",
-        "기획·특별 전시",
-        "定期专题展览",
-      ],
-      [
-        "Không gian dành cho triển lãm ngắn hạn; nội dung có thể thay đổi theo từng đợt trưng bày.",
-        "A space for short-term exhibitions. Displays change according to the museum’s current program.",
-        "기간별로 주제가 바뀌는 특별 전시 공간입니다.",
-        "用于短期专题展览，具体展览内容会随活动计划调整。",
-      ],
-      "trien lam chuyen de temporary exhibitions",
-    ],
-    [
-      "den-co",
-      2,
-      "🏮",
-      ["culture", "antique"],
-      [
-        "Đèn cổ xứ Quảng",
-        "Historic lamps of Quang region",
-        "꽝 지역의 옛 등불",
-        "广南地区古灯",
-      ],
-      [
-        "Tìm hiểu các loại đèn cổ và nét sinh hoạt văn hóa gắn với ánh sáng trong cuộc sống xứ Quảng.",
-        "Discover historical lamps and their connections to everyday life and cultural practices in the Quang region.",
-        "꽝 지역의 옛 등불과 생활문화의 관계를 알아봅니다.",
-        "了解广南地区古灯及其与当地生活文化的联系。",
-      ],
-      "den mang xong den co lamp lantern lighting",
-    ],
-    [
-      "tram-huong",
-      2,
-      "🌿",
-      ["culture", "antique"],
-      [
-        "Trầm hương xứ Quảng",
-        "Agarwood of Quang region",
-        "꽝 지역의 침향",
-        "广南地区沉香",
-      ],
-      [
-        "Giới thiệu trầm hương như một nét đặc trưng trong tài nguyên, nghề nghiệp và đời sống văn hóa xứ Quảng.",
-        "Explore agarwood as part of the region’s natural resources, crafts and cultural traditions.",
-        "꽝 지역의 자원, 공예와 문화 전통 속 침향을 소개합니다.",
-        "介绍沉香与当地自然资源、工艺及文化传统的关系。",
-      ],
-      "tram huong agarwood incense",
-    ],
-    [
-      "nghien-cuu",
-      2,
-      "📚",
-      ["modern", "history"],
-      [
-        "Nghiên cứu và phát triển",
-        "Research and development",
-        "연구와 발전",
-        "研究与发展",
-      ],
-      [
-        "Không gian giới thiệu hoạt động tìm hiểu, nghiên cứu và phát triển gắn với di sản địa phương.",
-        "A thematic area presenting research and development related to local heritage.",
-        "지역 문화유산의 연구와 발전을 살펴보는 주제 공간입니다.",
-        "展示与当地文化遗产有关的研究与发展主题。",
-      ],
-      "nghien cuu phat trien research development",
-    ],
-    [
-      "dan-toc",
-      2,
-      "🧵",
-      ["culture", "family"],
-      ["Văn hóa các dân tộc", "Ethnic cultures", "소수민족 문화", "民族文化"],
-      [
-        "Tìm hiểu văn hóa của các cộng đồng Cơ Tu, Xơ Đăng, Giẻ-Triêng, Cor và những nét đa dạng văn hóa trong khu vực.",
-        "Explore the cultural diversity of communities such as Cơ Tu, Xơ Đăng, Giẻ-Triêng and Cor.",
-        "꺼뚜, 써당, 제찌엥, 꼬르 등 지역 공동체의 다양한 문화를 소개합니다.",
-        "了解格都、色登、耶-遮恩、戈尔等族群的多样文化。",
-      ],
-      "co tu xo dang gie trieng cor dan toc minority ethnic",
-    ],
-    [
-      "tong-quan",
-      3,
-      "🌉",
-      ["history", "modern"],
-      ["Tổng quan Đà Nẵng", "Da Nang overview", "다낭 개요", "岘港概览"],
-      [
-        "Bức tranh khái quát về thành phố Đà Nẵng, nơi thiên nhiên, đô thị và các cộng đồng cùng tạo nên bản sắc.",
-        "An introduction to the city and the natural, urban and social elements that shape its identity.",
-        "다낭의 자연, 도시와 공동체가 이룬 지역적 특색을 소개합니다.",
-        "概述岘港的自然、城市与社会特色。",
-      ],
-      "da nang city overview thanh pho",
-    ],
-    [
-      "thien-nhien",
-      3,
-      "🌊",
-      ["family", "culture"],
-      [
-        "Thiên nhiên và con người",
-        "Nature and people",
-        "자연과 사람",
-        "自然与人文",
-      ],
-      [
-        "Khám phá điều kiện tự nhiên cùng mối quan hệ giữa con người và môi trường ở Đà Nẵng.",
-        "Explore Da Nang’s natural environment and the relationship between its landscape and communities.",
-        "다낭의 자연환경과 사람들의 삶의 관계를 살펴봅니다.",
-        "了解岘港的自然环境及人与环境的关系。",
-      ],
-      "thien nhien con nguoi moi truong nature people",
-    ],
-    [
-      "lich-su-do-thi",
-      3,
-      "🏛️",
-      ["history", "modern"],
-      [
-        "Lịch sử đô thị Đà Nẵng",
-        "Urban history of Da Nang",
-        "다낭 도시 역사",
-        "岘港城市史",
-      ],
-      [
-        "Theo dõi những chuyển biến của Đà Nẵng qua các giai đoạn hình thành và phát triển đô thị.",
-        "Follow the evolution of Da Nang through stages of urban formation and development.",
-        "다낭의 도시 형성과 발전 과정을 살펴봅니다.",
-        "了解岘港城市形成与发展的历史进程。",
-      ],
-      "lich su tourane thanh pho urban history",
-    ],
-    [
-      "doc-lap",
-      3,
-      "🕊️",
-      ["history"],
-      [
-        "Đấu tranh bảo vệ độc lập",
-        "Struggle for independence",
-        "독립을 위한 투쟁",
-        "争取民族独立",
-      ],
-      [
-        "Chủ đề giới thiệu hành trình đấu tranh bảo vệ độc lập dân tộc được phản ánh trong lịch sử địa phương.",
-        "An exhibition theme about the struggle to defend national independence in the region’s history.",
-        "지역 역사 속 민족 독립을 위한 투쟁을 소개합니다.",
-        "展示当地历史中争取并捍卫民族独立的历程。",
-      ],
-      "khang chien doc lap independence struggle",
-    ],
-    [
-      "chien-tranh",
-      3,
-      "🪖",
-      ["history"],
-      ["Chứng tích chiến tranh", "War remnants", "전쟁의 흔적", "战争遗迹"],
-      [
-        "Những tư liệu và câu chuyện giúp du khách suy ngẫm về tác động của chiến tranh và giá trị của hòa bình.",
-        "Documents and stories invite reflection on the impact of war and the value of peace.",
-        "전쟁의 영향과 평화의 가치를 되새기는 자료와 이야기를 소개합니다.",
-        "通过资料与故事反思战争的影响与和平的价值。",
-      ],
-      "chien tranh war peace chung tich",
-    ],
-    [
-      "hoi-nhap",
-      3,
-      "✨",
-      ["modern", "history"],
-      [
-        "Hội nhập và phát triển",
-        "Integration and development",
-        "통합과 발전",
-        "融合与发展",
-      ],
-      [
-        "Tìm hiểu quá trình Đà Nẵng đổi mới và phát triển trong giai đoạn hiện đại.",
-        "Discover Da Nang’s modern transformation, integration and development.",
-        "현대 다낭의 변화와 발전 과정을 소개합니다.",
-        "了解现代岘港的转型、融合与发展。",
-      ],
-      "hoi nhap phat trien modern development",
-    ],
-    [
-      "toa-thi-chinh",
-      3,
-      "🏢",
-      ["history", "modern"],
-      ["Tòa thị chính Đà Nẵng", "Da Nang City Hall", "다낭 시청", "岘港市政厅"],
-      [
-        "Không gian giới thiệu dấu ấn công trình và câu chuyện đô thị gắn với Tòa thị chính Đà Nẵng.",
-        "An exhibition topic about the historic city hall and its place in Da Nang’s urban story.",
-        "다낭 시청과 도시사의 관련성을 소개하는 전시입니다.",
-        "介绍岘港市政厅及其承载的城市历史。",
-      ],
-      "toa thi chinh city hall",
-    ],
-    [
-      "van-hoa-quang",
-      3,
-      "🎎",
-      ["culture", "family"],
-      [
-        "Văn hóa người Việt xứ Quảng",
-        "Vietnamese culture of Quang region",
-        "꽝 지역 베트남 문화",
-        "广南地区越族文化",
-      ],
-      [
-        "Khám phá phong tục, đời sống và giá trị văn hóa của người Việt xứ Quảng trong dòng chảy lịch sử.",
-        "Explore traditions, daily life and cultural values of Vietnamese communities in the Quang region.",
-        "꽝 지역 베트남인들의 풍습, 생활과 문화적 가치를 알아봅니다.",
-        "探索广南地区越族的风俗、日常生活与文化价值。",
-      ],
-      "van hoa viet quang nam phong tuc traditions culture",
-    ],
-  ].map(([id, floor, icon, tags, names, descs, keywords]) => ({
-    id,
-    floor,
-    icon,
-    tags,
-    names,
-    descs,
-    keywords,
-    source: floor === 2 ? S.f2 : floor === 1 ? S.floors : S.overview,
-  }));
-
+  const D = window.MuseumContent.topics;
   const GALLERY_IMAGES = {
     "co-vat": "https://dnfam-website.vr360.com.vn/uploads/images/DSCF1963.webp",
     "thieu-nhi":
@@ -1073,155 +797,7 @@
     "van-hoa-quang":
       "https://dnfam-website.vr360.com.vn/uploads/images/Kh%C3%B4ng%20gian%20ngh%E1%BB%81%20th%E1%BB%A7%20c%C3%B4ng%20truy%E1%BB%81n%20th%E1%BB%91ng.jpg",
   };
-  const A = [
-    {
-      id: "ma-nao",
-      topic: "tong-quan",
-      name: "Trang sức mã não",
-      en: "Agate jewelry",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_gshe48iiab-1777263997460.webp",
-      era: "Khoảng 2.500–2.000 năm trước",
-      material: "Mã não",
-      summary:
-        "Đồ trang sức tiêu biểu của cư dân văn hóa Sa Huỳnh, khai quật tại khu mộ chum Gò Đình năm 1980.",
-      enSummary:
-        "Agate ornaments associated with the Sa Huynh culture, recovered from the Go Dinh jar-burial site.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/trang-sc-ma-nao",
-    },
-    {
-      id: "sung-than-cong",
-      topic: "doc-lap",
-      name: "Súng thần công",
-      en: "Historic cannon",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_93pul2vr1m-1774794472986.webp",
-      era: "Theo hồ sơ: thế kỷ XIX",
-      material: "Kim loại",
-      summary:
-        "Khẩu thần công được phát hiện tại khu vực Xuân Thiều – Nam Ô năm 2019; hiện vật gợi mở câu chuyện phòng thủ Đà Nẵng.",
-      enSummary:
-        "A historical cannon discovered near Xuan Thieu – Nam O in 2019, linked to Da Nang’s defensive history.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/song-than-cing",
-    },
-    {
-      id: "sac-phong",
-      topic: "doc-lap",
-      name: "Sắc phong",
-      en: "Royal edict",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_u392gzmdqs-1774775225176.webp",
-      era: "1840",
-      material: "Giấy",
-      summary:
-        "Sắc phong thời Minh Mạng liên quan đến chức Thự thủ thành Điện Hải, viết chữ Hán trên giấy vàng có dấu triện đỏ.",
-      enSummary:
-        "An 1840 royal edict related to the Dien Hai Citadel, written on yellow paper with a red seal.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/sac-phong",
-    },
-    {
-      id: "doi-bau",
-      topic: "doc-lap",
-      name: "Đôi bầu",
-      en: "Double carrying vessels",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_5mpvcd3k71-1777265281891.webp",
-      era: "1954",
-      material: "Vật dụng sinh hoạt",
-      summary:
-        "Đôi bầu chị Phan Thị Truy sử dụng khi cải trang bán nước mắm để hoạt động cách mạng ở Đà Nẵng.",
-      enSummary:
-        "Carrying vessels used by Phan Thi Truy as part of her cover while gathering information during wartime.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/yii-bau",
-    },
-    {
-      id: "bom-cbu",
-      topic: "chien-tranh",
-      name: "Bom CBU 55",
-      en: "CBU-55 bomb",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_3epz1nk68i-1774802764488.webp",
-      era: "1955–1975",
-      material: "Sắt",
-      summary:
-        "Hiện vật chứng tích chiến tranh được bàn giao từ Nhà Chứng tích Chiến tranh năm 1990.",
-      enSummary:
-        "A wartime remnant transferred from the War Remnants House in 1990.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/bom-cbu-55",
-    },
-    {
-      id: "phu-dieu",
-      topic: "dan-toc",
-      name: "Phù điêu Cơ Tu",
-      en: "Co Tu carved reliefs",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_qm704x4fvt-1775100280017.webp",
-      era: "Thế kỷ XX",
-      material: "Gỗ",
-      summary:
-        "Bộ phù điêu gỗ chạm hình rồng và thằn lằn từ nhà Gươl của người Cơ Tu tại vùng Giằng – Quảng Nam.",
-      enSummary:
-        "Wooden relief carvings of dragons and lizards from a Co Tu communal Guol house.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/pho-yiau",
-    },
-    {
-      id: "di-chuc",
-      topic: "doc-lap",
-      name: "Bản di chúc",
-      en: "Historical testament",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_m59hgxxluy-1774794845046.webp",
-      era: "1884",
-      material: "Giấy",
-      summary:
-        "Bản di chúc chữ Hán Nôm gắn với danh nhân Ông Ích Khiêm, lưu lời căn dặn cho con cháu.",
-      enSummary:
-        "A handwritten testament associated with scholar and military figure Ong Ich Khiem.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ban-di-choc",
-    },
-    {
-      id: "canh-cua",
-      topic: "chien-tranh",
-      name: "Cánh cửa nhà tù",
-      en: "Prison doors",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_iosdna45zc-1774801711882.webp",
-      era: "1946–1954",
-      material: "Sắt",
-      summary:
-        "Cánh cửa được lưu giữ từ nhà lao Con Gà, ghi dấu lịch sử đấu tranh và giam cầm tại Đà Nẵng.",
-      enSummary:
-        "Original prison doors from the Con Ga detention facility, reflecting Da Nang’s wartime history.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/canh-ca-nha-to",
-    },
-    {
-      id: "ghe-bau",
-      topic: "van-hoa-quang",
-      name: "Ghe bầu",
-      en: "Traditional trading boat",
-      image:
-        "https://baotangdanang.vn/uploads/artifacts/artifact_kvx3ir44ha-1774803583740.webp",
-      era: "Mô hình thế kỷ XXI",
-      material: "Gỗ",
-      summary:
-        "Mô hình ghe bầu – phương tiện vận tải đường biển và giao thương truyền thống nổi tiếng của xứ Quảng.",
-      enSummary:
-        "A modern wooden model of a traditional trading boat associated with coastal Quang culture.",
-      url: "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/ghe-bau",
-    },
-  ];
-  A.push(
-    ...(window.MuseumCollection?.items || []).filter(
-      (item) =>
-        !A.some(
-          (existing) => existing.url === item.url || existing.id === item.id,
-        ),
-    ),
-  );
-  for (const record of A) {
-    const linked = window.MuseumObjectVideos?.[record.id] || [];
-    record.videos = [...(record.videos || []), ...linked];
-  }
+  const A = window.MuseumContent.artifacts;
   const FLOOR_NAMES = {
     1: [
       "Cổ vật & khám phá",
@@ -1307,10 +883,10 @@
   }
   function modeLabel() {
     return human(
-      "Chế độ trợ lý dữ liệu",
-      "Data assistant mode",
-      "자료 기반 도우미 모드",
-      "资料助手模式",
+      "Tra cứu hồ sơ · Có nguồn",
+      "Record search · sourced",
+      "기록 검색 · 출처 제공",
+      "档案检索 · 有来源",
     );
   }
   function emit(name, detail = {}) {
@@ -1407,7 +983,7 @@
     $all("[data-lang]").forEach((el) =>
       el.classList.toggle("selected", el.dataset.lang === state.lang),
     );
-    if (!guideContext.turns.length && $("messages").children.length) resetGuide();
+    if (!guideContext.turns.length && $("messages").children.length) { const pin=state.chatArtifact;resetGuide();state.chatArtifact=pin;guideContext.artifact=pin; }
     renderPage();
     emit("language", { language: state.lang });
   }
@@ -1452,6 +1028,7 @@
     if (!target) return;
     if (state.page === "scan" && page !== "scan") stopCamera();
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    try{state.speech?.abort();}catch{}
     if (remember && state.page !== page) state.stack.push(state.page);
     state.stack = state.stack.slice(-30);
     state.page = page;
@@ -1490,7 +1067,10 @@
   function openArtifact(id, remember = true) {
     const a = A.find((x) => x.id === id);
     if (!a) return;
+    if(state.page === "catalog") state.catalogScroll = $("catalog-list").scrollTop;
     state.artifact = id;
+    state.chatArtifact = id;
+    guideContext.artifact = id;
     nav("artifact", remember);
   }
   function openArticle(id, remember = true) {
@@ -2079,6 +1659,7 @@
         pace: r.pace,
         interests: r.interests,
         sameFloor: [1, 2, 3].includes(r.sameFloor) ? r.sameFloor : null,
+        reasons: Object.fromEntries(Object.entries(r.reasons||{}).filter(([id,text])=>r.ids.includes(id)&&typeof text==="string"&&text.length<=320)),
       };
     } catch {}
   }
@@ -2211,6 +1792,7 @@
     },
   };
   function cu(k) {
+    if(k==="help"&&window.MuseumLexicon)return MuseumLexicon.t("noData");
     return (CHAT_UI[state.lang] || CHAT_UI.vi)[k];
   }
   let chatFollowsTail = true;
@@ -2297,10 +1879,10 @@
       $('chat-speed').addEventListener('change',()=>{state.revealSpeed=$('chat-speed').value;persist('museum_reveal_speed',state.revealSpeed);window.MuseumChatText.setSpeed(state.revealSpeed);});
     }
     const deep=state.replyDepth==='deep';
-    $('chat-depth').textContent=(deep?'✦ ':'◇ ')+human('Suy nghĩ kỹ','Think carefully','자세히 생각','仔细思考');
+    $('chat-depth').textContent=(deep?'✦ ':'◇ ')+(window.MuseumLexicon?.t('detail')||human('Trả lời chi tiết','Detailed reply','자세한 답변','详细回答'));
     $('chat-depth').setAttribute('aria-checked',String(deep));
     $('chat-depth').disabled=$('messages').getAttribute('aria-busy')==='true';
-    $('chat-speed-label').textContent=human('Chữ','Text','글자','文字');
+    $('chat-speed-label').textContent=window.MuseumLexicon?.t('speed')||human('Tốc độ hiện câu trả lời','Text display speed','답변 표시 속도','回答显示速度');
     $('chat-speed').setAttribute('aria-label',human('Tốc độ hiện chữ','Text reveal speed','글자 표시 속도','文字显示速度'));
     const speeds={slow:human('Chậm','Slow','천천히','慢速'),normal:human('Vừa','Normal','보통','正常'),instant:human('Hiện ngay','Instant','즉시','立即显示'),auto:human('Theo thiết bị','Device setting','기기 설정','设备设置')};
     $('chat-speed').replaceChildren(...Object.entries(speeds).map(([value,label])=>{const option=document.createElement('option');option.value=value;option.textContent=label;return option;}));
@@ -2376,7 +1958,7 @@
       b.setAttribute("aria-label", title);
       b.onclick = async () => {
         if (name === "listen") {
-          speakChat(text);
+          speakChat(text,b);
           return;
         }
         if (name === "copy") {
@@ -2446,16 +2028,18 @@
     return box;
   }
 
-  function speakChat(txt) {
+  function speakChat(txt,control) {
     if (!("speechSynthesis" in window)) {
       toast(t("voiceUnsupported"));
       return;
     }
     try {
+      if(control?.dataset.speaking==='true'){speechSynthesis.cancel();return;}
       speechSynthesis.cancel();
       const s = new SpeechSynthesisUtterance(String(txt).slice(0, 2000));
       s.lang = speechLang();
       s.rate = 0.94;
+      bindSpeechStatus(s,control);
       speechSynthesis.speak(s);
     } catch (e) {
       toast(t("voiceUnsupported"));
@@ -2464,6 +2048,7 @@
   function resetGuide() {
     companion?.reset();
     guideContext.requestPlan=null;
+    state.chatArtifact=null;
     guideContext.artifact = null;
     guideContext.topic = null;
     guideContext.floor = null;
@@ -2473,7 +2058,8 @@
     guideContext.activeIntent = null;
     $("messages").replaceChildren();
     const name=window.MuseumVisitor?.getName();
-    addBubble((name?human(`Chào ${name}! `,`Hello ${name}! `,`${name}님, 안녕하세요! `,`${name}，你好！ `):'')+cu("welcome"), false, "", "🤖");
+    const welcome=human("Mây sẵn sàng giúp bạn tìm hiểu hiện vật. Quét QR hoặc chọn một hồ sơ để bắt đầu nhé!","I can help you explore museum objects. Scan a QR or choose a record to begin!","유물을 함께 알아봐요. QR을 스캔하거나 기록을 선택하세요!","我可以陪你了解文物，扫描二维码或选择档案开始吧！");
+    addBubble((name?human(`Chào ${name}! `,`Hello ${name}! `,`${name}님, 안녕하세요! `,`${name}，你好！ `):'')+welcome, false, "", "🤖");
   }
   function levenshtein1(a, b) {
     if (a === b) return 0;
@@ -3101,11 +2687,13 @@
     const query = String(q).slice(0, 700),
       s = norm(query),
       say = (...a) => a.some((k) => s.includes(norm(k)));
+    if(state.chatArtifact) guideContext.artifact=state.chatArtifact;
     const named = findMuseumEntity(query);
+    if(named?.type === "artifact") state.chatArtifact=named.item.id;
     const requestPlan = window.MuseumRequestPlan?.analyze(query,{previous:guideContext.requestPlan,namedArtifact:named?.type==='artifact'});
     const museumQuery = requestPlan?.domain !== 'study' && !requestPlan?.clarification && requestPlan?.domain !== 'conversation' && (!!named || /bao tang|hien vat|than cong|ma nao|sac phong|ghe bau|lich su|van hoa|co vat|tham quan|lo trinh|so do|tang [0-9]|tang nao|gia ve|gio mo cua|di bo|khong muon xem|nien dai|chat lieu|lam bang|made of|which floor|museum|artifact|material|history|route|low walking|박물관|유물|대포|博物馆|文物|古炮/.test(s)
       || ((guideContext.artifact || guideContext.recommended?.length) && /^(no |cai |hien vat do|what is|when was|where is|the second|thu hai|thu nhat)/.test(s)));
-    const social = companion?.respond(query,{language:state.lang,plan:requestPlan,deep:state.replyDepth==='deep',museum:museumQuery,openConversation:['life','playful'].includes(state.chatTopic),artifactName:named?.type==='artifact'?aname(named.item):''});
+    const social = !window.MuseumContent && companion?.respond(query,{language:state.lang,plan:requestPlan,deep:state.replyDepth==='deep',museum:museumQuery,openConversation:['life','playful'].includes(state.chatTopic),artifactName:named?.type==='artifact'?aname(named.item):''});
     if (social) {
       guideContext.requestPlan=social.requestPlan || null;
       guideContext.activeIntent='conversation'; guideContext.artifact=null; guideContext.topic=null; guideContext.recommended=[];
@@ -3116,6 +2704,7 @@
     if(requestPlan?.domain==='museum' && requestPlan.avoids.includes('study') && !named) return visitorConversation(human('Hiện vật nào đáng xem nhất?','What are the highlights?','추천 유물은 무엇인가요?','有什么必看文物？'));
     const timeAsk = say(
       "bao gio",
+      "bao nhieu tuoi",
       "nam nao",
       "nien dai",
       "thoi ky",
@@ -3632,6 +3221,7 @@
         !u.username &&
         !u.password &&
         !u.hash &&
+        !u.search &&
         u.href.length <= 2048
         ? u.href
         : null;
@@ -3649,12 +3239,12 @@
     if (submit) submit.disabled = true;
     $("messages").setAttribute("aria-busy", "true");
     const language = state.lang;
-    let preparation;
+    let preparation,backendFailed=false;
     renderReplyPreferences();
     try {
       addBubble(q, true);
       preparation=document.createElement('div');preparation.className='chat-preparing';preparation.setAttribute('role','status');
-      preparation.textContent=state.replyDepth==='deep'?human('Đang phân tích mục tiêu và điều kiện…','Analyzing the goal and constraints…','목표와 조건을 분석하고 있어요…','正在分析目标与条件……'):human('Đang chuẩn bị câu trả lời…','Preparing a reply…','답변을 준비하고 있어요…','正在准备回答……');
+      preparation.textContent=state.replyDepth==='deep'?human('Đang đối chiếu hồ sơ…','Checking source records…','기록을 대조하고 있어요…','正在对照档案……'):human('Đang chuẩn bị câu trả lời…','Preparing a reply…','답변을 준비하고 있어요…','正在准备回答……');
       $('messages').appendChild(preparation);scrollChat();
       await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
       $("chat-input").value = "";
@@ -3666,6 +3256,7 @@
       guideContext.turns.push(currentTurn);
       guideContext.turns = guideContext.turns.slice(-10);
       const localAnswer = replyKnowledge(q);
+      document.dispatchEvent(new CustomEvent("museum:question",{detail:{intent:guideContext.activeIntent||"unknown"}}));
       currentTurn.scope = localAnswer.kind === "conversation" ? "conversation" : "museum";
       preparation.remove();
       const endpoint = safeEndpoint(sv("museum_ai_endpoint"));
@@ -3691,7 +3282,8 @@
                   artifact: guideContext.artifact,
                   zone: safeCurrentZone(),
                 },
-                version: "v6",
+                candidates: window.MuseumRetrieval.search(q,A,{artifact:guideContext.artifact}).map(a=>"artifact:"+a.id),
+                version: "v7",
                 depth: state.replyDepth,
               }),
             });
@@ -3737,6 +3329,7 @@
               sources: sources.map((url) => ({ url, label: cu("source") })),
             },
           );
+          emit("reply",{answer:{text:payload.answer,sources:sources.map(url=>({url})),cards:(payload.sourceDetails||[]).map(s=>s.recordId?.replace(/^artifact:/,""))}});
           await responseBubble.reveal.finished;
           guideContext.turns.push({
             role: "assistant",
@@ -3748,6 +3341,7 @@
         } catch (error) {
           typing.closest(".assistant-row")?.remove();
           state.guideMode = "offline";
+          backendFailed=true;
           toast(t("aiError"));
         }
       }
@@ -3759,13 +3353,14 @@
       const responseBubble = addBubble(
         answer.text,
         false,
-        answer.kind === "conversation" ? (answer.fiction ? human("Tưởng tượng vui", "Playful fiction", "재미있는 상상", "趣味想象") : human("Chuyện cùng Mây", "A moment with Mây", "마이와 대화", "和小云聊聊")) : modeLabel(),
+        answer.kind === "conversation" ? (answer.fiction ? human("Tưởng tượng vui", "Playful fiction", "재미있는 상상", "趣味想象") : human("Chuyện cùng Mây", "A moment with Mây", "마이와 대화", "和小云聊聊")) : backendFailed?human('Ngoại tuyến · Đang dùng hồ sơ tại thiết bị','Offline mode · using on-device records','오프라인 모드 · 기기 기록 사용','离线模式 · 使用本机档案'):modeLabel(),
         answer.mood || "😊",
         answer.source || "",
         { animate: true, sources: answer.sources },
       );
       await responseBubble.reveal.finished;
       smartButtons(answer);
+      emit("reply",{answer});
       guideContext.turns.push({ role: "assistant", content: answer.text, scope: answer.kind === "conversation" ? "conversation" : "museum" });
       guideContext.turns = guideContext.turns.slice(-10);
     } finally {
@@ -3783,7 +3378,13 @@
       "vi-VN"
     );
   }
-  function speakText(txt) {
+  function bindSpeechStatus(utterance,control){
+    if(!control)return;const old=control.textContent;
+    const reset=()=>{control.textContent=old;control.setAttribute('aria-pressed','false');delete control.dataset.speaking;};
+    utterance.onstart=()=>{control.dataset.speaking='true';control.setAttribute('aria-pressed','true');control.textContent=human('■ Dừng đọc','■ Stop reading','■ 읽기 중지','■ 停止朗读');};
+    utterance.onend=reset;utterance.onerror=reset;
+  }
+  function speakText(txt,control=$('article-speak')) {
     if (!("speechSynthesis" in window)) {
       toast(t("voiceUnsupported"));
       return;
@@ -3802,6 +3403,7 @@
     u.onerror = () => {
       $("article-speak").textContent = t("listen");
     };
+    bindSpeechStatus(u,control);
     speechSynthesis.speak(u);
     $("article-speak").textContent = t("speakStop");
   }
@@ -3824,8 +3426,11 @@
       const old = target.placeholder;
       r.onstart = () => {
         target.placeholder = t("speechListening");
+        const mic=target.id==='chat-input'?$('chat-mic'):$('search-mic');
+        mic?.setAttribute('aria-pressed','true');if(mic)mic.dataset.listening='true';
       };
       r.onresult = (e) => {
+        if(state.speech!==r||document.hidden)return;
         const words = e.results[0][0].transcript;
         target.value = words;
         if (send) sendMessage(words);
@@ -3837,7 +3442,8 @@
       };
       r.onend = () => {
         target.placeholder = old;
-        state.speech = null;
+        const mic=target.id==='chat-input'?$('chat-mic'):$('search-mic');mic?.setAttribute('aria-pressed','false');if(mic)delete mic.dataset.listening;
+        if(state.speech===r)state.speech = null;
       };
       r.start();
     } catch (e) {
@@ -3958,6 +3564,7 @@
     showQR(t("qrInvalid"));
   }
   async function decode(canvas) {
+    if(!window.jsQR)await window.MuseumLoadQRDecoder?.();
     if (window.jsQR) {
       try {
         const c = canvas.getContext("2d", { willReadFrequently: true });
@@ -3977,7 +3584,9 @@
     }
     return null;
   }
+  let cameraRequest=0;
   function stopCamera() {
+    cameraRequest++;
     if (state.scanLoop) cancelAnimationFrame(state.scanLoop);
     state.scanLoop = null;
     const s = state.scan;
@@ -3995,9 +3604,11 @@
   async function openCamera() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       toast(t("qrCameraError"));
+      emit("cameraerror");
       return;
     }
     stopCamera();
+    const token=cameraRequest;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
@@ -4007,7 +3618,7 @@
         },
         audio: false,
       });
-      if (state.page !== "scan") {
+      if (state.page !== "scan" || token!==cameraRequest) {
         stream.getTracks().forEach((x) => x.stop());
         return;
       }
@@ -4017,6 +3628,7 @@
       await video.play();
       $("scan-state").textContent = t("cameraStarted");
       $("scan-video-box").classList.add("streaming");
+      emit("camera",{stream});
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
       let last = 0;
@@ -4034,7 +3646,7 @@
             );
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             const result = await decode(canvas);
-            if (result) {
+            if (result && state.scan && state.page === "scan" && token===cameraRequest) {
               parseQR(result);
               return;
             }
@@ -4047,9 +3659,11 @@
       };
       state.scanLoop = requestAnimationFrame(tick);
     } catch (e) {
+      if(token!==cameraRequest || state.page!=="scan")return;
       toast(t("qrCameraError"));
       showQR(t("qrCameraError"));
       stopCamera();
+      emit("cameraerror");
     }
   }
   async function scanFile(file) {
@@ -4079,6 +3693,7 @@
           cn.height,
         );
         const val = await decode(cn);
+        if (state.page!=="scan")return;
         if (val) parseQR(val);
         else showQR(t("qrFileError"));
       } finally {
@@ -4235,7 +3850,7 @@
     $("catalog-floor").addEventListener("click", () => nav("floors"));
     $("artifact-speak").addEventListener("click", () => {
       const a = A.find((x) => x.id === state.artifact);
-      speakText(aname(a) + ". " + asummary(a));
+      speakText(aname(a) + ". " + asummary(a),$("artifact-speak"));
     });
     $("artifact-share").addEventListener("click", async () => {
       const url =
@@ -4422,6 +4037,9 @@
     renderGuide,
     renderPlan,
     renderMap,
+    openCamera,
+    renderRoute,
+    addBubble,
     renderArtifact,
     renderArticle,
     updateTranslations,

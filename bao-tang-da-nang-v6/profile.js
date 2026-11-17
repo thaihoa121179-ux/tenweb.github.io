@@ -8,7 +8,7 @@
   const words = {
     vi: {
       title: "Cá nhân",
-      eyebrow: "HÀNH TRÌNH CỦA BẠN",
+      eyebrow: "KHÔNG GIAN CỦA BẠN",
       subtitle: "Lưu những điều đáng nhớ, khám phá theo nhịp riêng.",
       progress: "Dấu chân khám phá",
       viewed: "nội dung đã mở",
@@ -68,7 +68,7 @@
       quizNote:
         "Câu hỏi dựa trên dữ liệu dự án kế thừa từ nguồn bảo tàng; không xác nhận vị trí thực tế của hiện vật.",
       opened: "Đã mở",
-      generated: "Nhật ký khám phá Bảo tàng Đà Nẵng",
+      generated: "Nhật ký tham quan Bảo tàng Đà Nẵng",
       noNotes: "Chưa có ghi chú.",
       none: "Chưa có nội dung.",
       unlocked: "Đã mở khóa huy hiệu Am hiểu di sản!",
@@ -96,7 +96,7 @@
     },
     en: {
       title: "My space",
-      eyebrow: "YOUR JOURNEY",
+      eyebrow: "YOUR SPACE",
       subtitle: "Keep the moments that matter. Explore at your own pace.",
       progress: "Your discoveries",
       viewed: "records opened",
@@ -157,7 +157,7 @@
       quizNote:
         "Questions use inherited, sourced museum records; they do not confirm physical artifact locations.",
       opened: "Opened",
-      generated: "Da Nang Museum discovery journal",
+      generated: "Da Nang Museum visit journal",
       noNotes: "No notes yet.",
       none: "No records yet.",
       unlocked: "Heritage learner badge unlocked!",
@@ -185,7 +185,7 @@
     },
     ko: {
       title: "내 공간",
-      eyebrow: "나만의 여정",
+      eyebrow: "나의 공간",
       subtitle: "인상 깊은 순간을 기록하고 나만의 속도로 둘러보세요.",
       progress: "탐방 기록",
       viewed: "열어 본 자료",
@@ -245,7 +245,7 @@
       quizNote:
         "기존 박물관 자료를 바탕으로 한 문제이며 유물의 실제 위치를 확인하지 않습니다.",
       opened: "열람",
-      generated: "다낭 박물관 탐방 일지",
+      generated: "다낭 박물관 관람 일지",
       noNotes: "메모가 없습니다.",
       none: "기록이 없습니다.",
       unlocked: "문화유산 학습자 배지를 획득했습니다!",
@@ -273,7 +273,7 @@
     },
     zh: {
       title: "个人",
-      eyebrow: "您的旅程",
+      eyebrow: "我的空间",
       subtitle: "记录难忘时刻，按照自己的节奏探索。",
       progress: "探索足迹",
       viewed: "已打开的资料",
@@ -328,7 +328,7 @@
       profile: "返回个人页",
       quizNote: "题目依据项目已有的博物馆来源资料，不确认文物的实际位置。",
       opened: "已打开",
-      generated: "岘港博物馆探索日记",
+      generated: "岘港博物馆参观日记",
       noNotes: "暂无笔记。",
       none: "暂无记录。",
       unlocked: "已解锁遗产学习者徽章！",
@@ -355,7 +355,7 @@
       cham: "占婆",
     },
   };
-  const tr = (key) => (words[M.state.lang] || words.vi)[key] || key;
+  const tr = (key) => ["quiz","journal"].includes(key)?MuseumLexicon.t(key):(words[M.state.lang] || words.vi)[key] || key;
   const blank = () => ({
     version: 1,
     visits: [],
@@ -411,38 +411,7 @@
   }
   let quiz = { index: 0, answers: [], complete: false };
   let saveStatus = "";
-  const questions = [
-    {
-      q: "q1",
-      options: ["1840", "1884", "1954", "1990"],
-      answer: 0,
-      id: "sac-phong",
-    },
-    {
-      q: "q2",
-      options: ["paper", "wood", "iron", "stone"],
-      answer: 1,
-      id: "phu-dieu",
-    },
-    {
-      q: "q3",
-      options: ["cart", "bicycle", "boat", "car"],
-      answer: 2,
-      id: "ghe-bau",
-    },
-    {
-      q: "q4",
-      options: ["floor1", "floor2", "floor3", "unknown"],
-      answer: 1,
-      topic: "dan-toc",
-    },
-    {
-      q: "q5",
-      options: ["dongson", "oc-eo", "cham", "sahuynh"],
-      answer: 3,
-      id: "ma-nao",
-    },
-  ];
+  let questions = MuseumLearning.quiz(M.A,M.state.lang);
   const textOption = (value) => (/^\d+$/.test(value) ? value : tr(value));
   function write() {
     try {
@@ -536,10 +505,12 @@
       quizSection.innerHTML = `<div class="backline"><button class="back" data-go="profile" aria-label="${M.esc(tr("back"))}">‹</button><div class="heading"><div class="eyebrow">${M.esc(tr("quiz"))}</div><h1>${M.esc(tr("finished"))}</h1></div></div><div class="scroll"><section class="card quiz-complete"><span class="quiz-medal" aria-hidden="true">${score >= 4 ? "✦" : "◇"}</span><p>${M.esc(tr("score"))}</p><strong>${score}<span>/5</span></strong>${score >= 4 ? `<p>${M.esc(tr("unlocked"))}</p>` : ""}<p>${M.esc(tr("best"))}: ${data.best}/5</p><div class="buttonrow"><button class="primary" data-personal="start-quiz">${M.esc(tr("retry"))}</button><button class="secondary" data-go="profile">${M.esc(tr("profile"))}</button></div></section></div>`;
       return;
     }
+    if(!questions.length)return;
     const q = questions[quiz.index];
+    const prompt = MuseumLexicon.t(q.type === "era" ? "quizEra" : "quizMaterial").replace("{name}",M.aname(M.A.find(a=>a.id===q.id)));
     const selected = quiz.answers[quiz.index];
     const answered = Number.isInteger(selected);
-    quizSection.innerHTML = `<div class="backline"><button class="back" data-go="profile" aria-label="${M.esc(tr("back"))}">‹</button><div class="heading"><div class="eyebrow">${M.esc(tr("quiz"))}</div><h1>${M.esc(tr("question"))} ${quiz.index + 1} / 5</h1></div></div><div class="scroll"><div class="quiz-dots" aria-hidden="true">${questions.map((_, i) => `<span class="${i <= quiz.index ? "active" : ""}"></span>`).join("")}</div><section class="card quiz-question"><h2 id="quiz-prompt">${M.esc(tr(q.q))}</h2><div class="quiz-options" role="group" aria-labelledby="quiz-prompt">${q.options.map((value, i) => `<button data-quiz-choice="${i}" ${answered ? "disabled" : ""} class="quiz-option${answered && i === q.answer ? " correct" : ""}${answered && i === selected && i !== q.answer ? " incorrect" : ""}" aria-pressed="${selected === i}"><span>${String.fromCharCode(65 + i)}</span><b>${M.esc(textOption(value))}</b>${answered && i === q.answer ? '<span aria-hidden="true">✓</span>' : ""}</button>`).join("")}</div><div id="quiz-feedback" role="status">${answered ? `<p class="quiz-feedback"><b>${M.esc(tr(selected === q.answer ? "correct" : "incorrect"))}</b><br>${M.esc(tr("answer"))}: ${M.esc(textOption(q.options[q.answer]))}</p><a class="source" href="${M.esc(sourceQuestion(q))}" target="_blank" rel="noopener noreferrer">${M.esc(tr("source"))} ↗</a><button class="primary full" data-personal="next">${M.esc(tr(quiz.index === questions.length - 1 ? "result" : "next"))} →</button>` : ""}</div></section><p class="note">${M.esc(tr("quizNote"))}</p></div>`;
+    quizSection.innerHTML = `<div class="backline"><button class="back" data-go="profile" aria-label="${M.esc(tr("back"))}">‹</button><div class="heading"><div class="eyebrow">${M.esc(tr("quiz"))}</div><h1>${M.esc(tr("question"))} ${quiz.index + 1} / 5</h1></div></div><div class="scroll"><div class="quiz-dots" aria-hidden="true">${questions.map((_, i) => `<span class="${i <= quiz.index ? "active" : ""}"></span>`).join("")}</div><section class="card quiz-question"><h2 id="quiz-prompt">${M.esc(prompt)}</h2><div class="quiz-options" role="group" aria-labelledby="quiz-prompt">${q.options.map((value, i) => `<button data-quiz-choice="${i}" ${answered ? "disabled" : ""} class="quiz-option${answered && i === q.answer ? " correct" : ""}${answered && i === selected && i !== q.answer ? " incorrect" : ""}" aria-pressed="${selected === i}"><span>${String.fromCharCode(65 + i)}</span><b>${M.esc(textOption(value))}</b>${answered && i === q.answer ? '<span aria-hidden="true">✓</span>' : ""}</button>`).join("")}</div><div id="quiz-feedback" role="status">${answered ? `<p class="quiz-feedback"><b>${M.esc(tr(selected === q.answer ? "correct" : "incorrect"))}</b><br>${M.esc(tr("answer"))}: ${M.esc(textOption(q.options[q.answer]))}</p><p>${M.esc(MuseumLexicon.t("explanation"))}: ${M.esc(q.explanation)}</p><button class="secondary" data-artifact="${M.esc(q.id)}">${M.esc(M.aname(M.A.find(a=>a.id===q.id)))} ›</button><a class="source" href="${M.esc(sourceQuestion(q))}" target="_blank" rel="noopener noreferrer">${M.esc(tr("source"))} ↗</a><button class="primary full" data-personal="next">${M.esc(tr(quiz.index === questions.length - 1 ? "result" : "next"))} →</button>` : ""}</div></section><p class="note">${M.esc(tr("quizNote"))}</p></div>`;
   }
   function recordVisit(page) {
     const id =
@@ -647,6 +618,7 @@
         void shareJournal();
         break;
       case "start-quiz":
+        questions=MuseumLearning.quiz(M.A,M.state.lang);
         quiz = { index: 0, answers: [], complete: false };
         renderQuiz();
         M.nav("quiz");
@@ -671,6 +643,7 @@
         if (window.confirm(tr("confirm"))) {
           const prefs = { contrast: data.contrast, large: data.large };
           data = { ...blank(), ...prefs };
+          document.dispatchEvent(new CustomEvent("museum:profileclear"));
           write();
           quiz = { index: 0, answers: [], complete: false };
           saveStatus = "";
@@ -704,6 +677,7 @@
   });
   document.addEventListener("museum:language", () => {
     captureNote();
+    questions=MuseumLearning.quiz(M.A,M.state.lang);
     saveStatus = "";
     renderProfile();
     renderQuiz();

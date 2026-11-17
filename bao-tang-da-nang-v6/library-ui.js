@@ -111,14 +111,14 @@
       updateFilters();
       current=searched.filter(a=>(filters.institution==='all'||institution(a)===filters.institution)&&(filters.material==='all'||material(a)===filters.material)&&(filters.media==='all'||hasVideo(a)===(filters.media==='yes')));
       const pages=Math.max(1,Math.ceil(current.length/PAGE_SIZE));page=Math.max(0,Math.min(page,pages-1));
-      const start=page*PAGE_SIZE,visible=current.slice(start,start+PAGE_SIZE);
+      const start=page*PAGE_SIZE,visible=current.slice(0,(page+1)*PAGE_SIZE);
       grid.setAttribute('aria-label',tr('resultList'));
       grid.innerHTML=visible.length?visible.map(card).join(''):`<div class="library-empty"><h2>${escape(tr('empty'))}</h2><p>${escape(tr('tryAgain'))}</p><button type="button" class="secondary" data-library-clear>${escape(tr('clear'))}</button></div>`;
-      const range=visible.length?`${start+1}–${start+visible.length}`:'0';
+      const range=visible.length?`1–${visible.length}`:'0';
       count.textContent=`${current.length} ${tr('records')} · ${tr('shown')} ${range}`;
-      previous.textContent=`← ${tr('previous')}`;next.textContent=`${tr('next')} →`;
+      previous.textContent=`← ${tr('previous')}`;next.textContent=({vi:'Xem thêm',en:'Load more',ko:'더 보기',zh:'加载更多'}[lang()]);
       previous.disabled=page===0;next.disabled=page>=pages-1;
-      status.textContent=`${tr('page')} ${page+1} ${tr('of')} ${pages}`;
+      status.textContent=`${visible.length} / ${current.length}`;
       pager.setAttribute('aria-label',tr('pagination'));pager.hidden=current.length===0;
       if(scroll)list.scrollTo({top:0,behavior:'auto'});
     }
@@ -132,7 +132,7 @@
     function onClick(event) {
       const button=event.target.closest('button');if(!button||!list.contains(button))return;
       if(button.dataset.libraryPage){
-        page+=button.dataset.libraryPage==='next'?1:-1;draw({scroll:true});
+        page+=button.dataset.libraryPage==='next'?1:-1;draw();
         // Keep keyboard users on a usable pagination control after the final page is reached.
         if(button.disabled)(button===next?previous:next).focus({preventScroll:true});
       }else if(button.hasAttribute('data-library-clear')){
@@ -144,6 +144,8 @@
       }
     }
     function onImageError(event){const image=event.target;if(image.tagName!=='IMG')return;image.hidden=true;const fallback=image.nextElementSibling;if(fallback)fallback.hidden=false;}
+    if(typeof IntersectionObserver==='function'){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!next.disabled&&!doc.getElementById('page-catalog')?.inert){page++;draw();}},{root:list,rootMargin:'100px'});observer.observe(next);}
+    grid.addEventListener('load',event=>{if(event.target.tagName==='IMG')event.target.classList.add('loaded');},true);
     controls.addEventListener('change',onChange);list.addEventListener('click',onClick);grid.addEventListener('error',onImageError,true);
     const controller={
       render(items,config={}) {
@@ -151,7 +153,7 @@
         const nextSignature=query+'\u0000'+searched.map(a=>a.id).join('\u0001');
         if(nextSignature!==signature)page=0;signature=nextSignature;draw();return controller;
       },
-      getState(){return{...filters,page:page+1,pageSize:PAGE_SIZE,total:current.length,visible:Math.min(PAGE_SIZE,Math.max(0,current.length-page*PAGE_SIZE)),query};},
+      getState(){return{...filters,page:page+1,pageSize:PAGE_SIZE,total:current.length,visible:Math.min((page+1)*PAGE_SIZE,current.length),query};},
       destroy(){controls.removeEventListener('change',onChange);list.removeEventListener('click',onClick);grid.removeEventListener('error',onImageError,true);},
       hasVideo
     };

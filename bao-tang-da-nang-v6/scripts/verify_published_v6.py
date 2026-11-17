@@ -62,6 +62,22 @@ def local_path(root: Path, value: str) -> Path:
 
 
 def expected_photos(root: Path, minimum: int) -> tuple[list[dict], dict]:
+    if (root / 'data/museum-content.json').is_file():
+        raw=(root/'data/museum-content.json').read_bytes()
+        content=json.loads(raw)
+        records=content.get('artifacts',[])
+        if content.get('schemaVersion')!=1 or not minimum <= len(records) <= 1000:
+            raise ValueError(f'Expected {minimum}..1000 canonical records, found {len(records)}')
+        ids=set();paths=set();photos=[]
+        for record in records:
+            ident=record.get('id'); image=record.get('image')
+            if not ident or ident in ids or image in paths: raise ValueError('Duplicate canonical ID/photo URL')
+            ids.add(ident); paths.add(image); path=local_path(root,image)
+            if record.get('guide',{}).get('source')!=record.get('url'): raise ValueError('Canonical source mismatch')
+            photos.append({'id':ident,'path':image,'expectedSha256':digest(path.read_bytes())})
+        import gzip
+        if gzip.decompress((root/'data/museum-content.json.gz').read_bytes())!=raw: raise ValueError('Stale compressed canonical JSON')
+        return photos, {'actualRecords':len(records),'legacyRecords':9,'collectionSha256':digest(raw),'minimumRecords':minimum}
     collection_bytes = (root / 'collection.js').read_bytes()
     collection = assigned_json(collection_bytes.decode(), 'MuseumCollection')
     mapping = assigned_json((root / 'media-map.js').read_text(), 'MuseumMediaMap')
@@ -116,10 +132,25 @@ class Assets(HTMLParser):
             self.styles.append(attrs['href'])
 
 
-def checked_assets(index: str, version: str) -> dict[str, str]:
+def checked_assets(index: str, version: str, bootstrap: str = "") -> dict[str, str]:
     parsed = Assets()
     parsed.feed(index)
     assets = {}
+    if version.startswith('7.'):
+        matches=[v for v in parsed.scripts if urlsplit(v).path=='bootstrap.js']
+        if matches!=['bootstrap.js?v='+version]: raise ValueError('Missing versioned bootstrap.js')
+        if "version='"+version+"'" not in bootstrap: raise ValueError('Bootstrap version mismatch')
+        modules=['qr-decoder.js','qr-generator.js','guide-engine.js','chat-text.js','object-videos.js','videos.js','library-ui.js','request-plan.js','conversation.js','experience-i18n.js','learning-engine.js','retrieval.js','visitor.js','app.js','v6.js','profile.js','mobile.js','analytics.js','experience.js','photo-query.js','journey-card.js','offline.js']
+        positions=[bootstrap.find("'"+name+"'") for name in modules]
+        if -1 in positions or positions!=sorted(positions): raise ValueError('Bad bootstrap module dependency order')
+        for name in ['bootstrap.js','app-foundation.js','app-core.js','app-runtime.js',*modules]: assets[name]=name+'?v='+version
+        for name in ['app-styles.css']:
+            values=[v for v in parsed.styles if urlsplit(v).path==name]
+            if values!=[name+'?v='+version]: raise ValueError('Missing versioned stylesheet '+name)
+            assets[name]=values[0]
+        for name in ['data/museum-content.json','data/museum-content.json.gz','sw.js','manifest.webmanifest','qr-print/index.html','qr-print/print.js','qr-print/print.css','admin/index.html','admin/admin.js','admin/admin.css']:
+            assets[name]=name+'?v='+version
+        return assets
     for name, values in [(name, parsed.scripts) for name in REQUIRED_JS] + [(name, parsed.styles) for name in REQUIRED_CSS]:
         matches = [value for value in values if urlsplit(value).path == name]
         if len(matches) != 1 or parse_qs(urlsplit(matches[0]).query).get('v') != [version]:
@@ -202,7 +233,7 @@ def wait_for_deploy(client: PagesClient, root: Path, expected: dict, version: st
             if remaining <= 0:
                 raise TimeoutError('Deployment readiness deadline reached')
             data, response = client.fetch('index.html', timeout=min(12, remaining))
-            assets = checked_assets(data.decode('utf-8'), version)
+            assets = checked_assets(data.decode('utf-8'), version, (root/'bootstrap.js').read_text() if (root/'bootstrap.js').is_file() else '')
             verified = []
             for name, source in assets.items():
                 remaining = deadline - time.monotonic()
@@ -212,7 +243,7 @@ def wait_for_deploy(client: PagesClient, root: Path, expected: dict, version: st
                 local = (root / name).read_bytes()
                 if digest(live) != digest(local):
                     raise ValueError(f'Stale/mismatched published asset: {name}')
-                if name == 'collection.js' and digest(live) != expected['collectionSha256']:
+                if name in ('collection.js','data/museum-content.json') and digest(live) != expected['collectionSha256']:
                     raise ValueError('Published collection SHA256 differs from checkout')
                 verified.append({'name': name, 'sha256': digest(live), **metadata})
             return {'ready': True, 'index': response, 'assetVersion': version,
@@ -268,8 +299,8 @@ def verify(args) -> dict:
     try:
         photos, expected = expected_photos(root, args.minimum_records)
         report['expected'] = expected
-        checked_assets((root / 'index.html').read_text(), args.asset_version)
-        for name in REQUIRED_JS:
+        assets=checked_assets((root / 'index.html').read_text(), args.asset_version, (root/'bootstrap.js').read_text() if (root/'bootstrap.js').is_file() else '')
+        for name in [name for name in assets if name.endswith('.js')]:
             subprocess.run(['node', '--check', str(root / name)], check=True, capture_output=True, timeout=20)
         token = os.environ.get('GITHUB_SHA') or expected['collectionSha256'][:16]
         client = PagesClient(args.base_url, token)
@@ -311,7 +342,7 @@ def arguments(argv=None):
     parser.add_argument('--base-url', default=DEFAULT_BASE)
     parser.add_argument('--minimum-records', type=int, default=200)
     parser.add_argument('--minimum-dimension', type=int, default=128)
-    parser.add_argument('--asset-version', default='6.9')
+    parser.add_argument('--asset-version', default='7.0.0')
     parser.add_argument('--max-wait', type=float, default=180)
     parser.add_argument('--poll-interval', type=float, default=8)
     parser.add_argument('--workers', type=int, default=8)

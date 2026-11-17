@@ -1,4 +1,5 @@
 import { records } from './corpus.mjs';
+import { createFeatureHandler } from './features.mjs';
 import '../guide-engine.js';
 import '../request-plan.js';
 const guide = globalThis.MuseumGuideEngine;
@@ -14,7 +15,7 @@ const unknown = {
 };
 
 const indexes = new WeakMap();
-const MAX_RECORDS = 6;
+const MAX_RECORDS = 5;
 const MAX_HISTORY_CHARS = 6000;
 const LOCAL_HOSTS = new Set(['baotangdanang.vn', 'www.baotangdanang.vn']);
 const text = (value, max = 1000) => typeof value === 'string' ? value.slice(0, max) : '';
@@ -144,6 +145,7 @@ function retrieval(input, index) {
     if (routeRequest && !tags.length && record.type === 'topic' && !scope.referenceOnly) score += 6;
     if (followup && (record.id === `artifact:${input.context.artifact}` || record.id === `topic:${input.context.topic}`)) score += 12;
     if (followup && names.some(n => previous.includes(n))) score += 7;
+    if(score>=6&&input.candidates?.includes(record.id))score+=1;
     return { record, score };
   }).filter(item => item.score >= 6).sort((a, b) => b.score - a.score);
   return { decision, hits: scored.slice(0, MAX_RECORDS).map(item => item.record) };
@@ -252,7 +254,8 @@ function parseInput(raw, index) {
     compact.unshift({ role: turn.role, content }); budget -= content.length;
   }
   if(raw.depth != null && !['standard','deep'].includes(raw.depth))throw Error('invalid_depth');
-  return { message: raw.message.trim(), language: raw.language, history: compact, context: cleanContext, depth: raw.depth || 'standard' };
+  if(raw.candidates!=null&&(!Array.isArray(raw.candidates)||raw.candidates.length>5||raw.candidates.some(id=>typeof id!=='string'||!index.byId.has(id))))throw Error('invalid_candidates');
+  return { candidates:raw.candidates||[], message: raw.message.trim(), language: raw.language, history: compact, context: cleanContext, depth: raw.depth || 'standard' };
 }
 
 async function boundedJson(request, maxBytes = MAX_BODY) {
@@ -310,35 +313,38 @@ function prompt(input, retrieved, decision, index) {
 
 export function createHandler(providerFetch = fetch, options = {}) {
   const index = corpusIndex(options.records || records);
+  const features=createFeatureHandler(providerFetch,boundedJson);
   const providerTimeout = Math.max(1, Math.min(12000, options.timeoutMs || 12000));
   const deepTimeout = Math.max(1, Math.min(45000, options.deepTimeoutMs || 40000));
   return async function handle(request, env) {
     const origin = corsOrigin(request, env);
     if (!origin) return response({ error: 'origin_not_allowed' }, 403, null);
-    if (new URL(request.url).pathname !== '/chat') return response({ error: 'not_found' }, 404, origin);
+    const path=new URL(request.url).pathname;
+    if (!['/chat','/story','/summary','/route','/identify','/events','/metrics'].includes(path)) return response({ error: 'not_found' }, 404, origin);
     if (request.method === 'OPTIONS') {
       const method = request.headers.get('access-control-request-method');
       if (method !== 'POST') return response({ error: 'method_not_allowed' }, 405, origin);
-      return response(null, 204, origin, { 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '600' });
+      return response(null, 204, origin, { 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': path==='/metrics'?'Content-Type, Authorization':'Content-Type', 'Access-Control-Max-Age': '600' });
     }
     if (request.method !== 'POST') return response({ error: 'method_not_allowed' }, 405, origin, { Allow: 'POST, OPTIONS' });
     if (!/^application\/json(?:\s*;|$)/i.test(request.headers.get('content-type') || '')) return response({ error: 'json_required' }, 415, origin);
     // Fail closed: an accidentally unbound deployment must not spend provider credits.
-    if (!env.OPENAI_API_KEY || !env.AI_RATE_LIMITER?.limit || !env.AI_GLOBAL_LIMITER?.limit) return response({ error: 'backend_not_configured' }, 503, origin);
+    if ((!['/events','/metrics'].includes(path)&&!env.OPENAI_API_KEY) || !env.AI_RATE_LIMITER?.limit || !env.AI_GLOBAL_LIMITER?.limit) return response({ error: 'backend_not_configured' }, 503, origin);
     const ip = request.headers.get('cf-connecting-ip');
     if (!ip) return response({ error: 'client_identity_unavailable' }, 503, origin);
     try {
-      const local = await env.AI_RATE_LIMITER.limit({ key: `chat:${ip}` });
+      const local = await env.AI_RATE_LIMITER.limit({ key: `${path.slice(1)}:${ip}` });
       const shared = await env.AI_GLOBAL_LIMITER.limit({ key: 'museum-chat' });
       if (!local.success || !shared.success) return response({ error: 'rate_limited' }, 429, origin, { 'Retry-After': '60' });
     } catch { return response({ error: 'rate_limit_unavailable' }, 503, origin); }
+    if(path!=="/chat"){let raw;try{raw=await boundedJson(request,path==="/identify"?1700000:MAX_BODY);}catch(error){return response({error:error.message==="too_large"?"too_large":"invalid_request"},error.message==="too_large"?413:400,origin);}const result=await features(path,raw,request,env);return response(result.body,result.status,origin);}
     let input;
     try { input = parseInput(await boundedJson(request), index); }
     catch (error) { return response({ error: error.message === 'too_large' ? 'too_large' : 'invalid_request' }, error.message === 'too_large' ? 413 : 400, origin); }
     const requestPlan=globalThis.MuseumRequestPlan.analyze(input.message,{namedArtifact:guide.entities?.(input.message,index.catalog)?.some(r=>r.type==='artifact')});
     if(requestPlan.domain==='study'||requestPlan.clarification){
-      const answer=requestPlan.domain==='study'?globalThis.MuseumRequestPlan.studyAnswer(requestPlan,{language:input.language,deep:input.depth==='deep'}):globalThis.MuseumRequestPlan.clarification(requestPlan,input.language);
-      return response({answer:answer.text,sources:[],mode:'data',grounded:false,analysis:'local'},200,origin);
+      const answer=unknown[input.language];
+      return response({answer,sources:[],mode:'data',grounded:false,analysis:'local'},200,origin);
     }
     const { decision, hits: retrieved } = retrieval(input, index);
     const direct = dataAnswer(input, retrieved, decision);

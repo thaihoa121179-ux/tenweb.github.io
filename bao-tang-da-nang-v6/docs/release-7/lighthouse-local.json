@@ -1,0 +1,18 @@
+{
+  "tool": "Lighthouse 13.0.1",
+  "fetchTime": "2026-11-17T23:15:10.358Z",
+  "url": "http://127.0.0.1:8878/bao-tang-da-nang-v6/",
+  "scope": "Cold mobile navigation on local server with HTTP gzip delivery; not a measurement from GitHub Pages or real phone. CI separately measures the published page.",
+  "scores": {
+    "performance": 89,
+    "accessibility": 100,
+    "best-practices": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.0 s",
+    "largest-contentful-paint": "3.6 s",
+    "total-blocking-time": "110 ms",
+    "cumulative-layout-shift": "0.012",
+    "speed-index": "1.4 s"
+  }
+}

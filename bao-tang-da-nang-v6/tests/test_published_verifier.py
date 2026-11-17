@@ -78,7 +78,7 @@ def site(overrides=None, duplicates=False):
 
 
 def args(root,base):
-    return V.arguments(['--root',str(root),'--base-url',base,'--minimum-records','10','--max-wait','2','--poll-interval','0.05','--workers','3'])
+    return V.arguments(['--root',str(root),'--base-url',base,'--minimum-records','10','--asset-version','6.9','--max-wait','2','--poll-interval','0.05','--workers','3'])
 
 
 class PublishedVerifierTests(unittest.TestCase):

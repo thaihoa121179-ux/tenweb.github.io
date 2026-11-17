@@ -1,0 +1,45 @@
+name: Build optional record translations
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Maximum NEW records to translate (1–200; paid provider API)'
+        required: true
+        default: 1
+        type: number
+permissions:
+  contents: read
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare build tools
+        working-directory: bao-tang-da-nang-v6
+        run: npm ci
+      - name: Translate with cache (fails clearly if secret is absent)
+        working-directory: bao-tang-da-nang-v6
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TRANSLATION_LIMIT: ${{ inputs.limit }}
+        run: node scripts/translate-content.mjs
+      - name: Validate and package the changed dataset
+        working-directory: bao-tang-da-nang-v6
+        run: npm run build && npm test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unreviewed-record-translations
+          path: |
+            bao-tang-da-nang-v6/data/museum-content.json
+            bao-tang-da-nang-v6/data/museum-content.json.gz
+            bao-tang-da-nang-v6/data/translations-cache.json
+          retention-days: 14

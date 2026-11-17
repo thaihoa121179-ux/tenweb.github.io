@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHandler, retrieve } from './worker.mjs';
 import { records } from './corpus.mjs';
+import content from '../data/museum-content.json' with {type:'json'};
 
 const origin = 'https://thaihoa121179-ux.github.io';
 const goodInput = { message: 'Súng thần công có từ khi nào?', language: 'vi', history: [], context: {} };
@@ -190,7 +191,7 @@ test('the provider receives actual preferences and an explicit limit on facility
 });
 
 test('expanded source records are retrievable without invented translations or floor positions',()=>{
- const items=globalThis.MuseumCollection.items;assert.ok(items.length>=41);const first=items[0];const record=records.find(r=>r.id==='artifact:'+first.id);assert.equal(record.material,first.material);assert.equal(record.origin,first.origin);assert.equal(record.floor,null);assert.equal(record.source,first.url);assert.equal(retrieve({...goodInput,message:first.name})[0].id,record.id);
+ const items=content.artifacts.filter(a=>a.imported);assert.ok(items.length>=41);const first=items[0];const record=records.find(r=>r.id==='artifact:'+first.id);assert.equal(record.material,first.material);assert.equal(record.origin,first.origin);assert.equal(record.floor,null);assert.equal(record.source,first.url);assert.equal(retrieve({...goodInput,message:first.name})[0].id,record.id);
 });
 
 function fixtureRecord(overrides = {}) {
@@ -354,8 +355,8 @@ test('deep wording on an ordinary model never invents a reasoning-effort capabil
  let sent;const handle=createHandler(async(url,options)=>{sent=JSON.parse(options.body);return answerResponse();});
  const res=await handle(request({...goodInput,depth:'deep'}),env({OPENAI_MODEL:'ordinary-configured-model'}));const output=await res.json();assert.equal(sent.model,'ordinary-configured-model');assert.equal(sent.reasoning_effort,undefined);assert.equal(sent.max_completion_tokens,1800);assert.equal(output.reasoningMode,'none');
 });
-test('the compound screenshot study request gets a local plan instead of an unrelated museum provider call',async()=>{
- const res=await createHandler(mustNotCall)(request({...goodInput,message:'muốn học bài k muốn đi bảo tàng, có 20 phút',depth:'deep'}),env());const output=await res.json();assert.equal(output.mode,'data');assert.equal(output.analysis,'local');assert.deepEqual(output.sources,[]);assert.match(output.answer,/học bài/);assert.match(output.answer,/20 phút/);assert.doesNotMatch(output.answer,/tầng [123]/i);
+test('the museum-focused assistant redirects unrelated study requests without calling a model',async()=>{
+ const res=await createHandler(mustNotCall)(request({...goodInput,message:'muốn học bài k muốn đi bảo tàng, có 20 phút',depth:'deep'}),env());const output=await res.json();assert.equal(output.mode,'data');assert.equal(output.analysis,'local');assert.deepEqual(output.sources,[]);assert.match(output.answer,/chưa có đủ dữ liệu/);assert.doesNotMatch(output.answer,/tầng [123]/i);
 });
 test('deep mode cannot bypass unsupported facts or citation validation',async()=>{
  const missing=await createHandler(mustNotCall)(request({...goodInput,message:'Súng thần công nặng bao nhiêu?',depth:'deep'}),env());assert.equal((await missing.json()).mode,'data');
