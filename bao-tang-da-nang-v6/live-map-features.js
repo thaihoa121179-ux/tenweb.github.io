@@ -3,6 +3,8 @@
  'use strict';
  function create(ctx){
   const {M,E,C,t,$,esc}=ctx,N=MuseumMapNavigation,tracker=N.tracker();let nav=null,catalog=[],noticeTimer=0,lastTick=0,lastReroute=0,lastTransition=-Infinity,transitions=0,sound=false,audio=null,lastNotice=null,awardZone=null;const visitRecords=new Map();
+  let observedBanner=null;const bannerObserver=new ResizeObserver(()=>updateNoticeTop());
+  function updateNoticeTop(){if(observedBanner?.isConnected&&!observedBanner.hidden)ctx.host().style.setProperty('--live-notice-top',(observedBanner.offsetTop+observedBanner.offsetHeight+10)+'px');}
   const search=document.createElement('dialog');search.className='live-settings live-destinations';search.setAttribute('aria-labelledby','lm-destination-title');document.body.appendChild(search);search.addEventListener('keydown',e=>{if(e.key==='Escape')e.stopPropagation();});
   const fmt=(key,vars={})=>Object.entries(vars).reduce((s,[k,v])=>s.replaceAll('{'+k+'}',String(v)),t(key));
   function label(target){return target.kind==='artifact'?M.aname(M.A.find(a=>a.id===target.id)):target.kind==='topic'?M.nm(M.D.find(d=>d.id===target.id)):t(target.type)+' · '+t('floor')+' '+target.floor;}
@@ -16,6 +18,7 @@
   function renderUI(){
    let b=$('search-button');if(!b){b=document.createElement('button');b.id='lm-search-button';b.className='live-search-button';b.textContent='⌕';$('stage').appendChild(b);}b.setAttribute('aria-label',t('findDestination'));b.onclick=openSearch;
    if(!$('route-banner')){$('stage').insertAdjacentHTML('beforeend','<div id="lm-route-banner" class="live-route-banner" hidden></div><section id="lm-notice" class="live-notice" aria-live="polite" hidden></section>');}
+   bannerObserver.disconnect();observedBanner=$('route-banner');bannerObserver.observe(observedBanner);
    const settings=ctx.settings();if(!$('sound'))settings.insertAdjacentHTML('beforeend',`<label class="live-check"><input id="lm-sound" type="checkbox" ${sound?'checked':''}>${esc(t('sound'))}</label>`);
    $('sound').onchange=e=>{sound=e.target.checked;if(sound)unlockAudio();};
    search.innerHTML=`<div class="live-settings-head"><h2 id="lm-destination-title">${esc(t('findDestination'))}</h2><button id="lm-search-close">${esc(t('close'))} ×</button></div><label class="live-destination-input"><span class="sr-only">${esc(t('findDestination'))}</span><input id="lm-destination-input" type="search" placeholder="${esc(t('searchDestination'))}" autocomplete="off"></label><button id="lm-personal-route" ${M.state.route?.ids?.length?'':'hidden'}>${esc(t('personalRoute'))} ›</button><div id="lm-destination-results"></div>`;
@@ -48,7 +51,7 @@
    const target=nav.targets[Math.min(nav.index,nav.targets.length-1)],hint=N.instruction(nav.points,nav.cursor,ctx.position()),meters=Math.max(0,Math.round(hint.distance));
    const direction=hint.kind==='left'||hint.kind==='right'?fmt('turn'+(hint.kind==='left'?'Left':'Right'),{m:meters}):hint.kind==='lift'||hint.kind==='stairs'?fmt(hint.kind==='lift'?'takeLift':'takeStairs',{m:meters,f:hint.floor}):fmt('goStraight',{m:meters});
    if(!banner.querySelector('button')){banner.innerHTML=`<div><b></b><small></small></div><button id="lm-cancel-route" aria-label="${esc(t('cancelRoute'))}">×</button>`;$('cancel-route').onclick=cancel;}banner.querySelector('b').textContent=label(target)+(nav.complete?' ✓':'');banner.querySelector('small').textContent=(nav.complete?t('arrived'):direction)+(nav.complete?'':' · '+Math.round(remaining())+'m · '+Math.max(1,Math.ceil(remaining()/C.joystickSpeed/60))+' '+t('minutes'));
-   ctx.host().style.setProperty('--live-notice-top',(banner.offsetTop+banner.offsetHeight+10)+'px');
+
    const f=ctx.floor();if(!f)return;let d='',previous=null;
    for(const p of nav.points.slice(Math.max(0,nav.cursor-1))){if(p.floor===f.floor){d+=(previous?.floor===p.floor?'L':'M')+p.x+' '+p.y+' ';}previous=p;}
    $('nav-path')?.setAttribute('d',d);if($('auto-path'))$('auto-path').hidden=true;
@@ -102,7 +105,7 @@
    paintRoute();
   }
   function onEnter(){buildCatalog();renderUI();const pending=root.MuseumPendingMapTarget;if(pending){root.MuseumPendingMapTarget=null;const target=resolve(pending);if(target)start([target]);else M.toast(t('noDestination'));}else if(nav&&!nav.complete)rebuild();}
-  function onLeave(){hideNotice();search.close();audio?.suspend().catch(()=>{});}
+  function onLeave(){bannerObserver.disconnect();hideNotice();search.close();audio?.suspend().catch(()=>{});}
   document.addEventListener('museum:mapreset',()=>{tracker.reset();visitRecords.clear();awardZone=null;cancel();decorateAreas();});
   return{unlock:()=>{if(sound)unlockAudio();},modalOpen:()=>search.open,onFloorChanged:()=>{buildCatalog();if(nav&&!nav.complete)rebuild();paintRoute();},modeChanged:()=>{if(sound)unlockAudio();if(nav&&!nav.complete)rebuild();},renderUI,onEnter,onLeave,paintRoute,decorateAreas,tick,start,cancel,getPoints:()=>nav&&!nav.complete?nav.points:null,
    getState:()=>({active:!!nav&&!nav.complete,complete:!!nav?.complete,target:nav?.targets[nav.index]||null,index:nav?.index||0,cursor:nav?.cursor||0,reroutes:nav?.reroutes||0,transitions,currentZone:tracker.current?.id||null,visited:MuseumMapJourney.getData().topics.length})};

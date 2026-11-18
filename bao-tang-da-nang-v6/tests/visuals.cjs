@@ -6,7 +6,7 @@ const results=[];let browser;
 async function fixture(width=390){
  const c=await browser.newContext({viewport:{width,height:900},isMobile:width<800,hasTouch:width<800,reducedMotion:'reduce',locale:'vi-VN'});
  const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
- await p.goto(BASE);await p.waitForFunction(()=>window.MuseumVisuals&&window.MuseumJourneyCard&&!document.getElementById('boot-status'));
+ await p.addInitScript(()=>{localStorage.setItem('museum_v6:museum_map_onboarding_v1',JSON.stringify({version:1,status:'completed'}));});await p.goto(BASE);await p.waitForFunction(()=>window.MuseumVisuals&&window.MuseumJourneyCard&&!document.getElementById('boot-status'));
  await p.locator('[data-lang=vi]').click();await p.locator('#visitor-guest').click();
  await p.evaluate(()=>{Museum.state.revealSpeed='instant';});return{c,p,errors};
 }

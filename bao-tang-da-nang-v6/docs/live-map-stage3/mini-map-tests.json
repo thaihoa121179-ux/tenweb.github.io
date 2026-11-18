@@ -1,0 +1,29 @@
+{
+  "scope": "Chromium emulation; actual floor JSON and record metadata, no physical sensors",
+  "results": [
+    {
+      "name": "welcome does not fetch floor data, confirmed home gets a lightweight preview without the map engine",
+      "passed": true
+    },
+    {
+      "name": "session pose updates the SVG without writing coordinates to localStorage or replacing the action button",
+      "passed": true
+    },
+    {
+      "name": "artifact preview highlights its theme only; external/site 2 records have no simulated placement",
+      "passed": true
+    },
+    {
+      "name": "a failed floor request shows a retry state and recovers using actual floor 2 data",
+      "passed": true
+    },
+    {
+      "name": "a stalled floor request times out and can be retried on a restored connection",
+      "passed": true
+    },
+    {
+      "name": "all four languages fit 360–430px and expose 48px actions",
+      "passed": true
+    }
+  ]
+}

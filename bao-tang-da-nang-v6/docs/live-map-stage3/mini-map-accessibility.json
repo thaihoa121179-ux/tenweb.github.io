@@ -1,0 +1,13 @@
+{
+  "scope": "Chromium automated WCAG 2 A/AA checks, not full certification",
+  "checks": [
+    {
+      "view": "home",
+      "violations": []
+    },
+    {
+      "view": "artifact",
+      "violations": []
+    }
+  ]
+}

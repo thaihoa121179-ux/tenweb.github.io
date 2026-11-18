@@ -1,0 +1,204 @@
+=== node ===
+
+> museum-companion-static@7.4.0 test
+> node --test tests/*.test.mjs backend/*.test.mjs
+
+✔ image validation rejects oversized, wrong-format and malformed data before model calls (217.551665ms)
+✔ story uses trusted record, requested language/tone, known citations and optional cache (38.91536ms)
+✔ story cannot accept new dates, foreign citations, unknown IDs or modes (6.622313ms)
+✔ route returns only offered themes, unique IDs, bounded stop counts and short reasons (2.247224ms)
+✔ vision compares candidate images and always requires user confirmation (21.772093ms)
+✔ vision returns no candidate when observed labels do not match records (14.092913ms)
+✔ journey summary excludes visitor identity and rejects fabricated record IDs (6.787559ms)
+✔ aggregates accept only known IDs, have no raw questions, and require admin secret (7.076509ms)
+✔ all new endpoints enforce CORS, rate limits, configuration and bounded bodies (61.04396ms)
+✔ corpus retains the original themes and source-backed artifact records (2.694292ms)
+✔ retrieval selects named objects and retains follow-up context (57.377831ms)
+✔ all artifacts include the four editorial language variants (0.800725ms)
+✔ all nine artifacts resolve by their Korean and Chinese names (111.613777ms)
+✔ Korean route requests and time-only follow-ups preserve the history preference (14.968666ms)
+✔ Korean artifact follow-up resolves its era after Hangul normalization (4.487916ms)
+✔ source URLs are generated from server records, with a secret only in upstream authorization (43.962659ms)
+✔ provider cannot invent a source ID or send an arbitrary URL (22.909257ms)
+✔ unknown questions decline without spending provider credits (8.759843ms)
+✔ unrelated follow-ups cannot inherit authority from selected artifacts (18.779583ms)
+✔ an unknown material is not inferred from an object classification (3.823237ms)
+✔ an uncited generated answer is replaced with an explicit insufficient-data response (3.902682ms)
+✔ CORS denies absent/spoofed origins; allowed preflight succeeds (0.631922ms)
+✔ missing key, missing rate bindings or identity fail closed (0.627234ms)
+✔ both client and shared rate limits block a model call (0.600823ms)
+✔ untrusted roles, oversized messages/history, and unknown context IDs are rejected (1.740628ms)
+✔ streamed body limit is enforced independently of Content-Length (0.681201ms)
+✔ provider errors are redacted, and failed/malformed responses never count as success (12.087556ms)
+✔ practical questions from the user retrieve grounded starting records instead of no-match (5.759054ms)
+✔ a duration follow-up keeps the earlier single-floor preference in backend retrieval (3.60665ms)
+✔ backend resolves comparison and supported object-name typos (3.836152ms)
+✔ the provider receives actual preferences and an explicit limit on facility claims (4.628746ms)
+✔ expanded source records are retrievable without invented translations or floor positions (4.920172ms)
+✔ unsupported object properties give precise data-mode replies without a provider call (30.670759ms)
+✔ missing dates are not inferred from a record name or other objects (1.18713ms)
+✔ a named non-Da Nang source is allowed only from server corpus and labeled as a reference (1.355975ms)
+✔ reference-only objects do not leak into default museum recommendations or routes (1.475119ms)
+✔ explicit requests for another institution use that institution instead of local favorites (0.667609ms)
+✔ media is attached from cited server objects, never arbitrary provider response URLs (2.046583ms)
+✔ a 220-record corpus finds the exact object while keeping the provider context bounded (114.581466ms)
+✔ history supplied to the provider is bounded to 6000 characters with only allowed roles (204.5156ms)
+✔ oversized provider output is rejected without returning its private body (8.089695ms)
+✔ unsupported floors and ambiguous object facts ask precisely instead of searching unrelated records (7.036759ms)
+✔ ordinal facts refer to the actual recommended record rather than inventing a property (12.521778ms)
+✔ unmatched material and branch filters never broaden silently (0.949356ms)
+✔ thematic floor and actual object location remain distinct in provider facts (1.657068ms)
+✔ provider timeout aborts the request and returns a redacted retryable failure (44.608834ms)
+✔ deep responses use an explicitly configured reasoning model and a bounded high-effort request (6.091485ms)
+✔ deep wording on an ordinary model never invents a reasoning-effort capability (5.712115ms)
+✔ the museum-focused assistant redirects unrelated study requests without calling a model (5.162099ms)
+✔ deep mode cannot bypass unsupported facts or citation validation (7.897139ms)
+✔ reasoning requests have a distinct abortable timeout and never surface upstream errors (9.966677ms)
+✔ Slow reveals one grapheme at a time and never accelerates a long answer (83.410698ms)
+✔ punctuation creates a readable pause and grapheme clusters remain intact (2.743224ms)
+✔ explicit slow pacing remains slow under reduced motion, while Auto respects the device setting (10.474848ms)
+✔ changing to Instant finishes the current answer and releases pending presentation (10.385498ms)
+✔ navigation or hiding the document completes presentation without orphaned frames (5.985037ms)
+✔ the actual 200-record catalogue preserves the 57 Da Nang records and complete scoped references (164.264601ms)
+✔ every real object resolves by its complete source title including accession numbers (908.987291ms)
+✔ everyday feelings get a relevant, gentle response; laughter does not erase distress (5.804895ms)
+✔ sleepy, bored and amused are not misclassified as sadness (6.184441ms)
+✔ humor answers and follow-ups rotate instead of repeating the same script (3.118947ms)
+✔ source facts, routes and conditional real visits are left to the museum resolver (0.854994ms)
+✔ fiction about real artifacts is explicitly labeled and does not invent a source (1.248362ms)
+✔ vegetarian preference survives useful food follow-ups and does not leak between sessions (15.643614ms)
+✔ study follow-ups use the requested duration rather than a museum route (0.451697ms)
+✔ real-time questions do not invent a forecast, price, source or current quotation (2.342949ms)
+✔ simple arithmetic preserves signs and decimals without evaluating code (2.106646ms)
+✔ brief and serious preferences, factual unknowns and source transitions stay bounded (0.684803ms)
+✔ four languages handle common emotions and humor in the chosen language (13.101643ms)
+✔ open everyday conversation asks for context without inventing facts; museum questions keep their source boundary (2.093981ms)
+✔ creative writing, practical life topics and very large arithmetic keep the requested meaning (1.635895ms)
+✔ Vietnamese capitals and laughing idioms keep their actual conversational meaning (0.214138ms)
+✔ canonical JSON and compressed delivery retain all actual records and precise source scopes (88.068372ms)
+✔ five quiz answers and explanations come directly from matching source fields in four languages (2.770275ms)
+✔ local first-person stories quote actual summaries, preserve dates and separate narration tones (0.676758ms)
+✔ client retrieval selects context and multilingual objects and never pads unrelated queries (98.966292ms)
+✔ expanded imported titles retain identity and suppress their generic embedded titles (64.125324ms)
+✔ exact correction replaces the negated object, rather than merging two unrelated records (26.287094ms)
+✔ source properties are classified without synthesizing a value (16.537565ms)
+✔ unambiguous terse properties use a valid conversation record; unknown nouns never do (12.909625ms)
+✔ ambiguous, absent and out-of-range references require clarification (14.794767ms)
+✔ impossible floor constraints are exposed without inventing a matching artifact (19.609486ms)
+✔ duration supports composite and bounded natural units and does not mutate memory (5.376836ms)
+✔ hard catalogue filters never broaden silently or invent a physical floor (12.50421ms)
+✔ integration: site numbers are not ordinals, and material recommendations remain filters (25.956517ms)
+✔ the user screenshots produce useful practical intents, including shorthand and typo (20.656346ms)
+✔ four languages recognize highlights, alternatives and less walking (18.225144ms)
+✔ interests, a short duration and a walking preference survive follow-up turns (3.486807ms)
+✔ explicitly lifting a walking restriction does not keep a hidden constraint (0.983148ms)
+✔ negated interests are excluded while a new positive interest is retained (2.009968ms)
+✔ ordinal follow-ups select the actual previously recommended record (2.277157ms)
+✔ complete distinctive names tolerate a one-character typo; unrelated names never inherit records (3.197686ms)
+✔ comparison retrieves both named artifacts, preserving record identity (0.99709ms)
+✔ durations work with natural Vietnamese, English, Korean and Chinese units (1.345091ms)
+✔ preferences are per-conversation values, never shared or mutated across sessions (2.763467ms)
+✔ app actions are recognized as actions rather than unknown historical questions (2.273271ms)
+✔ all source-to-zone routes across three floors use walkable edges and actual connectors (377.724368ms)
+✔ an adjacent floor chooses stairs; a two-floor trip may use the direct lift (12.059147ms)
+✔ itinerary preserves the exact chosen stop order even when returning to a previous floor (44.930946ms)
+✔ routes refuse unknown nodes, floors and starting positions outside walkable geometry (0.601022ms)
+✔ zone entry only fires once per pass, suppresses doorway jitter and respects cooldown (0.713368ms)
+✔ deviation identifies an off-route room and turn hints distinguish left, right and stairs (0.558208ms)
+✔ all 15 themes have illustrative geometry; only correct site 1 records are pinned (5.60296ms)
+✔ all graph edges can be walked by a dot with radius, including door thresholds (37.219889ms)
+✔ substeps stop long jumps through walls and permit sliding without crossing the boundary (1.04655ms)
+✔ path snapping does not trap a perpendicular turn in the corridor (0.880276ms)
+✔ autoplay graph reaches every zone without leaving walkable geometry (24.579617ms)
+✔ floor connectors point to existing graph nodes on the target floor (0.481063ms)
+✔ circular heading smooths across north; screen rotation and poor iOS accuracy are handled (1.859433ms)
+✔ stationary noise and violent shakes do not produce walking steps (4.401171ms)
+✔ ten separated gait pulses produce ten steps and 21 simulated metres at the default scale (0.939989ms)
+✔ every map string is translated in four languages and no keys are empty (0.887434ms)
+✔ absolute compass headings use clockwise north and screen rotation, never relative alpha or GPS course (1.391669ms)
+✔ Safari north-referenced readings support north at zero and reject unreliable compass data (0.154639ms)
+✔ heading smoothing crosses north over the short arc and retains continuous rotation (0.153429ms)
+✔ only finite GPS fixes with sane timestamps are used; movement heading never becomes phone direction (1.246337ms)
+✔ only a supported completed or skipped record suppresses onboarding (0.758877ms)
+✔ all permission, fallback and calibration messages have four explicit translations (1.254547ms)
+✔ the screenshot request prioritizes study and excludes the museum despite shorthand and missing punctuation (15.461769ms)
+✔ opposite polarity, inclusive not-only and contradictory goals are not collapsed into one keyword (0.981551ms)
+✔ studying in a museum and visiting to learn history retain different purposes (0.716951ms)
+✔ subject and time-only follow-ups retain the real goal without mutating previous analysis (1.078536ms)
+✔ deep plans contain concrete subject-specific steps and an exact time budget (1.158803ms)
+✔ deep and concise answers differ in substance and do not fabricate an unknown subject (0.301854ms)
+✔ a specific factual artifact question retains source-based handling (0.605177ms)
+✔ English negation and four-language study plans preserve the requested activity (0.444657ms)
+✔ linear homework is actually solved and checked, with no partial parsing of unsupported mathematics (4.172032ms)
+✔ nicknames preserve Vietnamese and emoji, normalize whitespace and reject empty or excessive names (32.733082ms)
+✔ identity remains usable for the session with blocked storage and never requires an account (2.651015ms)
+✔ all 200 photo cards use the exact local image and original record URL (6.074598ms)
+✔ all 15 route topics use matching site 1 records or clearly labelled gallery images (1.583322ms)
+✔ unknown records and modified copies cannot substitute another photo or attribution (0.277483ms)
+✔ quiz photographs do not reveal the answer in their caption and contain the whole object (0.346765ms)
+✔ new image controls have translated labels in all four interface languages (1.79943ms)
+ℹ tests 134
+ℹ suites 0
+ℹ pass 134
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2151.696196
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+
+=== python ===
+...................
+----------------------------------------------------------------------
+Ran 19 tests in 13.397s
+
+OK
+{"passed": false, "baseUrl": "http://127.0.0.1:33723/", "error": "Expected 200..1000 real records, found 10"}
+Verification report: /tmp/tmpkgjzbh_f/result.json
+
+
+=== mapCore ===
+PASS full screen, no overflow, floor geometry and touch targets 360×800
+PASS full screen, no overflow, floor geometry and touch targets 390×844
+PASS full screen, no overflow, floor geometry and touch targets 430×932
+PASS full screen, no overflow, floor geometry and touch targets 844×390
+PASS full screen, no overflow, floor geometry and touch targets 1366×900
+PASS WASD and joystick move, diagonal speed is bounded, walls stop and exit clears input/RAF
+PASS autoplay plays, pauses, speeds up and seeks through doors without penetrating walls
+PASS denied sensors have a one-tap joystick fallback; late permissions cannot restart sensors
+PASS sensor silence after 3 seconds shows recovery and ten gait pulses drive the dot
+PASS zoom, pan, direction-up, follow, settings, held placement and reset work
+PASS four languages, QR pixels and file-based AI configuration remain valid
+PASS PWA opens the lazy map, three floors and autopilot offline
+12/12 stage 1 checks passed
+
+
+=== mapFeatures ===
+PASS destination in floor 2 has directions, auto stair transition, arrival and a simulated journal entry
+PASS a personal itinerary follows stop order across floors and awards the 2-area badge once
+PASS staying in a zone does not fire repeatedly, leaving and reentering advances a related record
+PASS the area card opens grounded Mây topic context, speaks record text and opens the correct object
+PASS object directions target only site 1 records; other museums stay unpinned
+PASS an off-route held placement recalculates a walkable route, then reaches a WC on floor 2
+PASS a walking-mode connector transition keeps sensors active until leaving the map
+PASS destination controls and area cards work in all four languages
+PASS offline navigation still crosses floors and clearing personal data removes simulated progress
+9/9 stage 2 checks passed
+
+
+=== onboardingAdapter ===
+PASS explicit permission → calibration → completion; replay clears flag without auto permission
+PASS denied permission keeps an immediate skip/fallback
+PASS pending permission cancelled on skip; late grant does not restart sensors
+PASS pending permission cancelled on close; late grant does not restart sensors
+PASS blocked storage remembers skip for this session
+PASS four languages at 360/390/430 portrait and 844×390 landscape
+
+
+=== pwaUpgrade ===
+PASS actual 7.0 worker → current assets; no forced reload; visits, cached photo and offline photo quiz preserved

@@ -84,6 +84,8 @@
  const quick=document.createElement('div');quick.className='home-quick-actions';document.querySelector('.home-feature').before(quick);
  const homeRecords=document.createElement('section');homeRecords.id='home-records';document.querySelector('.home-feature').after(homeRecords);
  function homeUpdates(){
+  // Chưa vào app thì không tải ảnh trang chủ nằm sau màn chọn ngôn ngữ.
+  if(!M.state.confirmed)return;
   quick.innerHTML=button(T('quickAsk'),'data-go="guide"','primary')+button(T('scan'),'data-go="scan"')+button(T('route'),'data-go="plan"');
   const seen=MuseumProfile.getData().visits.filter(v=>v.key.startsWith('artifact:')).slice(0,2).map(v=>M.A.find(a=>a.id===v.key.split(':')[1])).filter(Boolean);
   const local=M.A.filter(a=>!a.referenceOnly&&(a.sourceSite||'site1')==='site1');const today=local[Math.floor(Date.now()/86400000)%local.length];

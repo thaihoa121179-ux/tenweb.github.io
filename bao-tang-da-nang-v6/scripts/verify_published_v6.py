@@ -145,6 +145,7 @@ def checked_assets(index: str, version: str, bootstrap: str = "") -> dict[str, s
         if version=='7.0.0': modules.remove('visuals.js')
         if version not in ('7.0.0','7.1.0'): modules=['config.js',*modules,'live-map-entry.js']
         if version not in ('7.0.0','7.1.0','7.2.0'): modules.insert(modules.index('offline.js'),'map-journey.js')
+        if version not in ('7.0.0','7.1.0','7.2.0','7.3.0'): modules.insert(modules.index('offline.js'),'mini-map.js')
         manifest=re.search(r'const modules=\[(.*?)\];', bootstrap)
         if not manifest: raise ValueError('Missing bootstrap module manifest')
         positions=[manifest.group(1).find("'"+name+"'") for name in modules]
@@ -162,6 +163,8 @@ def checked_assets(index: str, version: str, bootstrap: str = "") -> dict[str, s
             for name in ['app-map-'+version+'.js','config.js','live-map-config.js','live-map-i18n.js','live-map-engine.js','live-map-sensors.js','live-map.js','live-map.css',*[f'data/maps/floor-{n}.json' for n in (1,2,3)]]: assets[name]=name+'?v='+version
         if version not in ('7.0.0','7.1.0','7.2.0'):
             for name in ['map-journey.js','live-map-navigation.js','live-map-features.js']: assets[name]=name+'?v='+version
+        if version not in ('7.0.0','7.1.0','7.2.0','7.3.0'):
+            for name in ['map-styles-'+version+'.css','mini-map.js','mini-map.css','live-map-onboarding.js','live-map-onboarding.css']: assets[name]=name+'?v='+version
         return assets
     for name, values in [(name, parsed.scripts) for name in REQUIRED_JS] + [(name, parsed.styles) for name in REQUIRED_CSS]:
         matches = [value for value in values if urlsplit(value).path == name]
@@ -354,7 +357,7 @@ def arguments(argv=None):
     parser.add_argument('--base-url', default=DEFAULT_BASE)
     parser.add_argument('--minimum-records', type=int, default=200)
     parser.add_argument('--minimum-dimension', type=int, default=128)
-    parser.add_argument('--asset-version', default='7.3.0')
+    parser.add_argument('--asset-version', default='7.4.0')
     parser.add_argument('--max-wait', type=float, default=180)
     parser.add_argument('--poll-interval', type=float, default=8)
     parser.add_argument('--workers', type=int, default=8)

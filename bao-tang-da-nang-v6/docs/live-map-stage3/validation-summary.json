@@ -1,0 +1,45 @@
+{
+  "scope": "Local automated checks; Chromium viewport/permission/motion are simulated. Hardware checklist remains unverified.",
+  "passed": true,
+  "groups": {
+    "node": {
+      "passed": 134,
+      "total": 134
+    },
+    "python": {
+      "passed": 19,
+      "total": 19
+    },
+    "mapCore": {
+      "passed": 12,
+      "total": 12
+    },
+    "mapFeatures": {
+      "passed": 9,
+      "total": 9
+    },
+    "onboardingAdapter": {
+      "passed": 6,
+      "total": 6
+    },
+    "pwaUpgrade": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "reports": [
+    "stage3-tests.json",
+    "final-regressions.json",
+    "mini-map-tests.json",
+    "app-regressions.json",
+    "accessibility-tests.json",
+    "onboarding-accessibility.json",
+    "mini-map-accessibility.json",
+    "assets-and-photos.json",
+    "performance-local.json"
+  ],
+  "limits": [
+    "No physical Safari/Android, motion sensors, battery or hardware TTS test",
+    "Public website unchanged; results refer to local draft build"
+  ]
+}

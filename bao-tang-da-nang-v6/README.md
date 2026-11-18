@@ -1,10 +1,10 @@
-# Museum Companion — Mây · Bản đồ mô phỏng, Giai đoạn 2 (bản nháp)
+# Museum Companion — Mây · Bản đồ mô phỏng, Giai đoạn 3 (bản nháp)
 
 Ứng dụng học tập độc lập, không phải website chính thức của Bảo tàng Đà Nẵng. Nâng cấp trực tiếp V6, giữ địa chỉ Pages, bộ ảnh, ID hồ sơ, mascot và bảng màu xanh rêu / vàng kem. Frontend vẫn HTML/CSS/JavaScript thuần.
 
 **Web:** https://thaihoa121179-ux.github.io/tenweb.github.io/bao-tang-da-nang-v6/
 
-**Bản nháp 7.3:** có kích hoạt khu, Mây theo chủ đề, tiến độ mô phỏng và chỉ đường liên tầng; chưa xuất bản lên Pages. [Hướng dẫn Giai đoạn 2](docs/live-map-stage2/README.md) · [Lõi Giai đoạn 1](docs/live-map-stage1/README.md).
+**Bản nháp 7.4:** hoàn thiện hướng dẫn ba bước, mini-map, cảm biến/hiệu chuẩn, quyền truy cập, bốn ngôn ngữ và tải bản đồ theo nhu cầu; giữ kích hoạt khu, Mây, tiến độ mô phỏng và chỉ đường liên tầng. Chưa xuất bản lên Pages. [Bàn giao Giai đoạn 3: ảnh, kiểm thử, demo 60 giây](docs/live-map-stage3/README.md) · [Giai đoạn 2](docs/live-map-stage2/README.md) · [Lõi Giai đoạn 1](docs/live-map-stage1/README.md).
 
 ## Dùng bản mới
 
@@ -38,7 +38,7 @@ python3 -m http.server 8877
 
 Mở http://localhost:8877/ . Trên Windows có thể thay `python3` bằng `py -3`. Không mở trực tiếp `index.html` bằng `file://`, vì ứng dụng cần fetch JSON. Trang Pages dùng file đã build, không cần Node chạy trên server.
 
-Sửa các file nguồn có chú thích; chạy lại `npm run build` để cập nhật `app-foundation-7.3.0.js`, `app-core-7.3.0.js`, `app-runtime-7.3.0.js`, `app-styles-7.3.0.css`, `bootstrap-7.3.0.js`, `app-map-7.3.0.js` và JSON gzip. Bản mới dùng tên file chứa phiên bản để tránh service worker cũ trả nhầm giao diện 7.0 dù đã đổi query string. Bốn bundle không có số phiên bản được giữ cho tab cũ; không sửa trực tiếp bundle đã sinh. Khi phát hành phiên bản khác, đổi phiên bản trong package, bootstrap, index, service worker và workflow xác minh, rồi build. Bộ đóng gói chỉ là công cụ build, không thêm framework vào sản phẩm.
+Sửa các file nguồn có chú thích; chạy lại `npm run build` để cập nhật `app-foundation-7.4.0.js`, `app-core-7.4.0.js`, `app-runtime-7.4.0.js`, `app-styles-7.4.0.css`, `bootstrap-7.4.0.js`, `app-map-7.4.0.js`, `map-styles-7.4.0.css` và JSON gzip. Bản mới dùng tên file chứa phiên bản để tránh service worker cũ trả nhầm giao diện 7.0 dù đã đổi query string. Bốn bundle không có số phiên bản được giữ cho tab cũ; không sửa trực tiếp bundle đã sinh. Khi phát hành phiên bản khác, đổi phiên bản trong package, bootstrap, index, service worker và workflow xác minh, rồi build. Bộ đóng gói chỉ là công cụ build, không thêm framework vào sản phẩm.
 
 Bộ giải mã QR tải khi cần; các file `collection.js`, `data-v6.js`, `media-map.js`, `conversation.js`, `location*.js` giữ làm tư liệu tương thích/lịch sử, không còn là nguồn dữ liệu chạy hoặc tính năng GPS của bản mới. Script nhập dữ liệu cũ chỉ phục vụ lịch sử; thay đổi bộ hồ sơ hiện tại phải sửa JSON chuẩn và chạy bộ kiểm tra.
 
@@ -53,6 +53,10 @@ python3 -m unittest discover -s bao-tang-da-nang-v6/tests -p 'test_*.py'
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/upgrade.cjs
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/live-map.cjs
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/live-map-stage2.cjs
+MUSEUM_TEST_URL=http://localhost:8877/ node tests/live-map-stage3.cjs
+MUSEUM_TEST_URL=http://localhost:8877/ node tests/live-map-final.cjs
+MUSEUM_TEST_URL=http://localhost:8877/ node tests/mini-map.cjs
+MUSEUM_TEST_URL=http://localhost:8877/ node tests/map-onboarding.cjs
 # Kiểm tra ảnh đúng hồ sơ, phóng to, quiz, nhiệm vụ, chat và lời kể:
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/visuals.cjs
 # Cần checkout có commit 7.0 b01a340 để kiểm tra nâng PWA thật:

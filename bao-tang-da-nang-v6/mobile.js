@@ -6,7 +6,7 @@
   function sync(){
     cancelAnimationFrame(frame);
     frame=requestAnimationFrame(()=>{
-      if(!mobile.matches){document.documentElement.style.removeProperty('--app-height');document.body.classList.remove('keyboard-open');return;}
+      if(!mobile.matches){document.documentElement.style.removeProperty('--app-height');document.documentElement.style.removeProperty('--viewport-top');document.body.classList.remove('keyboard-open');return;}
       const height=Math.round(viewport?.height||window.innerHeight);
       document.documentElement.style.setProperty('--viewport-top',Math.max(0,Math.round(viewport?.offsetTop||0))+'px');
       const input=document.activeElement;

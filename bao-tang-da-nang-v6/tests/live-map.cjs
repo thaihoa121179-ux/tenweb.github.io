@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),{chrom
 const BASE=process.env.MUSEUM_TEST_URL||'http://127.0.0.1:8877/bao-tang-da-nang-v6/';let browser;const results=[];
 async function fixture({width=390,height=844,query='',sensor='none'}={}){
  const c=await browser.newContext({viewport:{width,height},isMobile:width<800,hasTouch:width<800,reducedMotion:'reduce'});
- await c.addInitScript(sensor=>{
+ await c.addInitScript(sensor=>{localStorage.setItem('museum_v6:museum_map_onboarding_v1',JSON.stringify({version:1,status:'completed'}));
   if(sensor==='none')return;
   const permission=()=>sensor==='denied'?Promise.resolve('denied'):sensor==='pending'?new Promise(r=>{(window.permissionResolvers||=[]).push(r);}):Promise.resolve('granted');
   Object.defineProperty(window,'DeviceMotionEvent',{value:class{static requestPermission(){return permission();}},configurable:true});

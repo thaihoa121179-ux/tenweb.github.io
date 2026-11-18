@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-18T17:26:41.879521+00:00",
+  "baseUrl": "http://127.0.0.1:8877/bao-tang-da-nang-v6/",
+  "passed": true,
+  "expected": {
+    "actualRecords": 200,
+    "legacyRecords": 9,
+    "collectionSha256": "5ad4c8910a84e483b2f8b36b903c10096ddcbc1a894eaf1449365c4c9e694f4e",
+    "minimumRecords": 200
+  },
+  "summary": {
+    "records": 200,
+    "decodedPhotosPassed": 200,
+    "distinctPhotoUrls": 200,
+    "distinctDecodedPhotoSha256": 200,
+    "duplicatePhotoBytes": [],
+    "failedPhotos": 0
+  },
+  "scope": "Local HTTP build/data byte comparison and 200 decoded photos. This is not a published Pages check, historical accuracy review, or visual identity verification.",
+  "assetVersion": "7.4.0",
+  "checkedAssets": 59
+}

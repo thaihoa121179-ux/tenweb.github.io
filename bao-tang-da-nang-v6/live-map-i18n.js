@@ -33,3 +33,5 @@ Object.assign(globalThis.MuseumMapWords,{
  approaching:['Bạn đang đến','You are approaching','다가가는 구역','您正在接近'],listenArea:['Nghe khu này','Hear this area','구역 해설 듣기','听区域解说'],askArea:['Hỏi Mây','Ask Mây','마이에게 질문','询问小云'],record:['Xem hồ sơ','Open record','기록 보기','查看档案'],sound:['Âm báo khi vào khu','Area arrival sound','구역 도착 알림음','进入区域提示音'],
  visitedAreas:['{n}/{total} khu đã khám phá · mô phỏng','{n}/{total} areas explored · simulation','{n}/{total} 구역 탐방 · 시뮬레이션','已探索{n}/{total}个区域 · 模拟'],mapBadge:['Người mở lối · huy hiệu mô phỏng','Trail finder · simulation badge','길 개척자 · 모의 탐방 배지','开路者 · 模拟徽章'],youAreHere:['Bạn đang ở · mô phỏng','You are here · simulation','현재 위치 · 모의','您在此处 · 模拟'],
 });
+
+Object.assign(globalThis.MuseumMapWords,{replayGuide:['Đặt lại hướng dẫn 3 bước','Replay the 3-step guide','3단계 안내 다시 보기','重新开始三步引导']});

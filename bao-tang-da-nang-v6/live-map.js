@@ -12,8 +12,9 @@
  let position={x:6,y:20},visual={...position},heading=90,shownHeading=90,offset=0,rawHeading=null,steps=0;
  let sensitivity=C.sensitivity,scale=C.mapScale,snapEnabled=true,teleport=debug,zoom=1,pan={x:0,y:0},follow=false,headingUp=false;
  let stick={x:0,y:0},stickId=null,keys=new Set(),pointers=new Map(),gesture=null,hold=0,lastWall=0,trail=[],raw={},sensorMessage='instruction';
+ let enterGeneration=0,calibrationPending=false,resizeObserver=null,viewportSize={width:0,height:0},lastWorld='',lastAvatar='',lastLabel='',lastNorth='',lastPublished=null,lastPublishTime=0;
  let tour=[],tourIndex=0,dwell=0,autoSpeed=1,selected=null,expanded=false,worldMatrix=null;
- const sensors=MuseumMapSensors.create({sensitivity:()=>sensitivity,step:()=>{if(!active||settings.open||features.modalOpen())return;steps++;const a=heading*Math.PI/180;applyMove(Math.sin(a)*C.stepLength*scale,-Math.cos(a)*C.stepLength*scale);},heading:h=>{rawHeading=h;heading=E.normalize(h+offset);},raw:r=>Object.assign(raw,r),status:s=>{sensorMessage=s==='motion'?'active':s==='heading'&&sensorMessage==='active'?'active':'waiting';paintStatus();},error:key=>{sensorMessage=key;paintStatus();}});
+ const sensors=MuseumMapSensors.create({sensitivity:()=>sensitivity,step:()=>{if(!active||modalBlocked())return;steps++;const a=heading*Math.PI/180;applyMove(Math.sin(a)*C.stepLength*scale,-Math.cos(a)*C.stepLength*scale);},heading:h=>{rawHeading=h;if(calibrationPending){offset=90-h;calibrationPending=false;}heading=E.normalize(h+offset);},raw:r=>Object.assign(raw,r),status:s=>{sensorMessage=s==='motion'?'active':s==='heading'&&sensorMessage==='active'?'active':'waiting';paintStatus();},error:key=>{sensorMessage=key;paintStatus();}});
  const features=MuseumMapFeatures.create({M,E,C,t,$,esc,host:()=>host,settings:()=>settings,
   floor:()=>floor,floors:()=>floors,position:()=>({...position,floor:floor?.floor}),selected:()=>selected,
   selectZone:id=>{selected=floor?.zones.find(z=>z.id===id)||selected;paintAreas();},
@@ -21,20 +22,36 @@
   setAutoPath:points=>{tour=points.map(p=>({...p}));tourIndex=0;dwell=0;},seekAuto:index=>{tourIndex=index;},dwell:()=>{dwell=C.autoplayDwellSeconds;},
   transition:(n,p)=>{const resume=running;floor=floors[n];M.state.floor=n;position={x:p.x,y:p.y};visual={...position};trail=[];selected=floor.zones[0];drawFloor();running=resume;paintMode();host.classList.add('floor-transition');setTimeout(()=>host.classList.remove('floor-transition'),500);},
  });
+ const onboarding=MuseumMapOnboarding.create({M,sensors,calibrate:calibrateDirection,isActive:()=>active&&M.state.page==='map',
+  onFinish:result=>{mode=result.mode;running=false;keys.clear();stick={x:0,y:0};paintMode();$('heading')?.focus({preventScroll:true});},
+  onClose:()=>paintStatus(),
+ });
+ function modalBlocked(){return settings.open||info.open||features.modalOpen()||onboarding.isOpen();}
+ function calibrateDirection(){const source=sensors.heading;calibrationPending=!Number.isFinite(source);offset=90-(source??0);heading=90;sensorMessage='calibrated';paintStatus();return true;}
+ function syncCameraControls(){
+  $('track')?.setAttribute('aria-pressed',String(follow));$('follow')?.setAttribute('aria-pressed',String(follow));
+  if($('view'))$('view').textContent=t(headingUp?'headingUp':'north');if($('rotate-view'))$('rotate-view').textContent=t(headingUp?'headingUp':'north');
+ }
+ function publishPosition(now=performance.now(),force=false){
+  if(!floor)return;const p={floor:floor.floor,position:{x:position.x,y:position.y},heading};
+  const changed=!lastPublished||p.floor!==lastPublished.floor||E.distance(p.position,lastPublished.position)>.05||Math.abs(E.angleDelta(lastPublished.heading,p.heading))>1;
+  if(force||changed&&now-lastPublishTime>=120){lastPublished=p;lastPublishTime=now;document.dispatchEvent(new CustomEvent('museum:mapposition',{detail:p}));}
+ }
  function render(){
   host.innerHTML=`<div class="live-top"><button id="lm-back" data-back aria-label="${esc(t('back'))}">‹</button><div><h1 id="lm-heading" tabindex="-1">${esc(t('title'))}</h1><small id="lm-floor-label" role="status"></small></div><button id="lm-settings" aria-label="${esc(t('settings'))}"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="var(--mint)"/><circle cx="15" cy="12" r="2" fill="var(--mint)"/><circle cx="9" cy="18" r="2" fill="var(--mint)"/></svg></button></div><div class="live-chips"><button id="lm-explain">${esc(t('simulated'))} · ${esc(t('illustration'))} ⓘ</button><span id="lm-counter"></span></div><div class="live-stage" id="lm-stage"><svg id="lm-svg" class="live-svg" aria-label="${esc(t('mapLabel'))}" role="img"><g id="lm-world"></g></svg><div class="live-floor-tabs">${[1,2,3].map(n=>`<button data-live-floor="${n}" aria-label="${esc(t('floor'))} ${n}">${esc(t('floorShort'))}${n}</button>`).join('')}</div><span class="live-north" id="lm-north">↑ ${esc(t('northMark'))}</span><div class="live-zoom"><button id="lm-plus" aria-label="${esc(t('zoomIn'))}">+</button><button id="lm-minus" aria-label="${esc(t('zoomOut'))}">−</button><button id="lm-center" aria-label="${esc(t('recenter'))}">◎</button></div><div class="live-stick" id="lm-stick" role="group" aria-label="${esc(t('joystickHint'))}"><span id="lm-knob"></span><i aria-hidden="true">＋</i><div class="live-dpad">${[['up','↑'],['left','←'],['down','↓'],['right','→']].map(([d,s])=>`<button data-live-dpad="${d}" aria-label="${esc(t(d))}">${s}</button>`).join('')}</div></div><div id="lm-debug" class="live-debug" ${debug?'':'hidden'}></div><div id="lm-loading" class="live-loading" role="status">${esc(t('loading'))}</div></div><div class="live-controls"><div class="live-modes" role="group" aria-label="${esc(t('title'))}">${['walking','joystick','auto'].map(m=>`<button data-live-mode="${m}">${esc(t(m))}</button>`).join('')}</div><div id="lm-mode-tools"></div><p id="lm-status" role="status"></p></div><section class="live-sheet ${expanded?'expanded':''}" id="lm-sheet"><button class="live-sheet-handle" id="lm-sheet-toggle" aria-label="${esc(t('sheet'))}" aria-expanded="${expanded}"><span></span></button><div id="lm-selected"></div><div class="live-area-list" id="lm-areas"></div></section>`;
-  settings.innerHTML=`<div class="live-settings-head"><h2 id="lm-settings-title">${esc(t('settings'))}</h2><button id="lm-close-settings">${esc(t('close'))} ×</button></div><p>${esc(t('calibrate'))}</p><button id="lm-calibrate">${esc(t('setHeading'))}</button><div class="live-setting-row"><button data-turn="-90">−90°</button><button data-turn="90">+90°</button></div><p>${esc(t('orientHint'))}</p><label>${esc(t('sensitivity'))}<input id="lm-sensitivity" type="range" min="0.6" max="1.8" step="0.1" value="${sensitivity}"></label><label>${esc(t('scale'))}<select id="lm-scale">${C.scales.map(n=>`<option value="${n}" ${n===scale?'selected':''}>×${n} · ${(C.stepLength*n).toFixed(1)}m</option>`).join('')}</select></label><label class="live-check"><input type="checkbox" id="lm-snap" ${snapEnabled?'checked':''}>${esc(t('snap'))}</label><label class="live-check"><input type="checkbox" id="lm-teleport" ${teleport?'checked':''}>${esc(t('teleport'))}</label><button id="lm-rotate-view">${esc(t(headingUp?'headingUp':'north'))}</button><button id="lm-follow" aria-pressed="${follow}">${esc(t('follow'))}</button><button id="lm-reset">${esc(t('reset'))}</button>`;
+  settings.innerHTML=`<div class="live-settings-head"><h2 id="lm-settings-title">${esc(t('settings'))}</h2><button id="lm-close-settings">${esc(t('close'))} ×</button></div><p>${esc(t('calibrate'))}</p><button id="lm-calibrate">${esc(t('setHeading'))}</button><div class="live-setting-row"><button data-turn="-90">−90°</button><button data-turn="90">+90°</button></div><p>${esc(t('orientHint'))}</p><label>${esc(t('sensitivity'))}<input id="lm-sensitivity" type="range" min="0.6" max="1.8" step="0.1" value="${sensitivity}"></label><label>${esc(t('scale'))}<select id="lm-scale">${C.scales.map(n=>`<option value="${n}" ${n===scale?'selected':''}>×${n} · ${(C.stepLength*n).toFixed(1)}m</option>`).join('')}</select></label><label class="live-check"><input type="checkbox" id="lm-snap" ${snapEnabled?'checked':''}>${esc(t('snap'))}</label><label class="live-check"><input type="checkbox" id="lm-teleport" ${teleport?'checked':''}>${esc(t('teleport'))}</label><button id="lm-rotate-view">${esc(t(headingUp?'headingUp':'north'))}</button><button id="lm-follow" aria-pressed="${follow}">${esc(t('follow'))}</button><button id="lm-reset">${esc(t('reset'))}</button><button id="lm-onboarding-reset">${esc(t('replayGuide'))}</button>`;
   settings.onkeydown=e=>{if(e.key==='Escape')e.stopPropagation();};
   $('settings').onclick=()=>settings.showModal();$('close-settings').onclick=()=>settings.close();
   $('explain').onclick=()=>{info.innerHTML=`<h2 id="lm-info-title">${esc(t('illustration'))}</h2><p>${esc(t('explanation'))}</p><button>${esc(t('close'))}</button>`;info.querySelector('button').onclick=()=>info.close();info.showModal();};$('sheet-toggle').onclick=()=>setExpanded(!expanded);
-  $('plus').onclick=()=>{zoom=Math.min(C.maxZoom,zoom*1.3);};$('minus').onclick=()=>{zoom=Math.max(C.minZoom,zoom/1.3);};$('center').onclick=()=>{follow=true;pan={x:0,y:0};};
-  $('calibrate').onclick=()=>{offset=90-(rawHeading??0);heading=90;sensorMessage='calibrated';paintStatus();};
+  $('plus').onclick=()=>{zoom=Math.min(C.maxZoom,zoom*1.3);};$('minus').onclick=()=>{zoom=Math.max(C.minZoom,zoom/1.3);};$('center').onclick=()=>{follow=true;pan={x:0,y:0};syncCameraControls();};
+  $('calibrate').onclick=calibrateDirection;
   settings.querySelectorAll('[data-turn]').forEach(b=>b.onclick=()=>{const d=Number(b.dataset.turn);offset+=d;heading=E.normalize(heading+d);});
   $('sensitivity').oninput=e=>{sensitivity=Number(e.target.value);};$('scale').onchange=e=>{scale=Number(e.target.value);};$('snap').onchange=e=>{snapEnabled=e.target.checked;};$('teleport').onchange=e=>{teleport=e.target.checked;};
-  $('rotate-view').onclick=()=>{headingUp=!headingUp;$('rotate-view').textContent=t(headingUp?'headingUp':'north');};$('follow').onclick=()=>{follow=!follow;pan={x:0,y:0};$('follow').setAttribute('aria-pressed',String(follow));};
-  $('reset').onclick=()=>{resetPosition();features.cancel();settings.close();};
+  $('rotate-view').onclick=()=>{headingUp=!headingUp;syncCameraControls();};$('follow').onclick=()=>{follow=!follow;pan={x:0,y:0};$('follow').setAttribute('aria-pressed',String(follow));};
+  $('reset').onclick=()=>{resetPosition();features.cancel();settings.close();};$('onboarding-reset').onclick=()=>{settings.close();running=false;onboarding.reset();};
   host.querySelectorAll('[data-live-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.liveMode));host.querySelectorAll('[data-live-floor]').forEach(b=>b.onclick=()=>setFloor(Number(b.dataset.liveFloor)));
   bindGestures();bindStick();paintMode();if(floor)drawFloor();features.renderUI();
+  resizeObserver?.disconnect();viewportSize={width:0,height:0};resizeObserver=new ResizeObserver(entries=>{const r=entries[0].contentRect;viewportSize={width:r.width,height:r.height};lastWorld='';});resizeObserver.observe($('svg'));
  }
  function setExpanded(value){expanded=value;$('sheet').classList.toggle('expanded',value);$('sheet-toggle').setAttribute('aria-expanded',String(value));}
  function resetPosition(){if(!floor)return;position={x:floor.start.x,y:floor.start.y};visual={...position};heading=shownHeading=floor.start.heading;steps=0;trail=[];zoom=1;pan={x:0,y:0};follow=false;tourIndex=0;dwell=0;buildTour();paintStatus();}
@@ -46,7 +63,7 @@
   const poly=p=>p.map(v=>v.join(',')).join(' ');
   $('world').innerHTML=`<rect x="1" y="1" width="58" height="38" rx="1.3" class="live-building"/><path d="M3 17H57V23H3Z" class="live-corridor"/>${floor.zones.map((z,i)=>`<g class="live-zone" data-live-zone="${esc(z.id)}"><polygon points="${poly(z.polygon)}" class="zone-color-${i%3}"/><circle cx="${z.center.x}" cy="${z.center.y-3.7}" r="1.3"/><text class="live-zone-num" x="${z.center.x}" y="${z.center.y-3.2}" text-anchor="middle">${i+1}</text><foreignObject x="${z.polygon[0][0]+.8}" y="${z.center.y-1.7}" width="${z.polygon[1][0]-z.polygon[0][0]-1.6}" height="7"><div xmlns="http://www.w3.org/1999/xhtml" class="live-zone-name" style="font-size:${floor.zones.length>4?1.3:1.5}px">${esc(M.nm(M.D.find(d=>d.id===z.topicId)))}</div></foreignObject></g>`).join('')}${floor.walls.map(w=>`<path class="live-wall" d="M${w.a.join(' ')}L${w.b.join(' ')}"/>`).join('')}${floor.zones.map(z=>`<path class="live-door" d="M${z.door.x-1.25} ${z.door.y}h2.5"/>`).join('')}${floor.pois.map(p=>`<g class="live-poi"><rect x="${p.x-1.4}" y="${p.y-.95}" width="2.8" height="1.9" rx=".4"/><text x="${p.x}" y="${p.y+.35}" text-anchor="middle">${esc(t(p.type))}</text></g>`).join('')}<g id="lm-graph">${debug?floor.walkable.map(p=>`<polygon class="live-debug-walk" points="${poly(p)}"/>`).join('')+floor.graph.edges.map(([a,b])=>{const p=floor.graph.nodes.find(n=>n.id===a),q=floor.graph.nodes.find(n=>n.id===b);return`<path class="live-debug-edge" d="M${p.x} ${p.y}L${q.x} ${q.y}"/>`;}).join(''):''}</g><path id="lm-auto-path" class="live-auto-path"/><path id="lm-nav-path" class="live-nav-path"/><g id="lm-trail"></g><g id="lm-avatar"><path class="live-cone" d="M0 0L-3.2 -6.5Q0 -8 3.2 -6.5Z"/><circle class="live-pulse" r="1.8"/><circle class="live-dot" r=".9"/><path class="live-arrow" d="M0 -1.8L-.65 -.7H.65Z"/><text id="lm-you-label" class="live-you" y="2.8" text-anchor="middle">${esc(t('you'))}</text></g>`;
   $('world').querySelectorAll('[data-live-zone]').forEach(g=>g.onclick=()=>{if(gesture?.moved)return;selected=floor.zones.find(z=>z.id===g.dataset.liveZone);paintAreas();});
-  buildTour();paintAreas();paintStatus();features.paintRoute();
+  lastWorld=lastAvatar=lastLabel=lastNorth='';buildTour();paintAreas();paintStatus();features.paintRoute();publishPosition(performance.now(),true);
  }
  function paintAreas(){
   if(!floor||!selected)return;const d=M.D.find(d=>d.id===selected.topicId),view=MuseumVisuals.forTopic(d.id,true);
@@ -65,7 +82,7 @@
   if($('quick-calibrate'))$('quick-calibrate').onclick=()=>settings.showModal();
   if($('play')){$('play').onclick=()=>{features.unlock();if(features.getState().complete)features.cancel();if(tourIndex>=tour.length)resetPosition();running=!running;paintMode();};$('skip').onclick=()=>{skipStop();};$('speed').onchange=e=>autoSpeed=Number(e.target.value);}
   if($('view')){$('view').onclick=()=>{headingUp=!headingUp;paintMode();};$('track').onclick=()=>{follow=!follow;pan={x:0,y:0};paintMode();};}
-  if($('auto-path'))$('auto-path').hidden=mode!=='auto';paintStatus();
+  if($('auto-path'))$('auto-path').hidden=mode!=='auto';paintStatus();syncCameraControls();
  }
  function applyMove(dx,dy){if(!floor)return;const result=E.move(floor,position,dx,dy);position=snapEnabled?E.snap(floor,result.position,{x:dx,y:dy}):result.position;
   if(result.blocked&&performance.now()-lastWall>650){lastWall=performance.now();$('avatar')?.classList.add('bumped');setTimeout(()=>$('avatar')?.classList.remove('bumped'),180);if(!reduced.matches&&mode==='walking')navigator.vibrate?.(15);}
@@ -105,13 +122,19 @@
  function draw(now){
   if(!active||document.hidden){frame=0;return;}const dt=Math.min(C.maxFrameSeconds,Math.max(0,(now-lastTime)/1000||0));lastTime=now;frames++;
   if(floor){
-   if(mode==='joystick'&&!settings.open&&!features.modalOpen()){let x=stick.x+(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),y=stick.y+(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);const n=Math.hypot(x,y);if(n>.05){if(n>1){x/=n;y/=n;}heading=E.normalize(Math.atan2(x,-y)*180/Math.PI);applyMove(x*C.joystickSpeed*dt,y*C.joystickSpeed*dt);}}
-   if(mode==='auto'&&!settings.open&&!features.modalOpen())autoplay(dt);
-   if(!settings.open&&!features.modalOpen())features.tick(now);
+   if(mode==='joystick'&&!modalBlocked()){let x=stick.x+(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),y=stick.y+(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);const n=Math.hypot(x,y);if(n>.05){if(n>1){x/=n;y/=n;}heading=E.normalize(Math.atan2(x,-y)*180/Math.PI);applyMove(x*C.joystickSpeed*dt,y*C.joystickSpeed*dt);}}
+   if(mode==='auto'&&!modalBlocked())autoplay(dt);
+   if(!modalBlocked())features.tick(now);
    const f=1-Math.exp(-C.interpolation*dt);visual.x+=(position.x-visual.x)*f;visual.y+=(position.y-visual.y)*f;shownHeading=E.smoothAngle(shownHeading,heading,Math.min(1,dt*12));
-   const rect=$('svg').getBoundingClientRect(),fit=Math.min(rect.width/floor.size.width,rect.height/floor.size.height)*.94,center=follow?visual:{x:floor.size.width/2,y:floor.size.height/2};
-   $('world').setAttribute('transform',`translate(${rect.width/2+pan.x} ${rect.height/2+pan.y}) scale(${fit*zoom}) rotate(${headingUp?-shownHeading:0}) translate(${-center.x} ${-center.y})`);
-   $('avatar').setAttribute('transform',`translate(${visual.x} ${visual.y}) rotate(${shownHeading})`);$('you-label').setAttribute('transform',`rotate(${headingUp?0:-shownHeading})`);$('north').style.transform=`rotate(${headingUp?-shownHeading:0}deg)`;worldMatrix=$('world').getScreenCTM();
+   if(E.distance(visual,position)<.001)visual={...position};if(Math.abs(E.angleDelta(shownHeading,heading))<.04)shownHeading=heading;
+   const rect=viewportSize.width?viewportSize:$('svg').getBoundingClientRect(),fit=Math.min(rect.width/floor.size.width,rect.height/floor.size.height)*.94,center=follow?visual:{x:floor.size.width/2,y:floor.size.height/2};
+   const camera=`translate(${rect.width/2+pan.x} ${rect.height/2+pan.y}) scale(${fit*zoom}) rotate(${headingUp?-shownHeading:0}) translate(${-center.x} ${-center.y})`;
+   const avatar=`translate(${visual.x} ${visual.y}) rotate(${shownHeading})`,label=`rotate(${headingUp?0:-shownHeading})`;
+   if(camera!==lastWorld){$('world').setAttribute('transform',camera);lastWorld=camera;}
+   if(avatar!==lastAvatar){$('avatar').setAttribute('transform',avatar);lastAvatar=avatar;}
+   if(label!==lastLabel){$('you-label').setAttribute('transform',label);lastLabel=label;}
+   const north=`rotate(${headingUp?-shownHeading:0}deg)`;if(north!==lastNorth){$('north').style.transform=north;lastNorth=north;}
+   publishPosition(now);
    if(now-lastInfo>250){fps=Math.round(frames*1000/(now-lastInfo));frames=0;lastInfo=now;
     if(!trail.length||E.distance(trail.at(-1),position)>.3)trail.push({...position,time:now});trail=trail.filter(p=>now-p.time<C.trailSeconds*1000).slice(-C.maxTrail);
     $('trail').innerHTML=trail.map(p=>`<circle cx="${p.x}" cy="${p.y}" r=".16" opacity="${Math.max(.04,.4-(now-p.time)/(C.trailSeconds*1000)*.4)}"/>`).join('');
@@ -119,18 +142,18 @@
    }
   }frame=requestAnimationFrame(draw);
  }
- function toWorld(clientX,clientY){if(!worldMatrix)return null;const pt=new DOMPoint(clientX,clientY).matrixTransform(worldMatrix.inverse());return{x:pt.x,y:pt.y};}
+ function toWorld(clientX,clientY){worldMatrix=$('world')?.getScreenCTM();if(!worldMatrix)return null;const pt=new DOMPoint(clientX,clientY).matrixTransform(worldMatrix.inverse());return{x:pt.x,y:pt.y};}
  function bindGestures(){
   const svg=$('svg');
   svg.onpointerdown=e=>{if(!floor)return;svg.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});gesture={x:e.clientX,y:e.clientY,pan:{...pan},zoom,dist:pointers.size===2?Math.hypot(...pointerDelta()):0,moved:false};clearTimeout(hold);if(teleport&&pointers.size===1)hold=setTimeout(()=>{const p=toWorld(e.clientX,e.clientY);if(p&&E.walkable(floor,p)){position=p;visual={...p};running=false;buildTour();paintMode();}},650);};
   function pointerDelta(){const ps=[...pointers.values()];return[ps[0].x-ps[1].x,ps[0].y-ps[1].y];}
   svg.onpointermove=e=>{if(!pointers.has(e.pointerId)||!gesture)return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>6){clearTimeout(hold);gesture.moved=true;}
    if(pointers.size===2){const d=Math.hypot(...pointerDelta());if(gesture.dist)zoom=Math.max(C.minZoom,Math.min(C.maxZoom,gesture.zoom*d/gesture.dist));}
-   else{pan={x:gesture.pan.x+e.clientX-gesture.x,y:gesture.pan.y+e.clientY-gesture.y};if(gesture.moved)follow=false;}
+   else{pan={x:gesture.pan.x+e.clientX-gesture.x,y:gesture.pan.y+e.clientY-gesture.y};if(gesture.moved){follow=false;syncCameraControls();}}
   };
   const end=e=>{clearTimeout(hold);pointers.delete(e.pointerId);if(pointers.size===1){const p=[...pointers.values()][0];gesture={x:p.x,y:p.y,pan:{...pan},zoom,dist:0,moved:true};}};svg.onpointerup=end;svg.onpointercancel=end;svg.onlostpointercapture=end;
   svg.onwheel=e=>{e.preventDefault();zoom=Math.max(C.minZoom,Math.min(C.maxZoom,zoom*Math.exp(-e.deltaY*.001)));};
-  const handle=$('sheet-toggle');let sy=null;handle.onpointerdown=e=>{sy=e.clientY;handle.setPointerCapture(e.pointerId);};handle.onpointerup=e=>{if(sy!==null&&Math.abs(e.clientY-sy)>20)setExpanded(e.clientY<sy);sy=null;};
+  const handle=$('sheet-toggle');let sy=null,swiped=false;handle.onclick=e=>{if(swiped){swiped=false;e.preventDefault();return;}setExpanded(!expanded);};handle.onpointerdown=e=>{sy=e.clientY;swiped=false;handle.setPointerCapture(e.pointerId);};handle.onpointerup=e=>{if(sy!==null&&Math.abs(e.clientY-sy)>20){swiped=true;setExpanded(e.clientY<sy);}sy=null;};handle.onpointercancel=()=>{sy=null;swiped=false;};
  }
  function bindStick(){
   const pad=$('stick'),knob=$('knob');
@@ -141,18 +164,18 @@
  }
  async function load(){
   if(Object.keys(floors).length===3)return;if(loading)return loading;
-  loading=Promise.all([1,2,3].map(async n=>{const r=await fetch(`data/maps/floor-${n}.json`);if(!r.ok)throw Error('floor');const f=await r.json();if(f.schemaVersion!==1||!f.illustrative||f.floor!==n||!Array.isArray(f.walkable)||!f.graph?.nodes?.length||!f.zones.every(z=>M.D.some(d=>d.id===z.topicId&&d.floor===n)))throw Error('schema');return f;})).then(fs=>{floors=Object.fromEntries(fs.map(f=>[f.floor,f]));}).finally(()=>loading=null);return loading;
+  loading=Promise.all([1,2,3].map(async n=>{const f=await MuseumMiniMap.loadFloor(n);if(f.schemaVersion!==1||!f.illustrative||f.floor!==n||!Array.isArray(f.walkable)||!f.graph?.nodes?.length||!f.zones.every(z=>M.D.some(d=>d.id===z.topicId&&d.floor===n)))throw Error('schema');return f;})).then(fs=>{floors=Object.fromEntries(fs.map(f=>[f.floor,f]));}).finally(()=>loading=null);return loading;
  }
  async function enter(){
-  if(M.state.page!=='map')return;active=true;render();$('heading').focus({preventScroll:true});if(!frame){lastTime=performance.now();frame=requestAnimationFrame(draw);}
-  try{await load();if(!active||M.state.page!=='map')return;if(!floor||M.state.floor!==floor.floor)setFloor(M.state.floor||1);else{drawFloor();paintMode();}features.onEnter();}
-  catch{$('loading').hidden=false;$('loading').innerHTML=`<p>${esc(t('loadError'))}</p><button id="lm-retry">${esc(t('retry'))}</button>`;$('retry').onclick=()=>enter();}
+  if(M.state.page!=='map')return;const generation=++enterGeneration;active=true;render();$('heading').focus({preventScroll:true});if(!frame){lastTime=performance.now();frame=requestAnimationFrame(draw);}
+  try{await load();if(generation!==enterGeneration||!active||M.state.page!=='map')return;if(!floor||M.state.floor!==floor.floor)setFloor(M.state.floor||1);else{drawFloor();paintMode();}features.onEnter();onboarding.open();}
+  catch{if(generation!==enterGeneration||!active)return;$('loading').hidden=false;$('loading').innerHTML=`<p>${esc(t('loadError'))}</p><button id="lm-retry">${esc(t('retry'))}</button>`;$('retry').onclick=()=>enter();}
  }
- function leave(){features.onLeave();active=false;sensors.stop();if(mode==='walking')sensorMessage='instruction';running=false;keys.clear();stick={x:0,y:0};pointers.clear();clearTimeout(hold);cancelAnimationFrame(frame);frame=0;if(settings.open)settings.close();if(info.open)info.close();}
+ function leave(){enterGeneration++;publishPosition(performance.now(),true);active=false;onboarding.close();features.onLeave();resizeObserver?.disconnect();sensors.stop();if(mode==='walking')sensorMessage='instruction';running=false;keys.clear();stick={x:0,y:0};pointers.clear();clearTimeout(hold);cancelAnimationFrame(frame);frame=0;if(settings.open)settings.close();if(info.open)info.close();}
  document.addEventListener('museum:navigate',()=>{if(M.state.page!=='map')leave();});
  document.addEventListener('museum:language',()=>{if(active)enter();});
  document.addEventListener('visibilitychange',()=>{if(document.hidden)leave();else if(M.state.page==='map')enter();});window.addEventListener('pagehide',leave);window.addEventListener('blur',()=>{keys.clear();stick={x:0,y:0};});
- document.addEventListener('keydown',e=>{if(!active||mode!=='joystick'||settings.open||features.modalOpen()||e.target.closest('input,select,textarea'))return;const k=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k)){e.preventDefault();keys.add(k);}});
+ document.addEventListener('keydown',e=>{if(!active||mode!=='joystick'||modalBlocked()||e.target.closest('input,select,textarea'))return;const k=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k)){e.preventDefault();keys.add(k);}});
  document.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
- window.MuseumLiveMap={enter,leave,getState:()=>({floor:floor?.floor,mode,position:{...position},heading,steps,running,sensorsActive:sensors.active,frame,zoom,follow,fps,tourIndex,tourLength:tour.length,navigation:features.getState()})};
+ window.MuseumLiveMap={enter,leave,getState:()=>({floor:floor?.floor,mode,position:{...position},heading,steps,running,sensorsActive:sensors.active,frame,zoom,follow,fps,tourIndex,tourLength:tour.length,navigation:features.getState(),onboardingOpen:onboarding.isOpen()})};
 })();
