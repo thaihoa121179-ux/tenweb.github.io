@@ -1,4 +1,4 @@
-# Museum Companion — Mây · Bản nâng cấp 7
+# Museum Companion — Mây · Bản nâng cấp 7.1
 
 Ứng dụng học tập độc lập, không phải website chính thức của Bảo tàng Đà Nẵng. Nâng cấp trực tiếp V6, giữ địa chỉ Pages, bộ ảnh, ID hồ sơ, mascot và bảng màu xanh rêu / vàng kem. Frontend vẫn HTML/CSS/JavaScript thuần.
 
@@ -6,6 +6,7 @@
 
 ## Dùng bản mới
 
+- **7.1 — khám phá bằng ảnh:** quiz có ảnh lớn đúng câu hỏi và phóng to; nhiệm vụ, từng điểm lộ trình, thẻ nguồn chat, lời kể, nhật ký và thẻ tính năng đều có ảnh thật. [Ảnh chụp giao diện và kiểm thử](docs/release-7.1/VALIDATION.md).
 - Trang chủ: Hỏi Mây, Quét QR, Lộ trình xuất hiện trước hero; có Tiếp tục xem và Gợi ý hôm nay.
 - Chat toàn màn hình: quay lại bằng nút ‹; tùy chọn Trả lời chi tiết và tốc độ chữ trong ⋯. Hồ sơ → Hỏi Mây ghim đúng hiện vật, kèm ba câu hỏi riêng và thẻ nguồn mở lại hồ sơ. Không dùng thời gian chờ giả để gọi là suy luận.
 - Thư viện: lưới / danh sách, tìm kiếm cố định, bộ lọc mở riêng, tải tiếp khi cuộn; nguồn đúng từng bảo tàng. Ảnh thật đã lưu cùng website.
@@ -35,7 +36,9 @@ python3 -m http.server 8877
 
 Mở http://localhost:8877/ . Trên Windows có thể thay `python3` bằng `py -3`. Không mở trực tiếp `index.html` bằng `file://`, vì ứng dụng cần fetch JSON. Trang Pages dùng file đã build, không cần Node chạy trên server.
 
-Sửa các file nguồn có chú thích; chạy lại `npm run build` để cập nhật `app-foundation.js`, `app-core.js`, `app-runtime.js`, `app-styles.css` và JSON gzip. Bộ đóng gói chỉ là công cụ build, không thêm framework vào sản phẩm. Bộ giải mã QR tải khi cần; các file `collection.js`, `data-v6.js`, `media-map.js`, `conversation.js`, `location*.js` giữ làm tư liệu tương thích/lịch sử, không còn là nguồn dữ liệu chạy hoặc tính năng GPS của bản mới. Script nhập dữ liệu cũ chỉ phục vụ lịch sử; thay đổi bộ hồ sơ hiện tại phải sửa JSON chuẩn và chạy bộ kiểm tra.
+Sửa các file nguồn có chú thích; chạy lại `npm run build` để cập nhật `app-foundation-7.1.0.js`, `app-core-7.1.0.js`, `app-runtime-7.1.0.js`, `app-styles-7.1.0.css`, `bootstrap-7.1.0.js` và JSON gzip. Bản mới dùng tên file chứa phiên bản để tránh service worker cũ trả nhầm giao diện 7.0 dù đã đổi query string. Bốn bundle không có số phiên bản được giữ cho tab cũ; không sửa trực tiếp bundle đã sinh. Khi phát hành phiên bản khác, đổi phiên bản trong package, bootstrap, index, service worker và workflow xác minh, rồi build. Bộ đóng gói chỉ là công cụ build, không thêm framework vào sản phẩm.
+
+Bộ giải mã QR tải khi cần; các file `collection.js`, `data-v6.js`, `media-map.js`, `conversation.js`, `location*.js` giữ làm tư liệu tương thích/lịch sử, không còn là nguồn dữ liệu chạy hoặc tính năng GPS của bản mới. Script nhập dữ liệu cũ chỉ phục vụ lịch sử; thay đổi bộ hồ sơ hiện tại phải sửa JSON chuẩn và chạy bộ kiểm tra.
 
 ## Kiểm tra và bàn giao
 
@@ -46,6 +49,10 @@ python3 scripts/build_content.py --check
 python3 -m unittest discover -s bao-tang-da-nang-v6/tests -p 'test_*.py'
 # Có Playwright + Chromium và server ở cổng 8877:
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/upgrade.cjs
+# Kiểm tra ảnh đúng hồ sơ, phóng to, quiz, nhiệm vụ, chat và lời kể:
+MUSEUM_TEST_URL=http://localhost:8877/ node tests/visuals.cjs
+# Cần checkout có commit 7.0 b01a340 để kiểm tra nâng PWA thật:
+node tests/photo-cache-upgrade.cjs
 ```
 
 - [Đối chiếu 13 vấn đề, các giai đoạn và toàn bộ file sửa](docs/UPGRADE-7.md)

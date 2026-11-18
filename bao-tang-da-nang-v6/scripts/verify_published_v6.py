@@ -137,14 +137,18 @@ def checked_assets(index: str, version: str, bootstrap: str = "") -> dict[str, s
     parsed.feed(index)
     assets = {}
     if version.startswith('7.'):
-        matches=[v for v in parsed.scripts if urlsplit(v).path=='bootstrap.js']
-        if matches!=['bootstrap.js?v='+version]: raise ValueError('Missing versioned bootstrap.js')
+        matches=[v for v in parsed.scripts if urlsplit(v).path==('bootstrap.js' if version=='7.0.0' else 'bootstrap-'+version+'.js')]
+        entry='bootstrap.js' if version=='7.0.0' else 'bootstrap-'+version+'.js'
+        if matches!=[entry+'?v='+version]: raise ValueError('Missing versioned bootstrap.js')
         if "version='"+version+"'" not in bootstrap: raise ValueError('Bootstrap version mismatch')
-        modules=['qr-decoder.js','qr-generator.js','guide-engine.js','chat-text.js','object-videos.js','videos.js','library-ui.js','request-plan.js','conversation.js','experience-i18n.js','learning-engine.js','retrieval.js','visitor.js','app.js','v6.js','profile.js','mobile.js','analytics.js','experience.js','photo-query.js','journey-card.js','offline.js']
+        modules=['qr-decoder.js','qr-generator.js','guide-engine.js','chat-text.js','object-videos.js','videos.js','library-ui.js','request-plan.js','conversation.js','experience-i18n.js','learning-engine.js','retrieval.js','visitor.js','app.js','v6.js','visuals.js','profile.js','mobile.js','analytics.js','experience.js','photo-query.js','journey-card.js','offline.js']
+        if version=='7.0.0': modules.remove('visuals.js')
         positions=[bootstrap.find("'"+name+"'") for name in modules]
         if -1 in positions or positions!=sorted(positions): raise ValueError('Bad bootstrap module dependency order')
-        for name in ['bootstrap.js','app-foundation.js','app-core.js','app-runtime.js',*modules]: assets[name]=name+'?v='+version
-        for name in ['app-styles.css']:
+        bundles=['app-foundation.js','app-core.js','app-runtime.js']
+        if version!='7.0.0':bundles=[name.replace('.js','-'+version+'.js') for name in bundles]
+        for name in ['bootstrap.js',entry,*bundles,*modules]: assets[name]=name+'?v='+version
+        for name in ['app-styles.css' if version=='7.0.0' else 'app-styles-'+version+'.css']:
             values=[v for v in parsed.styles if urlsplit(v).path==name]
             if values!=[name+'?v='+version]: raise ValueError('Missing versioned stylesheet '+name)
             assets[name]=values[0]
@@ -342,7 +346,7 @@ def arguments(argv=None):
     parser.add_argument('--base-url', default=DEFAULT_BASE)
     parser.add_argument('--minimum-records', type=int, default=200)
     parser.add_argument('--minimum-dimension', type=int, default=128)
-    parser.add_argument('--asset-version', default='7.0.0')
+    parser.add_argument('--asset-version', default='7.1.0')
     parser.add_argument('--max-wait', type=float, default=180)
     parser.add_argument('--poll-interval', type=float, default=8)
     parser.add_argument('--workers', type=int, default=8)

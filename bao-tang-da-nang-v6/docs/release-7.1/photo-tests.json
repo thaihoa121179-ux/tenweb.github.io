@@ -1,0 +1,42 @@
+{
+  "base": "http://127.0.0.1:8877/bao-tang-da-nang-v6/",
+  "scope": "Chromium desktop and mobile emulation; real records and real image decoding",
+  "results": [
+    {
+      "name": "photo layouts fit 360px; quiz photo matches question and enlarges",
+      "passed": true
+    },
+    {
+      "name": "photo layouts fit 390px; quiz photo matches question and enlarges",
+      "passed": true
+    },
+    {
+      "name": "photo layouts fit 430px; quiz photo matches question and enlarges",
+      "passed": true
+    },
+    {
+      "name": "photo layouts fit 1366px; quiz photo matches question and enlarges",
+      "passed": true
+    },
+    {
+      "name": "photo layouts fit 1920px; quiz photo matches question and enlarges",
+      "passed": true
+    },
+    {
+      "name": "five quiz photographs retain correct answers, explanation, sources and review gallery",
+      "passed": true
+    },
+    {
+      "name": "missions, recent visits and route replacements keep exact photo identities",
+      "passed": true
+    },
+    {
+      "name": "Mây welcome choice pins the photo, answer cards open records, story photos enlarge",
+      "passed": true
+    },
+    {
+      "name": "an unavailable photograph shows a labelled state without substituting another object",
+      "passed": true
+    }
+  ]
+}

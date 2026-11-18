@@ -1,0 +1,45 @@
+{
+  "scope": "axe-core automatic WCAG2 A/AA checks on visible views in Chromium; not a full conformance certification",
+  "results": [
+    {
+      "view": "home",
+      "violations": []
+    },
+    {
+      "view": "catalog",
+      "violations": []
+    },
+    {
+      "view": "guide",
+      "violations": []
+    },
+    {
+      "view": "profile",
+      "violations": []
+    },
+    {
+      "view": "plan",
+      "violations": []
+    },
+    {
+      "view": "map",
+      "violations": []
+    },
+    {
+      "view": "scan",
+      "violations": []
+    },
+    {
+      "view": "artifact",
+      "violations": []
+    },
+    {
+      "view": "quiz",
+      "violations": []
+    },
+    {
+      "view": "info",
+      "violations": []
+    }
+  ]
+}

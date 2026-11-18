@@ -3163,7 +3163,7 @@
     };
   }
   function smartButtons(ans) {
-    if (ans.cards?.length) {
+    if (ans.cards?.length && !window.MuseumVisuals) {
       const cards = document.createElement("div");
       cards.className = "chat-record-cards";
       cards.innerHTML = ans.cards
@@ -4022,6 +4022,7 @@
     D,
     A,
     S,
+    galleryImages: GALLERY_IMAGES,
     t,
     nm,
     ds,

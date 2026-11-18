@@ -3,7 +3,7 @@
  'use strict';
  const M=window.Museum,T=key=>MuseumLexicon.t(key),$=id=>document.getElementById(id),esc=M.esc;
  let lastScroll=0,streamTrack=null,torch=false,contextSignature='',sourceSignature='';
- const lex=key=>T(key);
+ const lex=key=>T(key),V=window.MuseumVisuals;
  function button(text,attrs='',cls='secondary'){return `<button type="button" class="${cls}" ${attrs}>${esc(text)}</button>`;}
  function dialog(id,title){const el=document.createElement('dialog');el.id=id;el.className='experience-dialog';el.innerHTML=`<div class="sheet-heading"><h2>${esc(title)}</h2>${button(T('close'),'data-close-dialog')}</div><div class="sheet-body"></div>`;document.body.appendChild(el);el.addEventListener('keydown',e=>{if(e.key==='Escape')e.stopPropagation();});el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-close-dialog]'))el.close();});return el;}
  M.renderGuide();
@@ -18,9 +18,20 @@
  function clearPin(){M.state.chatArtifact=null;Object.assign(M.guideContext,{artifact:null,topic:null,recommended:[],turns:[],activeIntent:null});syncContext();}
  function syncContext(){
   M.state.chatTopic='museum';const a=M.A.find(a=>a.id===M.state.chatArtifact),signature=(a?.id||'')+M.state.lang;
-  if(signature!==contextSignature){contextSignature=signature;context.hidden=!a;context.innerHTML=a?`<button type="button" data-context-open>${esc(T('context'))}: ${esc(M.aname(a))}</button><button type="button" data-context-clear aria-label="${esc(T('clear'))}">×</button>`:'';}
+  if(signature!==contextSignature){contextSignature=signature;context.hidden=!a;context.innerHTML=a?`<button type="button" data-context-open>${V.media(V.object(a),{decorative:true})}<span class="context-title">${esc(T('context'))}: ${esc(M.aname(a))}</span></button><button type="button" data-context-clear aria-label="${esc(T('clear'))}">×</button>`:'';}
+  renderStarter();
   if(a){M.guideContext.artifact=a.id;const qs=[T('eraQuestion'),T('materialQuestion'),T('storyQuestion')];if([...$('guide-chips').children].map(b=>b.textContent).join('|')!==qs.join('|'))$('guide-chips').innerHTML=qs.map(q=>button(q,`data-chat-question="${esc(q)}"`)).join('');}
  }
+ function renderStarter(){
+  const stack=document.querySelector('.assistant-row .assistant-stack');if(!stack)return;
+  const previous=document.getElementById('guide-welcome-gallery');
+  if(M.guideContext.turns.length){previous?.remove();return;}
+  const ids=[...new Set([M.state.chatArtifact,'ma-nao','sung-than-cong','phu-dieu'].filter(Boolean))].slice(0,3),signature=M.state.lang+ids.join('|');
+  if(previous?.dataset.signature===signature)return;
+  previous?.remove();const gallery=document.createElement('div');gallery.id='guide-welcome-gallery';gallery.className='guide-welcome-gallery';gallery.dataset.signature=signature;
+  gallery.innerHTML=`<h3>${esc(V.t('start'))}</h3><div class="visual-source-grid">${ids.map(id=>V.card(V.object(M.A.find(a=>a.id===id)),{question:true})).join('')}</div>`;stack.appendChild(gallery);
+ }
+ document.addEventListener('museum:question',()=>document.getElementById('guide-welcome-gallery')?.remove());
  context.addEventListener('click',e=>{if(e.target.closest('[data-context-clear]'))clearPin();else if(e.target.closest('[data-context-open]')&&M.state.chatArtifact)M.openArtifact(M.state.chatArtifact);});
  new MutationObserver(syncContext).observe($('guide-chips'),{childList:true});
  function applyTerms(){
@@ -45,7 +56,7 @@
   try{const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'omit',signal:controller.signal,body:JSON.stringify(body)});if(!r.ok)throw Error('HTTP '+r.status);return await r.json();}finally{clearTimeout(timer);}
  }
  let storyId=null,storyVersion=0;
- function storyBody(a,text,mode,tone){const related=M.A.filter(b=>!b.referenceOnly&&b.id!==a.id&&(b.topic===a.topic||b.sourceSite===a.sourceSite)).slice(0,3);return `<p class="mode-label">${esc(T(mode==='generative'?'generated':'scripted'))}</p><div class="story-tones" role="group">${['child','visitor','deep'].map(k=>button(T(k),`data-story-tone="${k}" aria-pressed="${tone===k}"`)).join('')}</div><h3>${esc(M.aname(a))}</h3><p class="story-text"></p><div class="buttonrow">${button(T('narrate'),'data-story-speak','primary')}${button(T('close'),'data-story-stop')}</div><button class="story-source secondary" data-artifact="${esc(a.id)}">${esc(T('source'))}: ${esc(M.aname(a))} ›</button><a class="source" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(T('readOriginal'))} ↗</a><h3>${esc(T('related'))}</h3>${related.map(b=>button(M.aname(b),`data-story-related="${esc(b.id)}"`)).join('')}`;}
+ function storyBody(a,text,mode,tone){const related=M.A.filter(b=>!b.referenceOnly&&b.id!==a.id&&(b.topic===a.topic||b.sourceSite===a.sourceSite)).slice(0,3);return `<p class="mode-label">${esc(T(mode==='generative'?'generated':'scripted'))}</p><div class="story-tones" role="group">${['child','visitor','deep'].map(k=>button(T(k),`data-story-tone="${k}" aria-pressed="${tone===k}"`)).join('')}</div><h3>${esc(M.aname(a))}</h3>${V.figure(V.object(a),{className:"story-photo",eager:true})}<p class="story-text"></p><div class="buttonrow">${button(T('narrate'),'data-story-speak','primary')}${button(T('close'),'data-story-stop')}</div><button class="story-source secondary" data-artifact="${esc(a.id)}">${esc(T('source'))}: ${esc(M.aname(a))} ›</button><a class="source" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(T('readOriginal'))} ↗</a><h3>${esc(T('related'))}</h3><div class="story-related-grid">${related.map(b=>V.card(V.object(b))).join('')}</div>`;}
  async function openStory(id,tone='visitor'){
   const a=M.A.find(a=>a.id===id);if(!a)return;storyId=id;const token=++storyVersion;const local=MuseumLearning.story(a,M.state.lang,tone),body=storySheet.querySelector('.sheet-body');
   const paint=(text,mode)=>{body.innerHTML=storyBody(a,text,mode,tone);body.querySelector('.story-text').textContent=text;};
@@ -75,7 +86,7 @@
   const seen=MuseumProfile.getData().visits.filter(v=>v.key.startsWith('artifact:')).slice(0,2).map(v=>M.A.find(a=>a.id===v.key.split(':')[1])).filter(Boolean);
   const local=M.A.filter(a=>!a.referenceOnly&&(a.sourceSite||'site1')==='site1');const today=local[Math.floor(Date.now()/86400000)%local.length];
   const card=a=>`<button class="home-record" data-artifact="${esc(a.id)}"><img src="${esc(a.image)}" loading="lazy" width="76" height="76" alt=""><span><b>${esc(M.aname(a))}</b><small>${esc(T('why'))}</small></span><span>›</span></button>`;
-  homeRecords.innerHTML=(seen.length?`<h2>${esc(T('resume'))}</h2>${seen.map(card).join('')}`:'')+`<h2>${esc(T('today'))}</h2>${card(today)}`;
+  homeRecords.innerHTML=(seen.length?`<h2>${esc(T('resume'))}</h2>${seen.map(card).join('')}`:'')+`<h2>${esc(T('today'))}</h2>${card(today)}`;V.decorateHome();
  }
  // QR trong nhà; GPS chỉ còn link chỉ đường ngoài trời, không tải bản đồ bên thứ ba.
  const qrInfo=document.createElement('details');qrInfo.className='map-explanation';qrInfo.innerHTML=`<summary>${esc(T('mapNote'))} ⓘ</summary><p>${esc(T('qrHelp'))}</p>`;const alert=$('page-map').querySelector('.map-alert');alert.replaceWith(qrInfo);
@@ -103,26 +114,34 @@
   const host=document.querySelector('#page-profile .personal-scroll');if(!host)return;
   let section=$('discovery-missions');if(!section){section=document.createElement('section');section.id='discovery-missions';section.className='card';host.querySelector('.personal-intro').after(section);}
   const progress=missionProgress(),list=definitions[discovery.active],names=MuseumLexicon.all.missionNames[{vi:0,en:1,ko:2,zh:3}[M.state.lang]];
-  section.innerHTML=`<div class="mission-heading"><img src="ai-robot.webp" alt="Mây" width="52" height="52"><div><span class="eyebrow">${esc(T('missions'))}</span><h2>${esc(names[discovery.active])}</h2></div><span role="img" class="mission-medal ${progress.done===progress.total?'earned':''}" aria-label="${esc(T('missions'))}"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 4 6 12 14 2-10 10 3 14-13-7-13 7 3-14L4 18l14-2Z" fill="currentColor"/><circle cx="24" cy="23" r="7" fill="var(--paper)"/></svg></span></div><p>${esc(T('missionIntro'))}</p><label for="mission-select">${esc(T('choose'))}</label><select id="mission-select">${names.map((n,i)=>`<option value="${i}" ${i===discovery.active?'selected':''}>${esc(n)}</option>`).join('')}</select><div class="mission-progress"><b>${progress.done} / ${progress.total}</b><progress max="${progress.total}" value="${progress.done}"></progress></div>${list.map(a=>`<button class="mission-record ${discovery.seen.includes(a.id)?'done':''}" data-artifact="${esc(a.id)}"><span>${discovery.seen.includes(a.id)?'✓':'◇'}</span><b>${esc(M.aname(a))}</b><span>›</span></button>`).join('')}<p class="mission-end">${esc(progress.done===progress.total?T('earned'):T('remaining'))}</p>`;
+  section.innerHTML=`<div class="mission-heading"><img src="ai-robot.webp" alt="Mây" width="52" height="52"><div><span class="eyebrow">${esc(T('missions'))}</span><h2>${esc(names[discovery.active])}</h2></div><span role="img" class="mission-medal ${progress.done===progress.total?'earned':''}" aria-label="${esc(T('missions'))}"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 4 6 12 14 2-10 10 3 14-13-7-13 7 3-14L4 18l14-2Z" fill="currentColor"/><circle cx="24" cy="23" r="7" fill="var(--paper)"/></svg></span></div><p>${esc(T('missionIntro'))}</p><label for="mission-select">${esc(T('choose'))}</label><select id="mission-select">${names.map((n,i)=>`<option value="${i}" ${i===discovery.active?'selected':''}>${esc(n)}</option>`).join('')}</select><div class="mission-progress"><b>${progress.done} / ${progress.total}</b><progress max="${progress.total}" value="${progress.done}"></progress></div><div class="mission-list">${list.map(a=>`<button class="mission-record ${discovery.seen.includes(a.id)?'done':''}" data-artifact="${esc(a.id)}">${V.media(V.object(a),{className:'mission-thumb',decorative:true})}<span class="mission-copy"><b>${esc(M.aname(a))}</b><small>${esc(M.ameta(a).era)}</small></span><span class="mission-status" aria-hidden="true">${discovery.seen.includes(a.id)?'✓':'›'}</span></button>`).join('')}</div><p class="mission-end">${esc(progress.done===progress.total?T('earned'):T('remaining'))}</p>`;
  }
  document.addEventListener('change',e=>{if(e.target.id==='mission-select'){discovery.active=Number(e.target.value);writeDiscovery();renderMissions();}});
  document.addEventListener('museum:profileclear',()=>{discovery={version:1,seen:[],active:0,earned:[]};writeDiscovery();renderMissions();});
  function visit(){if(M.state.page!=='artifact')return;const id=M.state.artifact;if(!discovery.seen.includes(id)){discovery.seen.push(id);writeDiscovery();}const p=missionProgress();if(p.done===p.total&&!discovery.earned.includes(discovery.active)){discovery.earned.push(discovery.active);writeDiscovery();window.MuseumAnalytics?.record('mission',String(discovery.active));M.toast(T('earned')+' ✦');document.body.classList.add('mission-earned');setTimeout(()=>document.body.classList.remove('mission-earned'),1200);}}
  function sourceCards(answer){
-  const urls=[answer.source,...(answer.sources||[]).map(s=>s.url)].filter(Boolean);const records=M.A.filter(a=>urls.includes(a.url));
-  const topicIds=(answer.cards||[]).map(id=>String(id).replace(/^topic:/,''));const selected=M.D.filter(d=>topicIds.includes(d.id)||d.id===M.guideContext.topic&&urls.includes(d.source));
+  const urls=[answer.source,...(answer.sources||[]).map(s=>s.url)].filter(Boolean),ids=(answer.cards||[]).map(id=>String(id).replace(/^artifact:/,''));
+  const records=M.A.filter(a=>urls.includes(a.url)||(!urls.length&&ids.includes(a.id)));
+  const topicIds=(answer.cards||[]).map(id=>String(id).replace(/^topic:/,''));
+  const selected=M.D.filter(d=>topicIds.includes(d.id)||d.id===M.guideContext.topic&&urls.includes(d.source));
+  const views=[...records.slice(0,5).map(a=>V.object(a)),...selected.slice(0,3).map(d=>V.forTopic(d.id))].filter(Boolean);
   const log=$('messages'),follow=log.scrollHeight-log.clientHeight-log.scrollTop<120;
-  const row=[...document.querySelectorAll('.assistant-row .assistant-stack')].at(-1);if(!row||!records.length&&!selected.length)return;
-  row.querySelector('.verified-source-cards')?.remove();const el=document.createElement('div');el.className='verified-source-cards';el.innerHTML=`<small>${esc(T('sources'))}</small>`+records.slice(0,5).map(a=>button(M.aname(a),`data-artifact="${esc(a.id)}"`)).join('')+selected.slice(0,3).map(d=>button(M.nm(d),`data-topic="${esc(d.id)}"`)).join('');row.appendChild(el);if(follow)requestAnimationFrame(()=>{log.scrollTop=log.scrollHeight;});
+  const row=[...document.querySelectorAll('.assistant-row .assistant-stack')].at(-1);if(!row||!views.length)return;
+  row.querySelector('.verified-source-cards')?.remove();const el=document.createElement('div');el.className='verified-source-cards';el.dataset.count=views.length;
+  el.innerHTML=`<small>${esc(urls.length?T('sources'):V.t('start'))}</small>`+views.map(v=>V.card(v)).join('');row.appendChild(el);
+  if(follow)requestAnimationFrame(()=>{log.scrollTop=log.scrollHeight;});
  }
  document.addEventListener('museum:reply',e=>{sourceCards(e.detail.answer);syncContext();});
  // Cho đổi/bỏ điểm trong lộ trình đang có; lý do tạo sinh chỉ hiện khi backend trả hợp lệ.
  function routeTools(){
   const el=$('plan-result');el.querySelectorAll('.route-stop').forEach((row,i)=>{
-   if(row.querySelector('.route-edit'))return;const id=M.state.route?.ids[i];if(!id)return;
-   const wrap=document.createElement('div');wrap.className='route-edit';wrap.innerHTML=`<label><span class="sr-only">${esc(T('route'))}</span><select data-route-replace="${esc(id)}">${M.D.map(d=>`<option value="${esc(d.id)}" ${d.id===id?'selected':''}>${esc(M.nm(d))}</option>`).join('')}</select></label>${button('×',`data-route-remove="${esc(id)}" aria-label="${esc(T('close'))}"`)}`;row.appendChild(wrap);
-   const reason=document.createElement('p');reason.className='route-reason';reason.textContent=M.state.route?.reasons?.[id]||T('routeWhy');row.appendChild(reason);
+   if(row.querySelector('.route-editor'))return;const id=M.state.route?.ids[i],d=M.D.find(d=>d.id===id);if(!d)return;
+   row.insertAdjacentHTML('afterbegin',V.figure(V.forTopic(id,true),{className:'route-picture'}));
+   const details=document.createElement('details');details.className='route-editor';
+   details.innerHTML=`<summary>${esc(V.t('edit'))}</summary><div class="route-edit"><label><span class="sr-only">${esc(T('route'))}</span><select data-route-replace="${esc(id)}">${M.D.map(d=>`<option value="${esc(d.id)}" ${d.id===id?'selected':''}>${esc(M.nm(d))}</option>`).join('')}</select></label>${button('×',`data-route-remove="${esc(id)}" aria-label="${esc(T('close'))}"`)}</div>`;row.appendChild(details);
+   const reason=document.createElement('p');reason.className='route-reason';reason.textContent=M.state.route?.reasons?.[id]||M.ds(d);row.appendChild(reason);
   });
+  if(el.querySelector('.route-stop')&&!el.querySelector('.route-method-note')){const p=document.createElement('p');p.className='route-method-note';p.textContent=T('routeWhy');el.appendChild(p);}
  }
  new MutationObserver(routeTools).observe($('plan-result'),{childList:true});
  document.addEventListener('click',e=>{const b=e.target.closest('[data-route-remove]');if(!b||!M.state.route)return;const id=b.dataset.routeRemove;M.state.route.ids=M.state.route.ids.filter(x=>x!==id);M.state.route.done=M.state.route.done.filter(x=>x!==id);if(!M.state.route.ids.length)M.state.route=null;M.saveRoute();M.renderRoute();});
@@ -135,10 +154,13 @@
  document.addEventListener('museum:navigate',()=>{
   immersive();visit();
   if(M.state.page==='catalog'){catalogTools();requestAnimationFrame(()=>{$('catalog-list').scrollTop=M.state.catalogScroll||0;});}
-  if(M.state.page==='home')homeUpdates();if(M.state.page==='profile')renderMissions();if(M.state.page==='artifact')artifactActions();
+  if(M.state.page==='home')homeUpdates();if(M.state.page==='map')V.decorateMap();if(M.state.page==='floors')V.decorateFloors();if(M.state.page==='profile')renderMissions();if(M.state.page==='artifact')artifactActions();
   if(M.state.page==='scan'){cameraError.hidden=true;flash.hidden=true;$('scan-start').hidden=false;M.openCamera();}
  });
  new MutationObserver(()=>{if(!$('discovery-missions'))renderMissions();}).observe($('page-profile'),{childList:true});
+ new MutationObserver(V.decorateMap).observe($('map-zone-list'),{childList:true});
+ new MutationObserver(V.decorateFloors).observe($('floor-list'),{childList:true});
+ V.decorateMap();V.decorateFloors();routeTools();
  window.MuseumDiscovery={getData:()=>structuredClone(discovery),progress:missionProgress,definitions:()=>definitions.map(list=>list.map(a=>a.id))};
  window.MuseumExperience={pin,clearPin,openStory,api,dialog,t:T,renderMissions};
  immersive();labels();

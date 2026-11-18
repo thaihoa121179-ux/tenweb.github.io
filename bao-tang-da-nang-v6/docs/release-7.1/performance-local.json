@@ -1,0 +1,14 @@
+{
+  "scope": "Lighthouse 13.0.1 mobile; local HTTP gzip server, cold load; not published Pages measurement",
+  "categories": {
+    "performance": 86,
+    "accessibility": 100,
+    "best-practices": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.0 s",
+    "largest-contentful-paint": "4.2 s",
+    "total-blocking-time": "80 ms",
+    "cumulative-layout-shift": "0.012"
+  }
+}
