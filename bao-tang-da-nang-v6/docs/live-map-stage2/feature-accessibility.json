@@ -1,0 +1,45 @@
+{
+  "scope": "Chromium 390/1366px; automatic checks on new Stage 2 states",
+  "checks": [
+    {
+      "width": 390,
+      "view": "destination-dialog",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "view": "active-route",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "view": "area-arrival-card",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "view": "topic-chat",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "view": "simulation-badge",
+      "violations": []
+    },
+    {
+      "width": 1366,
+      "view": "destination-dialog",
+      "violations": []
+    },
+    {
+      "width": 1366,
+      "view": "active-route",
+      "violations": []
+    },
+    {
+      "width": 1366,
+      "view": "area-arrival-card",
+      "violations": []
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "scope": "Stage 2, actual static data; Chromium and synthetic time, not physical phone sensors",
+  "results": [
+    {
+      "name": "destination in floor 2 has directions, auto stair transition, arrival and a simulated journal entry",
+      "passed": true
+    },
+    {
+      "name": "a personal itinerary follows stop order across floors and awards the 2-area badge once",
+      "passed": true
+    },
+    {
+      "name": "staying in a zone does not fire repeatedly, leaving and reentering advances a related record",
+      "passed": true
+    },
+    {
+      "name": "the area card opens grounded Mây topic context, speaks record text and opens the correct object",
+      "passed": true
+    },
+    {
+      "name": "object directions target only site 1 records; other museums stay unpinned",
+      "passed": true
+    },
+    {
+      "name": "an off-route held placement recalculates a walkable route, then reaches a WC on floor 2",
+      "passed": true
+    },
+    {
+      "name": "a walking-mode connector transition keeps sensors active until leaving the map",
+      "passed": true
+    },
+    {
+      "name": "destination controls and area cards work in all four languages",
+      "passed": true
+    },
+    {
+      "name": "offline navigation still crosses floors and clearing personal data removes simulated progress",
+      "passed": true
+    }
+  ]
+}

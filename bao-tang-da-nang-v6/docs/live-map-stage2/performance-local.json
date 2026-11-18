@@ -1,0 +1,8 @@
+{
+  "scope": "Lighthouse 13.0.1 mobile, local gzip server cold root-page load; not published Pages or map FPS",
+  "scores": {
+    "performance": 85,
+    "accessibility": 100,
+    "best-practices": 100
+  }
+}

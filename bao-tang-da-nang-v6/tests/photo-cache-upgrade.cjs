@@ -32,7 +32,7 @@ const server=http.createServer(async(req,res)=>{
   await p.waitForFunction(async photo=>{for(const key of await caches.keys())if(key.endsWith('-images')&&await(await caches.open(key)).match(photo))return true;return false;},photo);
   await p.evaluate(()=>{Museum.nav('profile');window.upgradeSentinel='page remains open';document.getElementById('personal-note').value='Bản nháp đang gõ — giữ lại';});
   oldMode=false;await p.evaluate(()=>MuseumOffline.getRegistration().update());
-  await p.waitForFunction(async photo=>{const names=await caches.keys();return navigator.serviceWorker.controller?.state==='activated'&&!names.some(n=>n==='museum-v7-20261118-1-shell'||n==='museum-v7-20261118-1-images')&&names.includes('museum-v7-visited-images')&&names.some(n=>n==='museum-v7-20261118-map-stage1-shell')&&!!await(await caches.open('museum-v7-visited-images')).match(photo);},photo,{timeout:20000});
+  await p.waitForFunction(async photo=>{const names=await caches.keys();return navigator.serviceWorker.controller?.state==='activated'&&!names.some(n=>n==='museum-v7-20261118-1-shell'||n==='museum-v7-20261118-1-images')&&names.includes('museum-v7-visited-images')&&names.some(n=>n==='museum-v7-20261118-map-stage2-shell')&&!!await(await caches.open('museum-v7-visited-images')).match(photo);},photo,{timeout:20000});
   // Worker mới nhận trang hiện tại nhưng không tự reload khi khách đang viết.
   assert.equal(await p.evaluate(()=>window.upgradeSentinel),'page remains open');assert.equal(await p.locator('#personal-note').inputValue(),'Bản nháp đang gõ — giữ lại');
   await p.reload();await p.waitForFunction(()=>window.MuseumVisuals&&window.MuseumJourneyCard&&!document.getElementById('boot-status'));

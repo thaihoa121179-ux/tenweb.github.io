@@ -35,7 +35,7 @@ jobs:
         run: >-
           python3 bao-tang-da-nang-v6/scripts/verify_published_v6.py
           --minimum-records 200 --minimum-dimension 128
-          --asset-version 7.2.0 --max-wait 180 --workers 8
+          --asset-version 7.3.0 --max-wait 180 --workers 8
       - name: Measure the published mobile page
         run: |
           npm install --prefix "$RUNNER_TEMP/museum-lighthouse" lighthouse@13.0.1 --no-audit --no-fund

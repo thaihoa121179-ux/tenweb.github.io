@@ -1,6 +1,10 @@
 /* Thuật ngữ và nhãn tính năng mới, thứ tự VI / EN / KO / ZH. */
 (() => {
  const strings={
+  mapDirections:['Chỉ đường trên sơ đồ mô phỏng','Directions on the simulated plan','모의 평면도 길 안내','在模拟平面图上导航'],
+  zoneQuestion:['Khu này có gì?','What is in this area?','이 구역에는 무엇이 있나요?','这个区域有什么？'],
+  zoneObjects:['Gợi ý hiện vật tiêu biểu','Suggest notable objects','대표 유물 추천','推荐代表性文物'],
+  zoneStory:['Kể thêm về khu này','Tell me about this area','이 구역에 대해 더 알려줘','介绍一下这个区域'],
   ask:['Hỏi Mây về hiện vật này','Ask Mây about this object','이 유물에 대해 질문','向小云询问这件文物'],
   narrate:['Nghe hiện vật kể','Hear the object’s story','유물 이야기 듣기','听文物讲故事'],
   child:['Bé khám phá','Young explorer','어린이 탐험가','小小探索家'],visitor:['Du khách','Visitor','관람객','游客'],deep:['Chuyên sâu','In depth','심층 해설','深入解读'],

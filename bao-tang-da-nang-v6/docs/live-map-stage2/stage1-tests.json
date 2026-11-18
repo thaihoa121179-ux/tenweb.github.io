@@ -1,0 +1,53 @@
+{
+  "scope": "Stage 1; Chromium viewport and synthetic sensor tests, not real phone hardware",
+  "results": [
+    {
+      "name": "full screen, no overflow, floor geometry and touch targets 360×800",
+      "passed": true
+    },
+    {
+      "name": "full screen, no overflow, floor geometry and touch targets 390×844",
+      "passed": true
+    },
+    {
+      "name": "full screen, no overflow, floor geometry and touch targets 430×932",
+      "passed": true
+    },
+    {
+      "name": "full screen, no overflow, floor geometry and touch targets 844×390",
+      "passed": true
+    },
+    {
+      "name": "full screen, no overflow, floor geometry and touch targets 1366×900",
+      "passed": true
+    },
+    {
+      "name": "WASD and joystick move, diagonal speed is bounded, walls stop and exit clears input/RAF",
+      "passed": true
+    },
+    {
+      "name": "autoplay plays, pauses, speeds up and seeks through doors without penetrating walls",
+      "passed": true
+    },
+    {
+      "name": "denied sensors have a one-tap joystick fallback; late permissions cannot restart sensors",
+      "passed": true
+    },
+    {
+      "name": "sensor silence after 3 seconds shows recovery and ten gait pulses drive the dot",
+      "passed": true
+    },
+    {
+      "name": "zoom, pan, direction-up, follow, settings, held placement and reset work",
+      "passed": true
+    },
+    {
+      "name": "four languages, QR pixels and file-based AI configuration remain valid",
+      "passed": true
+    },
+    {
+      "name": "PWA opens the lazy map, three floors and autopilot offline",
+      "passed": true
+    }
+  ]
+}

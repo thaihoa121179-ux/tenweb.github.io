@@ -9,5 +9,8 @@ globalThis.MuseumMapConfig = Object.freeze({
   collisionStep: 0.12, snapDistance: 0.65, snapStrength: 0.08,
   interpolation: 14, maxFrameSeconds: 0.05,
   autoplaySpeed: 2.4, autoplayDwellSeconds: 2, triggerRadius: 5,
+  zoneCooldownMs: 8000, zoneExitMargin: 1.2, noticeMs: 8000,
+  arrivalRadius: 0.8, rerouteDistance: 2.5, rerouteMs: 1200,
+  stairsCost: 6, liftCost: 8, transitionCooldownMs: 2200,
   minZoom: 0.75, maxZoom: 5, maxTrail: 100, trailSeconds: 45,
 });

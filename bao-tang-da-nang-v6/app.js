@@ -2687,6 +2687,7 @@
       s = norm(query),
       say = (...a) => a.some((k) => s.includes(norm(k)));
     if(state.chatArtifact) guideContext.artifact=state.chatArtifact;
+    else if(state.chatTopicId){guideContext.artifact=null;guideContext.topic=state.chatTopicId;}
     const named = findMuseumEntity(query);
     if(named?.type === "artifact") state.chatArtifact=named.item.id;
     const requestPlan = window.MuseumRequestPlan?.analyze(query,{previous:guideContext.requestPlan,namedArtifact:named?.type==='artifact'});
@@ -3888,6 +3889,7 @@
     });
     $("article-chat").addEventListener("click", () => {
       const d = D.find((x) => x.id === state.topic);
+      window.MuseumExperience?.pinTopic(d.id);
       nav("guide");
       sendMessage(nm(d));
     });

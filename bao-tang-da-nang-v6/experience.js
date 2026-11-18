@@ -14,12 +14,14 @@
  const more=document.createElement('button');more.id='chat-more';more.type='button';more.textContent='⋯';more.setAttribute('aria-haspopup','dialog');$('page-guide').querySelector('.backline').appendChild(more);more.onclick=()=>options.showModal();
  const context=document.createElement('div');context.id='chat-context';context.className='chat-context';context.hidden=true;$('page-guide').querySelector('.backline').after(context);
  const logo=document.querySelector('.logo');logo.innerHTML='<svg viewBox="0 0 40 40" role="img" aria-label="DN"><path d="M9 9v22h6c14 0 14-22 0-22H9zm14 22V9l9 22V9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg>';
- function pin(id){if(!M.A.some(a=>a.id===id))return;M.state.chatArtifact=id;M.guideContext.artifact=id;syncContext();}
- function clearPin(){M.state.chatArtifact=null;Object.assign(M.guideContext,{artifact:null,topic:null,recommended:[],turns:[],activeIntent:null});syncContext();}
+ function pin(id){if(!M.A.some(a=>a.id===id))return;M.state.chatTopicId=null;M.state.chatArtifact=id;M.guideContext.artifact=id;syncContext();}
+ function pinTopic(id){if(!M.D.some(d=>d.id===id))return;M.state.chatArtifact=null;M.state.chatTopicId=id;Object.assign(M.guideContext,{artifact:null,topic:id,recommended:[]});syncContext();}
+ function clearPin(){M.state.chatTopicId=null;M.state.chatArtifact=null;Object.assign(M.guideContext,{artifact:null,topic:null,recommended:[],turns:[],activeIntent:null});syncContext();}
  function syncContext(){
-  M.state.chatTopic='museum';const a=M.A.find(a=>a.id===M.state.chatArtifact),signature=(a?.id||'')+M.state.lang;
-  if(signature!==contextSignature){contextSignature=signature;context.hidden=!a;context.innerHTML=a?`<button type="button" data-context-open>${V.media(V.object(a),{decorative:true})}<span class="context-title">${esc(T('context'))}: ${esc(M.aname(a))}</span></button><button type="button" data-context-clear aria-label="${esc(T('clear'))}">×</button>`:'';}
+  M.state.chatTopic='museum';const a=M.A.find(a=>a.id===M.state.chatArtifact),d=!a&&M.D.find(d=>d.id===M.state.chatTopicId),signature=(a?.id||d?.id||'')+M.state.lang;
+  if(signature!==contextSignature){contextSignature=signature;context.hidden=!a&&!d;context.innerHTML=a||d?`<button type="button" data-context-open>${V.media(a?V.object(a):V.forTopic(d.id),{decorative:true})}<span class="context-title">${esc(T('context'))}: ${esc(a?M.aname(a):M.nm(d))}</span></button><button type="button" data-context-clear aria-label="${esc(T('clear'))}">×</button>`:'';}
   renderStarter();
+  if(d){M.guideContext.topic=d.id;const qs=[T('zoneQuestion'),T('zoneObjects'),T('zoneStory')];if([...$('guide-chips').children].map(b=>b.textContent).join('|')!==qs.join('|'))$('guide-chips').innerHTML=qs.map(q=>button(q,`data-chat-question="${esc(q)}"`)).join('');}
   if(a){M.guideContext.artifact=a.id;const qs=[T('eraQuestion'),T('materialQuestion'),T('storyQuestion')];if([...$('guide-chips').children].map(b=>b.textContent).join('|')!==qs.join('|'))$('guide-chips').innerHTML=qs.map(q=>button(q,`data-chat-question="${esc(q)}"`)).join('');}
  }
  function renderStarter(){
@@ -32,7 +34,7 @@
   gallery.innerHTML=`<h3>${esc(V.t('start'))}</h3><div class="visual-source-grid">${ids.map(id=>V.card(V.object(M.A.find(a=>a.id===id)),{question:true})).join('')}</div>`;stack.appendChild(gallery);
  }
  document.addEventListener('museum:question',()=>document.getElementById('guide-welcome-gallery')?.remove());
- context.addEventListener('click',e=>{if(e.target.closest('[data-context-clear]'))clearPin();else if(e.target.closest('[data-context-open]')&&M.state.chatArtifact)M.openArtifact(M.state.chatArtifact);});
+ context.addEventListener('click',e=>{if(e.target.closest('[data-context-clear]'))clearPin();else if(e.target.closest('[data-context-open]')&&M.state.chatArtifact)M.openArtifact(M.state.chatArtifact);else if(e.target.closest('[data-context-open]')&&M.state.chatTopicId)M.openArticle(M.state.chatTopicId);});
  new MutationObserver(syncContext).observe($('guide-chips'),{childList:true});
  function applyTerms(){
   for(const [key,term]of Object.entries({quiz:'quiz',profile:'journal',plan:'route',map:'qrMap',dataMode:'dataMode',meetMay:'quickAsk'}))document.querySelectorAll(`[data-v6="${key}"]`).forEach(e=>e.textContent=T(term));
@@ -47,8 +49,8 @@
  document.addEventListener('scroll',event=>{if(event.target!==document.querySelector('.page.active')&&event.target!==$('catalog-list')||['guide','scan'].includes(M.state.page)||document.activeElement?.matches('input,textarea'))return;const y=event.target.scrollTop;if(Math.abs(y-lastScroll)>8){document.body.classList.toggle('header-collapsed',y>lastScroll&&y>80);lastScroll=y;}},{capture:true,passive:true});
  // Điểm mở chat và nghe kể được gắn vào hồ sơ đang xem.
  const actions=document.createElement('div');actions.id='artifact-ai-actions';actions.className='artifact-ai-actions';$('artifact-meta').before(actions);
- function artifactActions(){const a=M.A.find(a=>a.id===M.state.artifact);if(!a)return;actions.innerHTML=button(T('ask'),'data-ask-current','primary')+button(T('narrate'),'data-story-current')+`<span class="record-language">${esc(a.translationStatus==='automatic'&&M.state.lang!==a.sourceLanguage?T('autoTranslation'):a.imported&&!MuseumDataV6.artifacts[a.id]?T('originalLanguage'):'')}</span>`;}
- actions.addEventListener('click',e=>{if(e.target.closest('[data-ask-current]')){pin(M.state.artifact);M.nav('guide');$('chat-input').focus();}else if(e.target.closest('[data-story-current]'))openStory(M.state.artifact);});
+ function artifactActions(){const a=M.A.find(a=>a.id===M.state.artifact);if(!a)return;actions.innerHTML=button(T('ask'),'data-ask-current','primary')+button(T('narrate'),'data-story-current')+button(T('mapDirections'),`data-map-current ${a.referenceOnly||(a.sourceSite||'site1')!=='site1'?'disabled':''}`)+`<span class="record-language">${esc(a.translationStatus==='automatic'&&M.state.lang!==a.sourceLanguage?T('autoTranslation'):a.imported&&!MuseumDataV6.artifacts[a.id]?T('originalLanguage'):'')}</span>`;}
+ actions.addEventListener('click',e=>{if(e.target.closest('[data-ask-current]')){pin(M.state.artifact);M.nav('guide');$('chat-input').focus();}else if(e.target.closest('[data-story-current]'))openStory(M.state.artifact);else if(e.target.closest('[data-map-current]'))window.MuseumMapOpenTarget?.({kind:'artifact',id:M.state.artifact});});
  async function api(path,body,timeout=25000){
   const endpoint=M.getAIEndpoint();if(!endpoint)throw Error('not_configured');
   const url=new URL(endpoint);if(url.protocol!=='https:'||url.username||url.password)throw Error('unsafe_endpoint');url.pathname=url.pathname.replace(/\/(chat|story|identify|route|summary)\/?$/,'')+'/'+path;url.search='';url.hash='';
@@ -161,7 +163,12 @@
  new MutationObserver(V.decorateMap).observe($('map-zone-list'),{childList:true});
  new MutationObserver(V.decorateFloors).observe($('floor-list'),{childList:true});
  V.decorateMap();V.decorateFloors();routeTools();
- window.MuseumDiscovery={getData:()=>structuredClone(discovery),progress:missionProgress,definitions:()=>definitions.map(list=>list.map(a=>a.id))};
- window.MuseumExperience={pin,clearPin,openStory,api,dialog,t:T,renderMissions};
+ window.MuseumDiscovery={recordSimulatedVisit:(topicId,artifactId)=>{
+  const a=locals.find(a=>a.id===artifactId&&a.topic===topicId);
+  MuseumProfile.recordSimulated(topicId,a?.id);
+  if(a&&!discovery.seen.includes(a.id)){discovery.seen.push(a.id);writeDiscovery();}
+  const p=missionProgress();if(p.done===p.total&&!discovery.earned.includes(discovery.active)){discovery.earned.push(discovery.active);writeDiscovery();M.toast(T('earned')+' ✦');}
+ },getData:()=>structuredClone(discovery),progress:missionProgress,definitions:()=>definitions.map(list=>list.map(a=>a.id))};
+ window.MuseumExperience={pinTopic, pin,clearPin,openStory,api,dialog,t:T,renderMissions};
  immersive();labels();
 })();

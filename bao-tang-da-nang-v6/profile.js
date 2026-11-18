@@ -486,7 +486,7 @@
             .map((v) => {
               const r = visitRecord(v);
               return r
-                ? `<li><button ${r.type === "artifact" ? "data-artifact" : "data-topic"}="${M.esc(r.id)}">${V.media(V.resolve(r.type,r.id),{decorative:true})}<span class="timeline-copy"><span>${M.esc(r.name)}</span><small>${M.esc(date(v.time))} ›</small></span></button></li>`
+                ? `<li><button ${r.type === "artifact" ? "data-artifact" : "data-topic"}="${M.esc(r.id)}">${V.media(V.resolve(r.type,r.id),{decorative:true})}<span class="timeline-copy"><span>${M.esc(r.name)}</span><small>${M.esc(date(v.time))}${v.simulated?' · '+M.esc(M.human('Mô phỏng','Simulation','시뮬레이션','模拟')):''} ›</small></span></button></li>`
                 : "";
             })
             .join("")}</ol>`
@@ -691,5 +691,14 @@
     render: renderProfile,
     renderQuiz,
     getData: () => structuredClone(data),
+    recordSimulated: (topicId, artifactId) => {
+      if (!M.D.some(d=>d.id===topicId)) return;
+      const a=M.A.find(a=>a.id===artifactId&&a.topic===topicId&&!a.referenceOnly&&(a.sourceSite||'site1')==='site1');
+      for(const key of ['article:'+topicId,...(a?['artifact:'+a.id]:[])]) {
+        if(data.visits.some(v=>v.key===key))continue;
+        data.visits.unshift({key,time:Date.now(),simulated:true});
+      }
+      data.visits=data.visits.slice(0,100);write();
+    },
   };
 })();
