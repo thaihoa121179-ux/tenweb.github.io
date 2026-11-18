@@ -9,7 +9,7 @@
  M.renderGuide();
  const options=dialog('reply-options',T('options')),filters=dialog('filter-sheet',T('filters')),storySheet=dialog('story-sheet',T('narrate'));
  options.querySelector('.sheet-body').appendChild($('chat-preferences'));
- const backendSettings=document.querySelector('.developer-config');options.querySelector('.sheet-body').appendChild(backendSettings);$('ai-endpoint').value=M.sv('museum_ai_endpoint');
+
  $('chat-depth-note').removeAttribute('role');$('chat-depth-note').hidden=true;
  const more=document.createElement('button');more.id='chat-more';more.type='button';more.textContent='⋯';more.setAttribute('aria-haspopup','dialog');$('page-guide').querySelector('.backline').appendChild(more);more.onclick=()=>options.showModal();
  const context=document.createElement('div');context.id='chat-context';context.className='chat-context';context.hidden=true;$('page-guide').querySelector('.backline').after(context);
@@ -50,7 +50,7 @@
  function artifactActions(){const a=M.A.find(a=>a.id===M.state.artifact);if(!a)return;actions.innerHTML=button(T('ask'),'data-ask-current','primary')+button(T('narrate'),'data-story-current')+`<span class="record-language">${esc(a.translationStatus==='automatic'&&M.state.lang!==a.sourceLanguage?T('autoTranslation'):a.imported&&!MuseumDataV6.artifacts[a.id]?T('originalLanguage'):'')}</span>`;}
  actions.addEventListener('click',e=>{if(e.target.closest('[data-ask-current]')){pin(M.state.artifact);M.nav('guide');$('chat-input').focus();}else if(e.target.closest('[data-story-current]'))openStory(M.state.artifact);});
  async function api(path,body,timeout=25000){
-  const endpoint=M.sv('museum_ai_endpoint');if(!endpoint)throw Error('not_configured');
+  const endpoint=M.getAIEndpoint();if(!endpoint)throw Error('not_configured');
   const url=new URL(endpoint);if(url.protocol!=='https:'||url.username||url.password)throw Error('unsafe_endpoint');url.pathname=url.pathname.replace(/\/(chat|story|identify|route|summary)\/?$/,'')+'/'+path;url.search='';url.hash='';
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeout);
   try{const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'omit',signal:controller.signal,body:JSON.stringify(body)});if(!r.ok)throw Error('HTTP '+r.status);return await r.json();}finally{clearTimeout(timer);}

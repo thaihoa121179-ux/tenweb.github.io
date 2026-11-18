@@ -22,7 +22,7 @@ Lệnh đầu mở trang Cloudflare để bạn đăng nhập; lệnh thứ hai 
 
 ## 3. Nối website
 
-Trên web chọn **Mây AI → ⋯ → Cấu hình backend · dành cho nhóm phát triển**. Mở bảng cấu hình, dán **URL Worker + `/chat`**, ví dụ `https://danang-museum-may-v6.example.workers.dev/chat`, bấm ✓. Chỉ nhập URL, không nhập API key. Ô `#ai-endpoint` và nút `#ai-endpoint-save` hiện có được đưa vào menu này để dùng trên điện thoại. Để quay về chế độ cục bộ, xóa URL rồi bấm ✓.
+Từ bản nháp 7.2, cấu hình backend được chuyển khỏi UI công khai sang `config.js`. Đặt `aiEndpoint` thành URL HTTPS của Worker + `/chat`, ví dụ `https://danang-museum-may-v6.example.workers.dev/chat`, rồi chạy `npm run build` và triển khai các file đã build. Để dùng chế độ cục bộ, đặt chuỗi rỗng `''`. Không đặt API key trong file này; khóa chỉ nằm ở Worker. URL có query string, fragment hoặc thông tin đăng nhập bị từ chối. Giá trị endpoint cũ trong localStorage không còn được dùng; chuyển URL hợp lệ sang file cấu hình nếu bạn từng thiết lập. Trên bản Pages 7.1 chưa nâng cấp, menu cấu hình cũ vẫn tồn tại cho tới khi xuất bản bản mới.
 
 Thử mở Trang sức mã não → Hỏi Mây → “cái này bao nhiêu tuổi?”. Thẻ nguồn phải mở lại hồ sơ đúng. Chọn Nghe hiện vật kể: chỉ khi Worker trả kết quả hợp lệ mới đổi nhãn thành **Lời kể do AI diễn đạt từ hồ sơ**. Chụp & hỏi: xem trước ảnh, bấm Nhận diện, so sánh ba ứng viên rồi tự chọn. Mức khớp là gợi ý từ model, không phải xác suất đã hiệu chuẩn.
 

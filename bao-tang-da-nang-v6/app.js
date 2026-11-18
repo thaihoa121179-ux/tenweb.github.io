@@ -1118,7 +1118,6 @@
         renderSamples();
         break;
       case "info":
-        $("ai-endpoint").value = sv("museum_ai_endpoint");
         break;
     }
   }
@@ -3259,7 +3258,7 @@
       document.dispatchEvent(new CustomEvent("museum:question",{detail:{intent:guideContext.activeIntent||"unknown"}}));
       currentTurn.scope = localAnswer.kind === "conversation" ? "conversation" : "museum";
       preparation.remove();
-      const endpoint = safeEndpoint(sv("museum_ai_endpoint"));
+      const endpoint = safeEndpoint(window.MuseumConfig?.aiEndpoint || "");
       if (endpoint && !localAnswer.applicationOnly) {
         const typing = addBubble(human("Đang chờ AI máy chủ phản hồi…", "Waiting for the AI server…", "AI 서버의 응답을 기다리고 있어요…", "正在等待AI服务器回复……"), false, "", "🤔");
         try {
@@ -3959,24 +3958,6 @@
     $("qr-manual").addEventListener("keydown", (e) => {
       if (e.key === "Enter") parseQR(e.target.value);
     });
-    $("ai-endpoint-save").addEventListener("click", () => {
-      const val = $("ai-endpoint").value.trim();
-      if (val && !safeEndpoint(val)) {
-        toast(
-          human(
-            "Nhập URL HTTPS hợp lệ, không chứa khóa hoặc thông tin đăng nhập.",
-            "Use a valid HTTPS URL without credentials or keys.",
-            "키나 로그인 정보가 없는 HTTPS URL을 입력하세요.",
-            "请输入不含密钥或登录信息的有效HTTPS地址。",
-          ),
-        );
-        return;
-      }
-      persist("museum_ai_endpoint", val);
-      state.guideMode = "offline";
-      toast(t(val ? "endpointSaved" : "endpointClear"));
-      renderGuide();
-    });
     window.addEventListener("pagehide", stopCamera);
   }
   document.addEventListener("click", (e) => {
@@ -4061,6 +4042,7 @@
     searchScore,
     levens,
     qrSrc,
+    getAIEndpoint: () => safeEndpoint(window.MuseumConfig?.aiEndpoint || ""),
     aname,
     asummary,
     ameta,
