@@ -60,6 +60,7 @@ Các đường dẫn dưới đây là file đầy đủ, có thể tải/copy n
 | [sw.js](../../sw.js) | Cache mới, JSON tuyến và tám ảnh duy nhất cho chín thẻ; đọc ảnh đã precache khi mất mạng |
 | [package.json](../../package.json), [package-lock.json](../../package-lock.json) | Phiên bản gói |
 | [scripts/verify_published_v6.py](../../scripts/verify_published_v6.py) | Kiểm tra các file triển khai và ảnh thật |
+| [scripts/summarize_lighthouse.mjs](../../scripts/summarize_lighthouse.mjs) | Công bố số đo và chi tiết lỗi triển khai thật trong trang Actions công khai |
 | [tests/demo-tour.test.mjs](../../tests/demo-tour.test.mjs), [tests/demo-tour.cjs](../../tests/demo-tour.cjs) | Graph thật, sự kiện, UI, ngoại tuyến và vòng đời |
 | [workflow kiểm tra web](../../../.github/workflows/verify-published-v6.yml) | Xác thực file triển khai và Lighthouse trên URL công khai |
 

@@ -45,9 +45,9 @@ jobs:
             --only-categories=performance,accessibility,best-practices \
             --output=json --output-path="$RUNNER_TEMP/museum-lighthouse.json" --quiet > "$RUNNER_TEMP/museum-lighthouse.log" 2>&1
           node -e 'const r=require(process.argv[1]); console.log(JSON.stringify(Object.fromEntries(Object.entries(r.categories).map(([k,v])=>[k,Math.round(v.score*100)])))); if(r.categories.performance.score<0.85)process.exit(1)' "$RUNNER_TEMP/museum-lighthouse.json"
-      - name: Summarize the actual public performance measurement
+      - name: Summarize the actual public asset and performance measurements
         if: always()
-        run: node bao-tang-da-nang-v6/scripts/summarize_lighthouse.mjs "$RUNNER_TEMP/museum-lighthouse.json" "$RUNNER_TEMP/museum-lighthouse.log"
+        run: node bao-tang-da-nang-v6/scripts/summarize_lighthouse.mjs "$RUNNER_TEMP/museum-lighthouse.json" "$RUNNER_TEMP/museum-lighthouse.log" bao-tang-da-nang-v6/data/published-verification.json
       - name: Retain the actual publication evidence, including failures
         if: always()
         uses: actions/upload-artifact@v4
