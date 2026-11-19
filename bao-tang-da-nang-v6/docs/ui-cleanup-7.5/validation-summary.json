@@ -1,5 +1,5 @@
 {
-  "version": "7.5.0",
+  "version": "7.5.1",
   "scope": "Local unit/data tests and Chromium emulation; native phone camera, torch, share sheet and sensor hardware remain untested.",
   "passed": true,
   "checks": {

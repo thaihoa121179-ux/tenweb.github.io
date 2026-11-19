@@ -1,7 +1,7 @@
 /* Scope chỉ V6. Bộ nhớ ảnh có giới hạn; API và dữ liệu riêng tư không được cache. */
-const VERSION='museum-v7-20261119-ui-cleanup',SHELL=VERSION+'-shell',IMAGES='museum-v7-visited-images';
+const VERSION='museum-v7-20261119-ui-cleanup-1',SHELL=VERSION+'-shell',IMAGES='museum-v7-visited-images';
 const scope=new URL('./',self.location.href);
-const core=['./','index.html','bootstrap-7.5.0.js','app-foundation-7.5.0.js','app-core-7.5.0.js','app-runtime-7.5.0.js','app-styles-7.5.0.css','app-map-7.5.0.js','map-styles-7.5.0.css','data/maps/floor-1.json','data/maps/floor-2.json','data/maps/floor-3.json','data/events.json','ai-robot.webp','data/museum-content.json.gz','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','qr-generator.js','qr-decoder.js','qr-print/index.html','qr-print/print.js','qr-print/print.css','admin/index.html','admin/admin.js','admin/admin.css'];
+const core=['./','index.html','bootstrap-7.5.1.js','app-foundation-7.5.1.js','app-core-7.5.1.js','app-runtime-7.5.1.js','app-styles-7.5.1.css','app-map-7.5.1.js','map-styles-7.5.1.css','data/maps/floor-1.json','data/maps/floor-2.json','data/maps/floor-3.json','data/events.json','ai-robot.webp','data/museum-content.json.gz','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','qr-generator.js','qr-decoder.js','qr-print/index.html','qr-print/print.js','qr-print/print.css','admin/index.html','admin/admin.js','admin/admin.css'];
 for(const weight of [400,500,600,700])for(const subset of ['vietnamese','latin'])core.push(`fonts/be-vietnam-pro-${subset}-${weight}-normal.woff2`);
 if(!('DecompressionStream'in self))core.push('data/museum-content.json');
 self.addEventListener('install',event=>event.waitUntil(caches.open(SHELL).then(cache=>cache.addAll(core.map(path=>new URL(path,scope).href))).then(()=>self.skipWaiting())));

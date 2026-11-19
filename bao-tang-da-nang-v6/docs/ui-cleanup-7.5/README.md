@@ -95,6 +95,12 @@ Kiểm thử tự động không thay kiểm tra share sheet, camera, torch ho�
 - 24 nhóm hồi quy ứng dụng, 4 nhóm bản đồ, 4 nhóm Giai đoạn 3 và 6 nhóm mini-map đạt. Nâng từ service worker 7.0 giữ ảnh đã xem, tiến độ và hoạt động ngoại tuyến.
 - Axe trên 10 màn: 0 lỗi WCAG2 A/AA tự động phát hiện. Đây không phải chứng nhận WCAG đầy đủ.
 - Đủ 200 ảnh được giải mã từ HTTP local; corpus và ảnh gốc không đổi.
-- Lighthouse mobile local: **89/100 hiệu năng, 100/100 accessibility, 100/100 best practices**. FCP 1,0s, LCP 3,6s, TBT 130ms, CLS 0,012; lượt tải đầu khoảng 430KiB. Không dùng số đo này để tuyên bố kết quả trên điện thoại vật lý hoặc Pages.
+- Lighthouse mobile local: **91/100 hiệu năng, 100/100 accessibility, 100/100 best practices**. FCP 1,0s, LCP 3,5s, TBT 100ms, CLS 0,012; lượt tải đầu khoảng 430KiB. Không dùng số đo này để tuyên bố kết quả trên điện thoại vật lý hoặc Pages.
 
 [Tổng hợp](validation-summary.json) · [UI mới](cleanup-tests.json) · [Hồi quy app](app-regressions.json) · [Trợ năng](accessibility-tests.json) · [Ảnh/asset](assets-and-photos.json) · [Cấu hình đo hiệu năng](performance-local.json).
+
+## Bản vá tải ban đầu 7.5.1
+
+Màn chọn ngôn ngữ ẩn hoàn toàn các màn phía sau để tránh dựng nội dung chưa dùng. Bộ nhớ offline bắt đầu tải sau khi khách xác nhận vào ứng dụng; khách quay lại vẫn được cập nhật theo dữ liệu lưu. Điều này giảm việc các tài nguyên offline tranh mạng với màn chào. Cơ chế giữ ảnh đã xem và tiến độ không đổi, kiểm tra nâng cache7.0 và ngoại tuyến vẫn đạt.
+
+CI ghi điểm và các thông số Lighthouse thật vào Summary công khai, kèm log nếu không tạo được báo cáo. Ngưỡng hiệu năng mobile vẫn là85, không bỏ qua kiểm tra khi đo thất bại. Số91 ở trên là phép đo local có bật khả năng PWA, không phải điểm công khai trên GitHub.

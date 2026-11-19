@@ -52,7 +52,7 @@ button[data-speaking=true],button[data-listening=true]{background:var(--gold)!im
 .analytics-option{display:flex;align-items:center;gap:12px;font-size:14px;line-height:1.7;width:100%;min-height:44px}.analytics-option input{width:24px;height:24px;flex:none;accent-color:var(--green)}
 
 /* Không vẽ giao diện phía sau màn chọn ngôn ngữ. */
-.language-open>.top,.language-open>.stage,.language-open>.nav{visibility:hidden}
+.language-open>.top,.language-open>.stage,.language-open>.nav{display:none!important}
 /* Dùng token xanh/muted sẵn có để chữ nhỏ đạt tương phản, không đổi palette. */
 .eyebrow{color:var(--green)}.heading .eyebrow{font-size:11px}
 #catalog-list .library-record-body>small{color:var(--muted);font-size:14px}

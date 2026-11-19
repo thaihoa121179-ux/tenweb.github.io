@@ -1,7 +1,7 @@
 /* Nạp nguồn JSON thật trước các module cũ; không tạo dữ liệu thay thế khi lỗi. */
 (() => {
   'use strict';
-  const version='7.5.0',base=new URL('./',document.currentScript.src);
+  const version='7.5.1',base=new URL('./',document.currentScript.src);
   window.MuseumAssetVersion=version;
   const status=document.createElement('p');status.id='boot-status';status.className='note';status.setAttribute('role','status');
   status.textContent='Đang tải hồ sơ / Loading museum records…';document.getElementById('language-start').before(status);

@@ -35,7 +35,7 @@ jobs:
         run: >-
           python3 bao-tang-da-nang-v6/scripts/verify_published_v6.py
           --minimum-records 200 --minimum-dimension 128
-          --asset-version 7.5.0 --max-wait 180 --workers 8
+          --asset-version 7.5.1 --max-wait 180 --workers 8
       - name: Measure the published mobile page
         run: |
           npm install --prefix "$RUNNER_TEMP/museum-lighthouse" lighthouse@13.0.1 --no-audit --no-fund
@@ -43,8 +43,11 @@ jobs:
             'https://thaihoa121179-ux.github.io/tenweb.github.io/bao-tang-da-nang-v6/' \
             --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
             --only-categories=performance,accessibility,best-practices \
-            --output=json --output-path="$RUNNER_TEMP/museum-lighthouse.json" --quiet
+            --output=json --output-path="$RUNNER_TEMP/museum-lighthouse.json" --quiet > "$RUNNER_TEMP/museum-lighthouse.log" 2>&1
           node -e 'const r=require(process.argv[1]); console.log(JSON.stringify(Object.fromEntries(Object.entries(r.categories).map(([k,v])=>[k,Math.round(v.score*100)])))); if(r.categories.performance.score<0.85)process.exit(1)' "$RUNNER_TEMP/museum-lighthouse.json"
+      - name: Summarize the actual public performance measurement
+        if: always()
+        run: node bao-tang-da-nang-v6/scripts/summarize_lighthouse.mjs "$RUNNER_TEMP/museum-lighthouse.json" "$RUNNER_TEMP/museum-lighthouse.log"
       - name: Retain the actual publication evidence, including failures
         if: always()
         uses: actions/upload-artifact@v4
@@ -53,5 +56,6 @@ jobs:
           path: |
             bao-tang-da-nang-v6/data/published-verification.json
             ${{ runner.temp }}/museum-lighthouse.json
+            ${{ runner.temp }}/museum-lighthouse.log
           if-no-files-found: warn
           retention-days: 14

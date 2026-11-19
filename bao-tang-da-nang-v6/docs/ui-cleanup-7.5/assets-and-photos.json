@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-19T14:05:37.889036+00:00",
+  "startedAt": "2026-11-19T14:22:18.073456+00:00",
   "baseUrl": "http://127.0.0.1:8877/bao-tang-da-nang-v6/",
   "passed": true,
   "expected": {
@@ -16,7 +16,7 @@
     "duplicatePhotoBytes": [],
     "failedPhotos": 0
   },
-  "scope": "Local HTTP deployed-byte comparison and decoded photo bytes; not public Pages verification.",
-  "assetVersion": "7.5.0",
+  "scope": "Local HTTP byte and photo-decoding verification, not public Pages.",
+  "assetVersion": "7.5.1",
   "assetsChecked": 66
 }
