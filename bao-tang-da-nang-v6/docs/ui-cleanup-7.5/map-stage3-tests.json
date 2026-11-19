@@ -1,0 +1,21 @@
+{
+  "scope": "Stage3 real module integration, synthetic motion/permissions and Chromium only",
+  "results": [
+    {
+      "name": "first guide is skippable, remembered, replayable, and does not request sensors by itself",
+      "passed": true
+    },
+    {
+      "name": "real sensor adapter is requested in the tap, calibration preserves walking and moves ten steps",
+      "passed": true
+    },
+    {
+      "name": "leaving during permission prompt cancels late replies and reopening does not start sensors",
+      "passed": true
+    },
+    {
+      "name": "offline reload preserves guide choice and loads both mini-map and lazy map styles",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "scope": "Chromium emulation; synthetic share, camera and torch, no hardware or model tests",
+  "results": [
+    {
+      "name": "both share actions pass only canonical current artifact link to native share",
+      "passed": true
+    },
+    {
+      "name": "share cancellation stays silent; clipboard fallback copies and failures never say copied",
+      "passed": true
+    },
+    {
+      "name": "artifact actions remain tappable after scrolling to QR and back",
+      "passed": true
+    },
+    {
+      "name": "scan opens camera once automatically, torch toggles, tracks stop when leaving",
+      "passed": true
+    },
+    {
+      "name": "permission denial offers localized retry, and late video.play never restarts camera on another page",
+      "passed": true
+    },
+    {
+      "name": "test QR codes appear only with explicit debug=1",
+      "passed": true
+    },
+    {
+      "name": "four languages keep source label, SVG icons, internal chevrons and no user-facing version",
+      "passed": true
+    },
+    {
+      "name": "upcoming events use JSON, truthful empty state, and still work offline after PWA cache",
+      "passed": true
+    }
+  ]
+}

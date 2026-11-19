@@ -6,7 +6,7 @@
       heroEyebrow: "HÀNH TRÌNH DI SẢN",
       heroTitle: "Khám phá theo cách của bạn.",
       heroText: "Từ sở thích đến hành trình — bảo tàng trong lòng bàn tay.",
-      startPlan: "✦ Tạo hành trình riêng ↗",
+      startPlan: "Tạo hành trình riêng ›",
       exploreNow: "Bạn muốn làm gì?",
       noInstall: "Không cần cài ứng dụng",
       scan: "Quét mã QR",
@@ -29,7 +29,7 @@
       openMap: "Xem sơ đồ tầng",
       story: "CÂU CHUYỆN DI SẢN",
       detail: "Thông tin trưng bày",
-      listen: "▶ Nghe thuyết minh",
+      listen: "Nghe thuyết minh",
       pinMap: "Xem trên sơ đồ",
       askAbout: "Hỏi trợ lý",
       addRoute: "Lưu vào hành trình",
@@ -40,7 +40,7 @@
       interactiveMap: "Bản đồ & hướng nhìn",
       illustration: "SƠ ĐỒ MÔ PHỎNG",
       mapCaveat:
-        "⚠ Sơ đồ chỉ minh họa các nhóm chủ đề. Chưa thể dẫn đường tới vị trí hiện vật chính xác nếu không có bản vẽ mặt bằng được bảo tàng xác nhận.",
+        "Sơ đồ chỉ minh họa các nhóm chủ đề. Chưa thể dẫn đường tới vị trí hiện vật chính xác nếu không có bản vẽ mặt bằng được bảo tàng xác nhận.",
       allTopics: "Danh sách chủ đề",
       scanFloorQR: "Quét QR tầng",
       smartFind: "TÌM KIẾM THÔNG MINH",
@@ -63,13 +63,13 @@
       planTime: "BẠN CÓ BAO NHIÊU THỜI GIAN?",
       planLikes: "BẠN QUAN TÂM ĐẾN GÌ?",
       planStyle: "NHỊP ĐỘ THAM QUAN",
-      buildPlan: "✦ Tạo lộ trình của tôi",
+      buildPlan: "Tạo lộ trình của tôi",
       planLimit:
         "Thời lượng từng điểm chỉ là ước tính, chưa có dữ liệu khoảng cách trong nhà.",
       guideMode: "BẠN ĐỒNG HÀNH MỖI NGÀY",
       guideTitle: "Trò chuyện cùng Mây",
       offlineMode:
-        "Chế độ tư vấn theo dữ liệu mẫu có dẫn nguồn. AI đối thoại tự do chỉ hoạt động khi kết nối backend.",
+        "Mây trả lời theo hồ sơ hiện vật có nguồn. Khi thiếu dữ liệu, Mây sẽ nói rõ.",
       askAnything: "Hỏi một điều, kể một chuyện…",
       infoTag: "THÔNG TIN THAM QUAN",
       address: "Địa chỉ",
@@ -81,12 +81,12 @@
       contact: "Liên hệ",
       howTo: "Cách sử dụng",
       howToText:
-        "Chọn ngôn ngữ → tạo hành trình hoặc xem tầng → quét QR để mở nội dung → hỏi trợ lý.",
-      developerSettings: "Kết nối AI (cho nhóm phát triển)",
+        "Chọn ngôn ngữ › tạo hành trình hoặc xem tầng › quét QR để mở nội dung › hỏi trợ lý.",
+      developerSettings: "Thông tin tra cứu",
       developerIntro:
-        "Nhập URL máy chủ AI khi đã triển khai. KHÔNG nhập API key tại đây.",
+        "Hỏi theo tên hiện vật để xem nội dung và nguồn tương ứng.",
       developerWarn:
-        "Địa chỉ backend được lưu trên thiết bị này; API key phải được giữ ở máy chủ.",
+        "Thông tin chưa có nguồn sẽ được nêu rõ.",
       officialSite: "Xem nguồn chính thức ↗",
       demoDisclaimer:
         "Dự án sinh viên độc lập; không phải website chính thức của bảo tàng.",
@@ -137,7 +137,7 @@
       speechDenied: "Không được cấp quyền micro. Bạn có thể gõ câu hỏi.",
       speechListening: "Đang nghe, hãy nói...",
       voiceUnsupported: "Trình duyệt chưa hỗ trợ đọc văn bản.",
-      speakStop: "■ Dừng đọc",
+      speakStop: "Dừng đọc",
       sourceWarning:
         "Liên kết nguồn bên ngoài có thể hiển thị bằng tiếng Việt, nhưng nội dung trong ứng dụng đã chuyển ngôn ngữ.",
       guideHello:
@@ -161,24 +161,24 @@
       guideAnswerTicket:
         "Giá vé có các mức tùy đối tượng và thời điểm. Để tránh đưa giá cũ, vui lòng kiểm tra thông báo vé mới nhất trên website chính thức.",
       guideAnswerUnknown:
-        "Mình chưa có dữ liệu chắc chắn để giải thích câu này. Hãy thử tìm chủ đề trong thư viện hoặc mở nguồn chính thức. Khi kết nối backend AI, câu hỏi sẽ được xử lý từ kho tri thức đã kiểm chứng.",
+        "Mình chưa có dữ liệu chắc chắn để trả lời câu này. Bạn có thể tìm hồ sơ hiện vật hoặc mở nguồn chính thức.",
       assistantActions: "Khám phá tiếp",
       goMap: "Mở sơ đồ",
       goPlan: "Tạo hành trình",
       goSearch: "Tìm chủ đề",
       openOfficial: "Mở trang chính thức",
       saveOk: "Đã lưu vào hành trình",
-      endpointSaved: "Đã lưu địa chỉ backend. Hãy thử nhắn tin để kiểm tra.",
-      endpointClear: "Đã chuyển về chế độ tra cứu mẫu.",
-      aiOn: "AI đã kết nối máy chủ; câu trả lời phụ thuộc chất lượng dữ liệu và cấu hình.",
-      aiError: "Không kết nối được AI, đang trả lời bằng bộ tra cứu có sẵn.",
+      endpointSaved: "Đã cập nhật lựa chọn tra cứu.",
+      endpointClear: "Đang tra cứu hồ sơ hiện vật.",
+      aiOn: "Mây trả lời theo hồ sơ hiện vật có nguồn.",
+      aiError: "Chưa lấy được phản hồi. Mây chuyển sang tra cứu hồ sơ trên thiết bị.",
       loading: "Đang trả lời...",
       sampleTap: "Chạm vào mã để mô phỏng quét",
       welcomeLanguage: "Chào mừng đến\nBảo tàng Đà Nẵng",
       languagePrompt:
         "Chọn ngôn ngữ trước khi bắt đầu. Bạn có thể thay đổi bất kỳ lúc nào.",
       browserGuess: "Trình duyệt gợi ý: ",
-      languageStart: "Bắt đầu khám phá →",
+      languageStart: "Bắt đầu khám phá ›",
     },
     en: {
       searchHint: "Search exhibits, artifacts, and stories...",
@@ -186,7 +186,7 @@
       heroTitle: "Explore it your way.",
       heroText:
         "From your interests to your journey — the museum in your pocket.",
-      startPlan: "✦ Create my tour ↗",
+      startPlan: "Create my tour ›",
       exploreNow: "What would you like to do?",
       noInstall: "No app required",
       scan: "Scan QR",
@@ -209,7 +209,7 @@
       openMap: "View floor map",
       story: "HERITAGE STORIES",
       detail: "Exhibition details",
-      listen: "▶ Listen",
+      listen: "Listen",
       pinMap: "Show on map",
       askAbout: "Ask the guide",
       addRoute: "Save to journey",
@@ -220,7 +220,7 @@
       interactiveMap: "Map & facing direction",
       illustration: "ILLUSTRATIVE MAP",
       mapCaveat:
-        "⚠ Illustrative topic zones only. Accurate indoor directions require official floor plans and verified exhibit positions.",
+        "Illustrative topic zones only. Accurate indoor directions require official floor plans and verified exhibit positions.",
       allTopics: "All topics",
       scanFloorQR: "Scan floor QR",
       smartFind: "SMART SEARCH",
@@ -243,13 +243,13 @@
       planTime: "HOW MUCH TIME DO YOU HAVE?",
       planLikes: "WHAT INTERESTS YOU?",
       planStyle: "PREFERRED PACE",
-      buildPlan: "✦ Build my journey",
+      buildPlan: "Build my journey",
       planLimit:
         "Stop durations are approximate; no verified indoor distance data is available.",
       guideMode: "HERITAGE & EVERYDAY LIFE",
       guideTitle: "A moment with Mây",
       offlineMode:
-        "Verified-data demo mode. Open-ended AI requires a separate configured backend.",
+        "Mây answers from sourced artifact records and says when information is missing.",
       askAnything: "Ask something, share a thought…",
       infoTag: "VISITOR INFORMATION",
       address: "Address",
@@ -262,12 +262,12 @@
       contact: "Contact",
       howTo: "How to use",
       howToText:
-        "Choose language → plan or browse floors → scan QR to open content → ask your guide.",
-      developerSettings: "Connect AI (for developers)",
+        "Choose language › plan or browse floors › scan QR to open content › ask your guide.",
+      developerSettings: "About record search",
       developerIntro:
-        "Enter your deployed AI backend URL. Never enter an API key here.",
+        "Ask by artifact name to see the corresponding record and source.",
       developerWarn:
-        "The URL is saved on this device. Keep API keys on the server.",
+        "Information without a source is identified clearly.",
       officialSite: "Official museum source ↗",
       demoDisclaimer:
         "Independent student prototype, not an official museum website.",
@@ -318,7 +318,7 @@
       speechDenied: "Microphone permission denied. You can type instead.",
       speechListening: "Listening...",
       voiceUnsupported: "Text-to-speech is unavailable.",
-      speakStop: "■ Stop audio",
+      speakStop: "Stop reading",
       sourceWarning:
         "External source pages may be in Vietnamese; the content inside this app is localized.",
       guideHello:
@@ -342,31 +342,31 @@
       guideAnswerTicket:
         "Ticket rates vary by visitor category and date. Check the latest official notice to avoid outdated prices.",
       guideAnswerUnknown:
-        "I do not have verified data to answer that confidently. Search the collections or view the official source. A future AI backend can answer from a curated knowledge base.",
+        "I do not have sourced information to answer that confidently. Search the artifact records or consult the official source.",
       assistantActions: "Continue exploring",
       goMap: "Show map",
       goPlan: "Build a route",
       goSearch: "Search topics",
       openOfficial: "Official website",
       saveOk: "Added to your journey",
-      endpointSaved: "AI backend URL saved. Try a message to test it.",
-      endpointClear: "Switched to the built-in guide.",
-      aiOn: "AI backend connected. Accuracy depends on verified sources and configuration.",
-      aiError: "AI unavailable; using built-in guide instead.",
+      endpointSaved: "Search preference updated.",
+      endpointClear: "Searching artifact records.",
+      aiOn: "Mây answers from sourced artifact records.",
+      aiError: "A reply is unavailable. Mây is searching the records on this device.",
       loading: "Thinking...",
       sampleTap: "Tap a QR code to simulate scanning",
       welcomeLanguage: "Welcome to\nDa Nang Museum",
       languagePrompt:
         "Choose your language before entering. You can change it any time.",
       browserGuess: "Browser suggests: ",
-      languageStart: "Start exploring →",
+      languageStart: "Start exploring ›",
     },
     ko: {
       searchHint: "유물, 전시, 이야기를 검색하세요...",
       heroEyebrow: "문화유산 여행",
       heroTitle: "나만의 방식으로 탐험하세요.",
       heroText: "관심사에 맞춘 박물관 관람을 휴대전화에서 즐기세요.",
-      startPlan: "✦ 맞춤 관람 만들기 ↗",
+      startPlan: "맞춤 관람 만들기 ›",
       exploreNow: "무엇을 하고 싶으세요?",
       noInstall: "앱 설치 불필요",
       scan: "QR 스캔",
@@ -388,7 +388,7 @@
       openMap: "층별 안내도",
       story: "문화유산 이야기",
       detail: "전시 정보",
-      listen: "▶ 음성 안내",
+      listen: "음성 안내",
       pinMap: "안내도에서 보기",
       askAbout: "가이드에게 질문",
       addRoute: "코스에 저장",
@@ -399,7 +399,7 @@
       interactiveMap: "지도와 바라보는 방향",
       illustration: "예시 안내도",
       mapCaveat:
-        "⚠ 주제별 구역을 표현한 예시입니다. 정확한 실내 길 안내에는 박물관에서 확인한 도면이 필요합니다.",
+        "주제별 구역을 표현한 예시입니다. 정확한 실내 길 안내에는 박물관에서 확인한 도면이 필요합니다.",
       allTopics: "전체 주제",
       scanFloorQR: "층 QR 스캔",
       smartFind: "스마트 검색",
@@ -422,12 +422,12 @@
       planTime: "관람 시간은?",
       planLikes: "관심 분야는?",
       planStyle: "관람 속도",
-      buildPlan: "✦ 코스 만들기",
+      buildPlan: "코스 만들기",
       planLimit: "소요 시간은 예시이며 실제 실내 이동 거리 정보는 없습니다.",
       guideMode: "일상과 유산 이야기",
       guideTitle: "마이와 이야기해요",
       offlineMode:
-        "검증된 자료 기반 데모입니다. 자유 대화형 AI에는 별도 서버 연결이 필요합니다.",
+        "마이는 출처가 있는 유물 기록으로 답하며, 자료가 부족하면 알려드립니다.",
       askAnything: "궁금한 점이나 오늘 이야기를 들려주세요…",
       infoTag: "방문 정보",
       address: "주소",
@@ -438,11 +438,11 @@
       ticketsText: "최신 요금 및 할인은 공식 사이트에서 확인하세요.",
       contact: "연락처",
       howTo: "이용 방법",
-      howToText: "언어 선택 → 코스 또는 전시 선택 → QR 스캔 → 가이드에게 질문.",
-      developerSettings: "AI 연결 (개발자용)",
-      developerIntro: "AI 서버 URL을 입력하세요. API 키는 입력하지 마세요.",
+      howToText: "언어 선택 › 코스 또는 전시 선택 › QR 스캔 › 가이드에게 질문.",
+      developerSettings: "기록 검색 안내",
+      developerIntro: "유물 이름으로 질문하면 관련 기록과 출처를 볼 수 있습니다.",
       developerWarn:
-        "서버 URL은 기기에 저장됩니다. API 키는 서버에서 보호해야 합니다.",
+        "출처가 없는 정보는 분명하게 표시합니다.",
       officialSite: "공식 박물관 사이트 ↗",
       demoDisclaimer: "비공식 학생 프로젝트입니다.",
       navHome: "홈",
@@ -489,7 +489,7 @@
       speechDenied: "마이크 권한이 거부되었습니다.",
       speechListening: "듣고 있습니다...",
       voiceUnsupported: "음성 읽기가 지원되지 않습니다.",
-      speakStop: "■ 읽기 중지",
+      speakStop: "읽기 중지",
       sourceWarning: "외부 공식 자료는 베트남어일 수 있습니다.",
       guideHello:
         "안녕하세요! 역사, 문화, 유물 중 무엇에 관심이 있나요? 층 추천이나 QR 사용법을 물어보세요.",
@@ -511,31 +511,31 @@
       guideAnswerTicket:
         "정확한 입장료는 공식 홈페이지의 최신 안내를 확인하세요.",
       guideAnswerUnknown:
-        "확인된 정보가 없어 확실히 답하기 어렵습니다. 전시 검색이나 공식 자료를 이용하세요.",
+        "확실하게 답할 출처 자료가 없습니다. 유물 기록을 검색하거나 공식 출처를 확인하세요.",
       assistantActions: "계속 탐색",
       goMap: "안내도 보기",
       goPlan: "코스 만들기",
       goSearch: "전시 검색",
       openOfficial: "공식 웹사이트",
       saveOk: "코스에 추가했습니다",
-      endpointSaved: "AI 서버 주소가 저장되었습니다.",
-      endpointClear: "기본 가이드 모드입니다.",
-      aiOn: "AI 서버 연결됨.",
-      aiError: "AI에 연결할 수 없어 기본 답변을 표시합니다.",
+      endpointSaved: "검색 선택을 저장했습니다.",
+      endpointClear: "유물 기록을 검색합니다.",
+      aiOn: "마이는 출처가 있는 유물 기록으로 답합니다.",
+      aiError: "답변을 불러오지 못해 이 기기의 기록을 검색합니다.",
       loading: "답변 작성 중...",
       sampleTap: "QR을 누르면 스캔을 시뮬레이션합니다",
       welcomeLanguage: "다낭 박물관에\n오신 것을 환영합니다",
       languagePrompt:
         "시작하기 전에 언어를 선택하세요. 나중에 변경할 수 있습니다.",
       browserGuess: "브라우저 추천: ",
-      languageStart: "탐험 시작 →",
+      languageStart: "탐험 시작 ›",
     },
     zh: {
       searchHint: "搜索文物、展览与故事...",
       heroEyebrow: "文化遗产之旅",
       heroTitle: "按自己的方式探索。",
       heroText: "根据兴趣规划旅程，随时了解博物馆。",
-      startPlan: "✦ 创建专属路线 ↗",
+      startPlan: "创建专属路线 ›",
       exploreNow: "您想做什么？",
       noInstall: "无需安装应用",
       scan: "扫描二维码",
@@ -557,7 +557,7 @@
       openMap: "查看楼层图",
       story: "文化遗产故事",
       detail: "展览详情",
-      listen: "▶ 收听介绍",
+      listen: "收听介绍",
       pinMap: "查看地图位置",
       askAbout: "询问助手",
       addRoute: "加入路线",
@@ -567,7 +567,7 @@
       interactiveMap: "地图与朝向",
       illustration: "示意图",
       mapCaveat:
-        "⚠ 本图仅展示主题分区示意。准确的室内导航需要博物馆核实的平面图。",
+        "本图仅展示主题分区示意。准确的室内导航需要博物馆核实的平面图。",
       allTopics: "查看本层主题",
       scanFloorQR: "扫描楼层码",
       smartFind: "智能搜索",
@@ -589,11 +589,11 @@
       planTime: "您有多少时间？",
       planLikes: "您对什么感兴趣？",
       planStyle: "参观节奏",
-      buildPlan: "✦ 生成专属路线",
+      buildPlan: "生成专属路线",
       planLimit: "各站时间为估算，目前没有经过核实的馆内距离数据。",
       guideMode: "日常与文化小伙伴",
       guideTitle: "和小云聊聊",
-      offlineMode: "基于已核实资料的演示问答。自由对话AI需另行连接服务器。",
+      offlineMode: "小云根据有来源的文物档案回答，资料不足时会明确说明。",
       askAnything: "问个问题，聊聊今天……",
       infoTag: "参观须知",
       address: "地址",
@@ -605,10 +605,10 @@
       contact: "联系方式",
       howTo: "使用方法",
       howToText:
-        "选择语言 → 规划路线或查看楼层 → 扫码查看内容 → 咨询导览助手。",
-      developerSettings: "连接AI（开发者）",
-      developerIntro: "输入已部署的AI服务器地址。不要填写API密钥。",
-      developerWarn: "服务器地址保存在本设备；API密钥应保存在服务端。",
+        "选择语言 › 规划路线或查看楼层 › 扫码查看内容 › 咨询导览助手。",
+      developerSettings: "档案检索说明",
+      developerIntro: "按文物名称提问，查看对应档案与来源。",
+      developerWarn: "没有来源的信息会明确标注。",
       officialSite: "博物馆官方网站 ↗",
       demoDisclaimer: "独立学生演示项目，并非博物馆官方网站。",
       navHome: "首页",
@@ -653,7 +653,7 @@
       speechDenied: "麦克风权限被拒绝。",
       speechListening: "正在聆听...",
       voiceUnsupported: "浏览器不支持语音朗读。",
-      speakStop: "■ 停止朗读",
+      speakStop: "停止朗读",
       sourceWarning: "外部来源网页可能是越南语，但本应用内内容已翻译。",
       guideHello:
         "您好！您对历史、文化还是古物感兴趣？可以询问楼层推荐、门票信息或二维码使用方法。",
@@ -673,75 +673,75 @@
       guideAnswerTime: "岘港博物馆主馆每天08:00–17:00开放。",
       guideAnswerTicket: "门票可能因人群和时间而异，请查看官网最新公告。",
       guideAnswerUnknown:
-        "目前缺少核实资料，无法确定答复。请搜索展览或查看官方来源。",
+        "目前没有足够的来源资料，无法确定答复。请搜索文物档案或查看官方来源。",
       assistantActions: "继续探索",
       goMap: "查看地图",
       goPlan: "规划路线",
       goSearch: "搜索主题",
       openOfficial: "官方网站",
       saveOk: "已加入路线",
-      endpointSaved: "已保存AI服务器地址。",
-      endpointClear: "已切换至内置导览助手。",
-      aiOn: "AI服务器已连接。",
-      aiError: "无法连接AI，已改用内置答复。",
+      endpointSaved: "已更新检索选项。",
+      endpointClear: "正在检索文物档案。",
+      aiOn: "小云根据有来源的文物档案回答。",
+      aiError: "暂时未取得回复，小云正在检索本设备的档案。",
       loading: "正在生成答复...",
       sampleTap: "点击二维码模拟扫描",
       welcomeLanguage: "欢迎来到\n岘港博物馆",
       languagePrompt: "请先选择语言，之后可随时更改。",
       browserGuess: "浏览器推荐：",
-      languageStart: "开始探索 →",
+      languageStart: "开始探索 ›",
     },
   };
 
   Object.assign(I18N.vi, {
     catalogTitle: "Hiện vật có hình ảnh",
     catalogCaption: "BỘ SƯU TẬP THAM KHẢO",
-    catalogFloor: "Khám phá nội dung 3 tầng ↗",
+    catalogFloor: "Khám phá nội dung 3 tầng ›",
     artifactCaption: "HỒ SƠ HIỆN VẬT",
-    artifactListen: "♬ Nghe thuyết minh",
-    artifactShare: "↗ Chia sẻ QR/link",
+    artifactListen: "Nghe thuyết minh",
+    artifactShare: "Chia sẻ link",
     artifactMap: "Chủ đề liên quan",
     artifactSource: "Xem hồ sơ chính thức ↗",
     artifactQRExplain:
-      "Dùng camera điện thoại khác quét mã này để mở trực tiếp hồ sơ hiện vật.",
+      "Chia sẻ link",
     zoneIndexTitle: "CÁC CHỦ ĐỀ TRÊN TẦNG",
   });
   Object.assign(I18N.en, {
     catalogTitle: "Artifact photo library",
     catalogCaption: "VERIFIED REFERENCE COLLECTION",
-    catalogFloor: "Explore all three floors ↗",
+    catalogFloor: "Explore all three floors ›",
     artifactCaption: "ARTIFACT PROFILE",
-    artifactListen: "♬ Listen to audio",
-    artifactShare: "↗ Share QR/link",
+    artifactListen: "Listen to audio",
+    artifactShare: "Share link",
     artifactMap: "Related theme",
     artifactSource: "Official museum record ↗",
     artifactQRExplain:
-      "Scan with another phone’s camera to open this artifact profile.",
+      "Share link",
     zoneIndexTitle: "EXHIBITION THEMES ON THIS FLOOR",
   });
   Object.assign(I18N.ko, {
     catalogTitle: "사진 유물 자료",
     catalogCaption: "전시 소장품 안내",
-    catalogFloor: "3개 층 콘텐츠 보기 ↗",
+    catalogFloor: "3개 층 콘텐츠 보기 ›",
     artifactCaption: "유물 정보",
-    artifactListen: "♬ 오디오 듣기",
-    artifactShare: "↗ QR/링크 공유",
+    artifactListen: "오디오 듣기",
+    artifactShare: "링크 공유",
     artifactMap: "관련 주제",
     artifactSource: "박물관 원본 자료 ↗",
     artifactQRExplain:
-      "다른 휴대전화로 이 QR을 스캔하면 유물 정보를 열 수 있습니다.",
+      "링크 공유",
     zoneIndexTitle: "층별 주제",
   });
   Object.assign(I18N.zh, {
     catalogTitle: "文物照片资料",
     catalogCaption: "馆藏资料",
-    catalogFloor: "浏览三层展厅 ↗",
+    catalogFloor: "浏览三层展厅 ›",
     artifactCaption: "文物详情",
-    artifactListen: "♬ 听语音介绍",
-    artifactShare: "↗ 分享二维码",
+    artifactListen: "听语音介绍",
+    artifactShare: "分享链接",
     artifactMap: "相关主题",
     artifactSource: "官方文物资料 ↗",
-    artifactQRExplain: "使用另一部手机扫描二维码，直接打开此文物详情。",
+    artifactQRExplain: "分享链接",
     zoneIndexTitle: "本层展览主题",
   });
   // Opening information is inherited project data, not a live schedule feed.
@@ -881,13 +881,11 @@
         : d?.materials[L[state.lang]] || a.material,
     };
   }
+  function uiIcon(name) { return window.MuseumIcons?.svg(name) || ''; }
   function modeLabel() {
-    return human(
-      "Tra cứu hồ sơ · Có nguồn",
-      "Record search · sourced",
-      "기록 검색 · 출처 제공",
-      "档案检索 · 有来源",
-    );
+    const key=navigator.onLine?'dataMode':'offline';
+    const localized=window.MuseumLexicon?.t(key);
+    return localized&&localized!==key?localized:human('Mây trả lời từ hồ sơ có nguồn','Mây answers from sourced records','마이는 출처가 있는 기록으로 답해요','小云依据有来源的档案回答');
   }
   function emit(name, detail = {}) {
     document.dispatchEvent(new CustomEvent("museum:" + name, { detail }));
@@ -1273,7 +1271,7 @@
           "참조 지점 없음",
           "尚无参考点",
         );
-    return `<div class="location-banner"><span class="loc-dot">●</span><div><b>${esc(human("Bạn đang ở đây · mốc mô phỏng", "You are here · demo marker", "현재 위치 · 예시 지점", "您在这里 · 模拟参考点"))}</b><p>${esc(h)} · ${esc(z?.via === "qr" ? human("QR check-in; không phải GPS", "QR check-in; not GPS", "QR 체크인; GPS 아님", "二维码签到，非GPS") : human("Chọn thủ công; không phải GPS", "Manual selection; not GPS", "수동 선택; GPS 아님", "手动选择，非GPS"))}</p></div><button data-set-floor-here="${state.floor}">${human("Tôi ở tầng này", "I am here", "이 층에 있어요", "我在本层")}</button></div>`;
+    return `<div class="location-banner"><span class="loc-dot" aria-hidden="true"></span><div><b>${esc(human("Bạn đang ở đây · mốc mô phỏng", "You are here · demo marker", "현재 위치 · 예시 지점", "您在这里 · 模拟参考点"))}</b><p>${esc(h)} · ${esc(z?.via === "qr" ? human("QR check-in; không phải GPS", "QR check-in; not GPS", "QR 체크인; GPS 아님", "二维码签到，非GPS") : human("Chọn thủ công; không phải GPS", "Manual selection; not GPS", "수동 선택; GPS 아님", "手动选择，非GPS"))}</p></div><button data-set-floor-here="${state.floor}">${human("Tôi ở tầng này", "I am here", "이 층에 있어요", "我在本层")}</button></div>`;
   }
 
   function qrSrc(v) {
@@ -1321,7 +1319,7 @@
     $("article-facts").innerHTML =
       `<li>${esc(label(d.floor))} — ${esc(FLOOR_NAMES[d.floor][L[state.lang]])}</li><li>${esc(t("verifiedNote"))}</li>`;
     $("article-source").href = d.source;
-    $("article-speak").textContent = t("listen");
+    renderAudioControl($("article-speak"));
     $("article-photo").innerHTML = imageBox(
       GALLERY_IMAGES[d.id],
       nm(d),
@@ -1466,7 +1464,7 @@
     $("search-results").innerHTML += res
       .map(
         (d) =>
-          `<button class="suggestion" data-topic="${esc(d.id)}"><span class="sicon">${d.icon}</span><span><strong>${esc(nm(d))}</strong><small>${esc(label(d.floor))} · ${esc(ds(d).slice(0, 95))}</small></span></button>`,
+          `<button class="suggestion" data-topic="${esc(d.id)}"><span class="sicon">${uiIcon("layers")}</span><span><strong>${esc(nm(d))}</strong><small>${esc(label(d.floor))} · ${esc(ds(d).slice(0, 95))}</small></span></button>`,
       )
       .join("");
     $("search-results").innerHTML += '<div id="search-artifacts"></div>';
@@ -1676,7 +1674,7 @@
       .map((id, i) => {
         const d = D.find((x) => x.id === id);
         const done = r.done.includes(id);
-        return `<div class="route-stop${done ? " done" : ""}"><span class="step-num">${done ? "✓" : i + 1}</span><div class="step-body"><b data-route-open="${id}" role="button" tabindex="0" style="cursor:pointer">${esc(nm(d))}</b><small>${esc(label(d.floor))} · ~${Math.max(3, Math.floor(r.time / r.ids.length))}′</small></div><button data-route-done="${id}">${esc(done ? t("routeDone") : t("routeMark"))}</button></div>`;
+        return `<div class="route-stop${done ? " done" : ""}"><span class="step-num">${done ? uiIcon("check") || i + 1 : i + 1}</span><div class="step-body"><b data-route-open="${id}" role="button" tabindex="0" style="cursor:pointer">${esc(nm(d))}</b><small>${esc(label(d.floor))} · ~${Math.max(3, Math.floor(r.time / r.ids.length))}′</small></div><button data-route-done="${id}">${esc(done ? t("routeDone") : t("routeMark"))}</button></div>`;
       })
       .join(
         "",
@@ -1697,8 +1695,8 @@
       welcome:
         "Mây đây ☁️ Một chuyện hôm nay, một câu hỏi về hiện vật, hay một ý tưởng hơi kỳ cục — bạn muốn bắt đầu từ đâu?",
       offline:
-        "🧠 Mây đang dùng dữ liệu bảo tàng có nguồn. Hỏi tiếp được nhé! AI tạo sinh cần kết nối máy chủ riêng.",
-      online: "✨ AI nâng cao đã kết nối máy chủ",
+        "Mây trả lời theo hồ sơ hiện vật có nguồn. Khi thiếu dữ liệu, Mây sẽ nói rõ.",
+      online: "Mây trả lời theo hồ sơ hiện vật có nguồn. Khi thiếu dữ liệu, Mây sẽ nói rõ.",
       source: "Nguồn",
       help: "Mình chưa tìm được thông tin đáng tin cậy cho câu đó 🤔. Bạn thử hỏi tên một hiện vật, tầng trưng bày, giá vé hoặc lộ trình nhé.",
       like: "Cảm ơn bạn! Đã ghi nhận đánh giá cho phản hồi này 😊",
@@ -1710,11 +1708,11 @@
         "Tôi đang ở đâu?",
         "Tầng 2 có gì?",
       ],
-      photo: "📚 Mở hồ sơ",
-      where: "🧭 Xem tầng",
-      route: "✨ Tạo lộ trình",
-      more: "📚 Đọc chi tiết",
-      hear: "🔊 Nghe",
+      photo: "Mở hồ sơ",
+      where: "Xem tầng",
+      route: "Tạo lộ trình",
+      more: "Đọc chi tiết",
+      hear: "Nghe",
       copy: "Sao chép",
       good: "Hữu ích",
       bad: "Chưa đúng",
@@ -1723,8 +1721,8 @@
       welcome:
         "Hi, I’m Mây ☁️ A museum question, a story about your day, or a wonderfully odd idea — where shall we start?",
       offline:
-        "🧠 Mây uses curated museum records. A separate AI server is needed for generative chat.",
-      online: "✨ Advanced AI server connected",
+        "Mây answers from sourced artifact records and says when information is missing.",
+      online: "Mây answers from sourced artifact records and says when information is missing.",
       source: "Source",
       help: "I do not have a verified answer yet 🤔. Try an artifact name, an exhibition floor or a short itinerary.",
       like: "Thank you! 😊",
@@ -1736,11 +1734,11 @@
         "Where am I?",
         "What is on floor 2?",
       ],
-      photo: "📚 Open record",
-      where: "🧭 View floor",
-      route: "✨ Plan a route",
-      more: "📚 Read more",
-      hear: "🔊 Listen",
+      photo: "Open record",
+      where: "View floor",
+      route: "Plan a route",
+      more: "Read more",
+      hear: "Listen",
       copy: "Copy",
       good: "Helpful",
       bad: "Needs work",
@@ -1749,8 +1747,8 @@
       welcome:
         "마이예요 ☁️ 유물에 대한 질문, 오늘의 이야기, 엉뚱한 상상 중 어디서 시작할까요?",
       offline:
-        "🧠 검증된 박물관 자료를 바탕으로 답합니다. 생성형 AI는 별도 서버가 필요합니다.",
-      online: "✨ AI 서버 연결됨",
+        "마이는 출처가 있는 유물 기록으로 답하며, 자료가 부족하면 알려드립니다.",
+      online: "마이는 출처가 있는 유물 기록으로 답하며, 자료가 부족하면 알려드립니다.",
       source: "출처",
       help: "정확하게 확인된 자료가 없습니다 🤔. 유물 이름이나 층별 전시를 물어보세요.",
       like: "감사합니다! 😊",
@@ -1761,11 +1759,11 @@
         "30분 코스",
         "어디에 있나요?",
       ],
-      photo: "📚 기록 보기",
-      where: "🧭 층별 안내",
-      route: "✨ 관람 코스",
-      more: "📚 자세히",
-      hear: "🔊 듣기",
+      photo: "기록 보기",
+      where: "층별 안내",
+      route: "관람 코스",
+      more: "자세히",
+      hear: "듣기",
       copy: "복사",
       good: "좋아요",
       bad: "아쉬워요",
@@ -1773,18 +1771,18 @@
     zh: {
       welcome:
         "我是小云 ☁️ 文物问题、今天的心事，或一个古怪又有趣的想法——想先聊哪个？",
-      offline: "🧠 我根据有来源的博物馆资料回答。生成式 AI 需要独立服务器。",
-      online: "✨ 高级 AI 已连接",
+      offline: "小云根据有来源的文物档案回答，资料不足时会明确说明。",
+      online: "小云根据有来源的文物档案回答，资料不足时会明确说明。",
       source: "资料来源",
       help: "目前没有足够可靠的资料回答 🤔。可以尝试询问文物名称、楼层或参观路线。",
       like: "谢谢！😊",
       dislike: "感谢反馈 🙏",
       prompt: ["三楼有什么？", "介绍古炮", "30分钟路线", "我在哪里？"],
-      photo: "📚 打开档案",
-      where: "🧭 楼层地图",
-      route: "✨ 规划路线",
-      more: "📚 详细介绍",
-      hear: "🔊 收听",
+      photo: "打开档案",
+      where: "楼层地图",
+      route: "规划路线",
+      more: "详细介绍",
+      hear: "收听",
       copy: "复制",
       good: "有用",
       bad: "待改进",
@@ -1808,35 +1806,27 @@
     vi: [
       "Mây · Bạn đồng hành",
       "Khám phá hiện vật, trò chuyện đời thường và cùng bạn nghĩ những điều vui.",
-      "☁️ Có chuyện gì, kể Mây nghe.",
+      "Cùng tìm hiểu câu chuyện hiện vật.",
     ],
     en: [
       "Mây · Your companion",
       "Explore artifacts, talk about your day and share a little imagination.",
-      "☁️ A little curiosity, a little company.",
+      "Explore the stories in artifact records.",
     ],
     ko: [
-      "Mây AI · 박물관 로봇",
+      "Mây · 박물관 안내",
       "유물을 알아보고 전시장을 찾으며 관람 코스를 계획하세요.",
-      "🤖 나만의 디지털 안내원",
+      "출처가 있는 유물 기록 안내",
     ],
     zh: [
-      "Mây AI · 博物馆机器人",
+      "Mây · 博物馆伙伴",
       "探索文物、了解主题并规划专属参观路线。",
-      "🤖 您的数字导览助手",
+      "有来源的文物档案导览",
     ],
   };
   function renderGuide() {
     if (!$("messages").children.length) resetGuide();
-    $("guide-status").textContent =
-      state.guideMode === "generative"
-        ? human(
-            "AI tạo sinh · máy chủ đã phản hồi",
-            "Generative AI · server responded",
-            "생성형 AI · 서버 응답 확인",
-            "生成式AI · 服务器已响应",
-          )
-        : modeLabel();
+    $("guide-status").textContent = modeLabel();
     const robotCopy = ROBOT_COPY[state.lang] || ROBOT_COPY.vi;
     ["robot-label", "robot-description", "robot-tagline"].forEach(
       (id, i) => ($(id).textContent = robotCopy[i]),
@@ -1878,7 +1868,7 @@
       $('chat-speed').addEventListener('change',()=>{state.revealSpeed=$('chat-speed').value;persist('museum_reveal_speed',state.revealSpeed);window.MuseumChatText.setSpeed(state.revealSpeed);});
     }
     const deep=state.replyDepth==='deep';
-    $('chat-depth').textContent=(deep?'✦ ':'◇ ')+(window.MuseumLexicon?.t('detail')||human('Trả lời chi tiết','Detailed reply','자세한 답변','详细回答'));
+    $('chat-depth').textContent=(window.MuseumLexicon?.t('detail')||human('Trả lời chi tiết','Detailed reply','자세한 답변','详细回答'));
     $('chat-depth').setAttribute('aria-checked',String(deep));
     $('chat-depth').disabled=$('messages').getAttribute('aria-busy')==='true';
     $('chat-speed-label').textContent=window.MuseumLexicon?.t('speed')||human('Tốc độ hiện câu trả lời','Text display speed','답변 표시 속도','回答显示速度');
@@ -1886,8 +1876,8 @@
     const speeds={slow:human('Chậm','Slow','천천히','慢速'),normal:human('Vừa','Normal','보통','正常'),instant:human('Hiện ngay','Instant','즉시','立即显示'),auto:human('Theo thiết bị','Device setting','기기 설정','设备设置')};
     $('chat-speed').replaceChildren(...Object.entries(speeds).map(([value,label])=>{const option=document.createElement('option');option.value=value;option.textContent=label;return option;}));
     $('chat-speed').value=state.revealSpeed;
-    $('chat-depth-note').textContent=deep&&state.guideMode==='generative'?human('AI máy chủ · yêu cầu trả lời kỹ.','AI server · detailed response requested.','AI 서버 · 자세한 답변 요청.','AI服务器 · 已请求详细回答。'):deep?human('Phân tích mục tiêu và điều kiện trên thiết bị.','Goal and constraint analysis on this device.','기기에서 목표와 조건을 분석합니다.','在本设备分析目标与条件。'):human('Trả lời gọn, tập trung vào bước tiếp theo.','A concise answer focused on the next step.','다음 단계에 집중한 간단한 답변.','简洁回答，侧重下一步。');
-    $('chat-depth').title=human('Phân tích tại thiết bị; suy luận bằng mô hình cần máy chủ AI được cấu hình.','Local analysis; model reasoning requires a configured AI server.','로컬 분석입니다. AI 추론에는 서버 설정이 필요합니다.','本地分析；模型推理需要已配置的AI服务器。');
+    $('chat-depth-note').textContent=deep?human('Đối chiếu mục tiêu và điều kiện với hồ sơ hiện vật.','Match goals and constraints to artifact records.','목표와 조건을 유물 기록과 대조합니다.','将目标与条件和文物档案对照。'):human('Trả lời gọn, tập trung vào bước tiếp theo.','A concise answer focused on the next step.','다음 단계에 집중한 간단한 답변.','简洁回答，侧重下一步。');
+    $('chat-depth').title=human('Chọn cách trình bày câu trả lời theo hồ sơ hiện vật.','Choose how the record-based reply is presented.','유물 기록 답변의 표시 방식을 선택하세요.','选择文物档案回复的呈现方式。');
   }
   function addBubble(
     text,
@@ -1911,11 +1901,8 @@
     row.className = "assistant-row";
     const avatar = document.createElement("div");
     avatar.className = "assistant-avatar";
-    avatar.title = "Mây · " + mood;
-    avatar.innerHTML =
-      '<img src="ai-robot.webp" alt="Mây AI"><span class="assistant-badge">' +
-      mood +
-      "</span>";
+    avatar.title = 'Mây';
+    avatar.innerHTML = '<img src="ai-robot.webp" alt="Mây">';
     const stack = document.createElement("div");
     stack.className = "assistant-stack";
     stack.appendChild(box);
@@ -1945,14 +1932,15 @@
     const controls = document.createElement("div");
     controls.className = "assistant-tools";
     for (const [name, icon, title] of [
-      ["listen", "🔊", cu("hear")],
-      ["copy", "⧉", cu("copy")],
-      ["up", "👍", cu("good")],
-      ["down", "👎", cu("bad")],
+      ["listen", "volume", cu("hear")],
+      ["copy", "copy", cu("copy")],
+      ["up", "thumbsUp", cu("good")],
+      ["down", "thumbsDown", cu("bad")],
     ]) {
       const b = document.createElement("button");
       b.type = "button";
-      b.textContent = icon;
+      b.dataset.chatAction = name;
+      b.innerHTML = uiIcon(icon) || esc(title);
       b.title = title;
       b.setAttribute("aria-label", title);
       b.onclick = async () => {
@@ -1963,7 +1951,7 @@
         if (name === "copy") {
           try {
             await navigator.clipboard.writeText(text);
-            toast("✓ " + cu("copy"));
+            toast(cu("copy"));
           } catch (e) {
             toast(
               human(
@@ -1982,7 +1970,7 @@
             .forEach((x) => x.classList.remove("reacted"));
           b.classList.add("reacted");
           controls.querySelectorAll("button").forEach((x) => {
-            if (["👍", "👎"].includes(x.textContent))
+            if (["up", "down"].includes(x.dataset.chatAction))
               x.setAttribute("aria-pressed", String(x === b));
           });
           toast(name === "up" ? cu("like") : cu("dislike"));
@@ -2058,7 +2046,7 @@
     $("messages").replaceChildren();
     const name=window.MuseumVisitor?.getName();
     const welcome=human("Mây sẵn sàng giúp bạn tìm hiểu hiện vật. Quét QR hoặc chọn một hồ sơ để bắt đầu nhé!","I can help you explore museum objects. Scan a QR or choose a record to begin!","유물을 함께 알아봐요. QR을 스캔하거나 기록을 선택하세요!","我可以陪你了解文物，扫描二维码或选择档案开始吧！");
-    addBubble((name?human(`Chào ${name}! `,`Hello ${name}! `,`${name}님, 안녕하세요! `,`${name}，你好！ `):'')+welcome, false, "", "🤖");
+    addBubble((name?human(`Chào ${name}! `,`Hello ${name}! `,`${name}님, 안녕하세요! `,`${name}，你好！ `):'')+welcome, false, "", "😊");
   }
   function levenshtein1(a, b) {
     if (a === b) return 0;
@@ -3261,7 +3249,7 @@
       preparation.remove();
       const endpoint = safeEndpoint(window.MuseumConfig?.aiEndpoint || "");
       if (endpoint && !localAnswer.applicationOnly) {
-        const typing = addBubble(human("Đang chờ AI máy chủ phản hồi…", "Waiting for the AI server…", "AI 서버의 응답을 기다리고 있어요…", "正在等待AI服务器回复……"), false, "", "🤔");
+        const typing = addBubble(human("Đang tra cứu hồ sơ hiện vật…", "Looking through artifact records…", "유물 기록을 확인하고 있어요…", "正在检索文物档案……"), false, "", "🤔");
         try {
           const controller = new AbortController();
           const timeout = setTimeout(() => controller.abort(), state.replyDepth==='deep'?50000:14000);
@@ -3378,11 +3366,20 @@
       "vi-VN"
     );
   }
+  function renderAudioControl(control,speaking=false) {
+    if(!control)return;
+    const key=control.id==='artifact-speak'?'artifactListen':control.id==='article-speak'?'listen':null;
+    const label=speaking?human('Dừng đọc','Stop reading','읽기 중지','停止朗读'):key?t(key):cu('hear');
+    control.innerHTML=uiIcon('volume')+'<span'+(control.dataset.chatAction==='listen'?' class="sr-only"':!speaking&&key?' data-t="'+key+'"':'')+'>'+esc(label)+'</span>';
+    control.setAttribute('aria-label',label);control.title=label;
+    control.setAttribute('aria-pressed',String(speaking));
+    if(speaking)control.dataset.speaking='true';else delete control.dataset.speaking;
+  }
   function bindSpeechStatus(utterance,control){
-    if(!control)return;const old=control.textContent;
-    const reset=()=>{control.textContent=old;control.setAttribute('aria-pressed','false');delete control.dataset.speaking;};
-    utterance.onstart=()=>{control.dataset.speaking='true';control.setAttribute('aria-pressed','true');control.textContent=human('■ Dừng đọc','■ Stop reading','■ 읽기 중지','■ 停止朗读');};
-    utterance.onend=reset;utterance.onerror=reset;
+    if(!control)return;
+    utterance.onstart=()=>renderAudioControl(control,true);
+    utterance.onend=()=>renderAudioControl(control,false);
+    utterance.onerror=()=>renderAudioControl(control,false);
   }
   function speakText(txt,control=$('article-speak')) {
     if (!("speechSynthesis" in window)) {
@@ -3391,21 +3388,21 @@
     }
     if (speechSynthesis.speaking) {
       speechSynthesis.cancel();
-      $("article-speak").textContent = t("listen");
+      renderAudioControl(control);
       return;
     }
     const u = new SpeechSynthesisUtterance(txt);
     u.lang = speechLang();
     u.rate = 0.93;
     u.onend = () => {
-      $("article-speak").textContent = t("listen");
+      renderAudioControl(control);
     };
     u.onerror = () => {
-      $("article-speak").textContent = t("listen");
+      renderAudioControl(control);
     };
     bindSpeechStatus(u,control);
     speechSynthesis.speak(u);
-    $("article-speak").textContent = t("speakStop");
+    renderAudioControl(control,true);
   }
   function speechToInput(target, send = false) {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -3609,6 +3606,7 @@
     }
     stopCamera();
     const token=cameraRequest;
+    emit("camerastarting");
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
@@ -3626,6 +3624,12 @@
       const video = $("qr-video");
       video.srcObject = stream;
       await video.play();
+      if(state.page!=="scan"||token!==cameraRequest||state.scan!==stream){
+        stream.getTracks().forEach(track=>track.stop());
+        if(video.srcObject===stream){video.pause();video.srcObject=null;}
+        if(state.scan===stream)state.scan=null;
+        return;
+      }
       $("scan-state").textContent = t("cameraStarted");
       $("scan-video-box").classList.add("streaming");
       emit("camera",{stream});
@@ -3633,7 +3637,7 @@
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
       let last = 0;
       const tick = async (now) => {
-        if (!state.scan || state.page !== "scan") return;
+        if (state.scan!==stream || state.page !== "scan" || token!==cameraRequest) return;
         if (!state.qrBusy && now - last > 140 && video.videoWidth) {
           last = now;
           state.qrBusy = true;
@@ -3652,10 +3656,10 @@
             }
           } catch (e) {
           } finally {
-            state.qrBusy = false;
+            if(token===cameraRequest&&state.scan===stream)state.qrBusy = false;
           }
         }
-        state.scanLoop = requestAnimationFrame(tick);
+        if(state.scan===stream&&state.page==="scan"&&token===cameraRequest)state.scanLoop = requestAnimationFrame(tick);
       };
       state.scanLoop = requestAnimationFrame(tick);
     } catch (e) {
@@ -3702,6 +3706,29 @@
     } catch (e) {
       showQR(t("qrFileError"));
     }
+  }
+  let artifactShareBusy=false;
+  async function shareCurrentArtifactLink() {
+    if(artifactShareBusy)return {status:'busy'};
+    const artifact=A.find(a=>a.id===state.artifact);
+    if(!artifact){toast(human('Không tìm thấy hồ sơ để chia sẻ.','No artifact record is available to share.','공유할 유물 기록이 없습니다.','没有可分享的文物档案。'));return {status:'unavailable'};}
+    const url=new URL(CANONICAL_BASE);url.searchParams.set('artifact',artifact.id);
+    const link=url.href;
+    const controls=$all('#artifact-share,#artifact-qr-share');
+    const previous=controls.map(button=>button.disabled);
+    artifactShareBusy=true;controls.forEach(button=>{button.disabled=true;button.setAttribute('aria-busy','true')});
+    const unavailable=()=>toast(human('Không thể chia sẻ hoặc sao chép tự động. Bạn có thể sao chép đường dẫn này: ','Automatic sharing and copying are unavailable. You can copy this link: ','자동 공유와 복사가 불가능합니다. 다음 링크를 복사해 주세요: ','无法自动分享或复制。您可以复制此链接：')+link);
+    try{
+      if(!window.isSecureContext){unavailable();return {status:'insecure',url:link};}
+      if(typeof navigator.share==='function'){
+        try{await navigator.share({title:aname(artifact)+' · '+document.title,url:link});toast(human('Đã chia sẻ link hiện vật.','Artifact link shared.','유물 링크를 공유했습니다.','已分享文物链接。'));return {status:'shared',url:link};}
+        catch(error){if(error?.name==='AbortError'){toast(human('Đã hủy chia sẻ.','Sharing cancelled.','공유를 취소했습니다.','已取消分享。'));return {status:'cancelled',url:link};}}
+      }
+      if(typeof navigator.clipboard?.writeText==='function'){
+        try{await navigator.clipboard.writeText(link);toast(human('Đã sao chép link hiện vật.','Artifact link copied.','유물 링크를 복사했습니다.','已复制文物链接。'));return {status:'copied',url:link};}catch{}
+      }
+      unavailable();return {status:'failed',url:link};
+    }finally{artifactShareBusy=false;controls.forEach((button,i)=>{button.disabled=previous[i];button.removeAttribute('aria-busy')});}
   }
   function syncEvents() {
     document.addEventListener("click", (e) => {
@@ -3852,19 +3879,9 @@
       const a = A.find((x) => x.id === state.artifact);
       speakText(aname(a) + ". " + asummary(a),$("artifact-speak"));
     });
-    $("artifact-share").addEventListener("click", async () => {
-      const url =
-        CANONICAL_BASE + "?artifact=" + encodeURIComponent(state.artifact);
-      try {
-        if (navigator.share)
-          await navigator.share({ title: document.title, url });
-        else {
-          await navigator.clipboard.writeText(url);
-          toast(human("Đã sao chép link hiện vật", "Artifact link copied"));
-        }
-      } catch (e) {
-        toast(url);
-      }
+    document.addEventListener('click',event=>{
+      const button=event.target.closest('#artifact-share,#artifact-qr-share');
+      if(button){event.preventDefault();void shareCurrentArtifactLink();}
     });
     $("artifact-map").addEventListener("click", () => {
       const a = A.find((x) => x.id === state.artifact);
@@ -4044,6 +4061,7 @@
     searchScore,
     levens,
     qrSrc,
+    shareCurrentArtifactLink,
     getAIEndpoint: () => safeEndpoint(window.MuseumConfig?.aiEndpoint || ""),
     aname,
     asummary,

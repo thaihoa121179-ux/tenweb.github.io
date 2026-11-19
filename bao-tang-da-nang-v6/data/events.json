@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "timezone": "Asia/Saigon",
+  "sourceUrl": "https://baotangdanang.vn/danh-cho-du-khach/su-kien",
+  "publishedAt": null,
+  "verifiedAt": null,
+  "verificationStatus": "unavailable",
+  "verificationNote": "No future event has been verified for this dataset. The current environment could not retrieve the official museum site through its HTTPS proxy (403). The source landing page is present in previously captured official navigation; this does not verify any upcoming event.",
+  "events": [],
+  "contextImage": {
+    "src": "assets/museum/0599422889609cd6.webp",
+    "sourceUrl": "https://dnfam-website.vr360.com.vn/uploads/images/DSCF1963.webp",
+    "verifiedSource": true,
+    "alt": {
+      "vi": "Không gian trưng bày sưu tập cổ vật Bảo tàng Đà Nẵng",
+      "en": "The antiquities gallery at Da Nang Museum",
+      "ko": "다낭 박물관의 고대 유물 전시 공간",
+      "zh": "岘港博物馆的古物展厅"
+    }
+  }
+}

@@ -1,10 +1,10 @@
-# Museum Companion — Mây · Bản đồ mô phỏng, Giai đoạn 3 (bản nháp)
+# Museum Companion — Mây · Bản 7.5
 
 Ứng dụng học tập độc lập, không phải website chính thức của Bảo tàng Đà Nẵng. Nâng cấp trực tiếp V6, giữ địa chỉ Pages, bộ ảnh, ID hồ sơ, mascot và bảng màu xanh rêu / vàng kem. Frontend vẫn HTML/CSS/JavaScript thuần.
 
 **Web:** https://thaihoa121179-ux.github.io/tenweb.github.io/bao-tang-da-nang-v6/
 
-**Bản nháp 7.4:** hoàn thiện hướng dẫn ba bước, mini-map, cảm biến/hiệu chuẩn, quyền truy cập, bốn ngôn ngữ và tải bản đồ theo nhu cầu; giữ kích hoạt khu, Mây, tiến độ mô phỏng và chỉ đường liên tầng. Chưa xuất bản lên Pages. [Bàn giao Giai đoạn 3: ảnh, kiểm thử, demo 60 giây](docs/live-map-stage3/README.md) · [Giai đoạn 2](docs/live-map-stage2/README.md) · [Lõi Giai đoạn 1](docs/live-map-stage1/README.md).
+**Bản 7.5:** dọn giao diện: chia sẻ link, SVG thống nhất, camera/đèn, nhãn Mây có nguồn, cảnh báo gọn và sự kiện từ JSON. [Ảnh giao diện và kiểm thử](docs/ui-cleanup-7.5/README.md). Bản đồ mô phỏng đủ ba giai đoạn: [hướng dẫn và mini-map](docs/live-map-stage3/README.md) · [chỉ đường liên tầng](docs/live-map-stage2/README.md) · [lõi bản đồ](docs/live-map-stage1/README.md).
 
 ## Dùng bản mới
 
@@ -15,7 +15,8 @@
 - Nghe hiện vật kể: Bé khám phá / Du khách / Chuyên sâu, nghe bằng TTS, nguồn và hồ sơ liên quan. Lời kể cục bộ và lời kể tạo sinh có nhãn khác nhau.
 - Chụp & hỏi: xem trước ảnh, nén JPEG tối đa 1024px, chủ động gửi để đối chiếu. Luôn cho người dùng xác nhận; chưa nối backend thì tìm tên/nhãn thủ công, không giả nhận diện ảnh.
 - Cá nhân: tên chuẩn hóa, nhiệm vụ 3–5 hồ sơ, huy hiệu, quiz từ dữ liệu thật, nhật ký cũ và thẻ hành trình PNG có tên, ảnh, chủ đề, mascot; lưu tại trình duyệt, không cần tài khoản.
-- Trong nhà: mốc QR tầng/khu, sơ đồ minh họa. GPS được thay bằng link Google Maps đến 31 Trần Phú. [Trang in QR A4](qr-print/) sinh mã thật cho tầng và hồ sơ; `?demo=1` mới hiện bộ mã thử trong màn quét.
+- Trong nhà: mốc QR tầng/khu, sơ đồ minh họa. GPS được thay bằng link Google Maps đến 31 Trần Phú. [Trang in QR A4](qr-print/) sinh mã thật cho tầng và hồ sơ; `?debug=1` mới hiện bộ mã thử trong màn quét.
+- Tham quan: mục Sự kiện sắp tới đọc `data/events.json`, lọc theo ngày ở Việt Nam. Chưa có lịch tương lai được xác minh nên hiển thị trạng thái trống và link nguồn chính thức; không đưa lịch giả vào bộ dữ liệu.
 - PWA: lưu giao diện, JSON và tối đa 60 ảnh đã xem; chọn Thêm vào màn hình chính trong Cá nhân. [Dashboard demo](admin/) có mật khẩu trình diễn `may-demo`, phân biệt dữ liệu mô phỏng / thiết bị / server.
 
 ## Nguồn dữ liệu và AI
@@ -38,7 +39,7 @@ python3 -m http.server 8877
 
 Mở http://localhost:8877/ . Trên Windows có thể thay `python3` bằng `py -3`. Không mở trực tiếp `index.html` bằng `file://`, vì ứng dụng cần fetch JSON. Trang Pages dùng file đã build, không cần Node chạy trên server.
 
-Sửa các file nguồn có chú thích; chạy lại `npm run build` để cập nhật `app-foundation-7.4.0.js`, `app-core-7.4.0.js`, `app-runtime-7.4.0.js`, `app-styles-7.4.0.css`, `bootstrap-7.4.0.js`, `app-map-7.4.0.js`, `map-styles-7.4.0.css` và JSON gzip. Bản mới dùng tên file chứa phiên bản để tránh service worker cũ trả nhầm giao diện 7.0 dù đã đổi query string. Bốn bundle không có số phiên bản được giữ cho tab cũ; không sửa trực tiếp bundle đã sinh. Khi phát hành phiên bản khác, đổi phiên bản trong package, bootstrap, index, service worker và workflow xác minh, rồi build. Bộ đóng gói chỉ là công cụ build, không thêm framework vào sản phẩm.
+Sửa các file nguồn có chú thích; chạy lại `npm run build` để cập nhật `app-foundation-7.5.0.js`, `app-core-7.5.0.js`, `app-runtime-7.5.0.js`, `app-styles-7.5.0.css`, `bootstrap-7.5.0.js`, `app-map-7.5.0.js`, `map-styles-7.5.0.css` và JSON gzip. Bản mới dùng tên file chứa phiên bản để tránh service worker cũ trả nhầm giao diện 7.0 dù đã đổi query string. Bốn bundle không có số phiên bản được giữ cho tab cũ; không sửa trực tiếp bundle đã sinh. Khi phát hành phiên bản khác, đổi phiên bản trong package, bootstrap, index, service worker và workflow xác minh, rồi build. Bộ đóng gói chỉ là công cụ build, không thêm framework vào sản phẩm.
 
 Bộ giải mã QR tải khi cần; các file `collection.js`, `data-v6.js`, `media-map.js`, `conversation.js`, `location*.js` giữ làm tư liệu tương thích/lịch sử, không còn là nguồn dữ liệu chạy hoặc tính năng GPS của bản mới. Script nhập dữ liệu cũ chỉ phục vụ lịch sử; thay đổi bộ hồ sơ hiện tại phải sửa JSON chuẩn và chạy bộ kiểm tra.
 
@@ -51,6 +52,7 @@ python3 scripts/build_content.py --check
 python3 -m unittest discover -s bao-tang-da-nang-v6/tests -p 'test_*.py'
 # Có Playwright + Chromium và server ở cổng 8877:
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/upgrade.cjs
+MUSEUM_TEST_URL=http://localhost:8877/ node tests/ui-cleanup.cjs
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/live-map.cjs
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/live-map-stage2.cjs
 MUSEUM_TEST_URL=http://localhost:8877/ node tests/live-map-stage3.cjs

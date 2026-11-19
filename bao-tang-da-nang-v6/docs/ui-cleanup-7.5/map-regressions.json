@@ -1,0 +1,21 @@
+{
+  "scope": "Stage 3 actual DOM regression checks in Chromium; synthetic visual viewport only",
+  "results": [
+    {
+      "name": "explanation, settings and destination dialogs pause movement behind them",
+      "passed": true
+    },
+    {
+      "name": "recenter, panning and heading-up keep camera controls and accessible states synchronized",
+      "passed": true
+    },
+    {
+      "name": "dragging the bottom sheet opens and closes once without a trailing click reversal",
+      "passed": true
+    },
+    {
+      "name": "destination dialog remains inside a Safari-style visual viewport above the keyboard",
+      "passed": true
+    }
+  ]
+}

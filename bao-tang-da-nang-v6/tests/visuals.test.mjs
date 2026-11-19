@@ -13,6 +13,7 @@ const context = vm.createContext({MuseumMediaMap:content.mediaMap, Museum:{
   A:structuredClone(content.artifacts), D:content.topics, galleryImages:galleries,
   state:{lang:'vi'}, esc:escape, aname:a=>a.name, nm:d=>d.names[0],
 }});
+vm.runInContext(fs.readFileSync(new URL('ui-icons.js', root), 'utf8'), context);
 vm.runInContext(fs.readFileSync(new URL('visuals.js', root), 'utf8'), context);
 const V = context.MuseumVisuals;
 

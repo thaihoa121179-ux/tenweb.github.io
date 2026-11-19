@@ -3,6 +3,7 @@
   "use strict";
   const M = window.Museum;
   const V = window.MuseumVisuals;
+  const I = (name, className) => MuseumIcons.svg(name, className);
   if (!M) return;
   const KEY = "museum_v6_personal";
   const $ = (id) => document.getElementById(id);
@@ -51,8 +52,8 @@
       large: "Chữ lớn",
       erase: "Xóa nhật ký & tiến độ",
       confirm:
-        "Xóa ghi chú, nội dung đã mở và điểm quiz V6 trên thiết bị này? Thao tác này không thể hoàn tác.",
-      erased: "Đã xóa nhật ký và tiến độ V6",
+        "Xóa ghi chú, nội dung đã mở và điểm quiz trên thiết bị này? Thao tác này không thể hoàn tác.",
+      erased: "Đã xóa nhật ký và tiến độ",
       back: "Quay lại",
       question: "Câu",
       of: "/",
@@ -140,8 +141,8 @@
       large: "Larger text",
       erase: "Clear journal & progress",
       confirm:
-        "Delete V6 notes, opened records and quiz scores on this device? This cannot be undone.",
-      erased: "V6 journal and progress cleared",
+        "Delete notes, opened records and quiz scores on this device? This cannot be undone.",
+      erased: "Journal and progress cleared",
       back: "Back",
       question: "Question",
       of: "/",
@@ -228,8 +229,8 @@
       large: "큰 글씨",
       erase: "일지 및 진행 상황 삭제",
       confirm:
-        "이 기기의 V6 메모, 탐방 기록과 퀴즈 점수를 삭제할까요? 되돌릴 수 없습니다.",
-      erased: "V6 일지 및 진행 상황을 삭제했습니다",
+        "이 기기의 메모, 탐방 기록과 퀴즈 점수를 삭제할까요? 되돌릴 수 없습니다.",
+      erased: "일지 및 진행 상황을 삭제했습니다",
       back: "뒤로",
       question: "문제",
       of: "/",
@@ -312,8 +313,8 @@
       contrast: "高对比度",
       large: "大字体",
       erase: "清除日记与进度",
-      confirm: "清除此设备上的V6笔记、已打开的资料和测验分数？此操作无法撤销。",
-      erased: "V6日记与进度已清除",
+      confirm: "清除此设备上的笔记、已打开的资料和测验分数？此操作无法撤销。",
+      erased: "日记与进度已清除",
       back: "返回",
       question: "问题",
       of: "/",
@@ -475,22 +476,22 @@
     const total = M.A.length + M.D.length;
     const pct = Math.round((data.visits.length * 100) / Math.max(1, total));
     const badges = [
-      ["✦", "first", "firstRule", data.visits.length > 0],
-      ["◇", "curious", "curiousRule", artifacts >= 3],
-      ["♜", "scholar", "scholarRule", data.best >= 4],
+      ["sparkles", "first", "firstRule", data.visits.length > 0],
+      ["compass", "curious", "curiousRule", artifacts >= 3],
+      ["trophy", "scholar", "scholarRule", data.best >= 4],
     ];
-    section.innerHTML = `<div class="backline"><button class="back" data-back aria-label="${M.esc(tr("back"))}">‹</button><div class="heading"><div class="eyebrow">${M.esc(tr("eyebrow"))}</div><h1>${M.esc(tr("title"))}</h1></div></div><div class="scroll personal-scroll"><p class="personal-intro">${M.esc(tr("subtitle"))}</p><div class="personal-grid"><section class="card personal-progress"><h2>${M.esc(tr("progress"))}</h2><div class="personal-count"><strong>${data.visits.length}<span> / ${total}</span></strong><span>${M.esc(tr("viewed"))}</span></div><progress max="${total}" value="${data.visits.length}" aria-label="${M.esc(tr("progress"))}">${pct}%</progress><div class="personal-statrow"><span><b>${topics}</b> ${M.esc(tr("topics"))}</span><span><b>${artifacts}</b> ${M.esc(tr("artifacts"))}</span></div><p class="muted">${M.esc(tr("readNotice"))}</p></section><section class="card personal-badges"><h2>${M.esc(tr("badges"))}</h2><div class="badge-list">${badges.map(([icon, name, rule, earned]) => `<div class="personal-badge${earned ? " earned" : ""}"><span aria-hidden="true">${icon}</span><div><b>${M.esc(tr(name))}</b><p>${M.esc(tr(rule))}</p><small>${M.esc(tr(earned ? "earned" : "locked"))}</small></div></div>`).join("")}</div></section><section class="card personal-challenge"><span class="personal-kicker">05 / QUIZ</span><h2>${M.esc(tr("quiz"))}</h2>${V.quizStrip(questions.map(q=>M.A.find(a=>a.id===q.id)),"challenge-photos")}<p>${M.esc(tr("quizIntro"))}</p><div class="personal-challenge-bottom"><span>${M.esc(tr("best"))}: <b>${data.best}/5</b></span><button class="primary" data-personal="start-quiz">${M.esc(tr("play"))} ↗</button></div></section><section class="card personal-notebook"><h2>${M.esc(tr("journal"))}</h2><label for="personal-note">${M.esc(tr("note"))}</label><textarea id="personal-note" maxlength="3000" rows="5" placeholder="${M.esc(tr("noteHint"))}">${M.esc(data.note)}</textarea><div class="personal-note-info"><span id="personal-char-count">${data.note.length}/3000</span><span id="personal-save-state" role="status">${M.esc(saveStatus)}</span></div><button class="primary" data-personal="save">${M.esc(tr("save"))}</button><p class="muted personal-storage-notice">${M.esc(tr(storageAvailable ? "local" : "memory"))}</p><div class="buttonrow"><button class="secondary" data-personal="download">↓ ${M.esc(tr("export"))}</button><button class="secondary" data-personal="share">↗ ${M.esc(tr("share"))}</button></div></section><section class="card personal-recent"><h2>${M.esc(tr("recent"))}</h2>${
+    section.innerHTML = `<div class="backline"><button class="back" data-back aria-label="${M.esc(tr("back"))}">${I("chevron", "ui-icon-back")}</button><div class="heading"><div class="eyebrow">${M.esc(tr("eyebrow"))}</div><h1>${M.esc(tr("title"))}</h1></div></div><div class="scroll personal-scroll"><p class="personal-intro">${M.esc(tr("subtitle"))}</p><div class="personal-grid"><section class="card personal-progress"><h2>${M.esc(tr("progress"))}</h2><div class="personal-count"><strong>${data.visits.length}<span> / ${total}</span></strong><span>${M.esc(tr("viewed"))}</span></div><progress max="${total}" value="${data.visits.length}" aria-label="${M.esc(tr("progress"))}">${pct}%</progress><div class="personal-statrow"><span><b>${topics}</b> ${M.esc(tr("topics"))}</span><span><b>${artifacts}</b> ${M.esc(tr("artifacts"))}</span></div><p class="muted">${M.esc(tr("readNotice"))}</p></section><section class="card personal-badges"><h2>${M.esc(tr("badges"))}</h2><div class="badge-list">${badges.map(([icon, name, rule, earned]) => `<div class="personal-badge${earned ? " earned" : ""}"><span aria-hidden="true">${I(icon)}</span><div><b>${M.esc(tr(name))}</b><p>${M.esc(tr(rule))}</p><small>${M.esc(tr(earned ? "earned" : "locked"))}</small></div></div>`).join("")}</div></section><section class="card personal-challenge"><span class="personal-kicker">05 / QUIZ</span><h2>${M.esc(tr("quiz"))}</h2>${V.quizStrip(questions.map(q=>M.A.find(a=>a.id===q.id)),"challenge-photos")}<p>${M.esc(tr("quizIntro"))}</p><div class="personal-challenge-bottom"><span>${M.esc(tr("best"))}: <b>${data.best}/5</b></span><button class="primary" data-personal="start-quiz">${M.esc(tr("play"))} ${I("chevron")}</button></div></section><section class="card personal-notebook"><h2>${M.esc(tr("journal"))}</h2><label for="personal-note">${M.esc(tr("note"))}</label><textarea id="personal-note" maxlength="3000" rows="5" placeholder="${M.esc(tr("noteHint"))}">${M.esc(data.note)}</textarea><div class="personal-note-info"><span id="personal-char-count">${data.note.length}/3000</span><span id="personal-save-state" role="status">${M.esc(saveStatus)}</span></div><button class="primary" data-personal="save">${M.esc(tr("save"))}</button><p class="muted personal-storage-notice">${M.esc(tr(storageAvailable ? "local" : "memory"))}</p><div class="buttonrow"><button class="secondary" data-personal="download">${I("download")} ${M.esc(tr("export"))}</button><button class="secondary" data-personal="share">${I("share")} ${M.esc(tr("share"))}</button></div></section><section class="card personal-recent"><h2>${M.esc(tr("recent"))}</h2>${
       data.visits.length
         ? `<ol class="personal-timeline">${data.visits
             .slice(0, 12)
             .map((v) => {
               const r = visitRecord(v);
               return r
-                ? `<li><button ${r.type === "artifact" ? "data-artifact" : "data-topic"}="${M.esc(r.id)}">${V.media(V.resolve(r.type,r.id),{decorative:true})}<span class="timeline-copy"><span>${M.esc(r.name)}</span><small>${M.esc(date(v.time))}${v.simulated?' · '+M.esc(M.human('Mô phỏng','Simulation','시뮬레이션','模拟')):''} ›</small></span></button></li>`
+                ? `<li><button ${r.type === "artifact" ? "data-artifact" : "data-topic"}="${M.esc(r.id)}">${V.media(V.resolve(r.type,r.id),{decorative:true})}<span class="timeline-copy"><span>${M.esc(r.name)}</span><small>${M.esc(date(v.time))}${v.simulated?' · '+M.esc(M.human('Mô phỏng','Simulation','시뮬레이션','模拟')):''} ${I('chevron')}</small></span></button></li>`
                 : "";
             })
             .join("")}</ol>`
-        : `<p>${M.esc(tr("empty"))}</p><button class="secondary" data-go="catalog">${M.esc(tr("explore"))} ↗</button>`
+        : `<p>${M.esc(tr("empty"))}</p><button class="secondary" data-go="catalog">${M.esc(tr("explore"))} ${I("chevron")}</button>`
     }</section><section class="card personal-settings"><h2>${M.esc(tr("accessibility"))}</h2><label><span>${M.esc(tr("contrast"))}</span><input type="checkbox" id="personal-contrast" ${data.contrast ? "checked" : ""}></label><label><span>${M.esc(tr("large"))}</span><input type="checkbox" id="personal-large" ${data.large ? "checked" : ""}></label><button class="personal-clear secondary" data-personal="clear">${M.esc(tr("erase"))}</button></section></div></div>`;
   }
   function sourceQuestion(q) {
@@ -502,16 +503,16 @@
     if (!questions.length) return;
     if (quiz.complete) {
       const score = quiz.answers.filter((x,i)=>x===questions[i].answer).length;
-      quizSection.innerHTML = `<div class="backline"><button class="back" data-go="profile" aria-label="${M.esc(tr("back"))}">‹</button><div class="heading"><div class="eyebrow">${M.esc(tr("quiz"))}</div><h1>${M.esc(tr("finished"))}</h1></div></div><div class="scroll"><section class="card quiz-complete"><span class="quiz-medal" aria-hidden="true">${score>=4?"✦":"◇"}</span><p>${M.esc(tr("score"))}</p><strong>${score}<span>/5</span></strong>${score>=4?`<p>${M.esc(tr("unlocked"))}</p>`:""}<p>${M.esc(tr("best"))}: ${data.best}/5</p><div class="buttonrow"><button class="primary" data-personal="start-quiz">${M.esc(tr("retry"))}</button><button class="secondary" data-go="profile">${M.esc(tr("profile"))}</button></div></section><section class="visual-quiz-review"><h2>${M.esc(V.t("review"))}</h2>${questions.map(q=>V.card(V.object(M.A.find(a=>a.id===q.id)))).join("")}</section></div>`;
+      quizSection.innerHTML = `<div class="backline"><button class="back" data-go="profile" aria-label="${M.esc(tr("back"))}">${I("chevron", "ui-icon-back")}</button><div class="heading"><div class="eyebrow">${M.esc(tr("quiz"))}</div><h1>${M.esc(tr("finished"))}</h1></div></div><div class="scroll"><section class="card quiz-complete"><span class="quiz-medal" aria-hidden="true">${I(score>=4?"trophy":"compass")}</span><p>${M.esc(tr("score"))}</p><strong>${score}<span>/5</span></strong>${score>=4?`<p>${M.esc(tr("unlocked"))}</p>`:""}<p>${M.esc(tr("best"))}: ${data.best}/5</p><div class="buttonrow"><button class="primary" data-personal="start-quiz">${M.esc(tr("retry"))}</button><button class="secondary" data-go="profile">${M.esc(tr("profile"))}</button></div></section><section class="visual-quiz-review"><h2>${M.esc(V.t("review"))}</h2>${questions.map(q=>V.card(V.object(M.A.find(a=>a.id===q.id)))).join("")}</section></div>`;
       return;
     }
     const q=questions[quiz.index],artifact=M.A.find(a=>a.id===q.id);
     const prompt=MuseumLexicon.t(q.type==="era"?"quizEra":"quizMaterial").replace("{name}",M.aname(artifact));
     const selected=quiz.answers[quiz.index],answered=Number.isInteger(selected);
-    const choices=q.options.map((value,i)=>`<button data-quiz-choice="${i}" ${answered?"disabled":""} class="quiz-option${answered&&i===q.answer?" correct":""}${answered&&i===selected&&i!==q.answer?" incorrect":""}" aria-pressed="${selected===i}"><span>${String.fromCharCode(65+i)}</span><b>${M.esc(textOption(value))}</b>${answered&&i===q.answer?'<span aria-hidden="true">✓</span>':""}</button>`).join("");
-    const feedback=answered?`<p class="quiz-feedback"><b>${M.esc(tr(selected===q.answer?"correct":"incorrect"))}</b><br>${M.esc(tr("answer"))}: ${M.esc(textOption(q.options[q.answer]))}</p><p>${M.esc(MuseumLexicon.t("explanation"))}: ${M.esc(q.explanation)}</p><button class="secondary" data-artifact="${M.esc(q.id)}">${M.esc(M.aname(artifact))} ›</button><a class="source" href="${M.esc(sourceQuestion(q))}" target="_blank" rel="noopener noreferrer">${M.esc(tr("source"))} ↗</a><button class="primary full" data-personal="next">${M.esc(tr(quiz.index===questions.length-1?"result":"next"))} →</button>`:"";
+    const choices=q.options.map((value,i)=>`<button data-quiz-choice="${i}" ${answered?"disabled":""} class="quiz-option${answered&&i===q.answer?" correct":""}${answered&&i===selected&&i!==q.answer?" incorrect":""}" aria-pressed="${selected===i}"><span>${String.fromCharCode(65+i)}</span><b>${M.esc(textOption(value))}</b>${answered&&i===q.answer?I("check"):""}</button>`).join("");
+    const feedback=answered?`<p class="quiz-feedback"><b>${M.esc(tr(selected===q.answer?"correct":"incorrect"))}</b><br>${M.esc(tr("answer"))}: ${M.esc(textOption(q.options[q.answer]))}</p><p>${M.esc(MuseumLexicon.t("explanation"))}: ${M.esc(q.explanation)}</p><button class="secondary" data-artifact="${M.esc(q.id)}">${M.esc(M.aname(artifact))} ${I("chevron")}</button><a class="source" href="${M.esc(sourceQuestion(q))}" target="_blank" rel="noopener noreferrer">${M.esc(tr("source"))} ${I("arrowExternal")}</a><button class="primary full" data-personal="next">${M.esc(tr(quiz.index===questions.length-1?"result":"next"))} ${I("chevron")}</button>`:"";
     // Ảnh là đúng hiện vật của câu hỏi; không hiện niên đại/đáp án trong chú thích trước khi trả lời.
-    quizSection.innerHTML=`<div class="backline"><button class="back" data-go="profile" aria-label="${M.esc(tr("back"))}">‹</button><div class="heading"><div class="eyebrow">${M.esc(tr("quiz"))}</div><h1>${M.esc(tr("question"))} ${quiz.index+1} / 5</h1></div></div><div class="scroll"><div class="quiz-dots" aria-hidden="true">${questions.map((_,i)=>`<span class="${i<=quiz.index?"active":""}"></span>`).join("")}</div><section class="card quiz-question"><div class="quiz-visual-layout">${V.figure(V.object(artifact),{className:"quiz-object-photo",eager:true})}<div class="quiz-answer-panel"><h2 id="quiz-prompt">${M.esc(prompt)}</h2><div class="quiz-options" role="group" aria-labelledby="quiz-prompt">${choices}</div><div id="quiz-feedback" role="status">${feedback}</div></div></div></section><p class="note">${M.esc(tr("quizNote"))}</p></div>`;
+    quizSection.innerHTML=`<div class="backline"><button class="back" data-go="profile" aria-label="${M.esc(tr("back"))}">${I("chevron", "ui-icon-back")}</button><div class="heading"><div class="eyebrow">${M.esc(tr("quiz"))}</div><h1>${M.esc(tr("question"))} ${quiz.index+1} / 5</h1></div></div><div class="scroll"><div class="quiz-dots" aria-hidden="true">${questions.map((_,i)=>`<span class="${i<=quiz.index?"active":""}"></span>`).join("")}</div><section class="card quiz-question"><div class="quiz-visual-layout">${V.figure(V.object(artifact),{className:"quiz-object-photo",eager:true})}<div class="quiz-answer-panel"><h2 id="quiz-prompt">${M.esc(prompt)}</h2><div class="quiz-options" role="group" aria-labelledby="quiz-prompt">${choices}</div><div id="quiz-feedback" role="status">${feedback}</div></div></div></section><p class="note">${M.esc(tr("quizNote"))}</p></div>`;
   }
   function recordVisit(page) {
     const id =

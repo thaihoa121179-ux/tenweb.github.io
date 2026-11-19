@@ -1,0 +1,61 @@
+{
+  "scope": "Lighthouse mobile emulation, cold local HTTP/gzip, simulated throttling; welcome screen, not physical phone, map FPS or public Pages.",
+  "fetchTime": "2026-11-19T14:05:51.015Z",
+  "lighthouseVersion": "13.0.1",
+  "scores": {
+    "performance": 89,
+    "accessibility": 100,
+    "best-practices": 100
+  },
+  "metrics": {
+    "first-contentful-paint": {
+      "value": 1007.8305,
+      "unit": "millisecond",
+      "display": "1.0 s"
+    },
+    "largest-contentful-paint": {
+      "value": 3576.038125,
+      "unit": "millisecond",
+      "display": "3.6 s"
+    },
+    "total-blocking-time": {
+      "value": 126.58474999999999,
+      "unit": "millisecond",
+      "display": "130 ms"
+    },
+    "cumulative-layout-shift": {
+      "value": 0.01211805584770746,
+      "unit": "unitless",
+      "display": "0.012"
+    },
+    "speed-index": {
+      "value": 1295.890699212041,
+      "unit": "millisecond",
+      "display": "1.3 s"
+    },
+    "total-byte-weight": {
+      "value": 440498,
+      "unit": "byte",
+      "display": "Total size was 430 KiB"
+    }
+  },
+  "configuration": {
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate",
+    "throttling": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    },
+    "screenEmulation": {
+      "mobile": true,
+      "width": 412,
+      "height": 823,
+      "deviceScaleFactor": 1.75,
+      "disabled": false
+    }
+  }
+}

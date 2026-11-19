@@ -2,6 +2,7 @@
 (() => {
   "use strict";
   const M = window.Museum;
+  const I = (name, className) => MuseumIcons.svg(name, className);
   const $ = (id) => document.getElementById(id);
   const strings = {
     vi: {
@@ -17,13 +18,13 @@
       visitIntro: "Một chút chuẩn bị cho những khám phá mới.",
       addressShort: "Hải Châu, Đà Nẵng",
       checkHours: "Theo dữ liệu dự án · kiểm tra lại lịch",
-      visitDetails: "Thông tin tham quan ↗",
+      visitDetails: "Thông tin tham quan",
       independent:
         "Dự án minh họa độc lập, không phải website chính thức của Bảo tàng Đà Nẵng.",
       discover: "Khám phá theo cách của bạn",
       atYourPace: "Một chạm. Nhiều câu chuyện.",
       dataMode: "Chế độ trợ lý dữ liệu · Có dẫn nguồn",
-      meetMay: "Tìm hiểu cùng Mây ↗",
+      meetMay: "Tìm hiểu cùng Mây",
       catalog: "Thư viện hiện vật",
       catalogSub: "9 hồ sơ · 15 chủ đề",
       map: "Bản đồ & hướng nhìn",
@@ -41,8 +42,8 @@
       navguide: "Mây AI",
       navscan: "Quét QR",
       navprofile: "Cá nhân",
-      pause: "Ⅱ Tạm dừng",
-      play: "▷ Tiếp tục",
+      pause: "Tạm dừng",
+      play: "Tiếp tục",
       slide: "Nội dung",
       catalogNotice:
         "Ảnh và dữ liệu có ghi bảo tàng nguồn trong từng hồ sơ. Hồ sơ tham khảo ngoài Đà Nẵng được gắn nhãn riêng; chủ đề không xác định vị trí thực tế.",
@@ -81,13 +82,13 @@
       visitIntro: "A little preparation. A world of discoveries.",
       addressShort: "Hai Chau, Da Nang",
       checkHours: "Project records · confirm current hours",
-      visitDetails: "Visitor information ↗",
+      visitDetails: "Visitor information",
       independent:
         "Independent demonstration, not the official Da Nang Museum website.",
       discover: "Make discovery your own",
       atYourPace: "One tap. Many stories.",
       dataMode: "Data assistant mode · Cited sources",
-      meetMay: "Explore with Mây ↗",
+      meetMay: "Explore with Mây",
       catalog: "Artifact library",
       catalogSub: "9 records · 15 themes",
       map: "Map & facing direction",
@@ -105,8 +106,8 @@
       navguide: "Mây AI",
       navscan: "Scan QR",
       navprofile: "My space",
-      pause: "Ⅱ Pause",
-      play: "▷ Resume",
+      pause: "Pause",
+      play: "Resume",
       slide: "Slide",
       catalogNotice:
         "Each record names its source museum. References outside Da Nang are labeled separately; themes do not identify physical object locations.",
@@ -145,13 +146,13 @@
       visitIntro: "작은 준비로 새로운 발견을 만나 보세요.",
       addressShort: "베트남 다낭 하이쩌우",
       checkHours: "프로젝트 자료 · 최신 시간 확인 필요",
-      visitDetails: "방문 정보 ↗",
+      visitDetails: "방문 정보",
       independent:
         "독립 데모 프로젝트이며 다낭 박물관 공식 웹사이트가 아닙니다.",
       discover: "나만의 방식으로 탐험하기",
       atYourPace: "한 번의 터치, 다양한 이야기.",
       dataMode: "자료 안내 모드 · 출처 제공",
-      meetMay: "마이와 함께 탐험하기 ↗",
+      meetMay: "마이와 함께 탐험하기",
       catalog: "유물 자료실",
       catalogSub: "유물 9개 · 주제 15개",
       map: "지도와 바라보는 방향",
@@ -169,8 +170,8 @@
       navguide: "마이 AI",
       navscan: "QR 스캔",
       navprofile: "내 공간",
-      pause: "Ⅱ 일시 정지",
-      play: "▷ 다시 시작",
+      pause: "일시 정지",
+      play: "다시 시작",
       slide: "슬라이드",
       catalogNotice:
         "각 기록에 출처 박물관이 표시됩니다. 다낭 외부 참고 자료는 별도 표시하며, 주제는 실제 유물 위치가 아닙니다.",
@@ -209,12 +210,12 @@
       visitIntro: "做好小小准备，开启新的发现。",
       addressShort: "越南岘港海洲坊",
       checkHours: "项目资料 · 请确认最新时间",
-      visitDetails: "参观信息 ↗",
+      visitDetails: "参观信息",
       independent: "独立演示项目，并非岘港博物馆官方网站。",
       discover: "按自己的方式探索",
       atYourPace: "轻轻一点，发现更多故事。",
       dataMode: "资料助手模式 · 附资料来源",
-      meetMay: "与小云一起探索 ↗",
+      meetMay: "与小云一起探索",
       catalog: "文物资料库",
       catalogSub: "9件文物 · 15个主题",
       map: "地图与朝向",
@@ -232,8 +233,8 @@
       navguide: "小云 AI",
       navscan: "扫码",
       navprofile: "个人",
-      pause: "Ⅱ 暂停",
-      play: "▷ 继续",
+      pause: "暂停",
+      play: "继续",
       slide: "幻灯片",
       catalogNotice:
         "每份档案均标明来源博物馆。岘港以外的参考资料会另作标注；关联主题不代表文物实际位置。",
@@ -361,7 +362,7 @@
           `<button type="button" data-slide="${i}" aria-label="${tr("slide")} ${i + 1}" aria-pressed="${i === index}"></button>`,
       )
       .join("");
-    $("hero-pause").textContent = tr(paused ? "play" : "pause");
+    $("hero-pause").innerHTML = I(paused ? "play" : "pause") + `<span>${M.esc(tr(paused ? "play" : "pause"))}</span>`;
     $("hero-pause").setAttribute("aria-pressed", String(!paused));
   }
   function markNav() {

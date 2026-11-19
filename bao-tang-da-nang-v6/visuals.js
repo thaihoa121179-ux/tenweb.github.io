@@ -52,7 +52,7 @@
   }
   function figure(view, options = {}) {
     if (!view) return '';
-    return `<figure class="visual-figure ${esc(options.className||'')}" data-visual-record="${esc(view.kind+':'+view.id)}"><button type="button" class="visual-zoom" data-visual-open="${esc(view.kind+':'+view.id)}" aria-label="${esc(t('zoom')+' · '+view.name)}">${media(view,{eager:options.eager})}<span class="visual-zoom-label" aria-hidden="true">⤢ ${esc(t('zoom'))}</span></button><figcaption>${view.relationship?`<span>${esc(view.relationship)}</span>`:''}<b>${esc(view.name)}</b><small>${esc(view.overview?t('gallery')+' · '+view.credit:view.credit)}</small></figcaption></figure>`;
+    return `<figure class="visual-figure ${esc(options.className||'')}" data-visual-record="${esc(view.kind+':'+view.id)}"><button type="button" class="visual-zoom" data-visual-open="${esc(view.kind+':'+view.id)}" aria-label="${esc(t('zoom')+' · '+view.name)}">${media(view,{eager:options.eager})}<span class="visual-zoom-label" aria-hidden="true">${MuseumIcons.svg('expand')} ${esc(t('zoom'))}</span></button><figcaption>${view.relationship?`<span>${esc(view.relationship)}</span>`:''}<b>${esc(view.name)}</b><small>${esc(view.overview?t('gallery')+' · '+view.credit:view.credit)}</small></figcaption></figure>`;
   }
   function card(view, options = {}) {
     if (!view) return '';

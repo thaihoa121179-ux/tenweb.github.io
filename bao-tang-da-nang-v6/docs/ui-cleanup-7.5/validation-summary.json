@@ -1,0 +1,50 @@
+{
+  "version": "7.5.0",
+  "scope": "Local unit/data tests and Chromium emulation; native phone camera, torch, share sheet and sensor hardware remain untested.",
+  "passed": true,
+  "checks": {
+    "node": {
+      "passed": 151,
+      "total": 151
+    },
+    "python": {
+      "passed": 19,
+      "total": 19
+    },
+    "cleanupBrowserGroups": {
+      "passed": 8,
+      "total": 8
+    },
+    "appRegressionGroups": {
+      "passed": 24,
+      "total": 24
+    },
+    "mapRegressionGroups": {
+      "passed": 4,
+      "total": 4
+    },
+    "mapStage3Groups": {
+      "passed": 4,
+      "total": 4
+    },
+    "miniMapGroups": {
+      "passed": 6,
+      "total": 6
+    },
+    "axeViews": {
+      "views": 10,
+      "violations": 0
+    },
+    "decodedPhotos": {
+      "passed": 200,
+      "total": 200
+    },
+    "pwa70Upgrade": {
+      "passed": true
+    }
+  },
+  "hardwareVerified": false,
+  "futureEventsVerified": false,
+  "eventsDataHasFabricatedRecords": false,
+  "publicDeployment": "Local evidence here; see GitHub Actions for live publication checks."
+}

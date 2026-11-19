@@ -1,0 +1,11 @@
+/* Dùng token cũ; icon không làm dịch nhãn nút, vẫn đủ vùng chạm. */
+button>.ui-icon,button>[data-ui-icon]{flex:none}button>[data-ui-icon],.info-grid b>[data-ui-icon]{display:inline-flex;align-items:center;vertical-align:middle;margin-inline-end:7px}
+.logo>[data-ui-icon]{display:block;line-height:0}.logo .ui-icon{width:32px;height:32px}
+#chat-form button[type=submit]>[data-ui-icon],#qr-manual-go>[data-ui-icon]{margin:0}
+.artifact-qr-preview>#artifact-qr-share{display:flex;justify-content:center;align-items:center;min-height:48px;gap:5px;width:100%}.artifact-qr-details{margin-top:12px;text-align:center}.artifact-qr-details summary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:7px 16px;border-radius:12px;background:var(--mint);color:var(--green);cursor:pointer;font-size:16px}.artifact-qr-details img{margin:14px auto;display:block;max-width:min(100%,240px)}
+.illustration-details{font-size:14px;color:var(--muted);margin:12px 0}.illustration-details summary{display:inline-flex;align-items:center;min-height:44px;padding:7px 12px;background:var(--mint);color:var(--green);border-radius:12px;cursor:pointer}.illustration-details[open] summary{margin-bottom:8px}.illustration-details p{font-size:16px;line-height:1.7;margin:0;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper);text-transform:none;letter-spacing:normal}
+#page-scan .buttonrow:has(>#scan-start[hidden]):has(>#scan-stop[hidden]):not(:has(>#scan-torch)){display:none}
+#scan-torch-status{font-size:14px;line-height:1.6;margin:0 0 12px}#scan-torch{display:inline-flex;align-items:center;justify-content:center;gap:8px}#scan-torch:disabled{opacity:.7}
+.ico[data-ui-icon]{display:inline-flex;align-items:center;justify-content:center;line-height:0}.ico[data-ui-icon]>.ui-icon{display:block;width:100%;height:100%;vertical-align:0}
+.hero-robot img{height:auto;aspect-ratio:1;object-fit:contain}
+#page-guide #chat-form #photo-open-chat,#chat-more{color:var(--green)}
