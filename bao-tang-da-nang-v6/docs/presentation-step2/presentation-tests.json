@@ -1,0 +1,37 @@
+{
+  "scope": "Step 2 Chromium DOM, real data, offline cache; no physical iOS/Android claim",
+  "results": [
+    {
+      "name": "complete nine stops, cross two floors, pulse/image/source at arrival, no sensors or personal progress",
+      "passed": true
+    },
+    {
+      "name": "pause is stable, Next moves smoothly, seek is preview and duplicate arrivals stay suppressed",
+      "passed": true
+    },
+    {
+      "name": "home and deep link entry work; all four languages fit 360–430px, landscape and desktop",
+      "passed": true
+    },
+    {
+      "name": "manual floor selection previews only; navigation away and hidden document pause and re-enter without autoplay",
+      "passed": true
+    },
+    {
+      "name": "exit restores normal map and directions to an artifact clear presentation state",
+      "passed": true
+    },
+    {
+      "name": "failed tour JSON offers retry and late responses never steal navigation",
+      "passed": true
+    },
+    {
+      "name": "installed PWA opens the new tour and all nine photos after an offline reload",
+      "passed": true
+    },
+    {
+      "name": "automatic WCAG A/AA checks find no violations in presentation controls",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "version": "7.6.0",
+  "scope": "Step 2 presentation map only; actual browser DOM tests in Chromium emulation; physical iOS/Android testing remains manual",
+  "checks": {
+    "node": {
+      "passed": 160,
+      "failed": 0
+    },
+    "python": {
+      "passed": 19,
+      "failed": 0
+    },
+    "presentation_browser": {
+      "passed": 8,
+      "failed": 0
+    },
+    "normal_map_browser": {
+      "passed": 9,
+      "failed": 0
+    },
+    "app_browser": {
+      "passed": 24,
+      "failed": 0
+    },
+    "decoded_distinct_photos": 200,
+    "presentation_axe_wcag_a_aa_violations": 0
+  },
+  "collectionSha256": "5ad4c8910a84e483b2f8b36b903c10096ddcbc1a894eaf1449365c4c9e694f4e",
+  "localLighthouse": {
+    "performance": 91,
+    "accessibility": 100,
+    "best-practices": 100
+  },
+  "publicVerification": "GitHub Actions: Verify published V6 photos and deployed assets, triggered when merged to main"
+}

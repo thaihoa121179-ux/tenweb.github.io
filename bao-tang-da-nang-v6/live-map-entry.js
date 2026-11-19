@@ -24,6 +24,6 @@
    let b=document.getElementById('map-retry-load');if(!b){b=document.createElement('button');b.id='map-retry-load';b.className='primary';b.onclick=()=>{b.remove();open();};document.getElementById('page-map').prepend(b);}b.textContent=Museum.human('Thử lại bản đồ','Retry map','지도 다시 열기','重试地图');
   });
  }
- window.MuseumMapOpenTarget=target=>{window.MuseumPendingMapTarget=target;Museum.nav('map');};
+ window.MuseumMapOpenTarget=target=>{window.MuseumPresentationRequested=false;window.MuseumPendingMapTarget=target;Museum.nav('map');};
  document.addEventListener('museum:navigate',open);open();
 })();

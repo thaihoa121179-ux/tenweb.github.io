@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "may-nine-stops",
+  "illustrative": true,
+  "speed": 6,
+  "arrivalRadius": 2,
+  "stops": [
+    {"id":"demo-co-vat","floor":1,"zoneId":"f1-co-vat","topicId":"co-vat","artifactId":"hv-khuyen-tai-ba-mau-f7a824","featured":true},
+    {"id":"demo-thieu-nhi","floor":1,"zoneId":"f1-thieu-nhi","topicId":"thieu-nhi"},
+    {"id":"demo-trien-lam","floor":1,"zoneId":"f1-trien-lam","topicId":"trien-lam"},
+    {"id":"demo-den-co","floor":2,"zoneId":"f2-den-co","topicId":"den-co"},
+    {"id":"demo-tram-huong","floor":2,"zoneId":"f2-tram-huong","topicId":"tram-huong"},
+    {"id":"demo-dan-toc","floor":2,"zoneId":"f2-dan-toc","topicId":"dan-toc","artifactId":"phu-dieu","featured":true},
+    {"id":"demo-tong-quan","floor":3,"zoneId":"f3-tong-quan","topicId":"tong-quan"},
+    {"id":"demo-doc-lap","floor":3,"zoneId":"f3-doc-lap","topicId":"doc-lap","artifactId":"sung-than-cong","featured":true},
+    {"id":"demo-toa-thi-chinh","floor":3,"zoneId":"f3-toa-thi-chinh","topicId":"toa-thi-chinh"}
+  ]
+}
