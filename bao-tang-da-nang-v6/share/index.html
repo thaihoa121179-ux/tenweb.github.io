@@ -1,14 +1,27 @@
-<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Museum Companion — Bản chia sẻ dễ đọc</title><style>body{max-width:960px;margin:auto;padding:24px;font:17px/1.7 system-ui;background:#f6f5f0;color:#103e35}a{color:#205849}article,figure{background:white;padding:20px;border-radius:18px;margin:20px 0}img{max-width:100%;height:auto}figure img{max-height:680px}article img{max-height:260px;object-fit:contain}nav{display:flex;gap:20px;flex-wrap:wrap}</style><body><h1>Museum Companion — Bảo tàng Đà Nẵng</h1>
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Museum Companion — Bản chia sẻ dễ đọc</title><style>body{max-width:960px;margin:auto;padding:24px;font:17px/1.7 system-ui;background:#f6f5f0;color:#103e35}a{color:#205849}article,figure{background:white;padding:20px;border-radius:18px;margin:20px 0}img{max-width:100%;height:auto}figure img{max-height:680px}article img{max-height:260px;object-fit:contain}nav{display:flex;gap:20px;flex-wrap:wrap}</style><link rel="icon" href="./../icons/icon-192.png"><link rel="stylesheet" href="./../then-now.css?v=7.8.0"><script defer src="./../then-now.js?v=7.8.0"></script><body><h1>Museum Companion — Bảo tàng Đà Nẵng</h1>
 <p>Museum Companion là dự án học tập độc lập về bảo tàng, không phải website chính thức. Mây mặc định trả lời từ hồ sơ có nguồn; AI tạo sinh chỉ hoạt động khi cấu hình backend. Bản đồ trong nhà là mô phỏng, không xác nhận vị trí thật.</p>
-<p>Trang này chứa nội dung và ảnh ngay trong HTML, không cần JavaScript hoặc đăng nhập. Đây là bản đọc để chia sẻ, không phải giao diện tương tác của ứng dụng.</p><nav><a href="../">Mở ứng dụng tương tác</a><a href="README.md">Bản văn bản Markdown</a><a href="#records">200 hồ sơ</a></nav><h2>Chức năng</h2><ul>
+<p>Bạn có thể đọc toàn bộ hồ sơ và xem ảnh mà không cần đăng nhập. Bật JavaScript để dùng thanh trượt, hoặc mở ứng dụng để nghe Mây, làm quiz và lưu thẻ hành trình.</p><nav><a href="../">Mở ứng dụng tương tác</a><a href="README.md">Bản văn bản Markdown</a><a href="#records">200 hồ sơ</a></nav><h2>Chức năng</h2><ul>
 <li>Chọn bốn ngôn ngữ và tên khách</li>
 <li>Thư viện 200 hồ sơ có ảnh và nguồn; có hồ sơ tham khảo ngoài Đà Nẵng, được ghi riêng</li>
 <li>Hỏi Mây theo ngữ cảnh hiện vật, thẻ nguồn, giọng nói và lời kể</li>
 <li>Quét QR, chụp và hỏi, chia sẻ link hiện vật</li>
 <li>Lộ trình, nhiệm vụ, quiz, nhật ký và thẻ hành trình</li>
 <li>Bản đồ mô phỏng ba tầng: đi bộ qua cảm biến, joystick và tự đi</li>
-<li>PWA lưu giao diện, dữ liệu và ảnh đã xem; mục sự kiện chỉ hiện lịch được xác minh</li>
-</ul><h2>Ảnh giao diện thực tế</h2><p>Ảnh kiểm thử ở kích thước điện thoại; tình huống quyền camera trong ảnh được giả lập.</p>
+<li>PWA lưu giao diện, 200 ảnh hiện vật và tài nguyên trình diễn; mục sự kiện chỉ hiện lịch được xác minh</li>
+</ul><section aria-labelledby="try-demo">
+<h2 id="try-demo">Trình diễn Đà Nẵng xưa &amp; nay</h2>
+<nav aria-label="Mở trải nghiệm trong ứng dụng">
+<a href="./../?presentation=1&amp;v=7.8.0">Tuyến mô phỏng của Mây</a>
+<a href="./../?demo-panel=quiz&amp;v=7.8.0">Làm quiz</a>
+<a href="./../?demo-panel=journey&amp;v=7.8.0">Tạo thẻ kỷ niệm 9:16</a>
+</nav>
+<ul>
+<li><a href="./../?artifact=hv-khuyen-tai-ba-mau-f7a824&amp;v=7.8.0">Khuyên tai ba mấu · Mở hồ sơ</a><section class="then-now" data-compare-artifact="hv-khuyen-tai-ba-mau-f7a824" hidden></section></li>
+<li><a href="./../?artifact=phu-dieu&amp;v=7.8.0">Phù điêu Cơ Tu · Mở hồ sơ</a><section class="then-now" data-compare-artifact="phu-dieu" hidden></section></li>
+<li><a href="./../?artifact=sung-than-cong&amp;v=7.8.0">Súng thần công · Mở hồ sơ</a><section class="then-now" data-compare-artifact="sung-than-cong" hidden></section></li>
+</ul>
+</section>
+<h2>Ảnh giao diện thực tế</h2><p>Ảnh kiểm thử ở kích thước điện thoại; tình huống quyền camera trong ảnh được giả lập.</p>
 <figure><figcaption>Trang chủ</figcaption><img loading="lazy" src="../docs/ui-cleanup-7.5/home.png" alt="Trang chủ"></figure>
 <figure><figcaption>Hồ sơ và chia sẻ</figcaption><img loading="lazy" src="../docs/ui-cleanup-7.5/artifact-share.png" alt="Hồ sơ và chia sẻ"></figure>
 <figure><figcaption>Mây và nguồn trả lời</figcaption><img loading="lazy" src="../docs/ui-cleanup-7.5/chat.png" alt="Mây và nguồn trả lời"></figure>

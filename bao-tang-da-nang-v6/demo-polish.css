@@ -1,0 +1,41 @@
+.demo-confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+.journey-card-preview {
+  width: min(100%, 320px);
+  margin-inline: auto;
+  box-shadow: 0 8px 24px #103e3526;
+}
+.journey-card-buttons [data-card-preview] { align-self: center; }
+#pwa-offline-state { flex-basis: 100%; margin: 0; }
+#pwa-offline-state:empty { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  #page-artifact.active .scroll {
+    animation: reveal-artifact 180ms ease-out both;
+  }
+  .experience-dialog[open] {
+    animation: reveal-sheet 190ms cubic-bezier(.2, .75, .25, 1) both;
+  }
+  .experience-dialog[open]::backdrop {
+    animation: reveal-backdrop 160ms ease-out both;
+  }
+  .then-now-stage, .journey-card-buttons button, .quiz-option, #artifact-ai-actions button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .journey-card-buttons button, .quiz-option, #artifact-ai-actions button {
+    transition: transform 120ms ease-out, filter 120ms ease-out;
+  }
+  .journey-card-buttons button:enabled:active, .quiz-option:enabled:active, #artifact-ai-actions button:enabled:active {
+    transform: scale(.98);
+    filter: brightness(.93);
+  }
+}
+@keyframes reveal-artifact { from { opacity: .65; } to { opacity: 1; } }
+@keyframes reveal-sheet { from { opacity: .7; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-backdrop { from { opacity: 0; } to { opacity: 1; } }

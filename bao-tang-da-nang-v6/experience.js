@@ -162,7 +162,7 @@
  }
  document.addEventListener('change',e=>{if(e.target.id==='mission-select'){discovery.active=Number(e.target.value);writeDiscovery();renderMissions();}});
  document.addEventListener('museum:profileclear',()=>{discovery={version:1,seen:[],active:0,earned:[]};writeDiscovery();renderMissions();});
- function visit(){if(M.state.page!=='artifact')return;const id=M.state.artifact;if(!discovery.seen.includes(id)){discovery.seen.push(id);writeDiscovery();}const p=missionProgress();if(p.done===p.total&&!discovery.earned.includes(discovery.active)){discovery.earned.push(discovery.active);writeDiscovery();window.MuseumAnalytics?.record('mission',String(discovery.active));M.toast(T('earned'));document.body.classList.add('mission-earned');setTimeout(()=>document.body.classList.remove('mission-earned'),1200);}}
+ function visit(){if(M.state.page!=='artifact')return;const id=M.state.artifact;if(!discovery.seen.includes(id)){discovery.seen.push(id);writeDiscovery();}const p=missionProgress();if(p.done===p.total&&!discovery.earned.includes(discovery.active)){discovery.earned.push(discovery.active);writeDiscovery();document.dispatchEvent(new Event('museum:badgeearned'));window.MuseumAnalytics?.record('mission',String(discovery.active));M.toast(T('earned'));document.body.classList.add('mission-earned');setTimeout(()=>document.body.classList.remove('mission-earned'),1200);}}
  function sourceCards(answer){
   const urls=[answer.source,...(answer.sources||[]).map(s=>s.url)].filter(Boolean),ids=(answer.cards||[]).map(id=>String(id).replace(/^artifact:/,''));
   const records=M.A.filter(a=>urls.includes(a.url)||(!urls.length&&ids.includes(a.id)));
@@ -210,7 +210,7 @@
   const a=locals.find(a=>a.id===artifactId&&a.topic===topicId);
   MuseumProfile.recordSimulated(topicId,a?.id);
   if(a&&!discovery.seen.includes(a.id)){discovery.seen.push(a.id);writeDiscovery();}
-  const p=missionProgress();if(p.done===p.total&&!discovery.earned.includes(discovery.active)){discovery.earned.push(discovery.active);writeDiscovery();M.toast(T('earned'));}
+  const p=missionProgress();if(p.done===p.total&&!discovery.earned.includes(discovery.active)){discovery.earned.push(discovery.active);writeDiscovery();document.dispatchEvent(new Event('museum:badgeearned'));M.toast(T('earned'));}
  },getData:()=>structuredClone(discovery),progress:missionProgress,definitions:()=>definitions.map(list=>list.map(a=>a.id))};
  window.MuseumExperience={pinTopic, pin,clearPin,openStory,api,dialog,t:T,renderMissions};
  immersive();labels();

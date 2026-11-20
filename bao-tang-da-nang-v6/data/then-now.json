@@ -1,0 +1,32 @@
+{
+  "hv-khuyen-tai-ba-mau-f7a824": {
+    "before": "./assets/then-now/khuyen-tai-ba-mau-xua.webp",
+    "after": "./assets/then-now/khuyen-tai-ba-mau-nay.webp",
+    "scenes": {
+      "vi": ["Thuyền buồm trên sông", "Cầu và phố ven sông"],
+      "en": ["Sailing boats on the river", "Bridge and city on the riverbank"],
+      "ko": ["강 위의 돛단배", "강변의 다리와 도시"],
+      "zh": ["江上的帆船", "江畔的桥梁与城市"]
+    }
+  },
+  "phu-dieu": {
+    "before": "./assets/then-now/phu-dieu-xua.webp",
+    "after": "./assets/then-now/phu-dieu-nay.webp",
+    "scenes": {
+      "vi": ["Mái nhà Gươl", "Hoa văn gỗ trong không gian trưng bày"],
+      "en": ["Gươl communal house roof", "Wood motifs in an exhibition"],
+      "ko": ["그얼 공동체 가옥의 지붕", "전시 공간의 목조 무늬"],
+      "zh": ["戈尔公共屋的屋顶", "展厅中的木雕纹样"]
+    }
+  },
+  "sung-than-cong": {
+    "before": "./assets/then-now/sung-than-cong-xua.webp",
+    "after": "./assets/then-now/sung-than-cong-nay.webp",
+    "scenes": {
+      "vi": ["Mặt thành bên bờ biển", "Lối đi và phố ven biển"],
+      "en": ["Fort wall on the coast", "Promenade and coastal city"],
+      "ko": ["해안의 성벽", "해안 산책로와 도시"],
+      "zh": ["海岸上的城墙", "海滨步道与城市"]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+.then-now {
+  margin: 20px 0;
+  padding: clamp(14px, 3vw, 22px);
+  border: 1px solid var(--line, #d9e0d6);
+  border-radius: 20px;
+  background: var(--paper, #fffefa);
+}
+.then-now[hidden], .then-now-stage[hidden] { display: none; }
+.then-now h2 { margin: 0; font-size: clamp(1.2rem, 3vw, 1.5rem); }
+.then-now-hint, .then-now-credit { font-size: .875rem; margin: 6px 0 12px; }
+.then-now-credit { margin: 9px 0 0; }
+.then-now-stage {
+  --then-now-split: 50%;
+  position: relative;
+  aspect-ratio: 8 / 5;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #28483f;
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.then-now-stage img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.then-now-before { clip-path: inset(0 calc(100% - var(--then-now-split)) 0 0); }
+.then-now-tag {
+  position: absolute;
+  top: 10px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #153f35;
+  color: #fffefa;
+  font-weight: 700;
+  font-size: .875rem;
+  pointer-events: none;
+}
+.then-now-tag-before { left: 10px; }
+.then-now-tag-after { right: 10px; }
+.then-now-divider {
+  position: absolute;
+  inset: 0 auto 0 var(--then-now-split);
+  width: 2px;
+  background: #fffefa;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.then-now-handle {
+  position: absolute;
+  left: clamp(22px, var(--then-now-split), calc(100% - 22px));
+  top: 50%;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid #fffefa;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #153f35;
+  color: #fffefa;
+  box-shadow: 0 3px 12px #132a24a0;
+  font: 700 24px/1 system-ui, sans-serif;
+}
+.then-now-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.then-now-stage:focus-within { outline: 3px solid #b3843a; outline-offset: 3px; }

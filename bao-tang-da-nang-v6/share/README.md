@@ -18,6 +18,12 @@ Museum Companion là dự án học tập độc lập về bảo tàng, không 
 
 - PWA lưu giao diện, dữ liệu và ảnh đã xem; mục sự kiện chỉ hiện lịch được xác minh
 
+## Trình diễn 7.8.0
+
+- [Khuyên tai ba mấu](./../?artifact=hv-khuyen-tai-ba-mau-f7a824&v=7.8.0), [Phù điêu Cơ Tu](./../?artifact=phu-dieu&v=7.8.0) và [Súng thần công](./../?artifact=sung-than-cong&v=7.8.0) có thanh trượt Xưa & Nay dùng ảnh minh họa theo chủ đề.
+- [Quiz](./../?demo-panel=quiz&v=7.8.0) có hiệu ứng khi trả lời đúng. [Thẻ hành trình](./../?demo-panel=journey&v=7.8.0) xuất PNG dọc 9:16.
+- Để trình diễn ngoại tuyến, mở ứng dụng có mạng và đợi báo sẵn sàng trong mục Cá nhân.
+
 ## 200 hồ sơ có nguồn
 
 

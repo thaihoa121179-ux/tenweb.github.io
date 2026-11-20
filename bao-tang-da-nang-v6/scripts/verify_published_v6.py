@@ -152,6 +152,8 @@ def checked_assets(index: str, version: str, bootstrap: str = "", audio_manifest
         if tuple(map(int,version.split('.'))) >= (7,6,0): modules.append('demo-entry.js')
         if tuple(map(int,version.split('.'))) >= (7,7,0):
             for name in ('pocket-audio-engine.js','pocket-audio.js'): modules.insert(modules.index('offline.js'),name)
+        if tuple(map(int,version.split('.'))) >= (7,8,0):
+            for name in ('then-now.js','demo-polish.js'): modules.insert(modules.index('pocket-audio-engine.js'),name)
         manifest=re.search(r'const modules=\[(.*?)\];', bootstrap)
         if not manifest: raise ValueError('Missing bootstrap module manifest')
         positions=[manifest.group(1).find("'"+name+"'") for name in modules]
@@ -182,6 +184,13 @@ def checked_assets(index: str, version: str, bootstrap: str = "", audio_manifest
                 path=item.get('path','')
                 if not re.fullmatch(r'\./audio/[a-z0-9-]+\.mp3',path): raise ValueError('Audio path must stay relative to the app')
                 name=path.removeprefix('./');assets[name]=name+'?v='+version
+        if tuple(map(int,version.split('.'))) >= (7,8,0):
+            comparison_assets = [f'assets/then-now/{object_name}-{period}.webp'
+                                 for object_name in ('khuyen-tai-ba-mau','phu-dieu','sung-than-cong')
+                                 for period in ('xua','nay')]
+            for name in ['then-now.css','demo-polish.css','data/then-now.json','assets/journey-story-frame.png',
+                         'share/index.html',*comparison_assets]:
+                assets[name]=name+'?v='+version
         return assets
     for name, values in [(name, parsed.scripts) for name in REQUIRED_JS] + [(name, parsed.styles) for name in REQUIRED_CSS]:
         matches = [value for value in values if urlsplit(value).path == name]
@@ -376,7 +385,7 @@ def arguments(argv=None):
     parser.add_argument('--base-url', default=DEFAULT_BASE)
     parser.add_argument('--minimum-records', type=int, default=200)
     parser.add_argument('--minimum-dimension', type=int, default=128)
-    parser.add_argument('--asset-version', default='7.7.0')
+    parser.add_argument('--asset-version', default='7.8.0')
     parser.add_argument('--max-wait', type=float, default=180)
     parser.add_argument('--poll-interval', type=float, default=8)
     parser.add_argument('--workers', type=int, default=8)

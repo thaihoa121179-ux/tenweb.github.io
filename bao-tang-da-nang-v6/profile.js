@@ -466,6 +466,18 @@
   quizSection.className = "page";
   quizSection.id = "page-quiz";
   document.querySelector(".stage").append(section, quizSection);
+  function badgeStates() {
+    return [
+      data.visits.length > 0,
+      data.visits.filter(visit => visit.key.startsWith("artifact:")).length >= 3,
+      data.best >= 4,
+    ];
+  }
+  function celebrateNewBadges(previous) {
+    if (badgeStates().some((earned, index) => earned && !previous[index])) {
+      document.dispatchEvent(new Event("museum:badgeearned"));
+    }
+  }
   function renderProfile() {
     const artifacts = data.visits.filter((x) =>
       x.key.startsWith("artifact:"),
@@ -475,10 +487,11 @@
     ).length;
     const total = M.A.length + M.D.length;
     const pct = Math.round((data.visits.length * 100) / Math.max(1, total));
+    const earnedBadges = badgeStates();
     const badges = [
-      ["sparkles", "first", "firstRule", data.visits.length > 0],
-      ["compass", "curious", "curiousRule", artifacts >= 3],
-      ["trophy", "scholar", "scholarRule", data.best >= 4],
+      ["sparkles", "first", "firstRule", earnedBadges[0]],
+      ["compass", "curious", "curiousRule", earnedBadges[1]],
+      ["trophy", "scholar", "scholarRule", earnedBadges[2]],
     ];
     section.innerHTML = `<div class="backline"><button class="back" data-back aria-label="${M.esc(tr("back"))}">${I("chevron", "ui-icon-back")}</button><div class="heading"><div class="eyebrow">${M.esc(tr("eyebrow"))}</div><h1>${M.esc(tr("title"))}</h1></div></div><div class="scroll personal-scroll"><p class="personal-intro">${M.esc(tr("subtitle"))}</p><div class="personal-grid"><section class="card personal-progress"><h2>${M.esc(tr("progress"))}</h2><div class="personal-count"><strong>${data.visits.length}<span> / ${total}</span></strong><span>${M.esc(tr("viewed"))}</span></div><progress max="${total}" value="${data.visits.length}" aria-label="${M.esc(tr("progress"))}">${pct}%</progress><div class="personal-statrow"><span><b>${topics}</b> ${M.esc(tr("topics"))}</span><span><b>${artifacts}</b> ${M.esc(tr("artifacts"))}</span></div><p class="muted">${M.esc(tr("readNotice"))}</p></section><section class="card personal-badges"><h2>${M.esc(tr("badges"))}</h2><div class="badge-list">${badges.map(([icon, name, rule, earned]) => `<div class="personal-badge${earned ? " earned" : ""}"><span aria-hidden="true">${I(icon)}</span><div><b>${M.esc(tr(name))}</b><p>${M.esc(tr(rule))}</p><small>${M.esc(tr(earned ? "earned" : "locked"))}</small></div></div>`).join("")}</div></section><section class="card personal-challenge"><span class="personal-kicker">05 / QUIZ</span><h2>${M.esc(tr("quiz"))}</h2>${V.quizStrip(questions.map(q=>M.A.find(a=>a.id===q.id)),"challenge-photos")}<p>${M.esc(tr("quizIntro"))}</p><div class="personal-challenge-bottom"><span>${M.esc(tr("best"))}: <b>${data.best}/5</b></span><button class="primary" data-personal="start-quiz">${M.esc(tr("play"))} ${I("chevron")}</button></div></section><section class="card personal-notebook"><h2>${M.esc(tr("journal"))}</h2><label for="personal-note">${M.esc(tr("note"))}</label><textarea id="personal-note" maxlength="3000" rows="5" placeholder="${M.esc(tr("noteHint"))}">${M.esc(data.note)}</textarea><div class="personal-note-info"><span id="personal-char-count">${data.note.length}/3000</span><span id="personal-save-state" role="status">${M.esc(saveStatus)}</span></div><button class="primary" data-personal="save">${M.esc(tr("save"))}</button><p class="muted personal-storage-notice">${M.esc(tr(storageAvailable ? "local" : "memory"))}</p><div class="buttonrow"><button class="secondary" data-personal="download">${I("download")} ${M.esc(tr("export"))}</button><button class="secondary" data-personal="share">${I("share")} ${M.esc(tr("share"))}</button></div></section><section class="card personal-recent"><h2>${M.esc(tr("recent"))}</h2>${
       data.visits.length
@@ -522,12 +535,14 @@
           ? M.state.topic
           : null;
     if (!id) return;
+    const previousBadges = badgeStates();
     const key = page + ":" + id;
     data.visits = [
       { key, time: Date.now() },
       ...data.visits.filter((x) => x.key !== key),
     ].slice(0, 100);
     write();
+    celebrateNewBadges(previousBadges);
   }
   function captureNote() {
     const input = $("personal-note");
@@ -588,12 +603,14 @@
         quiz.complete
       )
         return;
+      const correct = choice === questions[quiz.index]?.answer;
       quiz.answers[quiz.index] = choice;
       renderQuiz();
       $("quiz-feedback")?.scrollIntoView({
         block: "nearest",
         behavior: "auto",
       });
+      if (correct) document.dispatchEvent(new Event("museum:quizcorrect"));
       return;
     }
     switch (button.dataset.personal) {
@@ -635,10 +652,12 @@
           const score = quiz.answers.filter(
             (x, i) => x === questions[i].answer,
           ).length;
+          const previousBadges = badgeStates();
           data.best = Math.max(data.best, score);
           data.attempts = Math.min(10000, data.attempts + 1);
           write();
           renderQuiz();
+          celebrateNewBadges(previousBadges);
         }
         break;
       case "clear":
@@ -695,11 +714,13 @@
     recordSimulated: (topicId, artifactId) => {
       if (!M.D.some(d=>d.id===topicId)) return;
       const a=M.A.find(a=>a.id===artifactId&&a.topic===topicId&&!a.referenceOnly&&(a.sourceSite||'site1')==='site1');
+      const previousBadges = badgeStates();
       for(const key of ['article:'+topicId,...(a?['artifact:'+a.id]:[])]) {
         if(data.visits.some(v=>v.key===key))continue;
         data.visits.unshift({key,time:Date.now(),simulated:true});
       }
       data.visits=data.visits.slice(0,100);write();
+      celebrateNewBadges(previousBadges);
     },
   };
 })();
