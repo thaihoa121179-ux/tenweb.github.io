@@ -1024,6 +1024,7 @@
   function nav(page, remember = true) {
     const target = $("page-" + page);
     if (!target) return;
+    window.MuseumPocketAudio?.beforeNavigate(page);
     if (state.page === "scan" && page !== "scan") stopCamera();
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     try{state.speech?.abort();}catch{}
@@ -2016,6 +2017,7 @@
   }
 
   function speakChat(txt,control) {
+    window.MuseumPocketAudio?.pauseForOtherAudio();
     if (!("speechSynthesis" in window)) {
       toast(t("voiceUnsupported"));
       return;
@@ -3382,11 +3384,12 @@
     utterance.onerror=()=>renderAudioControl(control,false);
   }
   function speakText(txt,control=$('article-speak')) {
+    const pocketWasSpeaking=window.MuseumPocketAudio?.pauseForOtherAudio()||false;
     if (!("speechSynthesis" in window)) {
       toast(t("voiceUnsupported"));
       return;
     }
-    if (speechSynthesis.speaking) {
+    if (speechSynthesis.speaking&&!pocketWasSpeaking) {
       speechSynthesis.cancel();
       renderAudioControl(control);
       return;
@@ -3877,6 +3880,7 @@
     $("catalog-floor").addEventListener("click", () => nav("floors"));
     $("artifact-speak").addEventListener("click", () => {
       const a = A.find((x) => x.id === state.artifact);
+      if(window.MuseumPocketAudio?.supports(a.id)){window.MuseumPocketAudio.playArtifact(a.id);return;}
       speakText(aname(a) + ". " + asummary(a),$("artifact-speak"));
     });
     document.addEventListener('click',event=>{

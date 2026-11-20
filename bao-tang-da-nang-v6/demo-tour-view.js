@@ -24,7 +24,7 @@
   record:['Hiện vật nổi bật','Featured object','주요 유물','精选文物'],
   open:['Mở hồ sơ','Open record','기록 열기','打开档案'],
   explore:['Khám phá chủ đề','Explore theme','주제 살펴보기','探索主题'],
-  listen:['Nghe tóm tắt','Listen to summary','요약 듣기','听取简介'],
+  listen:['Nghe lời kể','Play narration','해설 재생','播放讲述'],
   source:['Nguồn','Source','출처','来源'],
   original:['Nội dung hồ sơ theo ngôn ngữ nguồn','Record text in its source language','기록 내용은 원문 언어로 표시됩니다','档案文字保留来源语言'],
   intro:['9 điểm, 3 tầng, 3 hiện vật nổi bật','9 stops, 3 floors, 3 featured objects','9개 지점, 3개 층, 주요 유물 3점','9个站点、3个楼层、3件精选文物'],
@@ -37,8 +37,8 @@
   const topic=s=>M.D.find(d=>d.id===s.topicId),record=s=>M.A.find(a=>a.id===s.artifactId),name=s=>s?(s.artifactId?M.aname(record(s)):M.nm(topic(s))):'';
   function mount(host){
    panel=document.createElement('section');panel.className='demo-tour-panel';panel.setAttribute('aria-label',T('title'));
-   panel.innerHTML=`<div class="demo-tour-toolbar"><b id="demo-count">0 / 9 ${esc(T('stops'))}</b><label>${esc(T('speed'))}<select id="demo-speed">${[1,2,4].map(n=>`<option value="${n}">×${n}</option>`).join('')}</select></label><button id="demo-reset" aria-label="${esc(T('reset'))}">${I('refresh')}</button></div><label class="demo-range-label" for="demo-seek">${esc(T('progress'))}<output id="demo-percent" for="demo-seek">0%</output></label><input type="range" id="demo-seek" min="0" max="1000" step="1" value="0"><div class="demo-tour-actions"><button id="demo-play" class="demo-primary">${I('play')}<span>${esc(T('start'))}</span></button><button id="demo-next">${esc(T('next'))}${I('chevron')}</button></div><p id="demo-status" role="status" aria-live="polite"></p><section class="demo-stop-card" id="demo-stop" aria-labelledby="demo-stop-title"></section><button id="demo-exit" class="demo-exit">${I('map')}${esc(T('exit'))}</button>`;
-   host.appendChild(panel);
+   panel.innerHTML=`<div class="demo-tour-toolbar"><b id="demo-count">0 / 9 ${esc(T('stops'))}</b><label>${esc(T('speed'))}<select id="demo-speed">${[1,2,4].map(n=>`<option value="${n}">×${n}</option>`).join('')}</select></label><button id="demo-reset" aria-label="${esc(T('reset'))}">${I('refresh')}</button></div><label class="demo-range-label" for="demo-seek">${esc(T('progress'))}<output id="demo-percent" for="demo-seek">0%</output></label><input type="range" id="demo-seek" min="0" max="1000" step="1" value="0"><div class="demo-tour-actions"><button id="demo-play" class="demo-primary">${I('play')}<span>${esc(T('start'))}</span></button><button id="demo-next">${esc(T('next'))}${I('chevron')}</button></div><p id="demo-status" role="status" aria-live="polite"></p><div id="demo-audio-slot"></div><section class="demo-stop-card" id="demo-stop" aria-labelledby="demo-stop-title"></section><button id="demo-exit" class="demo-exit">${I('map')}${esc(T('exit'))}</button>`;
+   host.appendChild(panel);document.dispatchEvent(new Event('museum:demoview'));
    panel.querySelector('#demo-play').onclick=()=>ctx.toggle();panel.querySelector('#demo-next').onclick=()=>ctx.play();
    panel.querySelector('#demo-reset').onclick=()=>ctx.reset();panel.querySelector('#demo-exit').onclick=()=>ctx.exit();
    panel.querySelector('#demo-speed').onchange=e=>ctx.speed(Number(e.target.value));
@@ -56,7 +56,7 @@
     $('play').innerHTML=I(state.running?'pause':'play')+'<span>'+esc(T(label))+'</span>';$('play').setAttribute('aria-pressed',String(state.running));
     $('next').disabled=state.running||state.complete;$('speed').value=String(state.speed);
     const atStop=arrived&&Math.abs(state.distance-arrived.arrivalAt)<1e-6;
-    $('status').textContent=state.running?T('moving')+' '+name(next):state.preview?T('preview'):state.complete?T('done'):atStop?T('arrived')+' '+(state.lastStop+1)+' / 9 · '+name(arrived):state.distance>0?T('paused')+' · '+name(next):T('ready');
+    $('status').textContent=state.running?T('moving')+' '+name(next):state.preview?T('preview'):state.complete?T('done'):atStop?T('arrived')+' '+(state.lastStop+1)+' / 9 · '+name(arrived):state.distance>0?T('paused')+' · '+name(next):T('ready')+(root.MuseumPocketAudio?' '+root.MuseumPocketAudio.hint():'');
     statusKey=key;
    }
    const nextCard=[state.preview,displayIndex].join(':');
@@ -68,7 +68,7 @@
     const untranslated=a&&M.state.lang!=='vi'&&!root.MuseumDataV6?.artifacts?.[a.id];
     $('stop').dataset.stop=stop.id;$('stop').innerHTML=`<div class="demo-stop-overview">${media}<div><small>${esc(T('floor'))} ${stop.floor} · ${esc(T(a?'record':'theme'))}</small><h2 id="demo-stop-title">${esc(name(stop))}</h2><p>${esc(text)}</p></div></div>${untranslated?`<small class="demo-original">${esc(T('original'))}</small>`:''}<div class="demo-stop-actions"><button id="demo-record">${esc(T(a?'open':'explore'))}${I('chevron')}</button>${a?`<button id="demo-listen">${I('volume')}${esc(T('listen'))}</button>`:''}</div><a class="demo-source" href="${esc(a?.url||d.source)}" target="_blank" rel="noopener noreferrer">${esc(T('source'))}: ${esc(view?.credit||'Bảo tàng Đà Nẵng')} ${I('arrowExternal')}</a>`;
     $('record').onclick=()=>a?M.openArtifact(a.id):M.openArticle(d.id);
-    if(a)$('listen').onclick=e=>M.speakText(M.aname(a)+'. '+M.asummary(a),e.currentTarget);
+    if(a)$('listen').onclick=e=>{if(root.MuseumPocketAudio?.supports(a.id))root.MuseumPocketAudio.playArtifact(a.id);else M.speakText(M.aname(a)+'. '+M.asummary(a),e.currentTarget);};
    }
   }
   return{mount,update,T,name};

@@ -132,7 +132,7 @@ class Assets(HTMLParser):
             self.styles.append(attrs['href'])
 
 
-def checked_assets(index: str, version: str, bootstrap: str = "") -> dict[str, str]:
+def checked_assets(index: str, version: str, bootstrap: str = "", audio_manifest: dict | None = None) -> dict[str, str]:
     parsed = Assets()
     parsed.feed(index)
     assets = {}
@@ -150,6 +150,8 @@ def checked_assets(index: str, version: str, bootstrap: str = "") -> dict[str, s
             modules=['ui-icons.js',*modules]
             for name in ('visit-events.js','ui-cleanup.js'): modules.insert(modules.index('offline.js'),name)
         if tuple(map(int,version.split('.'))) >= (7,6,0): modules.append('demo-entry.js')
+        if tuple(map(int,version.split('.'))) >= (7,7,0):
+            for name in ('pocket-audio-engine.js','pocket-audio.js'): modules.insert(modules.index('offline.js'),name)
         manifest=re.search(r'const modules=\[(.*?)\];', bootstrap)
         if not manifest: raise ValueError('Missing bootstrap module manifest')
         positions=[manifest.group(1).find("'"+name+"'") for name in modules]
@@ -173,6 +175,13 @@ def checked_assets(index: str, version: str, bootstrap: str = "") -> dict[str, s
             for name in ['ui-icons.css','ui-cleanup.css','visit-events.css','data/events.json']: assets[name]=name+'?v='+version
         if tuple(map(int,version.split('.'))) >= (7,6,0):
             for name in ['demo-entry.css','demo-tour.js','demo-tour-view.js','presentation-map.css','data/demo-tour.json']: assets[name]=name+'?v='+version
+        if tuple(map(int,version.split('.'))) >= (7,7,0):
+            for name in ['audio-range.js','pocket-audio.css','data/demo-narrations.json','audio/manifest.json','audio/model-provenance.json']: assets[name]=name+'?v='+version
+            if not audio_manifest or audio_manifest.get('schemaVersion')!=1 or not audio_manifest.get('files'): raise ValueError('Missing actual MP3 manifest')
+            for item in audio_manifest['files']:
+                path=item.get('path','')
+                if not re.fullmatch(r'\./audio/[a-z0-9-]+\.mp3',path): raise ValueError('Audio path must stay relative to the app')
+                name=path.removeprefix('./');assets[name]=name+'?v='+version
         return assets
     for name, values in [(name, parsed.scripts) for name in REQUIRED_JS] + [(name, parsed.styles) for name in REQUIRED_CSS]:
         matches = [value for value in values if urlsplit(value).path == name]
@@ -256,7 +265,8 @@ def wait_for_deploy(client: PagesClient, root: Path, expected: dict, version: st
             if remaining <= 0:
                 raise TimeoutError('Deployment readiness deadline reached')
             data, response = client.fetch('index.html', timeout=min(12, remaining))
-            assets = checked_assets(data.decode('utf-8'), version, (root/'bootstrap.js').read_text() if (root/'bootstrap.js').is_file() else '')
+            audio_manifest=json.loads((root/'audio/manifest.json').read_text()) if tuple(map(int,version.split('.'))) >= (7,7,0) else None
+            assets = checked_assets(data.decode('utf-8'), version, (root/'bootstrap.js').read_text() if (root/'bootstrap.js').is_file() else '',audio_manifest)
             verified = []
             for name, source in assets.items():
                 remaining = deadline - time.monotonic()
@@ -322,7 +332,8 @@ def verify(args) -> dict:
     try:
         photos, expected = expected_photos(root, args.minimum_records)
         report['expected'] = expected
-        assets=checked_assets((root / 'index.html').read_text(), args.asset_version, (root/'bootstrap.js').read_text() if (root/'bootstrap.js').is_file() else '')
+        audio_manifest=json.loads((root/'audio/manifest.json').read_text()) if tuple(map(int,args.asset_version.split('.'))) >= (7,7,0) else None
+        assets=checked_assets((root / 'index.html').read_text(), args.asset_version, (root/'bootstrap.js').read_text() if (root/'bootstrap.js').is_file() else '',audio_manifest)
         for name in [name for name in assets if name.endswith('.js')]:
             subprocess.run(['node', '--check', str(root / name)], check=True, capture_output=True, timeout=20)
         token = os.environ.get('GITHUB_SHA') or expected['collectionSha256'][:16]
@@ -365,7 +376,7 @@ def arguments(argv=None):
     parser.add_argument('--base-url', default=DEFAULT_BASE)
     parser.add_argument('--minimum-records', type=int, default=200)
     parser.add_argument('--minimum-dimension', type=int, default=128)
-    parser.add_argument('--asset-version', default='7.6.0')
+    parser.add_argument('--asset-version', default='7.7.0')
     parser.add_argument('--max-wait', type=float, default=180)
     parser.add_argument('--poll-interval', type=float, default=8)
     parser.add_argument('--workers', type=int, default=8)

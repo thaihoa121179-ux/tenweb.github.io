@@ -8,7 +8,7 @@
 @keyframes demo-arrival{from{opacity:.85;transform:scale(.7)}to{opacity:0;transform:scale(2)}}
 .is-presentation .live-controls,.is-presentation .live-sheet,.is-presentation .live-search-button,.is-presentation .live-route-banner,.is-presentation .live-notice,.is-presentation .live-stick,.is-presentation #lm-settings{display:none!important}
 .is-presentation .live-top{gap:10px}.is-presentation .live-top h1{font-size:18px}
-.is-presentation .live-stage{min-height:180px}.is-presentation .live-north{display:none}
+.is-presentation .live-stage{min-height:0}.is-presentation .live-north{display:none}
 .is-presentation .live-svg{height:calc(100% - 66px);margin-top:66px}
 .is-presentation .live-chips #lm-counter{font-size:13px}
 .is-presentation .live-floor-tabs{top:10px;left:12px}

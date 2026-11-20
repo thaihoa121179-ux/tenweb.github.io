@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "languages": [
+    "vi",
+    "en",
+    "ko",
+    "zh"
+  ],
+  "personas": [
+    "quick",
+    "kids",
+    "deep"
+  ],
+  "translationStatus": "automatic-unreviewed",
+  "records": [
+    {
+      "artifactId": "hv-khuyen-tai-ba-mau-f7a824",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/khuyan-tai-ba-mau",
+      "names": {
+        "vi": "Khuyên tai ba mấu",
+        "en": "Three-lug glass earring",
+        "ko": "세 돌기 유리 귀걸이",
+        "zh": "三突角玻璃耳饰"
+      },
+      "stories": {
+        "vi": {
+          "quick": {
+            "text": "Mình là chiếc khuyên tai ba mấu bằng thủy tinh. Theo hồ sơ, mình có niên đại khoảng 2.500 đến 2.000 năm trước, được thu thập trong đợt khai quật khu mộ chum Gò Đình năm 1980. Ba mấu nhọn và chiếc móc nhỏ tạo nên dáng vẻ dễ nhận ra của mình. Bạn thử quan sát ảnh: chi tiết nào làm bạn chú ý đầu tiên?",
+            "audio": "./audio/earring-vi-quick.mp3",
+            "durationSeconds": 16.666
+          },
+          "kids": {
+            "text": "Chào bạn nhỏ! Mình là chiếc khuyên tai ba mấu. Cùng chơi trò thám tử nhé: bạn tìm được ba mấu nhọn của mình không? Còn một chiếc móc nhỏ nữa đấy! Mình được làm bằng thủy tinh và dùng để đeo ở tai. Theo hồ sơ, tuổi của mình khoảng 2.500 đến 2.000 năm. Mình được thu thập trong đợt khai quật Gò Đình năm 1980. Nếu vẽ lại mình bằng ba nét đầu tiên, bạn sẽ bắt đầu từ mấu nhọn hay chiếc móc?",
+            "audio": "./audio/earring-vi-kids.mp3",
+            "durationSeconds": 20.976
+          },
+          "deep": {
+            "text": "Tôi là khuyên tai ba mấu, một đồ trang sức bằng thủy tinh với ba mấu nhọn và một chiếc móc nhỏ. Hồ sơ ghi niên đại khoảng 2.500 đến 2.000 năm trước. Tôi được thu thập trong đợt khai quật khu mộ chum Gò Đình tại Đại Lãnh, Đại Lộc, Quảng Nam, nay là xã Thượng Đức, Đà Nẵng, năm 1980. Về kỹ thuật chế tác, hồ sơ cho biết các nhà nghiên cứu khảo cổ học cho rằng loại khuyên tai thủy tinh này được đúc khuôn: thủy tinh nung chảy được rót vào khuôn, rồi gia công bằng cưa, khoan, mài và đánh bóng. Đây là nhận định được dẫn trong hồ sơ. Khi quan sát ảnh, bạn có thể đối chiếu cấu tạo ba mấu và móc nhỏ với phần mô tả để hiểu cách nhận diện hiện vật.",
+            "audio": "./audio/earring-vi-deep.mp3",
+            "durationSeconds": 33.489
+          }
+        },
+        "en": {
+          "quick": {
+            "text": "I am a glass earring with three pointed lugs and a small hook. According to my record, I date to around 2,500 to 2,000 years ago. I was collected during the 1980 excavation of the Go Dinh jar-burial site. My three points give me a distinctive outline. Look at my photograph: which detail catches your eye first, a pointed lug or the tiny hook?",
+            "audio": "./audio/earring-en-quick.mp3",
+            "durationSeconds": 25.365
+          },
+          "kids": {
+            "text": "Hello, young explorer! I am a three-lug glass earring. Let's be detectives: can you find all three pointed lugs in my picture? There is a little hook too! I was made of glass and worn on an ear. My record dates me to around 2,500 to 2,000 years ago and says I was collected in the Go Dinh excavation in 1980. If you drew me, would you start with the points or the hook?",
+            "audio": "./audio/earring-en-kids.mp3",
+            "durationSeconds": 27.69
+          },
+          "deep": {
+            "text": "I am a glass earring distinguished by three pointed lugs and a small hook. My record dates me to around 2,500 to 2,000 years ago. I was collected during the 1980 excavation of the Go Dinh jar-burial site in Dai Lanh, Dai Loc, Quang Nam, now Thuong Duc commune in Da Nang. The record reports an archaeological interpretation of how this type of glass earring was made: molten glass was poured into a mould, followed by cutting, drilling, grinding and polishing. This is a scholarly interpretation quoted in the record. Comparing the three lugs and small hook in the photograph with the description helps you identify the object and distinguish its visible form from the interpretation of its manufacture.",
+            "audio": "./audio/earring-en-deep.mp3",
+            "durationSeconds": 48.562
+          }
+        },
+        "ko": {
+          "quick": {
+            "text": "저는 세 개의 뾰족한 돌기와 작은 고리가 있는 유리 귀걸이예요. 기록에 따르면 약 2,500년에서 2,000년 전의 유물입니다. 1980년 고딘 항아리 무덤 유적 발굴 때 수집되었어요. 세 돌기가 저만의 독특한 윤곽을 만들지요. 사진을 살펴보세요. 돌기와 작은 고리 중 어떤 부분이 가장 먼저 눈에 들어오나요?"
+          },
+          "kids": {
+            "text": "안녕, 꼬마 탐험가! 저는 세 돌기 유리 귀걸이예요. 탐정 놀이를 해 볼까요? 사진에서 뾰족한 돌기 세 개를 찾아보세요. 작은 고리도 있답니다! 저는 유리로 만들었고 귀에 다는 장신구였어요. 기록에는 약 2,500년에서 2,000년 전의 유물이며 1980년 고딘 유적 발굴 때 수집되었다고 나와요. 저를 그린다면 돌기부터 그릴까요, 고리부터 그릴까요?"
+          },
+          "deep": {
+            "text": "저는 세 개의 뾰족한 돌기와 작은 고리가 특징인 유리 귀걸이입니다. 기록상 연대는 약 2,500년에서 2,000년 전입니다. 1980년 꽝남성 다이록현 다이란의 고딘 항아리 무덤 유적 발굴 때 수집되었습니다. 이곳은 현재 다낭시 트엉득 지역에 해당합니다. 기록은 이러한 유리 귀걸이의 제작 방식에 관한 고고학적 견해도 소개합니다. 녹인 유리를 틀에 부어 굳힌 다음 자르기, 구멍 뚫기, 갈기, 광내기 등의 가공을 했다는 해석입니다. 이는 기록에 인용된 연구 견해입니다. 사진 속 세 돌기와 작은 고리를 설명과 대조하며 유물의 형태와 제작에 대한 해석을 함께 살펴보세요."
+          }
+        },
+        "zh": {
+          "quick": {
+            "text": "我是一件玻璃耳饰，有三个尖突角和一个小钩。根据档案，我的年代距今约两千五百至两千年。我在一九八〇年Gò Đình瓮棺墓地的考古发掘中被收集。三个突角让我拥有独特的轮廓。看看照片，最先吸引你的是尖角，还是那个小钩呢？"
+          },
+          "kids": {
+            "text": "小探险家，你好！我是三突角玻璃耳饰。一起当小侦探吧：你能在照片里找到三个尖突角吗？还有一个小钩哦！我由玻璃制成，是戴在耳朵上的装饰品。档案说，我距今约两千五百至两千年，在一九八〇年的Gò Đình遗址发掘中被收集。如果给我画一幅画，你会先画尖角，还是先画小钩？"
+          },
+          "deep": {
+            "text": "我是一件具有三个尖突角和一个小钩的玻璃耳饰。档案将我的年代记为距今约两千五百至两千年。我在一九八〇年广南地区大禄县大岭的Gò Đình瓮棺墓地发掘中被收集，该地现属岘港的上德地区。关于制作技术，档案引用了考古研究者对这类玻璃耳饰的看法：先将熔化的玻璃注入模具，冷却后再进行切割、钻孔、研磨和抛光。这是档案引述的研究解释。你可以把照片中的三个突角和小钩与文字描述对照，分别观察可见的形态和对制作过程的解释。"
+          }
+        }
+      }
+    },
+    {
+      "artifactId": "phu-dieu",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/pho-yiau",
+      "names": {
+        "vi": "Phù điêu Cơ Tu",
+        "en": "Co Tu carved reliefs",
+        "ko": "꺼뚜족 목조 부조",
+        "zh": "格都族木雕浮雕"
+      },
+      "stories": {
+        "vi": {
+          "quick": {
+            "text": "Mình là bộ phù điêu gỗ của người Cơ Tu. Trên mình có hình rồng và thằn lằn được chạm khắc. Theo hồ sơ, mình có niên đại thế kỷ 20 và đến từ nhà Gươl ở vùng Giằng, Quảng Nam. Từ một hiện vật, bạn có thể bắt đầu tìm hiểu chủ đề văn hóa các dân tộc. Bây giờ, hãy nhìn kỹ ảnh: bạn nhận ra hình rồng hay thằn lằn trước?",
+            "audio": "./audio/relief-vi-quick.mp3",
+            "durationSeconds": 16.091
+          },
+          "kids": {
+            "text": "Bạn nhỏ ơi, cùng tìm hai con vật nhé! Mình là bộ phù điêu bằng gỗ của người Cơ Tu. Hồ sơ mô tả trên mình có hình rồng và thằn lằn. Bạn thử chỉ ra từng hình trong ảnh xem nào! Mình đến từ nhà Gươl ở vùng Giằng, Quảng Nam, và được ghi niên đại thế kỷ 20. Tên gọi nghe hơi lạ, nhưng bạn chỉ cần nhớ ba manh mối: gỗ, hai hình con vật và nhà Gươl. Bạn nhớ được mấy manh mối rồi?",
+            "audio": "./audio/relief-vi-kids.mp3",
+            "durationSeconds": 19.722
+          },
+          "deep": {
+            "text": "Tôi là bộ phù điêu Cơ Tu, được hồ sơ mô tả là những mảng gỗ chạm hình rồng và thằn lằn. Chất liệu được ghi là gỗ, niên đại là thế kỷ 20. Nguồn gốc của tôi gắn với nhà Gươl của người Cơ Tu tại vùng Giằng, Quảng Nam. Ba dữ kiện này, chất liệu, hình chạm và nguồn gốc, là những điểm chính để đọc hồ sơ. Khi quan sát ảnh, hãy đối chiếu các hình chạm với phần mô tả trước khi mở rộng sang chủ đề văn hóa các dân tộc. Hồ sơ hiện có không ghi kích thước, tên người chạm hay một năm chế tác cụ thể. Vì vậy, lời kể này giữ nguyên mức độ chi tiết của nguồn và mời bạn tìm hiểu thêm tại hồ sơ chính thức.",
+            "audio": "./audio/relief-vi-deep.mp3",
+            "durationSeconds": 29.675
+          }
+        },
+        "en": {
+          "quick": {
+            "text": "I am a set of Co Tu wooden relief carvings. My record describes images of dragons and lizards carved into wood. It dates me to the twentieth century and traces my origin to a Guol house in the Giang area of Quang Nam. I offer a starting point for exploring the museum's ethnic cultures theme. Look closely at my photograph: do you recognise a dragon or a lizard first?",
+            "audio": "./audio/relief-en-quick.mp3",
+            "durationSeconds": 25.94
+          },
+          "kids": {
+            "text": "Young explorer, let's find two kinds of animal! I am a set of Co Tu wooden reliefs. My record says that dragons and lizards are carved on me. Can you point them out in the photograph? I came from a Guol house in the Giang area of Quang Nam, and my recorded date is the twentieth century. Remember three clues: wood, animal carvings and a Guol house. How many clues can you remember now?",
+            "audio": "./audio/relief-en-kids.mp3",
+            "durationSeconds": 28.134
+          },
+          "deep": {
+            "text": "I am a set of Co Tu reliefs described in the record as wooden carvings depicting dragons and lizards. The listed material is wood, and the listed date is the twentieth century. My origin is a Co Tu Guol house in the Giang area of Quang Nam. Material, carved forms and origin are three useful starting points for reading my record. Compare the forms visible in the photograph with the written description before exploring the broader theme of ethnic cultures. The available record does not specify dimensions, a carver's name or an exact year of manufacture. This narration therefore keeps to the source's level of detail and invites you to consult the official record for further study.",
+            "audio": "./audio/relief-en-deep.mp3",
+            "durationSeconds": 43.024
+          }
+        },
+        "ko": {
+          "quick": {
+            "text": "저는 꺼뚜족의 목조 부조예요. 기록에는 나무에 용과 도마뱀을 새겼다고 나와 있습니다. 연대는 20세기이며 꽝남의 장 지역에 있는 그얼 가옥에서 왔어요. 저를 통해 여러 민족의 문화라는 주제를 살펴볼 수 있지요. 사진을 자세히 보세요. 용과 도마뱀 중 어느 모습이 먼저 눈에 들어오나요?"
+          },
+          "kids": {
+            "text": "꼬마 탐험가, 동물 두 종류를 찾아볼까요? 저는 꺼뚜족의 나무 부조예요. 기록에는 제 몸에 용과 도마뱀을 새겼다고 나와 있어요. 사진에서 하나씩 찾아보세요! 저는 꽝남의 장 지역에 있는 그얼 가옥에서 왔고, 기록상 연대는 20세기예요. 단서 세 가지를 기억해요. 나무, 동물 모습, 그리고 그얼 가옥! 이제 몇 가지 단서를 기억할 수 있나요?"
+          },
+          "deep": {
+            "text": "저는 기록에서 용과 도마뱀을 새긴 나무 조각으로 설명하는 꺼뚜족 부조입니다. 재료는 목재이고 연대는 20세기로 기록되어 있습니다. 출처는 꽝남 장 지역 꺼뚜족의 그얼 가옥입니다. 재료, 새겨진 형태, 출처는 이 기록을 읽는 세 가지 출발점이 됩니다. 사진에 보이는 형태를 설명과 대조한 뒤 여러 민족의 문화라는 주제로 탐구를 넓혀 보세요. 현재 기록에는 크기, 조각가의 이름이나 정확한 제작 연도가 나와 있지 않습니다. 따라서 이 해설은 출처가 제공하는 범위 안에서 설명하며, 더 알아보고 싶다면 공식 기록을 확인하도록 안내합니다."
+          }
+        },
+        "zh": {
+          "quick": {
+            "text": "我是一组格都族木雕浮雕。档案描述，木头上雕有龙和蜥蜴图案。我的年代记为二十世纪，来自广南地区 Giang 一带的 Gươl 公共屋。我可以成为你了解馆内各民族文化主题的起点。仔细看看照片：你先认出的是龙，还是蜥蜴呢？"
+          },
+          "kids": {
+            "text": "小探险家，来找两种动物吧！我是一组格都族木雕浮雕。档案说，我身上雕着龙和蜥蜴。你能在照片里指出它们吗？我来自广南 Giang 地区的 Gươl 公共屋，档案记载的年代是二十世纪。记住三个线索：木头、动物图案、还有公共屋！现在你能记住几个线索了？"
+          },
+          "deep": {
+            "text": "我是一组格都族浮雕，档案将我描述为雕有龙和蜥蜴图案的木雕。记录的材质是木材，年代是二十世纪，来源是广南 Giang 地区格都族的 Gươl 公共屋。材质、雕刻形态与来源，是阅读这份档案的三个起点。先把照片中可见的形态与文字描述对照，再进一步探索各民族文化主题。现有档案没有列出尺寸、雕刻者姓名或确切制作年份。因此，这段讲述保持来源原有的详细程度，并邀请你查阅官方档案，继续了解这件文物。"
+          }
+        }
+      }
+    },
+    {
+      "artifactId": "sung-than-cong",
+      "source": "https://baotangdanang.vn/bao-tang-da-nang/hien-vat/song-than-cing",
+      "names": {
+        "vi": "Súng thần công",
+        "en": "Historic cannon",
+        "ko": "역사적 대포",
+        "zh": "古炮"
+      },
+      "stories": {
+        "vi": {
+          "quick": {
+            "text": "Mình là súng thần công bằng kim loại, được phát hiện tại khu vực Xuân Thiều, Nam Ô năm 2019. Niên đại của mình được ghi thận trọng là theo hồ sơ: thế kỷ 19. Mình gợi mở câu chuyện phòng thủ Đà Nẵng. Bạn hãy nhớ hai mốc khác nhau: thế kỷ 19 là niên đại được ghi trong hồ sơ, còn 2019 là năm phát hiện. Một hiện vật có thể giúp bạn đọc thời gian theo nhiều cách như vậy đấy.",
+            "audio": "./audio/cannon-vi-quick.mp3",
+            "durationSeconds": 20.428
+          },
+          "kids": {
+            "text": "Chào bạn, mình là súng thần công! Trông mình có vẻ rất oai, nhưng hôm nay nhiệm vụ của bạn là giải câu đố thời gian. Mình làm bằng kim loại và được phát hiện ở Xuân Thiều, Nam Ô năm 2019. Hồ sơ ghi niên đại của mình là thế kỷ 19, với nhãn theo hồ sơ. Vậy 2019 có phải năm mình được chế tạo không? Chưa thể kết luận như vậy nhé: đó là năm phát hiện! Bạn vừa phân biệt được hai loại mốc thời gian rồi.",
+            "audio": "./audio/cannon-vi-kids.mp3",
+            "durationSeconds": 22.152
+          },
+          "deep": {
+            "text": "Tôi là khẩu súng thần công được phát hiện tại khu vực Xuân Thiều, Nam Ô năm 2019. Hồ sơ ghi chất liệu kim loại và niên đại với nhãn theo hồ sơ: thế kỷ 19. Cần phân biệt niên đại được ghi cho hiện vật với năm phát hiện: 2019 không phải một năm chế tạo đã được xác nhận. Từ những dữ kiện này, tôi gợi mở chủ đề phòng thủ Đà Nẵng. Hồ sơ hiện có chưa xác định một năm chế tạo cụ thể, người chế tạo hay trận đánh mà tôi từng tham gia. Vì vậy, lời kể giữ nguyên nhãn theo hồ sơ và không gán cho tôi một chiến công cụ thể. Khi tìm hiểu, bạn hãy đối chiếu chất liệu, địa điểm phát hiện và hai mốc thời gian với nguồn chính thức để đọc lịch sử một cách cẩn trọng.",
+            "audio": "./audio/cannon-vi-deep.mp3",
+            "durationSeconds": 33.62
+          }
+        },
+        "en": {
+          "quick": {
+            "text": "I am a metal cannon discovered in the Xuan Thieu, Nam O area in 2019. My date is carefully labelled as nineteenth century, according to the record. I offer an introduction to Da Nang's defensive history. Remember two different kinds of date: the nineteenth century is the date given in my record, while 2019 is the year of discovery. One object can help you read time in more than one way.",
+            "audio": "./audio/cannon-en-quick.mp3",
+            "durationSeconds": 27.716
+          },
+          "kids": {
+            "text": "Hello, I am a historic cannon! I may look impressive, but your mission today is a time puzzle. I am made of metal and was discovered in Xuan Thieu, Nam O in 2019. My date is labelled nineteenth century, according to the record. Does that mean I was made in 2019? We cannot conclude that: 2019 is my discovery year! You have just learned to tell two different kinds of date apart.",
+            "audio": "./audio/cannon-en-kids.mp3",
+            "durationSeconds": 31.478
+          },
+          "deep": {
+            "text": "I am a cannon discovered in the Xuan Thieu, Nam O area in 2019. My record lists metal as my material and carefully labels my date as nineteenth century, according to the record. It is important to distinguish an object's recorded date from its discovery year: 2019 is not a confirmed manufacturing year. These details offer a starting point for exploring Da Nang's defensive history. The available record does not identify an exact manufacturing year, a maker or a specific battle in which I participated. This narration therefore preserves the qualification in the record and does not assign me a particular military achievement. Compare my material, discovery place and the two different dates with the official source as you explore.",
+            "audio": "./audio/cannon-en-deep.mp3",
+            "durationSeconds": 48.849
+          }
+        },
+        "ko": {
+          "quick": {
+            "text": "저는 2019년 쑤언티에우, 남오 일대에서 발견된 금속 대포예요. 연대는 기록에 따르면 19세기라고 신중하게 표시되어 있습니다. 저를 통해 다낭 방어의 역사를 살펴볼 수 있어요. 두 가지 시점을 구별해 보세요. 19세기는 기록에 적힌 연대이고, 2019년은 발견된 해입니다. 유물 하나로 시간을 여러 방식으로 읽을 수 있지요."
+          },
+          "kids": {
+            "text": "안녕, 저는 역사적 대포예요! 꽤 멋져 보이지만 오늘 여러분의 임무는 시간 퀴즈랍니다. 저는 금속으로 만들었고 2019년 쑤언티에우, 남오에서 발견되었어요. 기록에 따르면 제 연대는 19세기예요. 그렇다면 제가 2019년에 만들어졌을까요? 그렇게 결론 내릴 수는 없어요. 2019년은 발견된 해거든요! 이제 서로 다른 두 종류의 시점을 구별할 수 있겠지요?"
+          },
+          "deep": {
+            "text": "저는 2019년 쑤언티에우, 남오 일대에서 발견된 대포입니다. 기록에는 재료가 금속이며, 연대는 기록에 따르면 19세기라는 조건을 붙여 제시되어 있습니다. 유물의 기록상 연대와 발견 연도는 구별해야 합니다. 2019년은 확인된 제작 연도가 아닙니다. 이러한 사실은 다낭 방어의 역사를 탐구하는 출발점이 됩니다. 현재 기록에는 정확한 제작 연도, 제작자 또는 제가 참여한 특정 전투가 명시되어 있지 않습니다. 따라서 이 해설도 기록의 조건을 유지하며 저에게 특정한 전공을 부여하지 않습니다. 재료, 발견 장소, 서로 다른 두 시점을 공식 출처와 대조하며 살펴보세요."
+          }
+        },
+        "zh": {
+          "quick": {
+            "text": "我是一门金属古炮，二〇一九年在Xuân Thiều、Nam Ô一带被发现。我的年代被谨慎标注为据档案记载：十九世纪。我为了解岘港防御历史提供线索。请记住两个不同的时间：十九世纪是档案记载的年代，二〇一九年则是发现年份。一件文物，就能帮助你用不同的方式理解时间。"
+          },
+          "kids": {
+            "text": "你好，我是一门古炮！虽然看起来很威风，但你今天的任务是解开时间谜题。我由金属制成，二〇一九年在Xuân Thiều、Nam Ô一带被发现。档案将我的年代标注为据档案记载：十九世纪。那么，我是在二〇一九年制造的吗？不能这样下结论哦，那是发现我的年份！你已经学会区分两种不同的时间了。"
+          },
+          "deep": {
+            "text": "我是一门于二〇一九年在Xuân Thiều、Nam Ô一带发现的古炮。档案记载我的材质为金属，年代谨慎标注为据档案记载：十九世纪。文物的记录年代与发现年份需要区分，二〇一九年并不是已经确认的制造年份。这些信息为探索岘港防御历史提供了起点。现有档案没有确定具体制造年份、制造者或我曾参与的某一场战斗。因此，这段讲述保留档案的限定，不为我添加特定战功。你可以把材质、发现地点和两个不同的时间与官方来源对照，谨慎地阅读历史。"
+          }
+        }
+      }
+    }
+  ]
+}

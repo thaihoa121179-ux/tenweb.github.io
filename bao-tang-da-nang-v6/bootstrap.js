@@ -1,7 +1,7 @@
 /* Nạp nguồn JSON thật trước các module cũ; không tạo dữ liệu thay thế khi lỗi. */
 (() => {
   'use strict';
-  const version='7.6.0',base=new URL('./',document.currentScript.src);
+  const version='7.7.0',base=new URL('./',document.currentScript.src);
   window.MuseumAssetVersion=version;window.MuseumAssetBaseURL=base.href;
   const status=document.createElement('p');status.id='boot-status';status.className='note';status.setAttribute('role','status');
   status.textContent='Đang tải hồ sơ / Loading museum records…';document.getElementById('language-start').before(status);
@@ -15,7 +15,7 @@
       if(!data){const response=await fetch(new URL('data/museum-content.json?v='+version,base));if(!response.ok)throw Error('data');data=await response.json();}
       if(data.schemaVersion!==1||data.artifacts?.length!==200||new Set(data.artifacts.map(a=>a.id)).size!==200||data.artifacts.some(a=>!a.url||!a.image||!a.guide))throw Error('schema');
       window.MuseumContent=data;window.MuseumDataV6=data.nativeTranslations;window.MuseumMediaMap=data.mediaMap;
-      const modules=['ui-icons.js','config.js','qr-decoder.js','qr-generator.js','guide-engine.js','chat-text.js','object-videos.js','videos.js','library-ui.js','request-plan.js','conversation.js','experience-i18n.js','learning-engine.js','retrieval.js','visitor.js','app.js','v6.js','visuals.js','profile.js','mobile.js','analytics.js','experience.js','photo-query.js','journey-card.js','map-journey.js','mini-map.js','visit-events.js','ui-cleanup.js','offline.js','live-map-entry.js','demo-entry.js'];
+      const modules=['ui-icons.js','config.js','qr-decoder.js','qr-generator.js','guide-engine.js','chat-text.js','object-videos.js','videos.js','library-ui.js','request-plan.js','conversation.js','experience-i18n.js','learning-engine.js','retrieval.js','visitor.js','app.js','v6.js','visuals.js','profile.js','mobile.js','analytics.js','experience.js','photo-query.js','journey-card.js','map-journey.js','mini-map.js','visit-events.js','ui-cleanup.js','pocket-audio-engine.js','pocket-audio.js','offline.js','live-map-entry.js','demo-entry.js'];
       await script('app-foundation-'+version+'.js');
       await script('app-core-'+version+'.js');
       await script('app-runtime-'+version+'.js');

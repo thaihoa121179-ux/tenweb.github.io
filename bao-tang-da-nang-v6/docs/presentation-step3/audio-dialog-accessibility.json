@@ -1,0 +1,9 @@
+{
+  "scope": "Chromium with actual MP3/SW; speech voices and lock screen commands simulated, not physical Safari/Android",
+  "results": [
+    {
+      "name": "WCAG A/AA checks pass for prepared narration, player and transcript dialog",
+      "passed": true
+    }
+  ]
+}

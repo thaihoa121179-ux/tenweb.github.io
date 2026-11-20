@@ -1,0 +1,102 @@
+{
+  "base": "http://127.0.0.1:8878/bao-tang-da-nang-v6/",
+  "scope": "Chromium emulation; model, camera/audio hardware and real Safari/Android require separate verification",
+  "results": [
+    {
+      "name": "layout, 64px navigation and scroll reachability at 360px",
+      "passed": true
+    },
+    {
+      "name": "layout, 64px navigation and scroll reachability at 375px",
+      "passed": true
+    },
+    {
+      "name": "layout, 64px navigation and scroll reachability at 390px",
+      "passed": true
+    },
+    {
+      "name": "layout, 64px navigation and scroll reachability at 430px",
+      "passed": true
+    },
+    {
+      "name": "layout, 64px navigation and scroll reachability at 1366px",
+      "passed": true
+    },
+    {
+      "name": "artifact context, three suggestions, correct age/material, sources and cleared pin",
+      "passed": true
+    },
+    {
+      "name": "keyboard visualViewport resizing keeps composer and a useful message area",
+      "passed": true
+    },
+    {
+      "name": "gradual text has intermediate frames, skip control and reduced-motion completion",
+      "passed": true
+    },
+    {
+      "name": "all four languages retain museum context and source scope",
+      "passed": true
+    },
+    {
+      "name": "server failures visibly fall back to records and client RAG sends known IDs",
+      "passed": true
+    },
+    {
+      "name": "library filters, list/grid, accumulated scrolling and all 200 actual photos",
+      "passed": true
+    },
+    {
+      "name": "three narration tones stay sourced; quiz has sourced explanation and real answers",
+      "passed": true
+    },
+    {
+      "name": "photo compression removes large dimensions; no backend means manual confirmation",
+      "passed": true
+    },
+    {
+      "name": "QR auto-opens, denied permission has recovery, manual code sets map marker",
+      "passed": true
+    },
+    {
+      "name": "missions migrate visits, earn once, and journey produces a shareable PNG",
+      "passed": true
+    },
+    {
+      "name": "route supports 15/30/60, replace/remove, persistence, truthful reasons",
+      "passed": true
+    },
+    {
+      "name": "print QR pixels decode to real links and admin marks simulated data explicitly",
+      "passed": true
+    },
+    {
+      "name": "PWA caches shell and visited photos, reloads offline, never caches private API calls",
+      "passed": true
+    },
+    {
+      "name": "AI settings stay out of the public UI; file configuration is validated and generated sources open records",
+      "passed": true
+    },
+    {
+      "name": "QR image upload lazily loads decoder and opens the exact object URL",
+      "passed": true
+    },
+    {
+      "name": "overlapping camera permission requests discard old tracks and stop on navigation",
+      "passed": true
+    },
+    {
+      "name": "cross-museum objects preserve their institution and never invent a Da Nang floor",
+      "passed": true
+    },
+    {
+      "name": "video player is opt-in and removed when leaving the object",
+      "passed": true
+    },
+    {
+      "name": "voice adapters report listening/speaking state and stop when leaving chat",
+      "passed": true
+    }
+  ]
+}

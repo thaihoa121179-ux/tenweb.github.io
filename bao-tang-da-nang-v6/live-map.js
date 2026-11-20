@@ -29,14 +29,14 @@
   onFinish:result=>{mode=result.mode;running=false;keys.clear();stick={x:0,y:0};paintMode();$('heading')?.focus({preventScroll:true});},
   onClose:()=>paintStatus(),
  });
- function modalBlocked(){return settings.open||info.open||features.modalOpen()||onboarding.isOpen();}
+ function modalBlocked(){return settings.open||info.open||features.modalOpen()||onboarding.isOpen()||document.getElementById('pocket-dialog')?.open;}
  const demoEvent=(name,extra={})=>document.dispatchEvent(new CustomEvent('museum:demo'+name,{detail:{...demoPlayer?.getState(),simulated:true,...extra}}));
  async function loadDemo(){
   if(demoRoute)return;if(demoLoading)return demoLoading;
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),window.MuseumConfig?.assetTimeoutMs||10000);
   demoLoading=fetch(new URL('./data/demo-tour.json',window.MuseumAssetBaseURL||document.baseURI),{signal:controller.signal}).then(r=>{if(!r.ok)throw Error('demo_data');return r.json();}).then(raw=>{demoRoute=MuseumDemoTour.compile(raw,floors,M.A,M.D);demoPlayer=MuseumDemoTour.createPlayer(demoRoute);}).finally(()=>{clearTimeout(timer);demoLoading=null;});return demoLoading;
  }
- function pauseDemo(){if(!demoPlayer)return;demoPlayer.pause();if(presentation){demoEvent('pause');demoView?.update(demoPlayer.getState(),true);}}
+ function pauseDemo(reason='user'){if(!demoPlayer)return;demoPlayer.pause();if(presentation){demoEvent('pause',{reason});demoView?.update(demoPlayer.getState(),true);}}
  function playDemo(){
   if(!demoPlayer||!active||!presentation)return;
   if(demoPlayer.getState().complete)resetDemo();
@@ -236,7 +236,7 @@
   }
   catch{if(generation!==enterGeneration||!active)return;$('loading').hidden=false;$('loading').innerHTML=`<p>${esc(t('loadError'))}</p><button id="lm-retry">${esc(t('retry'))}</button>`;$('retry').onclick=()=>enter();}
  }
- function leave(){enterGeneration++;if(presentation){pauseDemo();window.speechSynthesis?.cancel();}clearTimeout(demoPulseTimer);publishPosition(performance.now(),true);active=false;onboarding.close();features.onLeave();resizeObserver?.disconnect();sensors.stop();if(mode==='walking')sensorMessage='instruction';running=false;keys.clear();stick={x:0,y:0};pointers.clear();clearTimeout(hold);cancelAnimationFrame(frame);frame=0;if(settings.open)settings.close();if(info.open)info.close();}
+ function leave(){enterGeneration++;if(presentation){pauseDemo(document.hidden?'background':'leave');window.speechSynthesis?.cancel();}clearTimeout(demoPulseTimer);publishPosition(performance.now(),true);active=false;onboarding.close();features.onLeave();resizeObserver?.disconnect();sensors.stop();if(mode==='walking')sensorMessage='instruction';running=false;keys.clear();stick={x:0,y:0};pointers.clear();clearTimeout(hold);cancelAnimationFrame(frame);frame=0;if(settings.open)settings.close();if(info.open)info.close();}
  document.addEventListener('museum:navigate',()=>{if(M.state.page!=='map')leave();});
  document.addEventListener('museum:language',()=>{if(active)enter();});
  document.addEventListener('visibilitychange',()=>{if(document.hidden)leave();else if(M.state.page==='map')enter();});window.addEventListener('pagehide',leave);window.addEventListener('blur',()=>{keys.clear();stick={x:0,y:0};});

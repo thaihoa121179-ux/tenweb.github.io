@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "./audio/earring-vi-quick.mp3",
+      "artifactId": "hv-khuyen-tai-ba-mau-f7a824",
+      "language": "vi",
+      "persona": "quick",
+      "bytes": 100222,
+      "sha256": "d35eee068045cc2768c547951c647dc4f63ea99173a610cf8693622735f2c7c6",
+      "durationSeconds": 16.666,
+      "textSha256": "71cae65f19393a9469fde4860072b223ae0e30b796d6ec8261365925569561ad"
+    },
+    {
+      "path": "./audio/earring-vi-kids.mp3",
+      "artifactId": "hv-khuyen-tai-ba-mau-f7a824",
+      "language": "vi",
+      "persona": "kids",
+      "bytes": 126084,
+      "sha256": "2480303f743329e26f663cd40676d1126ff27338e7ae9c539bca825399ee49a5",
+      "durationSeconds": 20.976,
+      "textSha256": "cc16a283643ad1ec4013e696a65b0304d28fc0f006f54fa7fc2354eb03c941de"
+    },
+    {
+      "path": "./audio/earring-vi-deep.mp3",
+      "artifactId": "hv-khuyen-tai-ba-mau-f7a824",
+      "language": "vi",
+      "persona": "deep",
+      "bytes": 201160,
+      "sha256": "a906378776e1261ff41092a0a82b6c4372b95d122d9de257e6ea7cbf59925db4",
+      "durationSeconds": 33.489,
+      "textSha256": "ed00db25e195aa923634573d25a3cccb862ff9bfb3c421ae8f496df3b88f033f"
+    },
+    {
+      "path": "./audio/earring-en-quick.mp3",
+      "artifactId": "hv-khuyen-tai-ba-mau-f7a824",
+      "language": "en",
+      "persona": "quick",
+      "bytes": 152415,
+      "sha256": "84d4c9c887bed8a485c9dde1345da0a2196a864d41d2862d553cb8fbd76a84b0",
+      "durationSeconds": 25.365,
+      "textSha256": "c6f3aa31f9abf440a0e7bffdd80802e73d4057aa341e2c30fa8a33802f5cc1df"
+    },
+    {
+      "path": "./audio/earring-en-kids.mp3",
+      "artifactId": "hv-khuyen-tai-ba-mau-f7a824",
+      "language": "en",
+      "persona": "kids",
+      "bytes": 166365,
+      "sha256": "8e2476ea408270277bbe707ca7740283f6d2be7a6060c188d73146f508800335",
+      "durationSeconds": 27.69,
+      "textSha256": "ac27ae7116ce615a023d916442696122d1498b39ca7f248e17a52ec626c65e02"
+    },
+    {
+      "path": "./audio/earring-en-deep.mp3",
+      "artifactId": "hv-khuyen-tai-ba-mau-f7a824",
+      "language": "en",
+      "persona": "deep",
+      "bytes": 291596,
+      "sha256": "9332e8f8be3bc286179fed39812e8ebbf7a443633cef7b1f8d4b45bd6c81a273",
+      "durationSeconds": 48.562,
+      "textSha256": "2ead94a14e192da31b434acebde704b782927bed68ac25d8140929569b186ccc"
+    },
+    {
+      "path": "./audio/relief-vi-quick.mp3",
+      "artifactId": "phu-dieu",
+      "language": "vi",
+      "persona": "quick",
+      "bytes": 96774,
+      "sha256": "1a098a252771f738a647bc05cbf651e2cecd0142b8e6836c3d63d18516216964",
+      "durationSeconds": 16.091,
+      "textSha256": "b4dcbc6c806c7a589c54f7befc59ae9d7207781adf7f06c7121fbce6cdfac8e8"
+    },
+    {
+      "path": "./audio/relief-vi-kids.mp3",
+      "artifactId": "phu-dieu",
+      "language": "vi",
+      "persona": "kids",
+      "bytes": 118560,
+      "sha256": "635b0ac936a81c16b37cd268cb8ded5a4f2676606a036a3dadd4de7ff34ca917",
+      "durationSeconds": 19.722,
+      "textSha256": "40d78eb4d8c04749cd13f289806b0af9aadc7c40874d5526a2c6b6a5a6206157"
+    },
+    {
+      "path": "./audio/relief-vi-deep.mp3",
+      "artifactId": "phu-dieu",
+      "language": "vi",
+      "persona": "deep",
+      "bytes": 178276,
+      "sha256": "fd4b5396e07ee5a13be155240d1d415eeaeb9a9f2871e4d08469c7da236c7ce8",
+      "durationSeconds": 29.675,
+      "textSha256": "6d7a507a79a7aacfd6c2ef81049e71cebb5136c3f849323fa94281bdf48eb08e"
+    },
+    {
+      "path": "./audio/relief-en-quick.mp3",
+      "artifactId": "phu-dieu",
+      "language": "en",
+      "persona": "quick",
+      "bytes": 155863,
+      "sha256": "4f5093311e3f767f0580e2b1837d5c0d4a7335679d97fab67ba3246958867f68",
+      "durationSeconds": 25.94,
+      "textSha256": "3ae7ef3448b8fee22b1d4fdd673fc18c3a9ae7cdb4252169e917f7cb02aa7747"
+    },
+    {
+      "path": "./audio/relief-en-kids.mp3",
+      "artifactId": "phu-dieu",
+      "language": "en",
+      "persona": "kids",
+      "bytes": 169029,
+      "sha256": "6ce19a7d77e096cd1be0028b672f3a8aa78d81ca585b26d6ed86e217f41111a7",
+      "durationSeconds": 28.134,
+      "textSha256": "f88665cdc39da783764ce8544b2159db7ea766ffb727567b775712d3456b8f59"
+    },
+    {
+      "path": "./audio/relief-en-deep.mp3",
+      "artifactId": "phu-dieu",
+      "language": "en",
+      "persona": "deep",
+      "bytes": 258368,
+      "sha256": "075b701ae8751e87233beb309e4a3189df186bd1b74e07248d9682ab1fe70512",
+      "durationSeconds": 43.024,
+      "textSha256": "dab78f707cee01406ccc1b27c832dad22a6f589af59cef627e157d7c24a712c0"
+    },
+    {
+      "path": "./audio/cannon-vi-quick.mp3",
+      "artifactId": "sung-than-cong",
+      "language": "vi",
+      "persona": "quick",
+      "bytes": 122792,
+      "sha256": "7e43d974abaa8972b882496de91304242a57a92b771356cdd609e8fe65b123f0",
+      "durationSeconds": 20.428,
+      "textSha256": "b499f22f33979c695f5e1ef9cc6f4f9fc5a69d36a230b94cf244ddcb5c931e43"
+    },
+    {
+      "path": "./audio/cannon-vi-kids.mp3",
+      "artifactId": "sung-than-cong",
+      "language": "vi",
+      "persona": "kids",
+      "bytes": 133137,
+      "sha256": "aba09337a7f489705ce9be2a0e7a5e95f73add80035d8bcb43aa7ff1df76fa1b",
+      "durationSeconds": 22.152,
+      "textSha256": "db336108816fb6492e920ce64733e82ba0bb95646ed6dd5ef6d37b72782f8a1f"
+    },
+    {
+      "path": "./audio/cannon-vi-deep.mp3",
+      "artifactId": "sung-than-cong",
+      "language": "vi",
+      "persona": "deep",
+      "bytes": 201943,
+      "sha256": "bf779c7f91e713f3b8825889719c67c5160f077b8ed59fc2774069698a94af99",
+      "durationSeconds": 33.62,
+      "textSha256": "bb6f3aa279303aa942716b70cdc5bb1aef5d84adff138b1086f2783a77458286"
+    },
+    {
+      "path": "./audio/cannon-en-quick.mp3",
+      "artifactId": "sung-than-cong",
+      "language": "en",
+      "persona": "quick",
+      "bytes": 166521,
+      "sha256": "e3a88b0c8ec6def5c4769f0c30b9534b7c2ede16d278389fa3ce73e4a962fdf9",
+      "durationSeconds": 27.716,
+      "textSha256": "5480f6a45cbe59f907baa00152977954e063f49691d868551cd108f5cba58692"
+    },
+    {
+      "path": "./audio/cannon-en-kids.mp3",
+      "artifactId": "sung-than-cong",
+      "language": "en",
+      "persona": "kids",
+      "bytes": 189091,
+      "sha256": "aeff22f86e0aed4299db7e585794ea3400ac065e7c2bc3105b69d23927718613",
+      "durationSeconds": 31.478,
+      "textSha256": "3ac558c8254354ab6010d03340d90d70276ed9bdae6b8a06f7757628fb812dfd"
+    },
+    {
+      "path": "./audio/cannon-en-deep.mp3",
+      "artifactId": "sung-than-cong",
+      "language": "en",
+      "persona": "deep",
+      "bytes": 293320,
+      "sha256": "45fe145b9ab1e816fb0403949f524c7e3e54926bb4a136e37f0009ce85af467f",
+      "durationSeconds": 48.849,
+      "textSha256": "09e3ee5cd0b61bfca4f0ac030d40ee03a2e7e112f34a1feacf8c2640e1b50f78"
+    },
+    {
+      "path": "./audio/unlock.mp3",
+      "bytes": 1166,
+      "sha256": "5e101e46cb7559b3f6ec80eff19876b3c3f787bb29acaa25a3ed9e7833cd667c",
+      "durationSeconds": 0.235,
+      "purpose": "Silent gesture unlock, not narration"
+    }
+  ]
+}

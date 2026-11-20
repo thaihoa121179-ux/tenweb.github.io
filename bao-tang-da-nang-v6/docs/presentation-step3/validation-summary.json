@@ -1,0 +1,43 @@
+{
+  "version": "7.7.0",
+  "scope": "Step 3 audio and narration only; actual MP3/SW in Chromium, device speech and lock-screen commands simulated; physical iOS/Android require manual checks",
+  "checks": {
+    "node": {
+      "passed": 173,
+      "failed": 0
+    },
+    "python": {
+      "passed": 23,
+      "failed": 0
+    },
+    "audio_browser": {
+      "passed": 10,
+      "failed": 0
+    },
+    "map_demo_browser": {
+      "passed": 8,
+      "failed": 0
+    },
+    "normal_map_browser": {
+      "passed": 9,
+      "failed": 0
+    },
+    "app_browser": {
+      "passed": 24,
+      "failed": 0
+    },
+    "real_narration_mp3": 18,
+    "silent_unlock_mp3": 1,
+    "mp3_full_decode_passed": 19,
+    "decoded_distinct_photos": 200,
+    "audio_axe_wcag_a_aa_violations": 0
+  },
+  "collectionSha256": "5ad4c8910a84e483b2f8b36b903c10096ddcbc1a894eaf1449365c4c9e694f4e",
+  "audioBytes": 3122682,
+  "localLighthouse": {
+    "performance": 91,
+    "accessibility": 100,
+    "best-practices": 100
+  },
+  "publicVerification": "GitHub Actions runs a separate measurement on the actual published origin after merge"
+}

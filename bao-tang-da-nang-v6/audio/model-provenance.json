@@ -1,0 +1,33 @@
+{
+  "engine": "Piper 1.3.0, CPU, offline build only",
+  "modelsDistributed": false,
+  "models": [
+    {
+      "language": "vi",
+      "model": "vi_VN-vais1000-medium",
+      "modelSha256": "df1512ef3265609f147ae23726b8c8867c6d28e60acb9ffca3545e11783b809f",
+      "modelCard": "./licenses/pocket-audio/vi_VN-vais1000-medium-MODEL_CARD.md",
+      "datasetLicense": "CC BY 4.0",
+      "datasetLicenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "download": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-vi_VN-vais1000-medium.tar.bz2"
+    },
+    {
+      "language": "en",
+      "model": "en_US-ljspeech-medium",
+      "modelSha256": "8ceba58a4b540d4e7e7e24ad079cf0d92762a4fd334e059f12940787c6c37b3d",
+      "modelCard": "./licenses/pocket-audio/en_US-ljspeech-medium-MODEL_CARD.md",
+      "datasetLicense": "Public domain dataset",
+      "datasetLicenseUrl": "https://keithito.com/LJ-Speech-Dataset/",
+      "download": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-ljspeech-medium.tar.bz2"
+    }
+  ],
+  "styles": {
+    "quick": "Brief factual narration",
+    "kids": "Slower delivery with a small pitch adjustment",
+    "deep": "Longer source-based explanation"
+  },
+  "fallbackLanguages": [
+    "ko",
+    "zh"
+  ]
+}

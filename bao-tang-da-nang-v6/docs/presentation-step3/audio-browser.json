@@ -1,0 +1,45 @@
+{
+  "scope": "Chromium with actual MP3/SW; speech voices and lock screen commands simulated, not physical Safari/Android",
+  "results": [
+    {
+      "name": "opening three anchors shows prepared text but never plays audio; 197 other records keep legacy narration",
+      "passed": true
+    },
+    {
+      "name": "real MP3 plays, seeks, pauses and switches persona text and audio without stale playback",
+      "passed": true
+    },
+    {
+      "name": "pocket audio continues through normal navigation, yields to chat and legacy speech, then closes cleanly",
+      "passed": true
+    },
+    {
+      "name": "Media Session reports artwork/title and play/pause/seek handlers use the actual MP3",
+      "passed": true
+    },
+    {
+      "name": "autoplay rejection requests a tap; missing MP3 uses the exact sourced device speech without a fake time bar",
+      "passed": true
+    },
+    {
+      "name": "all four languages and 360–430px/landscape fit; Korean and Chinese use honest device speech",
+      "passed": true
+    },
+    {
+      "name": "tour start unlocks one element; actual arrival plays narration, seeking/resetting never replays it",
+      "passed": true
+    },
+    {
+      "name": "a slow JSON response cannot start old audio or reopen a dialog after navigation",
+      "passed": true
+    },
+    {
+      "name": "all 18 prepared MP3 play offline; cached Safari Range requests return the correct bytes and 416",
+      "passed": true
+    },
+    {
+      "name": "WCAG A/AA checks pass for prepared narration, player and transcript dialog",
+      "passed": true
+    }
+  ]
+}
